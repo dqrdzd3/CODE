@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<display-name>Archetype Created Web Application</display-name>
+	<!-- spring MVC的核心就是DispatcherServlet，使用springMVC的第一步就是将下面的servlet放入web.xml 
+		servlet-name属性非常重要，默认情况下，DispatchServlet会加载这个名字-servlet.xml的文件，如下，就会加载 dispather-servlet.xml，也是在WEN-INF目录下。 -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<!-- Spring的log4j监听器 -->
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/applicationContext.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<!-- 设置dispatchservlet的匹配模式，通过把dispatchservlet映射到/，默认servlet会处理所有的请求，包括静态资源 -->
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<!-- css加载 -->
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.png</url-pattern>
+		<url-pattern>*.js</url-pattern>
+		<url-pattern>*.css</url-pattern>
+		<url-pattern>*.xml</url-pattern>
+	</servlet-mapping>
+	<!--web-inf jsp start -->
+	<!-- weeklySales -->
+	<servlet>
+		<servlet-name>weeklySalesIndex</servlet-name>
+		<jsp-file>/WEB-INF/weeklysales/weeklySalesIndex.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>weeklySalesIndex</servlet-name>
+		<url-pattern>/weeklySalesIndex</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>weeklySalesAdd</servlet-name>
+		<jsp-file>/WEB-INF/weeklysales/weeklySalesAdd.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>weeklySalesAdd</servlet-name>
+		<url-pattern>/weeklySalesAdd</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>weeklySalesSearchById</servlet-name>
+		<jsp-file>/WEB-INF/weeklysales/weeklySalesSearchById.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>weeklySalesSearchById</servlet-name>
+		<url-pattern>/weeklySalesSearchById</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>weeklySalesDelete</servlet-name>
+		<jsp-file>/WEB-INF/weeklysales/weeklySalesDelete.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>weeklySalesDelete</servlet-name>
+		<url-pattern>/weeklySalesDelete</url-pattern>
+	</servlet-mapping>
+
+	<!-- otherShips -->
+	<servlet>
+		<servlet-name>otherShipsIndex</servlet-name>
+		<jsp-file>/WEB-INF/otherships/otherShipsIndex.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>otherShipsIndex</servlet-name>
+		<url-pattern>/otherShipsIndex</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>otherShipsAdd</servlet-name>
+		<jsp-file>/WEB-INF/otherships/otherShipsAdd.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>otherShipsAdd</servlet-name>
+		<url-pattern>/otherShipsAdd</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>otherShipsSearchById</servlet-name>
+		<jsp-file>/WEB-INF/otherships/otherShipsSearchById.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>otherShipsSearchById</servlet-name>
+		<url-pattern>/otherShipsSearchById</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>otherShipsSearchByIdForDetails</servlet-name>
+		<jsp-file>/WEB-INF/otherships/otherShipsSearchByIdForDetails.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>otherShipsSearchByIdForDetails</servlet-name>
+		<url-pattern>/otherShipsSearchByIdForDetails</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>otherShipsDelete</servlet-name>
+		<jsp-file>/WEB-INF/otherships/otherShipsDelete.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>otherShipsDelete</servlet-name>
+		<url-pattern>/otherShipsDelete</url-pattern>
+	</servlet-mapping>
+	
+	<!-- taobaoSales -->
+	<servlet>
+		<servlet-name>taobaoSalesIndex</servlet-name>
+		<jsp-file>/WEB-INF/taobaosales/taobaoSalesIndex.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>taobaoSalesIndex</servlet-name>
+		<url-pattern>/taobaoSalesIndex</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>taobaoSalesAdd</servlet-name>
+		<jsp-file>/WEB-INF/taobaosales/taobaoSalesAdd.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>taobaoSalesAdd</servlet-name>
+		<url-pattern>/taobaoSalesAdd</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>taobaoSalesSearchById</servlet-name>
+		<jsp-file>/WEB-INF/taobaosales/taobaoSalesSearchById.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>taobaoSalesSearchById</servlet-name>
+		<url-pattern>/taobaoSalesSearchById</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>taobaoSalesSearchByIdForDetails</servlet-name>
+		<jsp-file>/WEB-INF/taobaosales/taobaoSalesSearchByIdForDetails.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>taobaoSalesSearchByIdForDetails</servlet-name>
+		<url-pattern>/taobaoSalesSearchByIdForDetails</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>taobaoSalesDelete</servlet-name>
+		<jsp-file>/WEB-INF/taobaosales/taobaoSalesDelete.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>taobaoSalesDelete</servlet-name>
+		<url-pattern>/taobaoSalesDelete</url-pattern>
+	</servlet-mapping>
+	
+	<!-- sales -->
+	<servlet>
+		<servlet-name>salesIndex</servlet-name>
+		<jsp-file>/WEB-INF/sales/salesIndex.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>salesIndex</servlet-name>
+		<url-pattern>/salesIndex</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>salesAdd</servlet-name>
+		<jsp-file>/WEB-INF/sales/salesAdd.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>salesAdd</servlet-name>
+		<url-pattern>/salesAdd</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>salesSearchById</servlet-name>
+		<jsp-file>/WEB-INF/sales/salesSearchById.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>salesSearchById</servlet-name>
+		<url-pattern>/salesSearchById</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>salesSearchByIdForDetails</servlet-name>
+		<jsp-file>/WEB-INF/sales/salesSearchByIdForDetails.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>salesSearchByIdForDetails</servlet-name>
+		<url-pattern>/salesSearchByIdForDetails</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>salesExcel</servlet-name>
+		<jsp-file>/WEB-INF/sales/salesExcel.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>salesExcel</servlet-name>
+		<url-pattern>/salesExcel</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>salesDelete</servlet-name>
+		<jsp-file>/WEB-INF/sales/salesDelete.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>salesDelete</servlet-name>
+		<url-pattern>/salesDelete</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>deliveryBySupplier</servlet-name>
+		<jsp-file>/WEB-INF/deliverybinding/deliveryBySupplier.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>deliveryBySupplier</servlet-name>
+		<url-pattern>/deliveryBySupplier</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>deliveryByThirdParty</servlet-name>
+		<jsp-file>/WEB-INF/deliverybinding/deliveryByThirdParty.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>deliveryByThirdParty</servlet-name>
+		<url-pattern>/deliveryByThirdParty</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>deliveryBinding</servlet-name>
+		<jsp-file>/WEB-INF/deliverybinding/deliveryBinding.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>deliveryBinding</servlet-name>
+		<url-pattern>/deliveryBinding</url-pattern>
+	</servlet-mapping>
+	<!-- end -->
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- 上传文件 -->
+	<context-param> 
+    <description>Location to store uploaded file</description> 
+   	 	<param-name>file-upload</param-name> 
+    	<param-value>
+         d:\workspace\WG_SALES\WebContent\
+    	</param-value> 
+	</context-param>
+	
+	<filter>
+		<filter-name>login</filter-name>
+		<filter-class>com.wg.salescount.util.LoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>login</filter-name>
+		<url-pattern>/WEB-INF/*</url-pattern>
+	</filter-mapping>
+</web-app>

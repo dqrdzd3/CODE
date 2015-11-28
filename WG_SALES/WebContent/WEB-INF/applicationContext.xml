@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop   
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd   
+        http://www.springframework.org/schema/beans   
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+        http://www.springframework.org/schema/context   
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd   
+        http://www.springframework.org/schema/mvc   
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd   
+        http://www.springframework.org/schema/tx   
+        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<mvc:annotation-driven />
+	
+	<context:component-scan base-package="com.wg.salescount.*" /> 
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+        <property name="prefix" value="/" />  
+        <property name="suffix" value=".jsp" />  
+    </bean>  
+    
+	<bean id="propertyConfigure"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<!--<property name="location" value="WebContent/resource/jdbc.properties" />  -->
+		<property name="location" value="resource/jdbc.properties" /> 
+	</bean>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="url" value="${database.url}"></property>
+		<property name="driverClassName" value="${database.driver}"></property>
+		<property name="username" value="${database.user}"></property>
+		<property name="password" value="${database.password}"></property>
+	</bean>
+	<bean id="dataSource2" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="url" value="${database2.url}"></property>
+		<property name="driverClassName" value="${database2.driver}"></property>
+		<property name="username" value="${database2.user}"></property>
+		<property name="password" value="${database2.password}"></property>
+	</bean>
+	
+	<bean id="weeklySalesDAO" class="com.wg.salescount.weeklysales.dao.impl.WeeklySalesDAOImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="taoBaoSalesDAO" class="com.wg.salescount.taobaosales.dao.impl.TaoBaoSalesDAOImpl">
+		<property name="dataSource" ref="dataSource"></property> 
+	</bean>
+	<bean id="salesDAO" class="com.wg.salescount.sales.dao.impl.SalesDAOImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>	
+	<bean id="deliveryBySupplierDAO" class="com.wg.salescount.delivery.dao.impl.DeliveryBySupplierDAOImpl">
+		<property name="dataSource" ref="dataSource2"></property>
+	</bean>	
+	<bean id="deliveryByThirdPartyDAO" class="com.wg.salescount.delivery.dao.impl.DeliveryByThirdPartyDAOImpl">
+		<property name="dataSource" ref="dataSource2"></property>
+	</bean>	
+	<bean id="p001DAO" class="com.wg.salescount.delivery.dao.impl.P001DAOImpl">
+		<property name="dataSource" ref="dataSource2"></property>
+	</bean>
+	<bean id="corpBusinessDAO" class="com.wg.salescount.delivery.dao.impl.CorpBusinessDAOImpl">
+		<property name="dataSource" ref="dataSource2"></property>
+	</bean>
+	<bean id="wgInterfaceCustomerDAO" class="com.wg.salescount.delivery.dao.impl.WgInterfaceCustomerDAOImpl">
+		<property name="dataSource" ref="dataSource2"></property>
+	</bean>
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	   
+
+	<tx:annotation-driven transaction-manager="txManager" />
+
+	<!-- 定义事务传播属性 -->
+	 <tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="get*" propagation="NOT_SUPPORTED"
+				read-only="true" />
+			<tx:method name="add*" propagation="REQUIRED" rollback-for="Exception"/>
+			<tx:method name="update*" propagation="REQUIRED" rollback-for="Exception"/>
+			<tx:method name="delete*" propagation="REQUIRED" rollback-for="Exception"/>
+		</tx:attributes>
+	</tx:advice> 
+
+	<!-- 配置事务拦截器拦截哪些类的哪些方法,一般设置成拦截Service -->
+	 <aop:config>
+		<aop:pointcut expression="execution(* com.wg.salescount.*.*(..))"
+			id="transactionPointCut" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="transactionPointCut" />
+	</aop:config>  
+	
+	
+	<!-- 事务transaction处理机制 -->
+<!-- 	<tx:annotation-driven transaction-manager="transactionManager"/>  	
+	<bean id="sessionFactory"    
+            class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">    
+        <property name="configLocation" value="classpath:hibernate.cfg.xml" />    
+        <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration" />  
+    </bean>    
+	
+	 定义事务管理器（声明式的事务）    
+    <bean id="transactionManager"  
+        class="org.springframework.orm.hibernate3.HibernateTransactionManager">  
+        <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>   -->
+    <!-- 事务transaction处理机制 -->
+    
+	<!-- <aop:config>
+		<aop:pointcut expression="execution(* com.wg.salescount.weeklysales.service.*.*(..))"
+			id="transactionPointCut" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="transactionPointCut" />
+	</aop:config>  
+	<aop:config>
+		<aop:pointcut expression="execution(* com.wg.salescount.sales.service.*.*(..))"
+			id="transactionPointCut1" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="transactionPointCut1" />
+	</aop:config>  -->
+</beans>  
