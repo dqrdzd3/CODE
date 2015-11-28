@@ -1,0 +1,138 @@
+2015-11-13 10:04:30 487  [com.hw.smarthome.daq.main.Main]-[INFO] 前置机监听线程启动
+2015-11-13 10:04:30 765  [com.hw.smarthome.daq.front.receive.FrontReceiver]-[INFO] 开始创建UDP服务
+2015-11-13 10:04:30 792  [com.hw.smarthome.daq.main.Main]-[INFO] 前置机监听处理线程启动
+2015-11-13 10:04:30 803  [com.hw.smarthome.daq.main.Main]-[INFO] 前置机发送线程启动
+2015-11-13 10:04:30 817  [com.hw.smarthome.daq.main.Main]-[INFO] 任务调度接收线程启动
+2015-11-13 10:04:30 901  [com.hw.smarthome.daq.main.Main]-[INFO] 任务调度发送线程启动
+2015-11-13 10:04:30 956  [com.hw.smarthome.daq.main.Main]-[INFO] 服务端接收线程启动
+2015-11-13 10:04:31 473  [com.hw.smarthome.daq.main.Main]-[INFO] 服务端发送线程启动
+2015-11-13 10:04:36 786  [com.hw.smarthome.daq.main.Main]-[INFO] 任务调度Socket监听线程启动
+2015-11-13 10:04:36 820  [com.hw.smarthome.daq.main.Main]-[INFO] 任务调度Socket发送线程启动
+2015-11-13 10:04:36 851  [com.hw.smarthome.daq.main.Main]-[INFO] 分布式大气监测监听启动
+2015-11-13 10:04:36 893  [com.hw.smarthome.daq.main.Main]-[INFO] 文件夹变动监控线程启动
+2015-11-13 10:04:36 919  [com.hw.smarthome.daq.main.Main]-[INFO] 内存监控线程启动
+2015-11-13 10:04:36 926  [com.hw.smarthome.daq.monitor.FilesMonitor]-[INFO] 更新(升级)文件列表成功
+2015-11-13 10:05:40 197  [com.hw.smarthome.daq.front.receive.FrontReceiver]-[DEBUG] /127.0.0.1:59015 68004068B6735B0E30F4B00D7FCDBC47A22057372C7BC56C341F3229DD103F08C54427C9C69FE8AE7840526BD41068ACBA91DF7AA7D8FA44214F4D8664CCC74345A41C92A216
+2015-11-13 10:05:41 368  [com.hw.smarthome.daq.front.receive.FrontReceiveHandler]-[DEBUG] 设备ID:50000105A8DF 解码后的内容为:68004068C050000105A8DF08E005013001180002023502C9012800011103CA013000011404D8019800017805D901000001030E0C1A00001A000000000000000000000000A216
+2015-11-13 10:05:41 370  [com.hw.smarthome.daq.scheduler.receive.SchedulerReceiveHandler]-[DEBUG] DAqPo [id=7d7d5b3d-4030-4fdb-bda7-efc6696deda4, sensorId=50000105A8DF, afn=0, receiveData=68004068C050000105A8DF08E005013001180002023502C9012800011103CA013000011404D8019800017805D901000001030E0C1A00001A000000000000000000000000A216, sendData=, dataItems=null, ip=/127.0.0.1, port=59015, delaySecond=0, date=Fri Nov 13 10:05:40 CST 2015, isChkSumLegal=true, dir=false, prm=false, fcb=false, fcv=false, ctrlCount=0, tpv=false, fir=false, fin=false, con=false, seqCount=0, responseCode=0]
+2015-11-13 10:05:41 447  [com.hw.smarthome.daq.server.Scheduler2Server]-[DEBUG] 50000105A8DF 发送JMS成功 {'protocol':'1','data':[{'address':'1','chanlvalue':'565','gprs_id':'50000105A8DF','media':'30','status':'00','unit':'03'},{'address':'1','chanlvalue':'17','gprs_id':'50000105A8DF','media':'C9','status':'00','unit':'05'},{'address':'1','chanlvalue':'20','gprs_id':'50000105A8DF','media':'CA','status':'00','unit':'06'},{'address':'1','chanlvalue':'120','gprs_id':'50000105A8DF','media':'D8','status':'00','unit':'13'},{'address':'1','chanlvalue':'3','gprs_id':'50000105A8DF','media':'D9','status':'00','unit':'00'}]}
+2015-11-13 10:05:45 142  [com.hw.smarthome.daq.front.receive.FrontReceiver]-[DEBUG] /127.0.0.1:59016 68004068B6735B0E30F4B00D7FCDBC47A22057372C7BC56C341F3229DD103F08C54427C9C69FE8AE7840526BD41068ACBA91DF7AA7D8FA44214F4D8664CCC74345A41C92A216
+2015-11-13 10:05:45 144  [com.hw.smarthome.daq.front.receive.FrontReceiveHandler]-[DEBUG] 设备ID:50000105A8DF 解码后的内容为:68004068C050000105A8DF08E005013001180002023502C9012800011103CA013000011404D8019800017805D901000001030E0C1A00001A000000000000000000000000A216
+2015-11-13 10:05:45 145  [com.hw.smarthome.daq.scheduler.receive.SchedulerReceiveHandler]-[DEBUG] DAqPo [id=0cb270b9-81f6-411b-b151-13c37e35c8b3, sensorId=50000105A8DF, afn=0, receiveData=68004068C050000105A8DF08E005013001180002023502C9012800011103CA013000011404D8019800017805D901000001030E0C1A00001A000000000000000000000000A216, sendData=, dataItems=null, ip=/127.0.0.1, port=59016, delaySecond=0, date=Fri Nov 13 10:05:45 CST 2015, isChkSumLegal=true, dir=false, prm=false, fcb=false, fcv=false, ctrlCount=0, tpv=false, fir=false, fin=false, con=false, seqCount=0, responseCode=0]
+2015-11-13 10:05:46 466  [com.hw.smarthome.daq.server.jms.JMSSender]-[ERROR] [C4003]: Error occurred on connection creation [mq://127.0.0.1,mq://127.0.0.1:7676].
+com.sun.messaging.jmq.jmsclient.ConnectException: [C4003]: Error occurred on connection creation [mq://127.0.0.1,mq://127.0.0.1:7676].
+	at com.sun.messaging.jmq.jmsclient.ConnectionInitiator.createConnectionNew(ConnectionInitiator.java:316)
+	at com.sun.messaging.jmq.jmsclient.ConnectionInitiator.createConnection(ConnectionInitiator.java:214)
+	at com.sun.messaging.jmq.jmsclient.ConnectionInitiator.createConnection(ConnectionInitiator.java:164)
+	at com.sun.messaging.jmq.jmsclient.ProtocolHandler.init(ProtocolHandler.java:871)
+	at com.sun.messaging.jmq.jmsclient.ProtocolHandler.<init>(ProtocolHandler.java:1594)
+	at com.sun.messaging.jmq.jmsclient.ConnectionImpl.openConnection(ConnectionImpl.java:2470)
+	at com.sun.messaging.jmq.jmsclient.ConnectionImpl.init(ConnectionImpl.java:1156)
+	at com.sun.messaging.jmq.jmsclient.ConnectionImpl.<init>(ConnectionImpl.java:468)
+	at com.sun.messaging.jmq.jmsclient.UnifiedConnectionImpl.<init>(UnifiedConnectionImpl.java:66)
+	at com.sun.messaging.jmq.jmsclient.QueueConnectionImpl.<init>(QueueConnectionImpl.java:65)
+	at com.sun.messaging.ConnectionFactory.createQueueConnection(ConnectionFactory.java:104)
+	at com.hw.smarthome.daq.server.jms.JMSSender.init(JMSSender.java:68)
+	at com.hw.smarthome.daq.server.jms.JMSSender.<init>(JMSSender.java:56)
+	at com.hw.smarthome.daq.server.jms.JMSSender.<init>(JMSSender.java:48)
+	at com.hw.smarthome.daq.server.jms.JMSSender.getInstance(JMSSender.java:26)
+	at com.hw.smarthome.daq.server.Scheduler2Server.jms2Server(Scheduler2Server.java:95)
+	at com.hw.smarthome.daq.server.Scheduler2Server.runFun(Scheduler2Server.java:49)
+	at com.hw.util.ThreadClassTemplet.run(ThreadClassTemplet.java:87)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1110)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603)
+	at java.lang.Thread.run(Thread.java:722)
+
+###### Connect exception for : mq://127.0.0.1:7676/jms
+com.sun.messaging.jms.JMSException: [C4003]: Error occurred on connection creation [127.0.0.1:7676]. - cause: java.net.ConnectException: Connection refused: connect
+	at com.sun.messaging.jmq.jmsclient.ExceptionHandler.throwConnectionException(ExceptionHandler.java:280)
+	at com.sun.messaging.jmq.jmsclient.ExceptionHandler.handleConnectException(ExceptionHandler.java:226)
+	at com.sun.messaging.jmq.jmsclient.PortMapperClient.readBrokerPorts(PortMapperClient.java:278)
+	at com.sun.messaging.jmq.jmsclient.PortMapperClient.init(PortMapperClient.java:156)
+	at com.sun.messaging.jmq.jmsclient.PortMapperClient.<init>(PortMapperClient.java:98)
+	at com.sun.messaging.jmq.jmsclient.protocol.tcp.TCPConnectionHandler.<init>(TCPConnectionHandler.java:171)
+	at com.sun.messaging.jmq.jmsclient.protocol.tcp.TCPStreamHandler.openConnection(TCPStreamHandler.java:141)
+	at com.sun.messaging.jmq.jmsclient.ConnectionInitiator.createConnection(ConnectionInitiator.java:785)
+	at com.sun.messaging.jmq.jmsclient.ConnectionInitiator.createConnectionNew(ConnectionInitiator.java:260)
+	at com.sun.messaging.jmq.jmsclient.ConnectionInitiator.createConnection(ConnectionInitiator.java:214)
+	at com.sun.messaging.jmq.jmsclient.ConnectionInitiator.createConnection(ConnectionInitiator.java:164)
+	at com.sun.messaging.jmq.jmsclient.ProtocolHandler.init(ProtocolHandler.java:871)
+	at com.sun.messaging.jmq.jmsclient.ProtocolHandler.<init>(ProtocolHandler.java:1594)
+	at com.sun.messaging.jmq.jmsclient.ConnectionImpl.openConnection(ConnectionImpl.java:2470)
+	at com.sun.messaging.jmq.jmsclient.ConnectionImpl.init(ConnectionImpl.java:1156)
+	at com.sun.messaging.jmq.jmsclient.ConnectionImpl.<init>(ConnectionImpl.java:468)
+	at com.sun.messaging.jmq.jmsclient.UnifiedConnectionImpl.<init>(UnifiedConnectionImpl.java:66)
+	at com.sun.messaging.jmq.jmsclient.QueueConnectionImpl.<init>(QueueConnectionImpl.java:65)
+	at com.sun.messaging.ConnectionFactory.createQueueConnection(ConnectionFactory.java:104)
+	at com.hw.smarthome.daq.server.jms.JMSSender.init(JMSSender.java:68)
+	at com.hw.smarthome.daq.server.jms.JMSSender.<init>(JMSSender.java:56)
+	at com.hw.smarthome.daq.server.jms.JMSSender.<init>(JMSSender.java:48)
+	at com.hw.smarthome.daq.server.jms.JMSSender.getInstance(JMSSender.java:26)
+	at com.hw.smarthome.daq.server.Scheduler2Server.jms2Server(Scheduler2Server.java:95)
+	at com.hw.smarthome.daq.server.Scheduler2Server.runFun(Scheduler2Server.java:49)
+	at com.hw.util.ThreadClassTemplet.run(ThreadClassTemplet.java:87)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1110)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603)
+	at java.lang.Thread.run(Thread.java:722)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:69)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:337)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:198)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:180)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:157)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:391)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at com.sun.messaging.jmq.jmsclient.PortMapperClient.makePortMapperClientSocket(PortMapperClient.java:316)
+	at com.sun.messaging.jmq.jmsclient.PortMapperClient.readBrokerPorts(PortMapperClient.java:243)
+	... 26 more
+
+###### Connect exception for : mq://127.0.0.1:7676/jms
+com.sun.messaging.jms.JMSException: [C4003]: Error occurred on connection creation [127.0.0.1:7676]. - cause: java.net.ConnectException: Connection refused: connect
+	at com.sun.messaging.jmq.jmsclient.ExceptionHandler.throwConnectionException(ExceptionHandler.java:280)
+	at com.sun.messaging.jmq.jmsclient.ExceptionHandler.handleConnectException(ExceptionHandler.java:226)
+	at com.sun.messaging.jmq.jmsclient.PortMapperClient.readBrokerPorts(PortMapperClient.java:278)
+	at com.sun.messaging.jmq.jmsclient.PortMapperClient.init(PortMapperClient.java:156)
+	at com.sun.messaging.jmq.jmsclient.PortMapperClient.<init>(PortMapperClient.java:98)
+	at com.sun.messaging.jmq.jmsclient.protocol.tcp.TCPConnectionHandler.<init>(TCPConnectionHandler.java:171)
+	at com.sun.messaging.jmq.jmsclient.protocol.tcp.TCPStreamHandler.openConnection(TCPStreamHandler.java:141)
+	at com.sun.messaging.jmq.jmsclient.ConnectionInitiator.createConnection(ConnectionInitiator.java:785)
+	at com.sun.messaging.jmq.jmsclient.ConnectionInitiator.createConnectionNew(ConnectionInitiator.java:260)
+	at com.sun.messaging.jmq.jmsclient.ConnectionInitiator.createConnection(ConnectionInitiator.java:214)
+	at com.sun.messaging.jmq.jmsclient.ConnectionInitiator.createConnection(ConnectionInitiator.java:164)
+	at com.sun.messaging.jmq.jmsclient.ProtocolHandler.init(ProtocolHandler.java:871)
+	at com.sun.messaging.jmq.jmsclient.ProtocolHandler.<init>(ProtocolHandler.java:1594)
+	at com.sun.messaging.jmq.jmsclient.ConnectionImpl.openConnection(ConnectionImpl.java:2470)
+	at com.sun.messaging.jmq.jmsclient.ConnectionImpl.init(ConnectionImpl.java:1156)
+	at com.sun.messaging.jmq.jmsclient.ConnectionImpl.<init>(ConnectionImpl.java:468)
+	at com.sun.messaging.jmq.jmsclient.UnifiedConnectionImpl.<init>(UnifiedConnectionImpl.java:66)
+	at com.sun.messaging.jmq.jmsclient.QueueConnectionImpl.<init>(QueueConnectionImpl.java:65)
+	at com.sun.messaging.ConnectionFactory.createQueueConnection(ConnectionFactory.java:104)
+	at com.hw.smarthome.daq.server.jms.JMSSender.init(JMSSender.java:68)
+	at com.hw.smarthome.daq.server.jms.JMSSender.<init>(JMSSender.java:56)
+	at com.hw.smarthome.daq.server.jms.JMSSender.<init>(JMSSender.java:48)
+	at com.hw.smarthome.daq.server.jms.JMSSender.getInstance(JMSSender.java:26)
+	at com.hw.smarthome.daq.server.Scheduler2Server.jms2Server(Scheduler2Server.java:95)
+	at com.hw.smarthome.daq.server.Scheduler2Server.runFun(Scheduler2Server.java:49)
+	at com.hw.util.ThreadClassTemplet.run(ThreadClassTemplet.java:87)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1110)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603)
+	at java.lang.Thread.run(Thread.java:722)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:69)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:337)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:198)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:180)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:157)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:391)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at java.net.Socket.<init>(Socket.java:425)
+	at java.net.Socket.<init>(Socket.java:208)
+	at com.sun.messaging.jmq.jmsclient.PortMapperClient.makePortMapperClientSocket(PortMapperClient.java:316)
+	at com.sun.messaging.jmq.jmsclient.PortMapperClient.readBrokerPorts(PortMapperClient.java:243)
+	... 26 more

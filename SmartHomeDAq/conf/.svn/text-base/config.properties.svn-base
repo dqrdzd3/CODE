@@ -1,0 +1,80 @@
+#是否加密解密
+is.decode.encode = false
+#空气电台和控制设备
+front.udp.port =59999
+#户外器数据链路
+front.tcp.port=60002
+#front.udp.port =60001
+scheduler.socket.receive.port =49999
+scheduler.socket.send.port =39999
+#是否才有WebService回传数据
+server.ws = false
+#WebService的地址
+#模拟机
+#server.ws.addr = http://192.168.111.245:8080/SmartBeanService/SmartBean?wsdl
+server.ws.addr = http://127.0.0.1:8080/SmartBeanService/SmartBean?wsdl
+#server.ws.addr = http://192.168.111.186:8080/SmartBeanService/SmartBean?wsdl
+#server.ws.addr = http://weiguo.hanwei.cn:8081/cloud/services/udaWebService
+server.ws.namespace = http://ws.mom.smarthome.hw.com/
+#server.ws.namespace = http://service.webservice.bolster.hwsafe.hw.com
+server.ws.method = setRealtimeList
+#server.ws.method = getUDAData
+
+
+server.jms = false
+server.jms.mq.addr = mq://127.0.0.1,mq://127.0.0.1:7676
+#server.jms.mq.addr = mq://10.0.4.51,mq://10.0.4.51:7676
+server.jms.user = admin
+server.jms.passwd = admin
+#上报给前置机的报文在处理后发送给服务端的任务队列
+server.jms.producer.queue = FromScheduler
+#服务端发送给硬件的任务队列
+server.jms.customer.queue = ToScheduler
+#必须使用斜杠，不能使用反斜杠，需要跨平台
+update.file.addr = F:/汉威/智能家居/UDA/远程升级/update
+
+update.file = update.bin
+
+
+
+#前置机监听线程
+FrontReceiver.thread.size = 1
+#前置机监听处理线程
+FrontReceiveHandler.thread.size = 1
+#前置机发送线程
+FrontSender.thread.size = 1
+#任务调度接收线程
+SchedulerReceiveHandler.thread.size = 1
+#任务调度发送线程
+SchedulerSendHandler.thread.size= 1
+#服务端接收线程
+Scheduler2Server.thread.size = 1
+#服务端发送线程
+Server2Scheduler.thread.size = 1
+#任务调度Socket监听线程
+SocketReceiver.thread.size = 1
+#任务调度Socket发送线程
+SocketSender.thread.size = 1
+
+
+#[前置机]接受的[连接缓存]队列 异常退出阀值
+receive.cache.size=501
+
+#[连接缓存]发送到[任务调度]的队列 异常退出阀值
+to.scheduler.size=502
+
+#[前置机]发送给[硬件]的队列 异常退出阀值
+to.terminal.size=503
+
+#[任务调度]发送给[前置机]待处理队列 异常退出阀值
+to.frontwait.size=504
+
+#[任务调度]发送给[前置机]的已处理队列 异常退出阀值
+to.front.size=505
+
+#[任务调度]发送给[服务端]队列 异常退出阀值
+to.server.size=506
+
+#[任务调度]接收[服务端]队列 异常退出阀值
+from.serve.size=507
+

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/kf/!svn/ver/2638/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/src/com/hw/smarthome/daq/scheduler/send/encode
+END
+FrameAFN00Encoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/kf/!svn/ver/2185/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/src/com/hw/smarthome/daq/scheduler/send/encode/FrameAFN00Encoder.java
+END
+FrameAFN10Encoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/kf/!svn/ver/2638/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/src/com/hw/smarthome/daq/scheduler/send/encode/FrameAFN10Encoder.java
+END
+TransDataEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/kf/!svn/ver/2638/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/src/com/hw/smarthome/daq/scheduler/send/encode/TransDataEncoder.java
+END
+FrameAFN05Encoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/kf/!svn/ver/2185/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/src/com/hw/smarthome/daq/scheduler/send/encode/FrameAFN05Encoder.java
+END
+FrameAFN0FEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/kf/!svn/ver/2235/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/src/com/hw/smarthome/daq/scheduler/send/encode/FrameAFN0FEncoder.java
+END
+FrameAFN08Encoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/kf/!svn/ver/2185/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/src/com/hw/smarthome/daq/scheduler/send/encode/FrameAFN08Encoder.java
+END
+FrameAFN09Encoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/kf/!svn/ver/2185/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/src/com/hw/smarthome/daq/scheduler/send/encode/FrameAFN09Encoder.java
+END

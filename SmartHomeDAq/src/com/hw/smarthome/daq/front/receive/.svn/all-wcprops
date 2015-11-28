@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/kf/!svn/ver/3014/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/src/com/hw/smarthome/daq/front/receive
+END
+AtmosphericDetectorReciver.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/kf/!svn/ver/3044/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/src/com/hw/smarthome/daq/front/receive/AtmosphericDetectorReciver.java
+END
+FrontReceiveHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/kf/!svn/ver/3044/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/src/com/hw/smarthome/daq/front/receive/FrontReceiveHandler.java
+END
+FrontReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/kf/!svn/ver/3019/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/src/com/hw/smarthome/daq/front/receive/FrontReceiver.java
+END

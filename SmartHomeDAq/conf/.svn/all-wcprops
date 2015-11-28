@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/kf/!svn/ver/3010/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/conf
+END
+config.properties
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kf/!svn/ver/3010/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/conf/config.properties
+END
+guardian.properties
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/kf/!svn/ver/2181/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/conf/guardian.properties
+END
+log4j.xml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kf/!svn/ver/2213/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/conf/log4j.xml
+END

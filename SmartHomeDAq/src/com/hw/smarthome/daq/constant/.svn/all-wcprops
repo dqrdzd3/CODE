@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/kf/!svn/ver/3010/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/src/com/hw/smarthome/daq/constant
+END
+FrameConstant.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/kf/!svn/ver/3010/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/src/com/hw/smarthome/daq/constant/FrameConstant.java
+END
+SysConstant.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/kf/!svn/ver/3010/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/src/com/hw/smarthome/daq/constant/SysConstant.java
+END
+AtmosphericConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/kf/!svn/ver/3010/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/src/com/hw/smarthome/daq/constant/AtmosphericConstants.java
+END
+HintConstant.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/kf/!svn/ver/3010/SmartHome/0.2-code/2.1-Trunk/2.1.2-server/SmartHomeDAq/src/com/hw/smarthome/daq/constant/HintConstant.java
+END

@@ -1,0 +1,45 @@
+2015-10-27 11:47:53 194  [com.hw.smarthome.daq.server.jms.JMSSender]-[DEBUG] JMS发送成功:
+Text:	Hello world!
+Class:			com.sun.messaging.jmq.jmsclient.TextMessageImpl
+getJMSMessageID():	ID:8-10.10.14.6(f3:a:d0:cb:a1:92)-12041-1445917671498
+getJMSTimestamp():	1445917671498
+getJMSCorrelationID():	null
+JMSReplyTo:		null
+JMSDestination:		FromSchedulerQueue
+getJMSDeliveryMode():	PERSISTENT
+getJMSRedelivered():	false
+getJMSType():		null
+getJMSExpiration():	0
+getJMSDeliveryTime():	0
+getJMSPriority():	4
+Properties:		null
+2015-10-27 11:47:53 248  [com.hw.smarthome.daq.server.jms.JMSSender]-[DEBUG] JMS发送成功:
+Text:	sdfsdf
+Class:			com.sun.messaging.jmq.jmsclient.TextMessageImpl
+getJMSMessageID():	ID:9-10.10.14.6(f3:a:d0:cb:a1:92)-12041-1445917673245
+getJMSTimestamp():	1445917673245
+getJMSCorrelationID():	null
+JMSReplyTo:		null
+JMSDestination:		FromSchedulerQueue
+getJMSDeliveryMode():	PERSISTENT
+getJMSRedelivered():	false
+getJMSType():		null
+getJMSExpiration():	0
+getJMSDeliveryTime():	0
+getJMSPriority():	4
+Properties:		null
+2015-10-27 11:47:53 250  [com.hw.smarthome.daq.server.jms.JMSSender]-[DEBUG] JMS发送成功:
+Text:	2
+Class:			com.sun.messaging.jmq.jmsclient.TextMessageImpl
+getJMSMessageID():	ID:10-10.10.14.6(f3:a:d0:cb:a1:92)-12041-1445917673248
+getJMSTimestamp():	1445917673248
+getJMSCorrelationID():	null
+JMSReplyTo:		null
+JMSDestination:		FromSchedulerQueue
+getJMSDeliveryMode():	PERSISTENT
+getJMSRedelivered():	false
+getJMSType():		null
+getJMSExpiration():	0
+getJMSDeliveryTime():	0
+getJMSPriority():	4
+Properties:		null
