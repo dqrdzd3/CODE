@@ -1,0 +1,14 @@
+/* 消息框样式  */
+.msgbox-dialog {}
+.msgbox-dialog .ui-dialog-titlebar {/*background:url(../images/titlebarbg.jpg) left top repeat-x;*/height:25px;}
+.msgbox-dialog .ui-dialog-titlebar .ui-dialog-title {margin: 0 16px 0 0;}
+
+.msgbox-dialog .ui-dialog-content {}
+.msgbox-dialog .ui-dialog-content .msg-div {height:100% !important; min-height:55px; padding:12px 10px 25px 68px !important; color:#1D86B6; font-family:'微软雅黑','黑体'; font-size:14px;}
+
+.msgbox-dialog .ui-dialog-content .ico-none {background:url(../images/ico-none.png) 10px 8px no-repeat !important; padding-left:24px !important;}
+.msgbox-dialog .ui-dialog-content .ico-ok {background:url(../images/ico-ok.png) 10px 8px no-repeat; }
+.msgbox-dialog .ui-dialog-content .ico-info {background:url(../images/ico-info.png) 10px 8px no-repeat !important; }
+.msgbox-dialog .ui-dialog-content .ico-question {background:url(../images/ico-question.png) 10px 8px no-repeat !important; }
+.msgbox-dialog .ui-dialog-content .ico-warning {background:url(../images/ico-warning.png) 10px 8px no-repeat !important; }
+.msgbox-dialog .ui-dialog-content .ico-error {background:url(../images/ico-error.png) 10px 8px no-repeat !important; }

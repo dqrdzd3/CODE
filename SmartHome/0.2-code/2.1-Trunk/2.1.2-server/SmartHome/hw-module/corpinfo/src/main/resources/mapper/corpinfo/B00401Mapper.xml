@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hw.hwsafe.corpinfo.dao.IB00401Dao">
+
+
+	<!-- 根据主键查询 -->
+	<select id="retrieveB00401ByID" parameterType="String"
+		resultType="com.hw.hwsafe.corpinfo.pojo.B00401PO">
+		SELECT
+		MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+		MA017,MA018,MA019,MA020,MA021,MA022
+		FROM B00401 WHERE MA001=#{MA001}
+	</select>
+
+	<!-- 根据条件查询所有 -->
+	<select id="retrieveB00401ByPO" resultType="com.hw.hwsafe.corpinfo.pojo.B00401PO">
+		SELECT
+		MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+		MA017,MA018,MA019,MA020,MA021,MA022
+		FROM B00401 t
+		WHERE 1=1
+		<if test="MA001 != null">
+			<if test="MA001 != ''">
+				AND MA001 = #{MA001}
+			</if>
+		</if>
+	</select>
+
+	<!-- 插入企业基本信息 -->
+	<insert id="insertB00401" parameterType="com.hw.hwsafe.corpinfo.pojo.B00401PO">
+		INSERT INTO
+		B00401(MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+		MA017,MA018,MA019,MA020,MA021,MA022
+		)
+		VALUES(
+		#{MA001,jdbcType=VARCHAR},#{MA002,jdbcType=VARCHAR},#{MA003,jdbcType=NUMERIC},
+		#{MA004,jdbcType=VARCHAR},#{MA005,jdbcType=VARCHAR},#{MA006,jdbcType=VARCHAR},
+		#{MA007,jdbcType=VARCHAR},#{MA008,jdbcType=TIMESTAMP},#{MA009,jdbcType=VARCHAR},
+		#{MA010,jdbcType=TIMESTAMP},#{MA011,jdbcType=TIMESTAMP},#{MA012,jdbcType=VARCHAR},
+		#{MA013,jdbcType=VARCHAR},#{MA014,jdbcType=VARCHAR},#{MA015,jdbcType=VARCHAR},
+		#{MA016,jdbcType=VARCHAR},#{MA017,jdbcType=VARCHAR},SYSDATE,
+		SYSDATE,'0',#{MA021,jdbcType=INTEGER},#{MA022,jdbcType=VARCHAR}
+		)
+	</insert>
+	<!-- 更新企业基本信息 -->
+
+	<update id="updateB00401" parameterType="com.hw.hwsafe.corpinfo.pojo.B00401PO">
+		UPDATE B00401
+		set
+		MA004=#{MA004,jdbcType=VARCHAR},
+		MA005=#{MA005,jdbcType=VARCHAR},
+		MA006=#{MA006,jdbcType=VARCHAR},
+		MA007=#{MA007,jdbcType=VARCHAR},
+		MA008=#{MA008,jdbcType=TIMESTAMP},
+		MA009=#{MA009,jdbcType=VARCHAR},
+		MA010=#{MA010,jdbcType=TIMESTAMP},
+		MA011=#{MA011,jdbcType=TIMESTAMP},
+		MA012=#{MA012,jdbcType=VARCHAR},
+		MA013=#{MA013,jdbcType=VARCHAR},
+		MA014=#{MA014,jdbcType=VARCHAR},
+		MA015=#{MA015,jdbcType=VARCHAR},
+		MA019=SYSDATE,
+		MA021=#{MA021,jdbcType=INTEGER},
+		MA022=#{MA022,jdbcType=VARCHAR}
+		WHERE MA001 = #{MA001}
+	</update>
+
+
+	<!-- 根据条件查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		SELECT MA001,MA002,MA003,MA004,MA005,TCODEVALUE.NAME AS
+		MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,MA017,MA018,MA019,MA020,MA021,MA022
+		FROM B00401
+		LEFT JOIN TCODEVALUE ON B00401.MA006=TCODEVALUE.VALUE AND
+		TCODEVALUE.TYPE='equip_type'
+		<where>
+		       1=1
+		    <if test="po.MA002 != null and po.MA002 != ''">
+				and	ma002 = #{po.MA002} 
+			</if>
+			<if test="po.MA002 == null or po.MA002 == ''">
+				<if test="ORGAN_UUID != null and ORGAN_UUID != ''">
+					AND MA002 =#{ORGAN_UUID}
+				</if>
+			</if>
+			<if test="po.MA004 != null and po.MA004 != ''">
+				AND MA004  like '%'||#{po.MA004}||'%'
+			</if>
+			<if test="po.MA006 != null and po.MA006 != ''">
+				AND MA006 =#{po.MA006}
+			</if>
+		</where>
+		
+		order by ma019 desc
+	</select>
+	
+	
+	<!-- 政府端查看企业的特殊设备年检情况 -->
+	<select id="retrieveByPage1" parameterType="map" resultType="hashmap">
+		select * from b00401 b1
+		<where>
+		       1=1
+		    <if test="po.MA002 != null and po.MA002 != ''">
+				and	b1.ma002 = #{po.MA002} 
+			</if>
+			<if test="po.type == 2 ">
+				and b1.ma001 in (select aa from (select b1.ma001 aa,
+               max(b2.ma006) KEEP(dense_rank FIRST ORDER BY b2.ma005 desc) cc
+		          from b00401 b1, b00402 b2
+		         where b2.ma002 = b1.ma001
+		           and b1.ma002 = #{po.MA002}
+		         group by b1.ma001 )t where t.cc = '1')
+				
+			</if>
+			<if test="po.type == 4 ">
+				and b1.ma001 in (select aa from (select b1.ma001 aa,
+               max(b2.ma006) KEEP(dense_rank FIRST ORDER BY b2.ma005 desc) cc
+		          from b00401 b1, b00402 b2
+		         where b2.ma002 = b1.ma001
+		           and b1.ma002 = #{po.MA002}
+		         group by b1.ma001 )t where t.cc = '0')
+				
+			</if>
+			<if test="po.type == 3 ">
+				and b1.ma001 not in (select aa from (select b1.ma001 aa,
+               max(b2.ma006) KEEP(dense_rank FIRST ORDER BY b2.ma005 desc) cc
+		          from b00401 b1, b00402 b2
+		         where b2.ma002 = b1.ma001
+		           and b1.ma002 = #{po.MA002}
+		         group by b1.ma001 )t)
+				
+			</if>
+			
+			<if test="po.MA004 != null and po.MA004 != ''">
+				AND b1.MA004  like '%'||#{po.MA004}||'%'
+			</if>
+			<if test="po.MA006 != null and po.MA006 != ''">
+				AND b1.MA006 =#{po.MA006}
+			</if>
+		</where>
+		
+		order by b1.ma019 desc
+	</select>
+
+	<!-- 根据拼音查询企业中文名字,输入框可以输入拼音字母(对应ma022)和汉字(对应ma004) -->
+	<select id="retrieveB00401ByPinyin" parameterType="String"
+		resultType="com.hw.hwsafe.corpinfo.pojo.B00401PO">
+		SELECT
+		MA004
+		FROM B00401 WHERE (MA004 LIKE '%'||#{MA004}||'%' or ma022
+		like '%'||#{MA004}||'%' )
+
+		<if test="MA006 != null and MA006 != ''">
+			AND MA006 =#{MA006}
+		</if>
+	</select>
+	
+	<!-- 统计 -->
+	<select id="statDevide" resultType="java.util.HashMap" parameterType="java.lang.String">
+		select name as CD, cunt as CV, ma006 as "typeCode"
+		  	from (
+		        
+		        select b.name, sum(ma021) as cunt,a.ma006
+		          from b00401 a, tcodevalue b
+		         where a.ma006 = b.value
+		           and b.type = 'equip_type'
+		           and a.ma002=#{id}
+		         group by b.name,a.ma006 )
+	</select>
+	
+	<!-- 企业危险类别统计 -->
+	<select id="getGroupDangerCategory" resultType="java.util.HashMap" parameterType="java.util.HashMap" >
+	  select s.name as "CD", nvl(s1.CV, 0) as "CV", s.value as "TYPECODE"
+	   from (select t.name, t.value  from tcodevalue t
+	         where t.type like 'wxy_type') s
+	   left join (select v.TYPEDESC as "CD", count(1) as "CV", v.TYPECODE   from v_danger v
+				<where>
+	  			   1 = 1
+	  			<if test="corpid !=null and corpid !='' ">AND v.CORPID = #{corpid}</if>
+	  		</where>
+	         group by v.TYPEDESC, v.TYPECODE, V.TYPECODE) s1
+	    on s.value = s1.typecode
+	</select>	
+	<!-- 危险源级别统计 -->
+	<select id="getGroupDangerLevel" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+		select tt.CD, nvl(aa.cnu, 0) as cv ,aa.corpid,aa.wlevel
+	  	from (select 0 sss, '未识别' as CD from dual
+	          union
+	          select 1 sss, '一级' as CD from dual
+	          union
+	          select 2 sss, '二级' as CD from dual
+	          union
+	          select 3 sss, '三级' as CD from dual
+	          union
+	          select 4 sss, '四级' as CD from dual)
+	    tt  left join (select   v.corpid,  count(1) cnu, decode(v.wlevel, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4) wlevel
+	                  from   v_danger v
+	                  <where> 1=1 
+	                  	<if test="corpid != null and corpid !='' ">
+	                  		AND v.corpid = #{corpid}
+	                  	</if>
+	                  </where>
+	                  group by decode(v.wlevel, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4), v.corpid order by v.corpid)
+	    aa  on aa.wlevel = tt.sss order by tt.sss
+	</select>
+	
+		<!-- 企业危险源等级查询 -->
+	<select id="retrieveByPage2" parameterType="map" resultType="hashmap">
+		select tt.corpid,b.ma004,
+	       t1.name || ' ' || t2.name || ' ' || t3.name as area,
+	       tt.wdy,tt.yiji,tt.erji,tt.sanji, tt.siji
+	  	from (select t.corpid,
+	               sum(decode(t.wlevel, 0, t.cnu, 0)) wdy,
+	               sum(decode(t.wlevel, 1, t.cnu, 0)) yiji,
+	               sum(decode(t.wlevel, 2, t.cnu, 0)) erji,
+	               sum(decode(t.wlevel, 3, t.cnu, 0)) sanji,
+	               sum(decode(t.wlevel, 4, t.cnu, 0)) siji
+	          from (select v.corpid, count(1) cnu,decode(v.wlevel, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4) wlevel
+	                from v_danger v
+	                <where>
+	                	1= 1
+	                	<if test="ORGAN_UUID != null and ORGAN_UUID != ''" > AND v.corpid = #{ORGAN_UUID}</if>
+	                </where>
+	                group by decode(v.wlevel, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4),v.corpid
+	                order by v.corpid)
+	          t group by t.corpid) 
+	    tt join b001 b on tt.corpid = b.ma001
+	  	left join tzone t1 on b.ma007 = t1.objid
+	    left join tzone t2 on b.ma008 = t2.objid
+	    left join tzone t3 on b.ma009 = t3.objid
+	</select>
+	<!-- 危险源详情分页 -->
+	<select id="retrieveByPage3" parameterType="map" resultType="hashmap">
+		select d.* from(select v.dangerid,v.corpid,v.dname,v.typecode,v.typedesc,v.creatdate,
+						decode(v.state, '0','未通过','1','未审报',  '2','待审核','3','审核通过','4','待核销','5', '已核销') as state,
+                        b.ma001,b.ma003,b.ma004,b.ma007,b.ma008,b.ma009,b.ma011,b.ma012,b.ma013,
+						(select name from tcodevalue where value = v.wlevel and type ='wxyjb') wlevel	
+		 from v_danger v join b001 b on v.corpid = b.ma001 where 1=1 
+		<if test="po.typeCode != null and po.typeCode != ''">
+			AND v.TYPECODE = #{po.typeCode}
+		</if>
+		<if test="po.wlevel != null and po.wlevel != ''">
+			AND v.wlevel = #{po.wlevel}
+		</if>
+		<if test="ORGAN_UUID != null and ORGAN_UUID != ''">
+			AND v.corpid = #{ORGAN_UUID}
+		</if>
+		) d
+      order by d.CREATDATE desc
+	</select>	
+</mapper>

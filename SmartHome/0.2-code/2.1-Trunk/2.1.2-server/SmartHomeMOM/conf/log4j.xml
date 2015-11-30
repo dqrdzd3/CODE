@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "Log4j" "log4j.dtd">
+<log4j:configuration>
+	<appender name="fileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="log/log.log" />
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss SSS}  [%c]-[%p] %m%n" />
+		</layout>
+	</appender>
+	<appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+		<param name="Encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss SSS}  [%c]-[%p] %m%n" />
+		</layout>
+	</appender>
+	<logger name="net.sf.json.JSONObject" additivity="false">
+		<level value="WARN" />
+		<!-- 将信息显示到控制台 -->
+		<appender-ref ref="consoleAppender"></appender-ref>
+		<!-- 将信息打印 -->
+		<appender-ref ref="fileAppender"></appender-ref>
+	</logger>
+	<root>
+		<!-- FATAL 0,ERROR 3,WARN 4,INFO 6,DEBUG 7 -->
+		<!--<priority value="DEBUG"></priority> -->
+		<priority value="DEBUG"></priority>
+		<!-- 将信息显示到控制台 -->
+		<appender-ref ref="consoleAppender"></appender-ref>
+		<!-- 将信息打印 -->
+		<appender-ref ref="fileAppender"></appender-ref>
+	</root>
+
+</log4j:configuration>

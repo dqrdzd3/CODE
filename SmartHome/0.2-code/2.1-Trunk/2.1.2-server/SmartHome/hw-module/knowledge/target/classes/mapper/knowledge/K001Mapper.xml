@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.knowledge.dao.IK001Dao">
+
+	<!-- 获取分页信息 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		select MA001, MA002, MA003, MA004, TO_CHAR(MA005,'yyyy-MM-dd HH:mm:ss') MA005, MA006, MA007
+			from K001
+			<where>
+				1 = 1
+				<if test="po.ma002 != null and po.ma002 != ''">
+					and MA002 LIKE '%'||#{po.ma002}||'%'
+				</if>
+				<if test="po.ma003 != null and po.ma003 != ''">
+					and MA003 LIKE '%'||#{po.ma003}||'%'
+				</if>
+				<if test="po.ma004 != null and po.ma004 != ''">
+					and MA004 LIKE '%'||#{po.ma004}||'%'
+				</if>
+
+			</where>
+	</select>
+
+	<!-- 通过id获取实例 -->
+	<select id="retrieveInstanceById" parameterType="String" resultType="com.hw.hwsafe.knowledge.pojo.K001PO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007
+			from K001
+			where MA001 = #{ma001}
+	</select>
+
+	<!-- 添加实例 -->
+	<insert id="insertInstance" parameterType="com.hw.hwsafe.knowledge.pojo.K001PO">
+		insert into K001(MA001, MA002, MA003, MA004, MA005, MA006, MA007)
+			values(
+				#{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=VARCHAR},
+				#{ma004,jdbcType=VARCHAR},#{ma005,jdbcType=TIMESTAMP},#{ma006,jdbcType=VARCHAR},
+				#{ma007,jdbcType=VARCHAR}
+			)
+	</insert>
+
+	<!-- 修改实例 -->
+	<update id="updateInstance" parameterType="com.hw.hwsafe.knowledge.pojo.K001PO">
+		update K001
+			set
+				MA002 = #{ma002,jdbcType=VARCHAR}, MA003 = #{ma003,jdbcType=VARCHAR}, MA004 = #{ma004,jdbcType=VARCHAR}, 
+				MA005 = #{ma005,jdbcType=TIMESTAMP}, MA006 = #{ma006,jdbcType=VARCHAR}, MA007 = #{ma007,jdbcType=VARCHAR}
+			where MA001 = #{ma001}
+	</update>
+
+	<!-- 通过id删除实例 -->
+	<delete id="deleteInstanceById" parameterType="String">
+		delete from K001 where MA001 = #{ma001}
+	</delete>
+	<!-- 通过id批量删除实例 -->
+	<delete id="delBatchK001" parameterType="map" >
+		DELETE FROM K001 WHERE MA001 IN
+		<foreach collection="idArray" item="id" open="(" separator="," close=")">#{id}</foreach>
+	</delete>	
+
+</mapper>

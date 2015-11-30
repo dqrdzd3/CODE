@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+    <!-- 新权限系统service start -->
+    <bean id="sysModuleService" class="com.hwsensor.permission.service.impl.SysModuleServiceImpl"></bean>
+    <bean id="sysOperationService" class="com.hwsensor.permission.service.impl.SysOperationServiceImpl"></bean>
+    <bean id="sysResourceService" class="com.hwsensor.permission.service.impl.SysResourceServiceImpl"></bean>
+    <bean id="sysRolePermService" class="com.hwsensor.permission.service.impl.SysRolePermServiceImpl"></bean>
+    <bean id="sysRoleService" class="com.hwsensor.permission.service.impl.SysRoleServiceImpl"></bean>
+    <bean id="sysUserService" class="com.hwsensor.permission.service.impl.UserServiceImpl"></bean>
+    <bean id="sysUserRoleService" class="com.hwsensor.permission.service.impl.SysUserRoleServiceImpl"></bean>
+    <!-- 新权限系统service end -->
+    
+    <bean id="iDepartmentService" class="com.hwsensor.permission.service.impl.DepartmentServiceImpl" />
+    
+    <bean id="permissionFacadeService" class="com.hwsensor.permission.service.impl.PermissionFacadeServiceImpl" />
+    
+</beans>

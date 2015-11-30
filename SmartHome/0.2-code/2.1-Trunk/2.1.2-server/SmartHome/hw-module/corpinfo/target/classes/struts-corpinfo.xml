@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="corpinfo" namespace="/corpinfo" extends="interceptor">
+
+		<!-- 企业基本信息 -->
+		<action name="b001" class="com.hw.hwsafe.corpinfo.action.B001Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/corpinfo/b001/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/corpinfo/b001/b001_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/corpinfo/b001/b001_add.jsp</result>
+			<result name="details">/WEB-INF/jsp/corpinfo/b001/b001_details.jsp</result>
+			<result name="report">/WEB-INF/jsp/corpinfo/b001/b001_dj.jsp</result>
+
+			<result name="query">/WEB-INF/jsp/corpinfo/b001/b001_list.jsp</result>
+			<result name="edit">/WEB-INF/jsp/corpinfo/b001/b001_modify.jsp</result>
+			<result name="input">/WEB-INF/jsp/corpinfo/b001/b001_add.jsp</result>
+			<result name="moption">/WEB-INF/jsp/corpinfo/b001/moption.jsp</result>
+			<result name="soption">/WEB-INF/jsp/corpinfo/b001/soption.jsp</result>
+			<result name="poption">/WEB-INF/jsp/corpinfo/b001/poption.jsp</result>
+			<result name="delsuccess" type="redirectAction">b001</result>
+			<result name="addsuccess" type="redirectAction">b001</result>
+			<result name="editsuccess" type="redirectAction">b001</result>
+			<result name="corp_view">/WEB-INF/jsp/corpinfo/b001/b001_view.jsp</result>
+			<result name="corp_view_zf">/WEB-INF/jsp/corpinfo/b001/b001_view_zf.jsp</result>
+			<result name="corp_view2">/WEB-INF/jsp/corpinfo/b001/b001_view2.jsp</result>
+			<result name="corp_view2_zf">/WEB-INF/jsp/corpinfo/b001/b001_view2_zf.jsp</result>
+			<result name="hxwz">/WEB-INF/jsp/corpinfo/b001/hxwz_list.jsp</result>
+			<result name="jsonList" type="json">
+				<param name="root">mapList</param>
+			</result>
+			
+			<result name="dloption">/WEB-INF/jsp/corpinfo/b001/option_dl.jsp</result>
+			<result name="zloption" type="json">
+				<param name="root">zlList</param>
+			</result>
+			<result name="xloption" type="json">
+				<param name="root">xlList</param>
+			</result>
+			
+		</action>
+
+		<action name="b001add" class="com.hw.hwsafe.corpinfo.action.B001Action"
+			method="doSaveAdd">
+			<result name="input">/WEB-INF/jsp/corpinfo/b001/b001_add.jsp</result>
+			<result name="success">/WEB-INF/jsp/corpinfo/b001/b001_list.jsp</result>
+			<result name="addsuccess" type="redirectAction">b001</result>
+		</action>
+
+		<action name="b001edit" class="com.hw.hwsafe.corpinfo.action.B001Action"
+			method="doSaveEdit">
+			<result name="input">/WEB-INF/jsp/corpinfo/b001/b001_add.jsp</result>
+			<result name="success">/WEB-INF/jsp/corpinfo/b001/b001_list.jsp</result>
+			<result name="editsuccess" type="redirectAction">b001</result>
+		</action>
+
+		<!-- 机构基本信息 -->
+		<action name="b002" class="com.hw.hwsafe.corpinfo.action.B002Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/corpinfo/b002/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/corpinfo/b002/b002_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/corpinfo/b002/b002_add.jsp</result>
+			<result name="view">/WEB-INF/jsp/corpinfo/b002/b002_view.jsp</result>
+			<result name="query">/WEB-INF/jsp/corpinfo/b002/b002_list.jsp</result>
+			<result name="edit">/WEB-INF/jsp/corpinfo/b002/b002_modify.jsp</result>
+			<result name="input">/WEB-INF/jsp/corpinfo/b002/b002_add.jsp</result>
+
+			<result name="delsuccess" type="redirectAction">b002</result>
+			<result name="addsuccess" type="redirectAction">b002</result>
+			<result name="editsuccess" type="redirectAction">b002</result>
+		</action>
+
+		<!-- 安全管理人员 -->
+		<action name="b003" class="com.hw.hwsafe.corpinfo.action.B003Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/corpinfo/b003/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/corpinfo/b003/b003_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/corpinfo/b003/b003_add.jsp</result>
+			<result name="count">/WEB-INF/jsp/corpinfo/b003/b003_gov_list.jsp</result>
+            <result name="view">/WEB-INF/jsp/corpinfo/b003/b003_view.jsp</result>
+			<result name="query">/WEB-INF/jsp/corpinfo/b003/b003_list.jsp</result>
+			<result name="edit">/WEB-INF/jsp/corpinfo/b003/b003_modify.jsp</result>
+			<result name="input">/WEB-INF/jsp/corpinfo/b003/b003_add.jsp</result>
+			<result name="info">/WEB-INF/jsp/corpinfo/b003/b003info_view.jsp</result>
+			<result name="delsuccess" type="redirectAction">b003</result>
+			<result name="addsuccess" type="redirectAction">b003</result>
+			<result name="editsuccess" type="redirectAction">b003</result>
+		</action>
+
+    <!-- 安全管理人员 -->
+		<action name="b103" class="com.hw.hwsafe.corpinfo.action.B103Action"
+			method="doList">
+			<result name="success">/WEB-INF/jsp/corpinfo/b103/b103_list.jsp</result>
+            <result name="view">/WEB-INF/jsp/corpinfo/b103/b103_view.jsp</result>
+			<result name="edit">/WEB-INF/jsp/corpinfo/b103/b103_modify.jsp</result>
+			<result name="add">/WEB-INF/jsp/corpinfo/b103/b103_add.jsp</result>
+		</action>
+
+		<action name="b00301" class="com.hw.hwsafe.corpinfo.action.B00301Action"
+			method="doList">
+			<result name="add">/WEB-INF/jsp/corpinfo/b003/b00301_add.jsp</result>
+			<result name="view">/WEB-INF/jsp/corpinfo/b003/b00301_view.jsp</result>
+		</action>
+		
+		<action name="b00302" class="com.hw.hwsafe.corpinfo.action.B00302Action"
+			method="doList">
+			<result name="add">/WEB-INF/jsp/corpinfo/b003/b00302_add.jsp</result>
+			<result name="view">/WEB-INF/jsp/corpinfo/b003/b00302_view.jsp</result>
+		</action>
+			<!-- 设备设施 -->
+		<action name="b00402" class="com.hw.hwsafe.corpinfo.action.B00402Action">
+			<result name="addb00402">/WEB-INF/jsp/corpinfo/b004/b00401/b00402_add.jsp</result>
+			<result name="edit">/WEB-INF/jsp/corpinfo/b004/b00401/b00402_modify.jsp</result>
+		</action>
+		<!-- 设备设施 -->
+		<action name="b00401" class="com.hw.hwsafe.corpinfo.action.B00401Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/corpinfo/b004/b00401/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/corpinfo/b004/b00401/b00401_list.jsp</result>
+			<result name="count">/WEB-INF/jsp/corpinfo/b004/b00401/b00401_gov_list.jsp</result>
+			<result name="tj">/WEB-INF/jsp/corpinfo/b004/b00401/b00401_tjlist.jsp</result>
+			<result name="add">/WEB-INF/jsp/corpinfo/b004/b00401/b00401_add.jsp</result>
+			<result name="query">/WEB-INF/jsp/corpinfo/b004/b00401/b00401_list.jsp</result>
+			<result name="edit">/WEB-INF/jsp/corpinfo/b004/b00401/b00401_modify.jsp</result>
+			<result name="input">/WEB-INF/jsp/corpinfo/b004/b00401/b00401_add.jsp</result>
+			<result name="stat">/WEB-INF/jsp/corpinfo/b004/b00401/b00401_stat.jsp</result>
+			<result name="dangerCategory">/WEB-INF/jsp/corpinfo/b004/b00401/b00401_dangerCategory.jsp</result>
+			<result name="level">/WEB-INF/jsp/corpinfo/b004/b00401/b00401_level.jsp</result>
+			<result name="dangertj">/WEB-INF/jsp/corpinfo/b004/b00401/b00401_tj.jsp</result>
+			<result name="details">/WEB-INF/jsp/corpinfo/b004/b00401/b00402_details.jsp</result>
+			<result name="delsuccess" type="redirectAction">b00401</result>
+			<result name="addsuccess" type="redirectAction">b00401</result>
+			<result name="editsuccess" type="redirectAction">b00401</result>
+			<result name="queryB00401">/WEB-INF/jsp/corpinfo/b004/b00401/b00401_add.jsp</result>
+			<result name="view">/WEB-INF/jsp/corpinfo/b004/b00401/b00401_view.jsp</result>
+		</action>
+
+		<!-- 企业资质证书 -->
+		<action name="b005" class="com.hw.hwsafe.corpinfo.action.B005Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/corpinfo/b005/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/corpinfo/b005/b005_list.jsp</result>
+
+			<result name="add">/WEB-INF/jsp/corpinfo/b005/b005_add.jsp</result>
+			<result name="view">/WEB-INF/jsp/corpinfo/b005/b005_view.jsp</result>
+
+			<result name="query">/WEB-INF/jsp/corpinfo/b005/b005_list.jsp</result>
+			<result name="edit">/WEB-INF/jsp/corpinfo/b005/b005_modify.jsp</result>
+			<result name="input">/WEB-INF/jsp/corpinfo/b005/b005_add.jsp</result>
+
+			<result name="delsuccess" type="redirectAction">b005</result>
+			<result name="addsuccess" type="redirectAction">b005</result>
+			<result name="editsuccess" type="redirectAction">b005</result>
+		</action>
+		
+		<!-- 企业周边环境 -->
+		<action name="b006" class="com.hw.hwsafe.corpinfo.action.B006Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/corpinfo/b006/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/corpinfo/b006/b006_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/corpinfo/b006/b006_add.jsp</result>
+			<result name="view">/WEB-INF/jsp/corpinfo/b006/b006_view.jsp</result>
+		</action>
+		
+		<!-- 安全投入 -->
+		<action name="b007" class="com.hw.hwsafe.corpinfo.action.B007Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/corpinfo/b007/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/corpinfo/b007/b007_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/corpinfo/b007/b007_add.jsp</result>
+			<result name="view">/WEB-INF/jsp/corpinfo/b007/b007_view.jsp</result>
+		</action>
+		
+		<!-- 安全评价 -->
+		<action name="b008" class="com.hw.hwsafe.corpinfo.action.B008Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/corpinfo/b008/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/corpinfo/b008/b008_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/corpinfo/b008/b008_add.jsp</result>
+			<result name="view">/WEB-INF/jsp/corpinfo/b008/b008_view.jsp</result>
+		</action>
+
+		<!-- 危化品信息 -->
+		<action name="b012" class="com.hw.hwsafe.corpinfo.action.B012Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/corpinfo/b012/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/corpinfo/b012/b012_list.jsp</result>
+			<result name="count">/WEB-INF/jsp/corpinfo/b012/b012_gov_list.jsp</result>
+
+			<result name="add">/WEB-INF/jsp/corpinfo/b012/b012_add.jsp</result>
+			<result name="view">/WEB-INF/jsp/corpinfo/b012/b012_view.jsp</result>
+
+			<result name="query">/WEB-INF/jsp/corpinfo/b012/b012_list.jsp</result>
+			<result name="edit">/WEB-INF/jsp/corpinfo/b012/b012_modify.jsp</result>
+			<result name="input">/WEB-INF/jsp/corpinfo/b012/b012_add.jsp</result>
+
+			<result name="delsuccess" type="redirectAction">b012</result>
+			<result name="addsuccess" type="redirectAction">b012</result>
+			<result name="editsuccess" type="redirectAction">b012</result>
+		</action>
+
+		<!-- 应急药品信息 -->
+		<action name="b018" class="com.hw.hwsafe.corpinfo.action.B018Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/corpinfo/b018/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/corpinfo/b018/b018_list.jsp</result>
+
+			<result name="add">/WEB-INF/jsp/corpinfo/b018/b018_add.jsp</result>
+			<result name="view">/WEB-INF/jsp/corpinfo/b018/b018_view.jsp</result>
+
+			<result name="query">/WEB-INF/jsp/corpinfo/b018/b018_list.jsp</result>
+			<result name="edit">/WEB-INF/jsp/corpinfo/b018/b018_modify.jsp</result>
+			<result name="input">/WEB-INF/jsp/corpinfo/b018/b018_add.jsp</result>
+
+			<result name="delsuccess" type="redirectAction">b018</result>
+			<result name="addsuccess" type="redirectAction">b018</result>
+			<result name="editsuccess" type="redirectAction">b018</result>
+		</action>
+		
+		<!-- 周边环境信息 -->
+		<action name="b009" class="com.hw.hwsafe.corpinfo.action.B009Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/corpinfo/b009/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/corpinfo/b009/b009_list.jsp</result>
+
+			<result name="add">/WEB-INF/jsp/corpinfo/b009/b009_add.jsp</result>
+
+			<result name="query">/WEB-INF/jsp/corpinfo/b009/b009_list.jsp</result>
+			<result name="edit">/WEB-INF/jsp/corpinfo/b009/b009_modify.jsp</result>
+			<result name="input">/WEB-INF/jsp/corpinfo/b009/b009_add.jsp</result>
+
+			<result name="delsuccess" type="redirectAction">b009</result>
+			<result name="addsuccess" type="redirectAction">b009</result>
+			<result name="editsuccess" type="redirectAction">b009</result>
+		</action>
+		
+		<!-- 周边环境信息 -->
+		<action name="b00901" class="com.hw.hwsafe.corpinfo.action.B00901Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/corpinfo/b009/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/corpinfo/b009/b00901_list.jsp</result>
+
+			<result name="add">/WEB-INF/jsp/corpinfo/b009/b00901_add.jsp</result>
+
+			<result name="query">/WEB-INF/jsp/corpinfo/b009/b00901_list.jsp</result>
+			<result name="edit">/WEB-INF/jsp/corpinfo/b009/b00901_modify.jsp</result>
+			<result name="input">/WEB-INF/jsp/corpinfo/b009/b00901_add.jsp</result>
+
+			<result name="delsuccess" type="redirectAction">b00901</result>
+			<result name="addsuccess" type="redirectAction">b00901</result>
+			<result name="editsuccess" type="redirectAction">b00901</result>
+		</action>
+		
+		<!-- 周边环境信息 -->
+		<action name="b00902" class="com.hw.hwsafe.corpinfo.action.B00902Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/corpinfo/b009/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/corpinfo/b009/b00902_list.jsp</result>
+
+			<result name="add">/WEB-INF/jsp/corpinfo/b009/b00902_add.jsp</result>
+
+			<result name="query">/WEB-INF/jsp/corpinfo/b009/b00902_list.jsp</result>
+			<result name="edit">/WEB-INF/jsp/corpinfo/b009/b00902_modify.jsp</result>
+			<result name="input">/WEB-INF/jsp/corpinfo/b009/b00902_add.jsp</result>
+
+			<result name="delsuccess" type="redirectAction">b00902</result>
+			<result name="addsuccess" type="redirectAction">b00902</result>
+			<result name="editsuccess" type="redirectAction">b00902</result>
+		</action>
+		
+		<!-- 周边环境信息 -->
+		<action name="b00903" class="com.hw.hwsafe.corpinfo.action.B00903Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/corpinfo/b009/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/corpinfo/b009/b00903_list.jsp</result>
+
+			<result name="add">/WEB-INF/jsp/corpinfo/b009/b00903_add.jsp</result>
+
+			<result name="query">/WEB-INF/jsp/corpinfo/b009/b00903_list.jsp</result>
+			<result name="edit">/WEB-INF/jsp/corpinfo/b009/b00903_modify.jsp</result>
+			<result name="input">/WEB-INF/jsp/corpinfo/b009/b00903_add.jsp</result>
+
+			<result name="delsuccess" type="redirectAction">b00903</result>
+			<result name="addsuccess" type="redirectAction">b00903</result>
+			<result name="editsuccess" type="redirectAction">b00903</result>
+		</action>
+		
+		<!-- 周边环境信息 -->
+		<action name="b00904" class="com.hw.hwsafe.corpinfo.action.B00904Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/corpinfo/b009/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/corpinfo/b009/b00904_list.jsp</result>
+
+			<result name="add">/WEB-INF/jsp/corpinfo/b009/b00904_add.jsp</result>
+
+			<result name="query">/WEB-INF/jsp/corpinfo/b009/b00904_list.jsp</result>
+			<result name="edit">/WEB-INF/jsp/corpinfo/b009/b00904_modify.jsp</result>
+			<result name="input">/WEB-INF/jsp/corpinfo/b009/b00904_add.jsp</result>
+
+			<result name="delsuccess" type="redirectAction">b00904</result>
+			<result name="addsuccess" type="redirectAction">b00904</result>
+			<result name="editsuccess" type="redirectAction">b00904</result>
+		</action>
+		
+		<!-- 周边环境信息 -->
+		<action name="b00905" class="com.hw.hwsafe.corpinfo.action.B00905Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/corpinfo/b009/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/corpinfo/b009/b00905_list.jsp</result>
+
+			<result name="add">/WEB-INF/jsp/corpinfo/b009/b00905_add.jsp</result>
+
+			<result name="query">/WEB-INF/jsp/corpinfo/b009/b00905_list.jsp</result>
+			<result name="edit">/WEB-INF/jsp/corpinfo/b009/b00905_modify.jsp</result>
+			<result name="input">/WEB-INF/jsp/corpinfo/b009/b00905_add.jsp</result>
+
+			<result name="delsuccess" type="redirectAction">b00905</result>
+			<result name="addsuccess" type="redirectAction">b00905</result>
+			<result name="editsuccess" type="redirectAction">b00905</result>
+		</action>
+		
+		<!-- 周边环境信息 -->
+		<action name="b00906" class="com.hw.hwsafe.corpinfo.action.B00906Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/corpinfo/b009/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/corpinfo/b009/b00906_list.jsp</result>
+
+			<result name="add">/WEB-INF/jsp/corpinfo/b009/b00906_add.jsp</result>
+
+			<result name="query">/WEB-INF/jsp/corpinfo/b009/b00906_list.jsp</result>
+			<result name="edit">/WEB-INF/jsp/corpinfo/b009/b00906_modify.jsp</result>
+			<result name="input">/WEB-INF/jsp/corpinfo/b009/b00906_add.jsp</result>
+
+			<result name="delsuccess" type="redirectAction">b00906</result>
+			<result name="addsuccess" type="redirectAction">b00906</result>
+			<result name="editsuccess" type="redirectAction">b00906</result>
+		</action>
+		
+		<!-- 周边环境信息 -->
+		<action name="b00907" class="com.hw.hwsafe.corpinfo.action.B00907Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/corpinfo/b009/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/corpinfo/b009/b00907_list.jsp</result>
+
+			<result name="add">/WEB-INF/jsp/corpinfo/b009/b00907_add.jsp</result>
+
+			<result name="query">/WEB-INF/jsp/corpinfo/b009/b00907_list.jsp</result>
+			<result name="edit">/WEB-INF/jsp/corpinfo/b009/b00907_modify.jsp</result>
+			<result name="input">/WEB-INF/jsp/corpinfo/b009/b00907_add.jsp</result>
+
+			<result name="delsuccess" type="redirectAction">b00907</result>
+			<result name="addsuccess" type="redirectAction">b00907</result>
+			<result name="editsuccess" type="redirectAction">b00907</result>
+		</action>
+
+		<action name="c007" class="com.hw.hwsafe.corpinfo.action.C007Action"
+			method="doMain">
+			<result name="main">/WEB-INF/jsp/corpinfo/c007/c007_main.jsp</result>
+			<result name="tree">/WEB-INF/jsp/corpinfo/c007/c007_tree.jsp</result>
+			<result name="list">/WEB-INF/jsp/corpinfo/c007/c007_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/corpinfo/c007/c007_add.jsp</result>
+		</action>
+		
+		<action name="b104" class="com.hw.hwsafe.corpinfo.action.B104Action" >
+			<result>/WEB-INF/jsp/corpinfo/b104/b104_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/corpinfo/b104/b104_add.jsp</result>
+			<result name="show">/WEB-INF/jsp/corpinfo/b104/b104_show.jsp</result>
+			<result name="refuseAdd">/WEB-INF/jsp/corpinfo/b104/b104_refuseAdd.jsp</result>
+		</action>
+	</package>
+</struts>

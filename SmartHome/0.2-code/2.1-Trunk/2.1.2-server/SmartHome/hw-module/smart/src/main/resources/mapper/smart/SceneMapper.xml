@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.smart.dao.ISceneDao">
+
+	
+	<!-- 通过id获取实例 -->
+	<select id="retrieveInstanceById" parameterType="String"
+		resultType="com.hw.hwsafe.smart.pojo.ScenePO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007,MA008,MA009,MA010
+		from SH_SCENE
+		where MA001 = #{ma001}
+	</select>
+	
+	<!-- 获取全部实例 -->
+	<select id="retrieveAllInstance"
+		resultType="com.hw.hwsafe.smart.pojo.ScenePO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007,
+		MA008, MA009,MA010
+		from SH_SCENE
+		
+		
+	</select>
+	
+		<!-- 通过id获取实例 -->
+	<select id="retrieveInstanceByPO" parameterType="com.hw.hwsafe.smart.pojo.ScenePO" resultType="com.hw.hwsafe.smart.pojo.ScenePO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007,MA008,MA009,MA010
+		from SH_SCENE
+		<where>
+			1 = 1
+			<if test="ma002 != null and ma002 != ''">
+				AND MA002 = #{ma002}
+			</if>
+			<if test="ma003 != null and ma003 != ''">
+				AND MA003 = #{ma003}
+			</if>
+			<if test="ma004 != null and ma004 != ''">
+				AND MA004 = #{ma004}
+			</if>
+			<if test="ma006 != null and ma006 != ''">
+				AND MA006 = #{ma006}
+			</if>
+		</where>
+	
+	</select>
+	
+
+	<!-- 添加实例 -->
+	<insert id="insertInstance" parameterType="com.hw.hwsafe.smart.pojo.ScenePO">
+		insert into
+		SH_SCENE(MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008,MA009,MA010)
+		values(
+		#{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=VARCHAR},
+		#{ma004,jdbcType=VARCHAR},#{ma005,jdbcType=BLOB},#{ma006,jdbcType=VARCHAR},
+		#{ma007,jdbcType=VARCHAR},#{ma008,jdbcType=VARCHAR},#{ma009,jdbcType=VARCHAR},#{ma010,jdbcType=VARCHAR})
+	</insert>
+
+	<!-- 修改实例 -->
+	<update id="updateInstance" parameterType="com.hw.hwsafe.smart.pojo.ScenePO">
+		update SH_SCENE
+       set
+
+				MA002 = #{ma002,jdbcType=VARCHAR}, 
+
+				MA003 = #{ma003,jdbcType=VARCHAR}
+
+<!-- 		<if test="ma004 != null and ma004 != ''">
+			MA004=#{ma004,jdbcType=VARCHAR},
+		</if> -->
+<!-- 		<if test="ma005 != null and ma005 != ''">
+			MA005 = #{ma005,jdbcType=BLOB},
+		</if> -->
+		<!-- <if test="ma006 != null and ma006 != ''">
+		 	MA006 =#{ma006,jdbcType=VARCHAR},
+		 </if> -->
+		 <if test="ma007 != null and ma007 != ''">
+<!-- 			MA007 = #{ma007,jdbcType=VARCHAR}, -->
+		</if>
+	<!-- 	<if test="ma008 != null and ma008 != ''">
+		MA008 =#{ma008,jdbcType=VARCHAR},	
+		</if> -->
+<!-- 		<if test="ma009 != null and ma009 != ''">
+		MA009 =#{ma009,jdbcType=VARCHAR},	
+		</if>
+			<if test="ma010 != null and ma010 != ''">
+			MA010 =#{ma010,jdbcType=VARCHAR}
+			</if> -->
+	
+
+		
+		where MA001 = #{ma001} 
+	</update>
+
+	<!-- 通过id删除实例 -->
+	<delete id="deleteInstanceById" parameterType="String">
+		delete from SH_SCENE
+		where MA001 = #{ma001}
+	</delete>
+
+	<!-- 修改实例 -->
+	<update id="clearAirAllInstance" parameterType="com.hw.hwsafe.smart.pojo.ScenePO">
+		update SH_SCENE
+
+		set MA004 = #{ma004}
+
+
+		
+		where MA001 = #{ma001}
+	</update>
+	<!-- 修改实例 -->
+	<update id="clearGasAllInstance" parameterType="com.hw.hwsafe.smart.pojo.ScenePO">
+		update SH_SCENE
+		
+		set MA002 = #{ma002},MA003 = #{ma003}
+	
+
+		
+		where MA001 = #{ma001}
+	</update>
+</mapper>

@@ -1,0 +1,89 @@
+
+/************************* 日期控件    ********************************/
+.ui-datepicker {}
+.ui-datepicker .ui-datepicker-header {background:url(../images/dateheaderbg.jpg) repeat-x; height:20px; border:#43C0B1 solid 1px;} /* header背景 */
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next  {
+	position: absolute;
+	top:2px;
+	width: 15px;
+	height: 15px;
+}
+.ui-datepicker .ui-datepicker-header  .ui-datepicker .ui-datepicker-next {
+	position: absolute;
+	top: 2px;
+	width: 15px;
+	height: 15px;
+}
+.ui-datepicker .ui-datepicker-header .ui-datepicker-prev , .ui-datepicker .ui-datepicker-header .ui-datepicker-next{background:none;border: none;}
+.ui-datepicker .ui-datepicker-header .ui-datepicker-prev span {
+	display: block;
+	position: absolute;
+	left: 50%;
+	margin-left: 0px;
+	top: 0;
+}
+.ui-datepicker .ui-datepicker-header .ui-datepicker-next span {
+	display: block;
+	position: absolute;
+	left: 50%;
+	margin-right: -8px;
+	top: 0px !important;
+}
+.ui-datepicker .ui-datepicker-header .ui-datepicker-prev .ui-icon {
+	margin-top: 0px;
+	background:url(../images/lefticon.jpg) no-repeat;
+} /* 左箭头 */
+.ui-datepicker .ui-datepicker-header .ui-datepicker-prev-hover .ui-icon{background:url(../images/lefticonover.jpg) no-repeat;border-style:none;}/* 左箭头鼠标经过 */
+.ui-datepicker .ui-datepicker-header .ui-datepicker-next .ui-icon {margin-top: 0px;background:url(../images/righticon.jpg) no-repeat;} /* 右箭头 */
+.ui-datepicker .ui-datepicker-header .ui-datepicker-next-hover  .ui-icon {background:url(../images/righticonover.jpg) no-repeat !important;border-style:none;} /* 右箭头鼠标经过*/
+.ui-datepicker .ui-datepicker-header .ui-datepicker-title select {margin-top:0px;}
+.ui-datepicker .ui-datepicker-header .ui-datepicker-title select.ui-datepicker-year {width:65px; margin-right:12px;} /* 年份下拉列表  */
+.ui-datepicker .ui-datepicker-header .ui-datepicker-title select.ui-datepicker-month {width:50px;} /* 月份下拉列表  */
+.ui-datepicker table{ border-collapse:collapse;}
+.ui-datepicker table td {padding:0px;border:1px solid #43C0B1;background:none;text-align:center !important;}
+.ui-datepicker table td a{border-style:none !important;text-align:center !important;font-weight:normal !important;}
+.ui-datepicker th {
+	padding: 4px !important;
+}
+.ui-datepicker table.ui-datepicker-calendar {background:url(../images/headerbg2.jpg) repeat-x; height:22px;}
+.ui-datepicker table.ui-datepicker-calendar th span {color:#10917A; line-height:12px;} /* 表头字体（星期） */
+.ui-datepicker table.ui-datepicker-calendar .ui-datepicker-week-col {color:gray} /* 周数列（第一列）  */
+.ui-datepicker table.ui-datepicker-calendar .ui-datepicker-week-end {} /* 周六周日列 （最后两列）*/
+
+.ui-datepicker table.ui-datepicker-calendar .ui-datepicker-other-month .ui-priority-secondary {/*opacity:0.7*/} /* 相临的上个月与下个月的日期  */
+.ui-datepicker table.ui-datepicker-calendar .ui-state-default {border:1px solid #5BD8CF;background-color:#FFF} /* 默认日期的背景与边框  */
+.ui-datepicker table.ui-datepicker-calendar .ui-state-hover {border:1px solid #5BD8CF;background-color:#39DAC5} /* 鼠标悬停时的背景与边框  */
+.ui-datepicker table.ui-datepicker-calendar .ui-datepicker-today .ui-state-highlight {border:1px solid #00f;color:#FF7200;} /* 今天的日期  */
+.ui-datepicker table.ui-datepicker-calendar .ui-datepicker-current-day .ui-state-active {border:1px solid #00f} /* 当前选中的日期  */
+
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
+    background:url(../images/currentbg.jpg) no-repeat;
+    width:70px; 
+    height:23px;
+    border-style:none;
+    line-height:20px;  
+    color:#219B89;
+    font-size:12px;
+    filter:alpha(opacity=100);
+    opacity:1; 
+    font-weight:bold;
+} /* 返回今天 按钮*/
+.ui-datepicker .ui-datepicker-buttonpane button.ui-state-hover {
+    background:url(../images/currentbgover.jpg) no-repeat;
+    color:#FF7200;
+} /* 返回今天 按钮鼠标经过*/
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-close {
+    background:url(../images/backbg.jpg) no-repeat;
+    width:47px; 
+    height:23px;
+    border-style:none;
+    line-height:20px;  
+    color:#219B89;
+    font-size:12px;
+} /* 关闭按钮 */
+.ui-datepicker .ui-datepicker-buttonpane button:hover.ui-datepicker-close {background:url(../images/backbgover.jpg) no-repeat;color:#FF7200;}
+.ui-datepicker .ui-datepicker-buttonpane {
+	height:33px;
+	background:url(../images/buttonpanebg.jpg) repeat-x !important; 
+	margin-top:0px !important;
+}

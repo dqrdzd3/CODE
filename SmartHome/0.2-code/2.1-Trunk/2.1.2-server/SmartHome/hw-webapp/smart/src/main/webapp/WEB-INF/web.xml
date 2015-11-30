@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>smart.root</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath*:org/codehaus/xfire/spring/xfire.xml,
+			classpath*:applicationContext-all.xml
+		</param-value>
+	</context-param>
+
+	<!--由Sprng载入的Log4j配置文件位置 -->
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<!-- <param-value>classpath*:log4j.properties</param-value> -->
+		<param-value>WEB-INF/classes/log4j.properties</param-value>
+	</context-param>
+
+
+	<!--Spring默认刷新Log4j配置文件的间隔,单位为millisecond -->
+	<context-param>
+		<param-name>log4jRefreshInterval</param-name>
+		<param-value>60000</param-value>
+	</context-param>
+
+	<!-- Web 项目 Spring 加载 Log4j 的监听 -->
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+
+	<!-- Spring 加载 其他 的监听 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>com.hw.hwsafe.online.OnlineListener</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- session创建与销毁时事件的监听器 -->
+	<listener>
+		<listener-class>com.hw.hwsafe.security.session.listener.CustomHttpSessionEventPublisher</listener-class>
+	</listener>
+
+	<!-- 页面缓存过滤器 start -->
+	<!-- 单页面缓存 -->
+	<filter>
+		<filter-name>SimplePageCachingFilter</filter-name>
+		<filter-class>net.sf.ehcache.constructs.web.filter.SimplePageCachingFilter</filter-class>
+		<init-param>
+			<param-name>suppressStackTrace</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cacheName</param-name>
+			<param-value>SimplePageCachingFilter</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>SimplePageCachingFilter</filter-name>
+		<url-pattern>/frame/main_righttop.action</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+	<!-- 页面缓存过滤器 end -->
+
+	<!-- 身份认证过滤器 -->
+	<filter>
+		<filter-name>AuthenFilter</filter-name>
+		<filter-class>com.hw.hwsafe.authen.filter.AuthenFilter</filter-class>
+		<init-param>
+			<param-name>noFilterPrefix</param-name>
+			<param-value>public,index,login,res,css,images,js,hwmobile,upload,services,apksplace,share,weixin,solution,home,toB</param-value>
+		</init-param>
+		<init-param>
+			<param-name>noFilterSuffix</param-name>
+			<param-value>js,css,html,apk</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>AuthenFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- <filter> <filter-name>struts-cleanup</filter-name> <filter-class> org.apache.struts2.dispatcher.ActionContextCleanUp 
+		</filter-class> </filter> <filter-mapping> <filter-name>struts-cleanup</filter-name> 
+		<url-pattern>/*</url-pattern> </filter-mapping> -->
+
+
+
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<listener>
+		<listener-class>com.hw.hwsafe.smart.util.SocketReceiverListener</listener-class>
+	</listener>
+	<!--fckeditor -->
+	<servlet>
+		<servlet-name>Connector</servlet-name>
+		<servlet-class>com.hw.hwsafe.common.servlet.ConnectorServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Connector</servlet-name>
+		<url-pattern>/res/fckeditor/editor/filemanager/connectors/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- <listener> <listener-class>com.hw.hwsafe.db.listener.InitDbTableListener</listener-class> 
+		</listener> -->
+
+	<!-- 初始化 -->
+
+	<servlet>
+
+		<servlet-name>init</servlet-name>
+		<servlet-class>com.hw.hwsafe.core.servlet.InitServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<!-- 浏览器推送 -->
+	<!-- <servlet> <servlet-name>pushlet</servlet-name> <servlet-class>nl.justobjects.pushlet.servlet.Pushlet</servlet-class> 
+		<load-on-startup>1</load-on-startup> </servlet> <servlet-mapping> <servlet-name>pushlet</servlet-name> 
+		<url-pattern>/pushlet.srv</url-pattern> </servlet-mapping> -->
+	<!-- 启动短信猫服务,初始化短信猫 start -->
+	<!-- 如果不接短信猫,程序会报错 -->
+<!-- 	<servlet>
+		<servlet-name>initSMSService</servlet-name>
+		<servlet-class>com.hw.hwsafe.sms.servlet.AutoStartSMSServiceServlet</servlet-class>
+		<load-on-startup>999</load-on-startup>
+	</servlet> -->
+	<servlet>
+		<servlet-name>initServerService</servlet-name>
+		<servlet-class>com.hw.hwsafe.sms.servlet.Server2SMSServlet</servlet-class>
+		<load-on-startup>1000</load-on-startup>
+	</servlet> 
+
+	<!-- 启动短信猫服务,初始化短信猫 end -->
+
+	<!-- 短信处理监听器 -->
+
+	<!-- <listener> <listener-class>com.hw.hwsafe.sms.SmsHandleLintener</listener-class> 
+		</listener> -->
+
+
+	<!-- 验证码 --><!-- 暂时不用,pwd模块使用,weblogic报错 -->
+	<!-- <servlet> <servlet-name>Kaptcha</servlet-name> <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class> 
+		<init-param> <param-name>kaptcha.image.width</param-name> <param-value>200</param-value> 
+		</init-param> <init-param> <param-name>kaptcha.image.height</param-name> 
+		<param-value>50</param-value> </init-param> <init-param> <param-name>kaptcha.textproducer.char.length</param-name> 
+		<param-value>4</param-value> </init-param> <init-param> <param-name>kaptcha.textproducer.font.size 
+		</param-name> <param-value>40</param-value> </init-param> </servlet> <servlet-mapping> 
+		<servlet-name>Kaptcha</servlet-name> <url-pattern>/public/kaptcha.jpg</url-pattern> 
+		</servlet-mapping> -->
+
+	<!-- 微信 -->
+	<servlet>
+		<servlet-name>coreServlet</servlet-name>
+		<servlet-class>com.hw.hwsafe.smart.weixin.servlet.CoreServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>coreServlet</servlet-name>
+		<url-pattern>/weixin/coreServlet.servlet</url-pattern>
+	</servlet-mapping>
+
+	<!-- 集成xfire -->
+	<servlet>
+		<servlet-name>XFireServlet</servlet-name>
+		<servlet-class>org.codehaus.xfire.spring.XFireSpringServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>XFireServlet</servlet-name>
+		<url-pattern>/services/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- 自定义标签 -->
+	<jsp-config>
+		<taglib>
+			<taglib-uri>http://www.hanwei.com/tag</taglib-uri>
+			<taglib-location>/WEB-INF/tag/hwsoft.tld</taglib-location>
+		</taglib>
+		<jsp-property-group>   
+  <description>   
+  Special property group for JSP Configuration HTML   
+  example.   
+  </description>   
+  <display-name>JSPConfiguration</display-name>   
+  <url-pattern>*.html</url-pattern>   
+  <el-ignored>true</el-ignored>   
+  <page-encoding>UTF-8</page-encoding>   
+  <scripting-invalid>false</scripting-invalid>   
+  <include-prelude></include-prelude>   
+  <include-coda></include-coda>   
+  </jsp-property-group>  
+	</jsp-config>
+
+	<session-config>
+		<!-- 单位为分钟 -->
+		<session-timeout>60</session-timeout>
+	</session-config>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404.html</location>
+	</error-page>
+
+	<!-- <error-page> <error-code>500</error-code> <location>/500.html</location> 
+		</error-page> -->
+
+	<welcome-file-list>
+		<!-- <welcome-file>index.html</welcome-file> -->
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+	
+
+	
+	
+
+</web-app>

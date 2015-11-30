@@ -1,0 +1,8 @@
+﻿var sitemap = 
+
+(function() {
+    var _ = function() { var r={},a=arguments; for(var i=0; i<a.length; i+=2) r[a[i]]=a[i+1]; return r; }
+    var _creator = function() { return _(b,[_(c,d,e,f,g,h,i,[_(c,j,e,f,g,k),_(c,l,e,f,g,m),_(c,n,e,f,g,o,i,[_(c,p,e,f,g,q),_(c,r,e,f,g,s),_(c,t,e,f,g,u),_(c,v,e,f,g,w)]),_(c,x,e,f,g,y,i,[_(c,z,e,f,g,A),_(c,B,e,f,g,C),_(c,D,e,f,g,E),_(c,F,e,f,g,G)]),_(c,H,e,f,g,I,i,[_(c,J,e,f,g,K,i,[_(c,L,e,f,g,M)]),_(c,N,e,f,g,O,i,[_(c,P,e,f,g,Q,i,[_(c,R,e,f,g,S,i,[_(c,T,e,f,g,U)]),_(c,T,e,f,g,V)]),_(c,W,e,f,g,X),_(c,Y,e,f,g,Z,i,[_(c,ba,e,f,g,bb),_(c,bc,e,f,g,bd),_(c,be,e,f,g,bf),_(c,bg,e,f,g,bh),_(c,bi,e,f,g,bj)])])])])]);}; 
+var b="rootNodes",c="pageName",d="Home",e="type",f="Wireframe",g="url",h="Home.html",i="children",j="WelcomeAnime",k="WelcomeAnime.html",l="WecomeAnime crunch",m="WecomeAnime_crunch.html",n="Guidepage",o="Guidepage.html",p="guidepage2",q="guidepage2.html",r="guidepage3",s="guidepage3.html",t="guidepage4",u="guidepage4.html",v="guidepage5",w="guidepage5.html",x="Login",y="Login.html",z="Regist",A="Regist.html",B="ProjectInfo",C="ProjectInfo.html",D="Protocol",E="Protocol.html",F="ForgetPw",G="ForgetPw.html",H="MainActivity",I="MainActivity.html",J="LeftMenu",K="LeftMenu.html",L="ChangTheme",M="ChangTheme.html",N="RightMenu",O="RightMenu.html",P="EquipSetting",Q="EquipSetting.html",R="OneKeySetting",S="OneKeySetting.html",T="2DCode",U="2DCode.html",V="2DCode_1.html",W="PersonalInfo",X="PersonalInfo.html",Y="Setting",Z="Setting.html",ba="AccountInfo",bb="AccountInfo.html",bc="ChangePw",bd="ChangePw.html",be="DevList",bf="DevList.html",bg="HelpCenter",bh="HelpCenter.html",bi="About",bj="About.html";
+return _creator();
+})();

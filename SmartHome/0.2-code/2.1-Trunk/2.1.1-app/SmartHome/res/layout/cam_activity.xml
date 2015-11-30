@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal" >
+
+    <FrameLayout
+        android:id="@+id/camera_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <!-- title bgn -->
+
+        <FrameLayout
+            android:id="@+id/cam_title"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/cam_bg" >
+
+            <Button
+                android:id="@+id/camBackBtn"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/cam_back_arrow" />
+
+            <TextView
+                android:id="@+id/camDeviceName"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/account_nickname"
+                android:textColor="@color/white" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/camCamControl"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:background="@color/cam_bg"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/camDate"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/cam_init_date"
+                android:textColor="@color/white"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/camToggleBtn"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                android:layout_weight="3"
+                android:clickable="true"
+                android:src="@drawable/cam_cameratoggle" />
+
+            <ImageView
+                android:id="@+id/camFlashBtn"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                android:layout_weight="3"
+                android:clickable="true"
+                android:src="@drawable/cam_flash_on" />
+        </LinearLayout>
+        <!-- title end -->
+        <!-- 照相机和拍照按钮 bgn -->
+
+        <LinearLayout
+            android:id="@+id/take_pic_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <View
+                android:id="@+id/camLogo"
+                android:layout_width="100dip"
+                android:layout_height="50dip"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/cam_screen_logo"
+                android:visibility="gone" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/camPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+            </android.support.v4.view.ViewPager>
+            <!-- 拍照按钮 bgn -->
+
+            <FrameLayout
+                android:id="@+id/cam_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:background="@color/cam_bg" >
+
+                <Button
+                    android:id="@+id/camPicBtn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/cam_pic_selector" />
+
+                <Button
+                    android:id="@+id/camRingBtn"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:background="@drawable/cam_ring_selector" />
+
+                <Button
+                    android:id="@+id/camLocBtn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/cam_loc_selector" />
+            </FrameLayout>
+            <!-- 拍照按钮 end -->
+        </LinearLayout>
+        <!-- 照相机和拍照按钮 end -->
+    </LinearLayout>
+
+</FrameLayout>

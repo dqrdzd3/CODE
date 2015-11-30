@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="css/fonts/font-awesome.min.css">
+        <link rel="stylesheet" href="css/ui-box.css">
+        <link rel="stylesheet" href="css/ui-base.css">
+        <link rel="stylesheet" href="css/ui-color.css">
+        <link rel="stylesheet" href="css/appcan.icon.css">
+        <link rel="stylesheet" href="css/appcan.control.css">
+        <link rel="stylesheet" href="zhuninshow_content/css/main.css">
+    </head>
+    <body class="um-vp " ontouchstart>
+        <div id="page_0" class="up ub ub-ver bc-bg" tabindex="0">
+            <!--header开始-->
+            <div id="header" class="uh bc-text-head ub bc-head">
+                <div class="nav-btn" id="nav-left">
+                    <a href="zhunin.html"><div class="fa fa-angle-left fa-2x"></div></a>
+                </div>
+                <h1 class="ut ub-f1 ulev-3 ut-s tx-c" tabindex="0">产品展示</h1>
+                <div class="nav-btn nav-bt" id="nav-right"></div>
+            </div>
+            <!--header结束--><!--content开始-->
+            <div id="content" class="ub-f1 tx-l">
+                <div class="ub ub-ver">
+                <div id='' class=' ub-fh  uof'>
+                    <div id='slider' class='slider'></div>
+                </div>
+                <div class="ub ub-ver uinn-a7 sc-bg">
+                    <div class="uinn-a1 ubb bc-border">
+                        <div class="ub">
+                            <div class="ub-f1 ulev-app2 t-bla-de line-hei uh-de2 ubr bc-border uinn-r-de uof">
+                                空气检测仪
+                            </div>
+                            <div class="ub ub-ver ub-ac uinn-de">
+                                <div class="ub-img like2 umw1 umh1"></div>
+                                <div class="t-gra5 ulev-4 umar-t">
+                                    收藏
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ub ub-ae umar-t">
+                            <div class="sc-text-warn  ulev2">
+                                ￥69
+                            </div>
+                            <div class="ub-ac uba uc-a1 b-gre1 c-gre1 uinn-a14 ulev-2 t-gre2 umar-l">
+                                手机专享
+                            </div>
+                        </div>
+                        <div class="ub ub-ae umar-t">
+                            <div class="t-bla-de2 ulev-4">
+                                价格：<span class="utx-de">￥199</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                <div class="umar-at1 sc-bg uinn-a7">
+                    <div class="uinn-a1 ub ubb bc-border">
+                        <div class="ub-img uwh-de1  mar-ar1" style="background-image:url('zhuninshow_content/css/myImg/goods1.png');"></div>
+                        <div class="ub-f1">
+                            <div class="ulev-app1">
+                                上海301市场
+                            </div>
+                            <div class="ulev-4 sc-text line-hei umar-t">
+                                保证金<span class="t-org-de3 ufm1">60元</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ub uinn-de3 ub ub-pc">
+                        <div class="ub uinn ub-f1 ub-pc">
+                            <div class="btn ub ub-ac bc-text-head ub-pc bc-btn"  id="btn1">
+                                联系卖家
+                            </div>
+                        </div>
+                        <div class="ub uinn ub-f1 ub-pc">
+                            <div class="btn ub ub-ac bc-text-head ub-pc bc-btn"  id="btn2">
+                                我要租赁
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+            </div>
+            <!--content结束-->
+
+        </div>
+        <script src="js/appcan.js"></script>
+        <script src="js/appcan.control.js"></script>
+        <script src="js/appcan.slider.js"></script>
+    </body>
+    <script>
+
+            goodsImg();
+
+        function goodsImg() {
+            //商品详情图片轮播
+            var slider = appcan.slider({
+                selector : '#slider',
+                aspectRatio : 9 / 16,
+                hasLabel : false,
+                index : 0
+            });
+            slider.set([{
+                img : "zhuninshow_content/css/myImg/detialsImg.jpg"
+            }, {
+                img : "zhuninshow_content/css/myImg/detialsImg.jpg"
+            }])
+            slider.on("clickItem", function(index, data) {
+                console.log(index, data);
+
+            })
+        }
+
+
+        appcan.button(".btn", "ani-act", function() {
+
+        })
+    </script>
+</html>

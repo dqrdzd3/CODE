@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.smart.dao.ICorpCrmDao">
+
+<!-- 获取分页信息 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008, MA009,
+		MA010, MA011,MA012,MA013,MA014,  MA015, MA016, MA017
+		from CORP_CRM
+		<where>
+			MA003 = #{ma003}
+		<if test="ma011 != null and ma011 != ''">
+				and MA011 = #{ma011}
+			</if>
+			
+		</where>
+	</select>
+	<select id="doListDeviceByGeo" parameterType="map" resultType="hashmap">
+		 select MA002,MA007, MA008
+		from CORP_CRM
+		<where>
+			MA007 is not null
+			and MA003 = #{ma003}
+		</where>
+		
+		order by MA007,MA008
+		
+	</select>
+	<select id="doListMenu" parameterType="map" resultType="hashmap">
+		 select MA007, MA008
+		from CORP_CRM
+		<where>
+			MA007 is not null
+			and MA003 = #{ma003}
+		</where>
+		group by MA007,MA008
+		order by MA007,MA008
+		
+	</select>
+	<select id="doListMenuSensor" parameterType="map" resultType="hashmap">
+		 select MA002
+		from CORP_CRM
+		<where>
+			MA007 is not null
+			and MA003 = #{ma003}
+			<if test="ma007 != null and ma007 != ''">
+				and MA007 = #{ma007}
+			</if>
+			<if test="ma008 != null and ma008 != ''">
+				and MA008 = #{ma008}
+			</if>
+		</where>
+
+		
+	</select>
+	<!-- 通过id获取实例 -->
+	<select id="retrieveInstanceById" parameterType="String"
+		resultType="com.hw.hwsafe.smart.pojo.CorpCrmPO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007,
+		MA008, MA009, MA010, MA011, MA012,MA013, MA014, MA015, MA016, MA017
+		from CORP_CRM
+		where MA001 = #{value}
+	</select>
+	
+	<!-- 通过PO获取实例 -->
+	<select id="retrieveInstanceByPO" parameterType="com.hw.hwsafe.smart.pojo.CorpCrmPO"
+		resultType="com.hw.hwsafe.smart.pojo.CorpCrmPO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008, MA009,
+		MA010, MA011, MA012,MA013, MA014, MA015, MA016, MA017
+		from CORP_CRM
+		<where>
+			1 = 1
+			<if test="ma001 != null and ma001 != ''">
+				and MA001 = #{ma001}
+			</if>
+			<if test="ma002 != null and ma002 != ''">
+				and MA002 = #{ma002}
+			</if>
+			<if test="ma008 != null and ma008 != ''">
+				and MA008 = #{ma008}
+			</if>
+			<if test="ma003 != null and ma003 != ''">
+				and MA003 = #{ma003}
+			</if>
+			<if test="ma004 != null and ma004 != ''">
+				and MA004 = #{ma004}
+			</if>
+			<if test="ma007 != null and ma007 != ''">
+				and MA007 = #{ma007}
+			</if>
+			<if test="ma011 != null and ma011 != ''">
+				and MA011 = #{ma011,jdbcType=INTEGER}
+			</if>
+		</where>
+	</select>
+	<!-- 通过PO获取实例 -->
+	<select id="retrieveInstanceByMap" parameterType="map"
+		resultType="com.hw.hwsafe.smart.pojo.CorpCrmPO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008, MA009,
+		MA010, MA011, MA012,MA013, MA014, MA015, MA016, MA017
+		from CORP_CRM
+		<where>
+			1 = 1
+			<if test="ma001 != null and ma001 != ''">
+				and MA001 = #{ma001}
+			</if>
+			<if test="ma002 != null and ma002 != ''">
+				and MA002 = #{ma002}
+			</if>
+			<if test="ma008 != null and ma008 != ''">
+				and MA008 = #{ma008}
+			</if>
+			<if test="ma003 != null and ma003 != ''">
+				and MA003 = #{ma003}
+			</if>
+			<if test="ma004 != null and ma004 != ''">
+				and MA004 LIKE '%'||#{ma004}||'%'
+			</if>
+			<if test="ma007 != null and ma007 != ''">
+				and MA007 = #{ma007}
+			</if>
+			<if test="ma011 != null and ma011 != ''">
+				and MA011 = #{ma011,jdbcType=INTEGER}
+			</if>
+			<!-- <if test="date1 != null and date2 != null">
+				and to_date(#{date2},'yyyy-mm-dd hh24:mi:ss') &gt; MA012 and to_date(#{date1},'yyyy-mm-dd hh24:mi:ss') &lt; MA012
+			</if> -->
+			<if test="date1 != null and date1 != ''">
+				and MA012 &gt; #{date1,jdbcType=TIMESTAMP}
+			</if>
+			<if test="date2 != null and date2 != ''">
+				and MA012 &lt; #{date2,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+	</select>
+
+	<!-- 添加实例 -->
+	<insert id="insertInstance" parameterType="com.hw.hwsafe.smart.pojo.CorpCrmPO">
+		insert into
+		CORP_CRM(MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008, MA009,
+		MA010, MA011, MA012,MA013,MA014, MA015, MA016, MA017)
+		values(
+		#{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=VARCHAR},
+		#{ma004,jdbcType=VARCHAR},#{ma005,jdbcType=VARCHAR},#{ma006,jdbcType=VARCHAR},
+		#{ma007,jdbcType=VARCHAR},#{ma008,jdbcType=VARCHAR},#{ma009,jdbcType=VARCHAR},
+		#{ma010,jdbcType=VARCHAR},#{ma011,jdbcType=INTEGER},#{ma012,jdbcType=TIMESTAMP},#{ma013,jdbcType=VARCHAR},
+		#{ma014,jdbcType=VARCHAR},#{ma015,jdbcType=VARCHAR},#{ma016,jdbcType=VARCHAR},#{ma017,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<!-- 修改实例 -->
+	<update id="updateInstance" parameterType="com.hw.hwsafe.smart.pojo.CorpCrmPO">
+		update CORP_CRM
+		<set>
+			<if test="ma002 != null">
+				MA002 = #{ma002,jdbcType=VARCHAR},
+			</if>
+			<if test="ma003 != null">
+				MA003 = #{ma003,jdbcType=VARCHAR},
+			</if>
+			<if test="ma004 != null">
+				MA004 = #{ma004,jdbcType=VARCHAR},
+			</if>
+			<if test="ma005 != null">
+				MA005 = #{ma005,jdbcType=VARCHAR},
+			</if>
+			<if test="ma006 != null">
+				MA006 = #{ma006,jdbcType=VARCHAR},
+			</if>
+			<if test="ma007 != null">
+				MA007 = #{ma007,jdbcType=VARCHAR},
+			</if>
+			<if test="ma008 != null">
+				MA008 = #{ma008,jdbcType=VARCHAR},
+			</if>
+			<if test="ma009 != null">
+				MA009 = #{ma009,jdbcType=VARCHAR},
+			</if>
+			<if test="ma010 != null">
+				MA010 = #{ma010,jdbcType=VARCHAR},
+			</if>
+			<if test="ma011 != null">
+				MA011 = #{ma011,jdbcType=INTEGER},
+			</if>
+			<if test="ma012 != null">
+				MA012 = #{ma012,jdbcType=TIMESTAMP},
+			</if>
+			<if test="ma013 != null">
+				MA013 = #{ma013,jdbcType=VARCHAR},
+			</if>
+			<if test="ma014 != null">
+				MA014 = #{ma014,jdbcType=VARCHAR},
+			</if>
+		
+			<if test="ma015 != null">
+				MA015 = #{ma015,jdbcType=VARCHAR},
+			</if>
+			<if test="ma016 != null">
+				MA016 = #{ma016,jdbcType=VARCHAR},
+			</if>
+					
+			<if test="ma017 != null">
+				MA017 = #{ma017,jdbcType=VARCHAR},
+			</if>
+		
+			
+
+		</set>
+
+		where MA001 = #{ma001} 
+
+		
+	</update>
+
+	<!-- 通过id删除实例 -->
+	<delete id="deleteInstanceById" parameterType="String">
+		delete from CORP_CRM
+		where MA001 = #{ma001}
+	</delete>
+<!-- 通过id批量删除实例 -->
+	<delete id="delBatchInstance" parameterType="map">
+		DELETE FROM CORP_CRM WHERE MA001 IN
+		<foreach collection="idArray" item="id" open="(" separator=","
+			close=")">#{id}</foreach>
+	</delete>
+	<update id="focusBatchInstance" parameterType="map">
+	  update CORP_CRM set MA011 = #{ma011,jdbcType=INTEGER} WHERE MA001 IN
+		<foreach collection="idArray" item="id" open="(" separator=","
+			close=")">#{id}</foreach>
+	</update>
+	
+	<!-- 统计 -->
+	<select id="doListDeviceByTime" parameterType="map" resultType="hashmap">
+		<if test="groupby != null and groupby== 'week'">
+				select count(*) total,TO_CHAR(ma012,'iw') week
+		</if>
+		<if test="groupby != null and groupby== 'month'">
+				select count(*) total,TO_CHAR(ma012,'mm') month
+		</if>
+		<if test="groupby == null ">
+				select count(*) total,TO_CHAR(ma012,'yyyy') year
+		</if>
+
+		from CORP_CRM
+		<where>
+
+			 MA003 = #{corpid}
+			<if test="province != null and province != ''">
+				and MA007 = #{province}
+			</if>
+			<if test="city != null and city != ''">
+				and MA008 = #{city}
+			</if>
+			<if test="year != null and year != ''">
+				and to_char(ma012,'yyyy') = #{year} 
+			</if>
+		</where>
+		<if test="groupby != null and groupby== 'week'">
+				GROUP BY TO_CHAR(ma012,'iw')
+		</if>
+		<if test="groupby != null and groupby== 'month'">
+				GROUP BY TO_CHAR(ma012,'mm')
+		</if>
+		<if test="groupby == null ">
+				GROUP BY TO_CHAR(ma012,'yyyy')
+		</if>
+		
+	</select>
+	<select id="countGeoByTime" parameterType="map" resultType="hashmap">
+		<if test="groupby == null or groupby== 'province'">
+				select count(*) total,ma007 AS geo 
+		</if>
+		<if test="groupby != null and groupby== 'city'">
+				select count(*) total,ma008 AS geo
+		</if>
+
+
+		from CORP_CRM
+		<where>
+
+			 MA003 = #{corpid} 
+			<if test="groupby == null or groupby== 'province'">
+				and MA007 is not null
+			</if>
+			<if test="groupby != null and groupby== 'city'">
+				and MA008 is not null
+			</if>
+			<if test="haveon != null and haveon == 'year'">
+				and to_char(ma012,'yyyy') = to_char(#{date1,jdbcType=TIMESTAMP}, 'yyyy')
+			</if>
+			<if test="haveon != null and haveon == 'month'">
+				and to_char(ma012,'yyyymm') = to_char(#{date1,jdbcType=TIMESTAMP}, 'yyyymm')
+			</if>
+			<if test="haveon != null and haveon == 'week'">
+				and to_char(ma012,'yyyy') = to_char(#{date1,jdbcType=TIMESTAMP}, 'yyyy')
+				and TO_CHAR(ma012,'iw') = to_char(#{date1,jdbcType=TIMESTAMP}, 'iw')
+			</if>
+		</where>
+		<if test="groupby == null or groupby== 'province'">
+				GROUP BY MA007
+		</if>
+		<if test="groupby != null and groupby== 'city'">
+				GROUP BY MA008
+		</if>
+		
+		
+	</select>
+	<select id="countAll" parameterType="map" resultType="Integer">
+		select count(*) from CORP_CRM
+		where MA003 = #{corpid}
+	</select>
+	<select id="countFocus" parameterType="map" resultType="Integer">
+		select count(*) from CORP_CRM
+		where MA003 = #{corpid} and MA011=1
+	</select>
+</mapper>

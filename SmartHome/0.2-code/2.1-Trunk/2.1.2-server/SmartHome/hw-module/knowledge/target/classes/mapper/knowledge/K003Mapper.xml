@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hw.hwsafe.knowledge.dao.IK003Dao">
+
+	
+	<!-- 根据Ma001查询 -->
+	<select id="retrieveK003ByID" parameterType="String" resultType="com.hw.hwsafe.knowledge.pojo.K003PO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013
+			 FROM K003 WHERE MA001=#{ma001}
+	</select>
+
+		<!-- 根据条件查询所有  -->
+	<select id="retrieveK003ByPO" resultType="com.hw.hwsafe.knowledge.pojo.K003PO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013
+		FROM K003 t 	
+		WHERE 1=1
+		<if test="ma002 != null">
+			<if test="ma002 != ''">
+			AND	MA002  LIKE '%'||#{ma002}||'%' 
+			</if>
+		</if> 
+	
+	</select>
+	
+	<!-- 插入职业病知识 -->
+	<insert id="insertK003" parameterType="com.hw.hwsafe.knowledge.pojo.K003PO">
+      INSERT INTO K003(MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,ma014,ma015
+	   ) 
+      VALUES(
+         #{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=VARCHAR},#{ma004,jdbcType=VARCHAR},
+         #{ma005,jdbcType=TIMESTAMP},
+         #{ma006,jdbcType=TIMESTAMP},#{ma007,jdbcType=NUMERIC},#{ma008,jdbcType=TIMESTAMP},#{ma009,jdbcType=VARCHAR},
+         #{ma010,jdbcType=VARCHAR},#{ma011,jdbcType=VARCHAR},#{ma012,jdbcType=VARCHAR},#{ma013,jdbcType=VARCHAR},#{ma014,jdbcType=VARCHAR},#{ma015,jdbcType=TIMESTAMP}
+       )
+	</insert>
+	<!-- 更新职业病知识 -->
+
+	<update id="updateK003" parameterType="com.hw.hwsafe.knowledge.pojo.K003PO">
+		UPDATE K003 
+		set	
+		 	MA002=#{ma002,jdbcType=VARCHAR},MA003=#{ma003,jdbcType=VARCHAR},MA004=#{ma004,jdbcType=VARCHAR},
+		 	MA005=#{ma005,jdbcType=TIMESTAMP},
+		 	MA006=#{ma006,jdbcType=TIMESTAMP},MA007=#{ma007,jdbcType=NUMERIC},
+     		MA008=#{ma008,jdbcType=TIMESTAMP},MA009=#{ma009,jdbcType=VARCHAR},MA010=#{ma010,jdbcType=VARCHAR},MA011=#{ma011,jdbcType=VARCHAR},
+     		MA012=#{ma012,jdbcType=VARCHAR},MA013=#{ma013,jdbcType=VARCHAR}
+		WHERE MA001 = #{ma001}
+	</update>
+
+   <!-- 根据条件查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		SELECT MA001,MA002,MA003,MA004,TO_CHAR(MA005, 'YYYY-MM-DD') MA005,TO_CHAR(MA006, 'YYYY-MM-DD') MA006,MA007,
+TO_CHAR(MA008, 'YYYY-MM-DD')MA008,MA009,MA010,MA011,MA012,MA013 FROM K003 
+		<where>1=1
+			<if test="po.ma002 != null and po.ma002 != ''">
+				and MA002 like '%' || #{po.ma002} || '%'
+			</if>
+		</where>
+		order by ma015 desc
+	</select>
+</mapper>

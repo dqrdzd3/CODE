@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="dictionary" namespace="/manager" extends="interceptor" >
+		<action name="sysDict" class="com.hw.hwsafe.platform.action.DictionaryAction" method="doMain">
+			<result name="main">/WEB-INF/jsp/manager/dictionary/dict_main.jsp</result>
+			<result name="tree">/WEB-INF/jsp/manager/dictionary/dict_tree.jsp</result>
+			<result name="list">/WEB-INF/jsp/manager/dictionary/dict_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/manager/dictionary/dict_add.jsp</result>
+		</action>
+	</package>
+	
+	<package name="log" namespace="/log" extends="interceptor">
+		<action name="operLog" class="com.hw.hwsafe.platform.action.OperLogAction">
+			<result name="success">/WEB-INF/jsp/log/operLog/operLog_list.jsp</result>
+			<result name="view">/WEB-INF/jsp/log/operLog/operLog_view.jsp</result>
+		</action>
+		
+		<action name="exceptionLog" class="com.hw.hwsafe.platform.action.ExceptionLogAction">
+			<result name="success">/WEB-INF/jsp/log/exceptionLog/exceptionLog_list.jsp</result>
+			<result name="view">/WEB-INF/jsp/log/exceptionLog/exceptionLog_view.jsp</result>
+		</action>
+		
+		<action name="loginLog" class="com.hw.hwsafe.platform.action.LoginLogAction">
+			<result name="success">/WEB-INF/jsp/log/loginLog/loginLog_list.jsp</result>
+		</action>
+	</package>
+	
+	<package name="grid" namespace="/public/grid" extends="interceptor" >
+		<action name="grid" class="com.hw.hwsafe.platform.action.GridAction">
+			<result>/WEB-INF/jsp/grid/test.jsp</result>
+			<result name="1aGrf">/WEB-INF/jsp/grid/1a.grf</result>
+		</action>
+	</package>
+</struts>

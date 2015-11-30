@@ -1,0 +1,1009 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sothree="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/uiHomePagerScrollView"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/blue"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:id="@+id/uiHomeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/uiHomeBgLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal" >
+
+            <!-- 左侧间隙 -->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+            <!-- AQI bgn -->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/uiHomeUpdateTime"
+                    android:layout_width="200sp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:background="@null"
+                    android:gravity="left"
+                    android:text="@string/ui_pager_update_time"
+                    android:textColor="@color/white"
+                    android:textSize="12.0sp" />
+                <!-- 中间的AQI bgn -->
+
+                <LinearLayout
+                    android:id="@+id/uiHomeAQILayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/uiHomeAQI"
+                        android:layout_width="100sp"
+                        android:layout_height="55sp"
+                        android:layout_gravity="left|top"
+                        android:layout_weight="1"
+                        android:gravity="left|top"
+                        android:text="0    "
+                        android:textColor="@color/white"
+                        android:textSize="50.0sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|center_vertical"
+                        android:layout_weight="1"
+                        android:gravity="right|center_vertical"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/uiHomeScore"
+                            android:layout_width="80sp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|center_vertical"
+                            android:gravity="right|center_vertical"
+                            android:paddingTop="10sp"
+                            android:text="@string/ui_pager_pm25_status_default"
+                            android:textColor="@color/white"
+                            android:textSize="20.0sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|center_vertical"
+                            android:gravity="right|center_vertical"
+                            android:text="@string/ui_pager_pm25_title"
+                            android:textColor="@color/white"
+                            android:textSize="15.0sp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <!-- 中间的AQI end -->
+                <!-- 燃气 bgn -->
+
+                <LinearLayout
+                    android:id="@+id/uiHomeGasLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical"
+                    android:visibility="gone" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="50sp"
+                            android:layout_height="50sp"
+                            android:layout_gravity="left|center_vertical"
+                            android:gravity="left|center_vertical"
+                            android:src="@drawable/ui_home_unit_ch4" />
+
+                        <TextView
+                            android:id="@+id/uiHomeCh4"
+                            android:layout_width="150sp"
+                            android:layout_height="50sp"
+                            android:layout_gravity="right|center_vertical"
+                            android:gravity="right|center_vertical"
+                            android:paddingTop="10sp"
+                            android:text="@string/ui_pager_values_default"
+                            android:textColor="@color/white"
+                            android:textSize="35.0sp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/blue" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="50sp"
+                            android:layout_height="50sp"
+                            android:layout_gravity="left|center_vertical"
+                            android:layout_weight="1"
+                            android:gravity="left|center_vertical"
+                            android:src="@drawable/ui_home_unit_co" />
+
+                        <TextView
+                            android:id="@+id/uiHomeCO"
+                            android:layout_width="150sp"
+                            android:layout_height="50sp"
+                            android:layout_gravity="right|center_vertical"
+                            android:layout_weight="0.5"
+                            android:gravity="right|center_vertical"
+                            android:paddingTop="10sp"
+                            android:text="@string/ui_pager_values_default"
+                            android:textColor="@color/white"
+                            android:textSize="35.0sp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <!-- 燃气 bgn -->
+
+
+                <!-- 滚动字幕 bgn -->
+
+                <LinearLayout
+                    android:id="@+id/uiHomePagerSumSensorLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="25sp"
+                        android:layout_height="25sp"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:src="@drawable/ui_home_013" />
+
+                    <TextView
+                        android:id="@+id/uiHomePagerSumSensor"
+                        android:layout_width="0dip"
+                        android:layout_height="25sp"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="0.1"
+                        android:clickable="true"
+                        android:ellipsize="marquee"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center_vertical"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:text="@string/ui_pager_values_default"
+                        android:textColor="@color/white"
+                        android:textSize="15.0sp" />
+                </LinearLayout>
+                <!-- 滚动字幕 end -->
+
+                <Button
+                    android:id="@+id/uiHomeSolution"
+                    android:layout_width="80sp"
+                    android:layout_height="20sp"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/ui_home_pager_submit"
+                    android:text="@string/ui_pager_submit"
+                    android:textColor="@color/white"
+                    android:textSize="12.0sp" />
+            </LinearLayout>
+            <!-- AQI end -->
+            <!-- 右侧图标 end -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|top"
+                android:layout_weight="1"
+                android:gravity="right|top"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/uiHomeCam"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="right|top"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="50dp"
+                    android:src="@drawable/go_cam_selector" />
+
+                <ImageView
+                    android:id="@+id/uiHomeCtrl"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="right|top"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/go_ctrl_selector" />
+            </LinearLayout>
+            <!-- 右侧图标 end -->
+        </LinearLayout>
+
+        <!-- 自动计算的填充高度 -->
+
+        <View
+            android:id="@+id/ui_space"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip" >
+        </View>
+        <!-- 按钮图标bgn -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
+            android:orientation="horizontal"
+            android:paddingBottom="5dip" >
+
+            <!-- 购物车、更新、历史报警、远程升级按钮 bgn -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:paddingTop="15dip" >
+
+                <ImageView
+                    android:id="@+id/uiHomeShopping"
+                    android:layout_width="30dip"
+                    android:layout_height="30dip"
+                    android:layout_marginRight="18dp"
+                    android:layout_toLeftOf="@+id/history_alarm"
+                    android:src="@drawable/ui_home_pager_shop" />
+
+                <ImageView
+                    android:id="@+id/history_alarm"
+                    android:layout_width="30dip"
+                    android:layout_height="30dip"
+                    android:layout_marginRight="18dp"
+                    android:layout_toLeftOf="@+id/upgrade"
+                    android:background="@drawable/ui_home_alarm_history" />
+
+                <ImageView
+                    android:id="@+id/upgrade"
+                    android:layout_width="30dip"
+                    android:layout_height="30dip"
+                    android:layout_marginRight="18dp"
+                    android:layout_toLeftOf="@+id/share_realtime_data"
+                    android:background="@drawable/upgrade" />
+
+                <ImageView
+                    android:id="@+id/share_realtime_data"
+                    android:layout_width="30dip"
+                    android:layout_height="30dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="18dp"
+                    android:background="@drawable/ui_home_share" />
+            </RelativeLayout>
+            <!-- 购物车、更新、历史报警、远程升级按钮 end -->
+        </LinearLayout>
+        <!-- 按钮图标end -->
+
+
+        <!-- 下半部分 -->
+
+        <LinearLayout
+            android:id="@+id/uiHomeContentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:alpha="20"
+            android:clickable="true"
+            android:focusable="false"
+            android:orientation="vertical"
+            android:paddingBottom="20dp" >
+
+            <LinearLayout
+                android:id="@+id/ui_down_space"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/ui_home_view_bg"
+                    android:gravity="center_horizontal"
+                    android:visibility="gone" >
+
+                    <ImageView
+                        android:id="@+id/uiHomePageUp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal" />
+                </LinearLayout>
+                <!-- 设备ID bgn -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:visibility="gone" >
+
+                    <ImageView
+                        android:id="@+id/sensorType"
+                        android:layout_width="30dip"
+                        android:layout_height="30dip"
+                        android:layout_marginLeft="55dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/uiHomeSensorName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="28dp"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="18.0sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/uiHomeSensorId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="28dp"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="18.0sp"
+                        android:visibility="gone" />
+                    <!--
+                <ImageView
+                    android:id="@+id/share_realtime_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@android:drawable/ic_menu_share" />
+                    -->
+                </LinearLayout>
+                <!-- 设备ID end -->
+                <!--
+                 <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                -->
+                <!-- 带左右箭头的公共天气 bgn -->
+
+                <RelativeLayout
+                    android:id="@+id/ll_gridview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:id="@+id/uiHomePageLeft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:alpha="10"
+                        android:background="@drawable/ui_home_page_left" />
+
+                    <!-- 气象台 bgn -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="80sp"
+                        android:orientation="vertical" >
+
+                        <!-- 气象台 上半部分 bgn -->
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="20sp"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:id="@+id/uiHomePagerLocImg"
+                                android:layout_width="20sp"
+                                android:layout_height="20sp"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:layout_marginLeft="10dp"
+                                android:clickable="true"
+                                android:src="@drawable/ui_home_pager_loc" />
+
+                            <TextView
+                                android:id="@+id/uiHomePagerLocTime"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:background="@null"
+                                android:text="@string/ui_pager_weather_update_time_default"
+                                android:textColor="@color/white"
+                                android:textSize="12.0sp" />
+                        </LinearLayout>
+                        <!-- 气象台上半部分 end -->
+                        <!-- 气象台 下半部分 bgn -->
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                            <!-- 城市 -->
+
+                            <TextView
+                                android:id="@+id/uiHomePagerLocCity"
+                                android:layout_width="match_parent"
+                                android:layout_height="50sp"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:layout_weight="1"
+                                android:clickable="true"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:text="@string/ui_pager_weather_city"
+                                android:textColor="@color/white"
+                                android:textSize="45.0sp" />
+
+                            <View
+                                android:layout_width="1px"
+                                android:layout_height="40sp"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:background="@color/white" />
+                            <!-- AQI bgn -->
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:layout_weight="1"
+                                android:orientation="vertical" >
+
+                                <TextView
+                                    android:id="@+id/uiHomePagerLocAqi"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal|center_vertical"
+                                    android:gravity="center_horizontal|center_vertical"
+                                    android:text="@string/ui_pager_weather_aqi"
+                                    android:textColor="@color/white"
+                                    android:textSize="20.0sp" />
+
+                                <TextView
+                                    android:id="@+id/uiHomePagerLocAqiStatus"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal|center_vertical"
+                                    android:gravity="center_horizontal|center_vertical"
+                                    android:text="@string/ui_pager_weather_aqi_status"
+                                    android:textColor="@color/white"
+                                    android:textSize="20.0sp" />
+                            </LinearLayout>
+
+                            <!-- AQI bgn -->
+
+                            <View
+                                android:layout_width="1px"
+                                android:layout_height="40sp"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:background="@color/white" />
+                            <!-- 温湿度 bgn -->
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal|bottom"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal|bottom"
+                                android:orientation="horizontal" >
+
+                                <TextView
+                                    android:id="@+id/uiHomePagerLocTem"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal|bottom"
+                                    android:gravity="center_horizontal|bottom"
+                                    android:textColor="@color/white"
+                                    android:textScaleX="1"
+                                    android:textSize="35.0sp" />
+
+                                <TextView
+                                    android:id="@+id/uiHomePagerLocHum"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal|bottom"
+                                    android:gravity="center_horizontal|bottom"
+                                    android:textColor="@color/white"
+                                    android:textScaleX="1"
+                                    android:textSize="15.0sp" />
+                            </LinearLayout>
+
+                            <!-- 温湿度 bgn -->
+                        </LinearLayout>
+                        <!-- 气象台 下半部分 end -->
+                    </LinearLayout>
+                    <!-- 气象台 end -->
+
+                    <ImageView
+                        android:id="@+id/uiHomePageRight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:alpha="10"
+                        android:background="@drawable/ui_home_page_right" />
+                </RelativeLayout>
+                <!-- 带左右箭头的公共天气 end -->
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/ui_home_view_bg"
+                android:padding="5dip"
+                android:paddingLeft="10dip"
+                android:text="@string/home_sensor_realtime"
+                android:textColor="@color/white"
+                android:textSize="20.0sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px" />
+
+            <com.hw.smarthome.view.widget.MyGridView
+                android:id="@+id/currentDataGridview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:horizontalSpacing="1px"
+                android:listSelector="@android:color/transparent"
+                android:numColumns="2"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="1px" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/ui_home_view_bg"
+                android:padding="5dip"
+                android:paddingLeft="10dip"
+                android:text="@string/home_sensor_type"
+                android:textColor="@color/white"
+                android:textSize="20.0sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/ui_home_view_bg"
+                android:padding="5dp"
+                android:visibility="gone" >
+
+                <TextView
+                    android:id="@+id/sensortypename"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/home_temperature"
+                    android:textColor="@color/white"
+                    android:textSize="20.0sp" />
+
+                <TextView
+                    android:id="@+id/sensortypetime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/home_last_7_days"
+                    android:textColor="@color/white"
+                    android:textSize="20.0sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px" />
+
+            <LinearLayout
+                android:id="@+id/airSensors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/ui_home_view_bg"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:paddingRight="5dip"
+                android:visibility="gone" >
+
+                <!--
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="5dip"
+                    android:text="@string/home_history"
+                    android:textColor="@color/ui_home_text"
+                    android:textSize="12.0sp" />
+                
+                <ListView
+                    android:id="@+id/homeHistoryAirList"
+                    android:layout_width="match_parent"
+                    android:layout_height="1000dip"
+                    android:layout_gravity="center_horizontal" >
+                </ListView>
+                -->
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/temperatureChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dip"
+                    android:layout_gravity="center_horizontal" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/humidityChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dip"
+                    android:layout_gravity="center_horizontal"
+                    android:visibility="gone" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/pm25Chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dip"
+                    android:layout_gravity="center_horizontal"
+                    android:visibility="gone" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/co2Chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dip"
+                    android:layout_gravity="center_horizontal"
+                    android:visibility="gone" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/vocChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dip"
+                    android:layout_gravity="center_horizontal"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/gasSensors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/ui_home_view_bg"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <!--
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="5dip"
+                    android:text="@string/home_history"
+                    android:textColor="@color/ui_home_text"
+                    android:textSize="12.0sp" />
+                
+                <ListView
+                    android:id="@+id/homeHistoryGasList"
+                    android:layout_width="match_parent"
+                    android:layout_height="1000dp"
+                    android:layout_gravity="center_horizontal" >
+                </ListView>
+                -->
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/ch4Chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dip"
+                    android:layout_gravity="center_horizontal" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/coChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dip"
+                    android:layout_gravity="center_horizontal"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px" >
+            </View>
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible" >
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal" >
+
+                    <TextView
+                        android:id="@+id/last24hours"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:background="@color/ui_home_view_bg"
+                        android:gravity="center"
+                        android:padding="5dip"
+                        android:text="@string/home_history_tab_last24hours"
+                        android:textColor="@color/white"
+                        android:textSize="12.0sp" />
+
+                    <TextView
+                        android:id="@+id/last7days"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="1px"
+                        android:layout_marginRight="1px"
+                        android:layout_weight="1"
+                        android:background="@color/ui_home_view_bg"
+                        android:gravity="center"
+                        android:padding="5dip"
+                        android:text="@string/home_history_tab_last7Days"
+                        android:textColor="@color/white"
+                        android:textSize="12.0sp" />
+
+                    <TextView
+                        android:id="@+id/last1month"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:background="@color/ui_home_view_bg"
+                        android:gravity="center"
+                        android:padding="5dip"
+                        android:text="@string/home_history_tab_last30Days"
+                        android:textColor="@color/white"
+                        android:textSize="12.0sp" />
+                </TableRow>
+            </TableLayout>
+            <!-- R1 bgn -->
+
+            <TableLayout
+                android:id="@+id/tbl_rq"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:layout_marginTop="5dp"
+                android:visibility="gone" >
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="55dip" >
+
+                    <LinearLayout
+                        android:id="@+id/ll_ch4"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dip"
+                        android:layout_weight="1"
+                        android:background="@color/ui_home_view_bg"
+                        android:clickable="true"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="40dip"
+                            android:layout_height="40dip"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingLeft="10dip"
+                            android:src="@drawable/ui_home_unit_ch4" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_co"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dip"
+                        android:layout_marginLeft="1px"
+                        android:layout_weight="1"
+                        android:background="@color/ui_home_view_bg"
+                        android:clickable="true"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="40dip"
+                            android:layout_height="40dip"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingLeft="10dip"
+                            android:src="@drawable/ui_home_unit_co" />
+                    </LinearLayout>
+                </TableRow>
+            </TableLayout>
+            <!-- R1 end -->
+            <!-- A1 bgn -->
+
+            <TableLayout
+                android:id="@+id/tbl_kq"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:visibility="gone" >
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <LinearLayout
+                        android:id="@+id/ll_temp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/ui_home_view_bg"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="40dip"
+                            android:layout_height="40dip"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingLeft="10dip"
+                            android:src="@drawable/ui_home_unit_temperature" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_hum"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2px"
+                        android:layout_weight="1"
+                        android:background="@color/ui_home_view_bg"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="40dip"
+                            android:layout_height="40dip"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingLeft="10dip"
+                            android:src="@drawable/ui_home_unit_humidity" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_co2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2px"
+                        android:layout_weight="1"
+                        android:background="@color/ui_home_view_bg"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="40dip"
+                            android:layout_height="40dip"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingLeft="10dip"
+                            android:src="@drawable/ui_home_unit_co2" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_pm"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2px"
+                        android:layout_weight="1"
+                        android:background="@color/ui_home_view_bg"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="40dip"
+                            android:layout_height="40dip"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingLeft="10dip"
+                            android:src="@drawable/ui_home_unit_pm25" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_voc"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2px"
+                        android:layout_weight="1"
+                        android:background="@color/ui_home_view_bg"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="40dip"
+                            android:layout_height="40dip"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingLeft="10dip"
+                            android:src="@drawable/ui_home_unit_voc" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_ch2o"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2px"
+                        android:layout_weight="1"
+                        android:background="@color/ui_home_view_bg"
+                        android:orientation="horizontal"
+                        android:visibility="gone" >
+
+                        <ImageView
+                            android:layout_width="40dip"
+                            android:layout_height="40dip"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingLeft="10dip"
+                            android:src="@drawable/ui_home_unit_ch2o"
+                            android:visibility="gone" />
+                    </LinearLayout>
+                </TableRow>
+            </TableLayout>
+            <!-- A1 end -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="5dip"
+                android:paddingLeft="10dip"
+                android:text="@string/home_sensor_solution"
+                android:textColor="@color/white"
+                android:textSize="20.0sp"
+                android:visibility="gone" />
+
+            <ListView
+                android:id="@+id/uiHomeSolutionList"
+                android:layout_width="match_parent"
+                android:layout_height="550dp"
+                android:divider="@color/white"
+                android:dividerHeight="1px"
+                android:listSelector="@android:color/transparent"
+                android:visibility="gone" >
+            </ListView>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="50dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

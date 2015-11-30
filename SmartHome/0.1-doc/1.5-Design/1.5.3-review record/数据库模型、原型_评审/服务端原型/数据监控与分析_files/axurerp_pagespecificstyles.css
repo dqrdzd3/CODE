@@ -1,0 +1,188 @@
+﻿body {
+    margin: 0px;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../数据监控与分析_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:8px;
+    top:12px;
+    width:964px;
+    height:639px;
+}
+
+#u0_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:970px;
+    height:645px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:312px;
+    width:960px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u4_menu {
+    background-image: url('../数据监控与分析_files/u4_menu.png');
+}
+
+.u4_menu {
+    position:absolute;
+    left:5px;
+    top:9px;
+    width:302px;
+    height:127px;
+}
+
+#u4_menu {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:299px;
+    height:124px;
+}
+
+#u5 {
+    position:absolute;
+    left:3px;
+    top:3px;
+    width:292px;
+    height:117px
+}
+
+.u6_normal {
+    background-image: url('../数据监控与分析_files/u6_normal.png');
+}
+
+.u6_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:287px;
+    height:34px;
+}
+
+#u6_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:293px;
+    height:40px;
+}
+
+.u7 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:283px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u8_normal {
+    background-image: url('../数据监控与分析_files/u8_normal.png');
+}
+
+.u8_container {
+    position:absolute;
+    left:0px;
+    top:34px;
+    width:287px;
+    height:45px;
+}
+
+#u8_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:293px;
+    height:51px;
+}
+
+.u9 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:283px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u10_normal {
+    background-image: url('../数据监控与分析_files/u10_normal.png');
+}
+
+.u10_container {
+    position:absolute;
+    left:0px;
+    top:79px;
+    width:287px;
+    height:33px;
+}
+
+#u10_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:293px;
+    height:39px;
+}
+
+.u11 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:283px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+

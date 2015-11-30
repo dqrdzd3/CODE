@@ -1,0 +1,365 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="../lib/jquery/jquery.mobile-1.4.5.min.css"
+	type="text/css" media="screen">
+<script src="../lib/jquery/jquery-1.9.1.min.js"></script>
+<style>
+body {
+	padding-right: 0px;
+	padding-left: 0px;
+	font-size: 20sp;
+	background: center 30%;
+	padding-bottom: 0px;
+	COLOR: #ffffff;
+	padding-top: 0px;
+	text-align: center;
+	text-decoration: none;
+	float: none;
+	clear: both;
+	margin: auto;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	background-color: #2C3857;
+}
+
+#div_func {
+	float: left;
+	margin-left: 20px;
+}
+
+#div_curValue {
+	font-size: 50pt;
+	font-weight: bold;
+	width: 100%;
+	clear: left;
+}
+
+.curUnit {
+	font-size: 10pt;
+}
+
+#down_part {
+	margin: 0 auto;
+	background-color: #008FD7;
+	z-index: 999;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 35%;
+	_position: absolute;
+}
+
+#div_status {
+	float: right;
+}
+
+#status {
+	font-size: 20sp;
+	margin-right: 10px;
+	margin-top: 20px;
+}
+
+#statusVal {
+	font-size: 40pt;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+#means {
+	font-size: 10pt;
+	text-align: right;
+	margin-right: 10px;
+	width: 70%;
+	float: right;
+}
+
+#intro {
+	margin: 0 auto;
+	font-size: 25pt;
+	bottom: 20px;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	height: 50px;
+}
+
+.clear {
+	clear: right;
+}
+
+.button {
+	width: 30%;
+	display: inline-block;
+	position: relative;
+	margin: 10px;
+	padding: 0 20px;
+	text-align: center;
+	text-decoration: none;
+	font: bold 80pt/25px Arial, sans-serif;
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, .22);
+	-webkit-border-radius: 90px;
+	-moz-border-radius: 90px;
+	border-radius: 90px;
+	-webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 1px 1px 1px
+		rgba(255, 255, 255, .44);
+	-moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 1px 1px 1px
+		rgba(255, 255, 255, .44);
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 1px 1px 1px
+		rgba(255, 255, 255, .44);
+	-webkit-transition: all 0.15s ease;
+	-moz-transition: all 0.15s ease;
+	-o-transition: all 0.15s ease;
+	-ms-transition: all 0.15s ease;
+	transition: all 0.15s ease;
+}
+
+.gray {
+	color: #2C3857;
+	background: #d3d3d3; /* Old browsers */
+	background: -moz-linear-gradient(top, #d3d3d3 0%, #8a8a8a 100%);
+	/* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d3d3d3),
+		color-stop(100%, #8a8a8a)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #d3d3d3 0%, #8a8a8a 100%);
+	/* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #d3d3d3 0%, #8a8a8a 100%);
+	/* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #d3d3d3 0%, #8a8a8a 100%);
+	/* IE10+ */
+	background: linear-gradient(top, #d3d3d3 0%, #8a8a8a 100%); /* W3C */
+}
+/* Big Button Style */
+.big {
+	padding: 0 40px;
+	padding-top: 10px;
+	height: 40px;
+	text-transform: uppercase;
+	font: bold 30pt/30px Microsoft YaHei;
+}
+
+.big span {
+	display: block;
+	text-transform: none;
+	font: italic normal 80pt/18px Georgia, sans-serif;
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, .12);
+}
+
+.button:hover {
+	-webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 0px 0px 2px
+		rgba(0, 0, 0, .5);
+	-moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 0px 0px 2px
+		rgba(0, 0, 0, .5);
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 0px 0px 2px
+		rgba(0, 0, 0, .5);
+}
+
+.button:active {
+	-webkit-box-shadow: inset 0px 0px 3px rgba(0, 0, 0, .8);
+	-moz-box-shadow: inset 0px 0px 3px rgba(0, 0, 0, .8);
+	box-shadow: inset 0px 0px 3px rgba(0, 0, 0, .8);
+}
+</style>
+<script type="text/javascript">
+			var _isStartTest = true;
+			/** 准备进行酒精测试 */
+			var ALCOHOL_READY = 25;
+			/** 酒精检测中 */
+			var ALCOHOL_PROCESS = 20;
+			var _isEnd = false;
+			
+			var _readyCount = 30;
+			
+			/* 参与酒精显示的流程 */
+			var _alcoholFunc = 0;
+			var _alcoholMean = "";
+			var _alcoholValue = "";
+
+			var _curValue = 0.0;
+			var _maxValue = 5.0;
+			var _unit = 'ppm';
+		    var _status = "正常";
+		    var _width = 210; 
+			var _height = 210;
+			var _topLoader = null;
+		    var _means = "";
+		    var _func = "";
+		    var _funcName = "";
+			function initDatas(datas){
+			       var json = eval("("+datas+")");
+			        
+					_curValue = initValue(json.curValue);
+					_maxValue = initValue(json.maxValue);
+					_unit = chkIsNull(json.unit)? "ppm" : json.unit;
+					_status = chkIsNull(json.status)? "正常" : json.status;
+					_means = chkIsNull(json.means)? "正常" : json.means;
+					_width = json.width; 
+			        _height = json.height;
+			        _func = json.func;
+			        _funcName = json.funcName;
+			       	$("#json").text("json"+datas);
+					
+					// $("#console").text("当前值:"+_curValue+" 单位:"+_unit+" 状态:"+_status);
+					$("#func").text("功能:"+_func+" 功能名:"+_funcName);
+					
+					//$("#curValue").text(_curValue);
+					//$("#status").text(_status);
+					$("#curValue").text(_alcoholValue);
+					
+					$("#means").text(_alcoholMean);
+					// 如果酒精预热完成且传感器道济时完成则进入判断逻辑
+					if(_isStartTest&&json.isStart){
+						monitorTest();
+					}else if(!json.isStart){
+						$("#status").text(_status);
+					}
+			}
+			var _readTestTimer;
+			function monitorTest(){
+				/* 再次测试，进入准备状态后需要30秒时间预热 */
+       			 if(_isEnd&&(_func==ALCOHOL_READY)){
+       			 $("#console").text("ready2Test1");
+       				_isEnd = false;
+       				_isStartTest = false;
+       				_readyCount = 30;
+       				_readTestTimer = window.setInterval(readyCount, 1000);
+       				
+       			}
+				/* 如果传感器进入了酒精检测状态就提示准备好了检测 */
+				else if((_func==ALCOHOL_READY)&&
+       			((_alcoholFunc==ALCOHOL_PROCESS)||(_alcoholFunc==0))&&(!_isEnd))
+       			{
+       			$("#console").text("ready2Test2");
+       				ready2Test();
+       			}
+       			/* 如果当前已经提示“正在测试”，并且[如果上一次没有检测或上次检测为检测中]则进行测试的流程 */
+       			else if((_func==ALCOHOL_PROCESS)&&
+       			((_alcoholFunc==ALCOHOL_READY)||(_alcoholFunc==0)))
+       			{
+       				testing();
+       			}
+       			
+        	}
+        	
+        	function readyCount(){
+				if(_readyCount<=0){
+					clearInterval(_readTestTimer);
+					_isStartTest = true;//30秒倒计时
+					ready2Test();
+				} else{
+					$("#status").text("预热中，还有"+_readyCount+"秒");
+				}
+				_readyCount--;
+        	}
+        	/* 准备进行检测 */
+			function ready2Test(){
+				window.alcoholAction.playReadyTest();
+				$("#console").text("ready2Test");
+				_alcoholFunc = ALCOHOL_READY;
+				$("#status").text("准备完成，可以进行检测");
+				$("#audioDanger").play();
+			}
+        	var _count = 0;
+        	var _timer = 0;
+			function testing(){
+				window.alcoholAction.playStartTest();
+				_count = 9;
+			$("#console").text("testing");
+				_alcoholFunc = ALCOHOL_PROCESS;
+				_timer = window.setInterval(setTestingStatus, 1000);
+				
+			}
+			function setTestingStatus(){
+				var str = "";
+				if(_count<=0){
+					clearInterval(_timer);
+					testEnd();
+				} else if(_count>5){
+					str = "检测中，请保持吹气"+(_count-5)+"秒"
+				} else if(_count<=5){
+					str = "分析中，还有"+_count+"秒"
+				}
+				if(str!=""){
+					$("#status").text(str);
+				}
+				_count--;
+			}
+			function testEnd(){
+				$("#console").text("testEnd");
+				_alcoholMean = _means;
+				if(_status.indexOf(".") > 0 ){ 
+				    window.alcoholAction.playNormal();
+				    $("#statusVal").text(_status);
+				} else if(_status.indexOf("!") > 0 ){
+					window.alcoholAction.playHigh();
+					$("#statusVal").text(_status);
+				} else if(_status.indexOf("!!") > 0 ){
+					window.alcoholAction.playDanger();
+					$("#statusVal").text(_status);
+				}
+				_alcoholValue = _curValue;
+				window.alcoholAction.setCurrentValue(_alcoholValue);
+				$("#unit").text(_unit);
+				$("#status").text("检测完成，可以进行下次检测");
+				_isEnd = true;
+			}
+			
+			function initValue(value){
+				return chkIsNull(value)? 0 : new Number(value);
+			}
+			/* 判断是否为空 */
+			function chkIsNull(exp){
+				if (typeof(exp) != "undefined") 
+				{
+					return false;
+				}
+				return true;
+			}
+		   function update(datas){
+		    	// document.write("update "+datas);
+		    	initDatas(datas);
+		    	//updateChart(_curValue,_maxValue,_unit,_status);
+		    }
+		//update('{"maxValue":3.0,"height":280,"curValue":3.0,"width":280,"unit":"sdf","status":""}') ;
+			
+	</script>
+</head>
+<body>
+	<div id="up_part">
+		<p id="console" style="display: none;">console</p>
+		<div id="div_func">
+			<h4 id="func" style="display: none;"></h4>
+			<h4 align="left">当前酒精浓度：</h4>
+		</div>
+		<div align="center" style="height: 50px;" id="div_curValue">
+			<span id="curValue">230</span><span id="unit" class="curUnit"></span>
+		</div>
+		<br />
+		<div align="center" style="height: 50px;">
+			<h2 id="status">检测完毕，可进行下次监测</h2>
+		</div>
+		<p>如检测到酒精则会自动进入检测流程</p>
+		<div>
+			<span><a href="#" class="button big gray"
+				style="display: none;">开 始</a> </span>
+		</div>
+	</div>
+	<div id="down_part">
+		<div style="height: 10px;"></div>
+		<div id="div_status">
+			<span id="statusVal"></span><br />
+			<div style="height: 20px;">
+				<span id="means">为了您和其他人的安全请勿酒后驾车</span>
+			</div>
+		</div>
+		<div style="width: 100%; height: 10px;"></div>
+
+	</div>
+	<p id="json" style="display: none;"></p>
+</body>
+
+</html>

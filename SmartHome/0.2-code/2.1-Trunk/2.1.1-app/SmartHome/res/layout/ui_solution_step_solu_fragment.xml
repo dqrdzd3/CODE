@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ui_home_bg_blur" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <com.zf.view.TitleBarTranView
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ui_solution_centent_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/soluSumText"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20dp"
+                android:gravity="center_vertical"
+                android:text="@string/ui_solution_default"
+                android:textColor="@color/white"
+                android:textSize="@dimen/solu_big" />
+
+            <Button
+                android:id="@+id/soluUpBtn"
+                android:layout_width="90sp"
+                android:layout_height="30sp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/ui_solution_btn_bg"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/ui_solution_solu"
+                android:textColor="@color/white"
+                android:textSize="@dimen/solu_small" />
+        </RelativeLayout>
+        <!-- PM25 bgn -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ui_solution_centent_bg"
+            android:orientation="horizontal" 
+            android:visibility="gone" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:src="@drawable/ui_home_unit_pm25" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/ui_solution_pm25_1"
+                android:textColor="@color/white"
+                android:textSize="@dimen/solu_small" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/ui_solution_pm25_2"
+                android:textColor="@color/white"
+                android:textSize="@dimen/solu_small" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/ui_solution_pm25_3"
+                android:textColor="@color/white"
+                android:textSize="@dimen/solu_small" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.9"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/soluPm25Value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/ui_solution_default_value"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/solu_big" />
+
+                <TextView
+                    android:id="@+id/soluPm25Content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/ui_solution_default"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/solu_small" />
+            </LinearLayout>
+        </LinearLayout>
+        <!-- PM25 end -->
+
+
+        <!-- VOC bgn -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ui_solution_centent_bg"
+            android:orientation="horizontal" 
+            android:visibility="gone" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:src="@drawable/ui_home_unit_voc" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/ui_solution_voc_1"
+                android:textColor="@color/white"
+                android:textSize="@dimen/solu_small" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/ui_solution_voc_2"
+                android:textColor="@color/white"
+                android:textSize="@dimen/solu_small" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/ui_solution_voc_3"
+                android:textColor="@color/white"
+                android:textSize="@dimen/solu_small" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.9"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/soluVOCValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/ui_solution_default_value"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/solu_big" />
+
+                <TextView
+                    android:id="@+id/soluVOCContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/ui_solution_default"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/solu_small" />
+            </LinearLayout>
+        </LinearLayout>
+        <!-- VOC end -->
+        <!-- CO2 bgn -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ui_solution_centent_bg"
+            android:orientation="horizontal" 
+            android:visibility="gone" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:src="@drawable/ui_home_unit_co2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/ui_solution_co2_1"
+                android:textColor="@color/white"
+                android:textSize="@dimen/solu_small" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/ui_solution_co2_2"
+                android:textColor="@color/white"
+                android:textSize="@dimen/solu_small" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/ui_solution_co2_3"
+                android:textColor="@color/white"
+                android:textSize="@dimen/solu_small" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.9"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/soluCO2Value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/ui_solution_default_value"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/solu_big" />
+
+                <TextView
+                    android:id="@+id/soluCO2Content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/ui_solution_default"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/solu_small" />
+            </LinearLayout>
+        </LinearLayout>
+        <!-- CO2 end -->
+        <!-- 详情 bgn -->
+
+        <LinearLayout
+            android:id="@+id/soluAllContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ui_solution_centent_bg"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:text="@string/ui_solution_detail"
+                android:textColor="@color/white"
+                android:textSize="@dimen/solu_middle" />
+
+            <TextView
+                android:id="@+id/soluContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:text="@string/ui_solution_detail_centent"
+                android:textColor="@color/white"
+                android:textSize="@dimen/solu_small" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/soluAllContent2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/soluContent1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/ui_solution_centent_bg"
+                android:padding="10dp"
+                android:text="@string/ui_solution_detail_centent"
+                android:textColor="@color/white"
+                android:textSize="@dimen/solu_small" />
+
+            <TextView
+                android:id="@+id/soluContent2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/ui_solution_centent_bg"
+                android:padding="10dp"
+                android:text="@string/ui_solution_detail_centent"
+                android:textColor="@color/white"
+                android:textSize="@dimen/solu_small" />
+
+            <TextView
+                android:id="@+id/soluContent3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/ui_solution_centent_bg"
+                android:padding="10dp"
+                android:text="@string/ui_solution_detail_centent"
+                android:textColor="@color/white"
+                android:textSize="@dimen/solu_small" />
+
+            <TextView
+                android:id="@+id/soluContent4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:padding="10dp"
+                android:text="@string/ui_solution_detail_centent"
+                android:textColor="@color/white"
+                android:textSize="@dimen/solu_small" />
+
+            <TextView
+                android:id="@+id/soluContent5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/ui_solution_detail_centent"
+                android:textColor="@color/white"
+                android:textSize="@dimen/solu_smallsmall" />
+        </LinearLayout>
+        <!-- 详情 end -->
+
+        <Button
+            android:id="@+id/soluDownBtn"
+            android:layout_width="90sp"
+            android:layout_height="30sp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_margin="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/ui_solution_btn_bg"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/ui_solution_shop"
+            android:textColor="@color/white"
+            android:textSize="@dimen/solu_small" />
+    </LinearLayout>
+
+</ScrollView>

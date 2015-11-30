@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:b="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/security 
+    http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<b:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<b:property name="locations">
+			<b:list>
+				<b:value>classpath:conf.properties</b:value>
+			</b:list>
+		</b:property>
+		<b:property name="ignoreUnresolvablePlaceholders" value="true" /> 
+	</b:bean>
+
+	<!-- http auto-config="true" access-denied-page="/accessDenied.jsp" -->
+	<!-- 不要过滤图片等静态资源 -->
+	<http pattern="/**/*.jpg" security="none" />
+	<http pattern="/**/*.png" security="none" />
+	<http pattern="/**/*.gif" security="none" />
+	<http pattern="/**/*.css" security="none" />
+	<http pattern="/**/*.js" security="none" />
+	<http pattern="/**/*.swf" security="none"/>
+	<http pattern="/index.jsp" security="none" />
+	<http pattern="/login.action" security="none" />
+	<http pattern="j_spring_cas_security_check" security="none" />
+
+	
+	<http pattern="/noPerm.html" security="none"/>
+	
+	<!-- 登录页面和忘记密码页面不过滤 -->
+	<http pattern="/login.jsp" security="none" />
+	
+	<http pattern="/register.html" security="none"/>
+	
+	<!-- 页面框架和资源文件不过滤 -->
+	<http pattern="/res/*" security="none" />
+	<http pattern="/res/**/*" security="none"/>
+	<http pattern="/frame/*" security="none" />
+	<http pattern="/pad/*" security="none" />
+	<http pattern="/pad/**/*" security="none" />
+	
+	<!-- 系统推出不过滤 -->
+	<http pattern="/login!logout.action" security="none" />
+	<http pattern="/getPermButtons.action" security="none" />
+	<http pattern="/upload/upload.action" security="none" />
+		
+	<http auto-config="false" entry-point-ref="casEntryPoint" servlet-api-provision="true">
+		<!-- <http auto-config="false" servlet-api-provision="true"> -->
+		<!-- <intercept-url pattern="/**" access="ROLE_ANONYMOUS"/> -->
+		
+		 <access-denied-handler error-page="/login!logout.action"/>
+		
+		<logout logout-url="/login!logout.action" />
+		
+		<form-login login-page="/login.action" />
+		
+		<!-- 检测失效的sessionId,超时时定位到另外一个URL -->
+		<!-- <session-management invalid-session-url="${cas.server}/logout" > -->
+		<session-management invalid-session-url="/login!logout.action" >
+			<concurrency-control max-sessions="1" expired-url="${cas.server}/logout"/>
+		</session-management>
+		
+		<!-- <custom-filter position="CAS_FILTER" ref="casFilter"/> -->
+		<!-- <custom-filter before="FORM_LOGIN_FILTER" ref="casFilter"/> -->
+		<!-- <custom-filter position="CAS_FILTER" ref="casFilter"/> -->
+		
+		<!-- 增加一个自定义的filter，放在FILTER_SECURITY_INTERCEPTOR之前，
+		实现用户、角色、权限、资源的数据库管理。 11/3/23 -->
+		<!-- <custom-filter ref="customFilter" before="FILTER_SECURITY_INTERCEPTOR"/> -->
+		<custom-filter ref="customExceptionFilter" after="EXCEPTION_TRANSLATION_FILTER"/>
+		<custom-filter ref="customFilter" before="FILTER_SECURITY_INTERCEPTOR"/>
+	</http>
+	
+	<!-- 提供认证入口 -->
+	<!-- <b:bean id="casEntryPoint"  
+        class="org.springframework.security.cas.web.CasAuthenticationEntryPoint">   -->
+    <b:bean id="casEntryPoint"  
+        class="com.hw.hwsafe.security.spring.CustomCasAuthenticationEntryPoint">
+        <b:property name="loginUrl" value="${cas.server}/login"/>  
+        <b:property name="serviceProperties" ref="serviceProperties"/>  
+    </b:bean>  
+    <b:bean id="serviceProperties" class="org.springframework.security.cas.ServiceProperties">  
+             <b:property name="service"  
+                value="${cas.client}/noPerm.html"/>
+        <b:property name="sendRenew" value="false"/>  
+    </b:bean>
+    
+    <!-- 处理CAS service ticket -->
+    <b:bean id="casFilter"  
+            class="org.springframework.security.cas.web.CasAuthenticationFilter">  
+        <b:property name="authenticationManager" ref="authenticationManager"/>
+         <b:property name="authenticationSuccessHandler" ref="authenticationSuccessHandler"/>
+         <b:property name="authenticationFailureHandler" ref="authenticationFailureHandler"></b:property>
+    </b:bean>
+    
+    <!-- cas 认证成功控制器  --> 
+     <!-- <b:bean id="authenticationSuccessHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler"> -->
+    <b:bean id="authenticationSuccessHandler" class="com.hw.hwsafe.security.spring.CustomUrlAuthenticationSuccessHandler">
+		<b:property name="alwaysUseDefaultTargetUrl" value="true"/>
+		<b:property name="defaultTargetUrl" value="/login.action" />
+    </b:bean>
+
+	<!-- cas 认证失败控制器-->
+	<!-- <b:bean id="authenticationFailureHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler"> -->
+	<b:bean id="authenticationFailureHandler" class="com.hw.hwsafe.security.spring.CustomUrlAuthenticationFailureHandler">
+		<b:property name="defaultFailureUrl" value="/login!logout.action" />
+	</b:bean>
+      
+    <authentication-manager alias="authenticationManager">  
+        <authentication-provider ref="casAuthenticationProvider"/>  
+    </authentication-manager>  
+     
+    <b:bean id="casAuthenticationUserDetailsService" class="org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper">  
+        <b:property name="userDetailsService" >  
+            <b:ref bean="userDetailsManager"/>
+        </b:property>  
+    </b:bean>  
+     
+	<b:bean id="userDetailsManager" class="com.hw.hwsafe.security.spring.CustomUserDetailsService"/>
+     
+    <b:bean id="casAuthenticationProvider"  
+            class="org.springframework.security.cas.authentication.CasAuthenticationProvider">  
+        <b:property name="authenticationUserDetailsService" ref="casAuthenticationUserDetailsService"/>  
+        <b:property name="serviceProperties" ref="serviceProperties" />  
+        <b:property name="ticketValidator">  
+            <b:bean class="org.jasig.cas.client.validation.Cas20ServiceTicketValidator">  
+                <b:constructor-arg index="0" value="${cas.server}" />  
+            </b:bean>  
+        </b:property>  
+        <b:property name="key" value="an_id_for_this_auth_provider_only"/>  
+    </b:bean>
+	
+	<!-- 一个自定义的filter，必须包含authenticationManager,
+		accessDecisionManager,securityMetadataSource三个属性。 11/3/23  -->
+	<b:bean id="customFilter" 
+		class="com.hw.hwsafe.security.spring.CustomFilterSecurityInterceptor">
+		<b:property name="authenticationManager" 
+			ref="authenticationManager"/>
+		<b:property name="accessDecisionManager" 
+			ref="customAccessDecisionManager"/>
+		<b:property name="securityMetadataSource" 
+			ref="customSecurityMetadataSource"/>
+	</b:bean>
+	
+	<b:bean id="customExceptionFilter" class="com.hw.hwsafe.security.spring.CustomExceptionTranslationFilter">
+		<b:property name="authenticationEntryPoint" ref="casEntryPoint"/>
+	</b:bean>
+	
+	<!-- 访问决策器，决定某个用户具有的角色，是否有足够的权限去访问某个资源。11/3/23 -->
+	<b:bean id="customAccessDecisionManager"
+		class="com.hw.hwsafe.security.spring.CustomAccessDecisionManager">
+	</b:bean>  
+	
+
+	<!-- 资源源数据定义，将所有的资源和权限对应关系建立起来，即定义某一资源可以被哪些角色去访问。11/3/23 -->
+	<b:bean id="customSecurityMetadataSource"
+		class="com.hw.hwsafe.security.spring.CustomInvocationSecurityMetadataSourceService">
+	</b:bean>
+	
+	<!-- 定义上下文返回的消息的国际化。（新版本） 11/3/23 -->
+	<b:bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<b:property name="basename"
+			value="classpath:org/springframework/security/messages_zh_CN"/>
+	</b:bean>
+	
+	<!--
+		事件监听:实现了 ApplicationListener监听接口,
+		包括AuthenticationCredentialsNotFoundEvent 事件，
+		AuthorizationFailureEvent事件，AuthorizedEvent事件， PublicInvocationEvent事
+		件。 -->
+	<b:bean
+		class="org.springframework.security.authentication.event.LoggerListener" />
+
+	<!-- 设置权限的前缀为AUTH_，而不是ROLE_。 -->
+	<b:bean id="roleVoter" class="org.springframework.security.access.vote.RoleVoter">
+    	<b:property name="rolePrefix" value="AUTH_"/>
+    </b:bean>
+</b:beans>

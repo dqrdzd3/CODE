@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.corpinfo.dao.IB00402Dao">
+
+	<!-- 获取分页信息 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008, MA009, MA010, MA011
+			from B00402
+			<where>
+				1 = 1
+				<if test="po.ma001 != null and po.ma001 != ''">
+					and MA001 = #{po.ma001}
+				</if>
+				<if test="po.ma002 != null and po.ma002 != ''">
+					and MA002 = #{po.ma002}
+				</if>
+				<if test="po.ma003 != null and po.ma003 != ''">
+					and MA003 = #{po.ma003}
+				</if>
+				<if test="po.ma004 != null and po.ma004 != ''">
+					and MA004 = #{po.ma004}
+				</if>
+				<if test="po.ma005 != null and po.ma005 != ''">
+					and MA005 = #{po.ma005}
+				</if>
+				<if test="po.ma006 != null and po.ma006 != ''">
+					and MA006 = #{po.ma006}
+				</if>
+				<if test="po.ma007 != null and po.ma007 != ''">
+					and MA007 = #{po.ma007}
+				</if>
+				<if test="po.ma008 != null and po.ma008 != ''">
+					and MA008 = #{po.ma008}
+				</if>
+				<if test="po.ma009 != null and po.ma009 != ''">
+					and MA009 = #{po.ma009}
+				</if>
+				<if test="po.ma010 != null and po.ma010 != ''">
+					and MA010 = #{po.ma010}
+				</if>
+				<if test="po.ma011 != null and po.ma011 != ''">
+					and MA011 = #{po.ma011}
+				</if>
+			</where>
+	</select>
+
+	<!-- 通过id获取实例 -->
+	<select id="retrieveInstanceById" parameterType="String" resultType="com.hw.hwsafe.corpinfo.pojo.B00402PO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008, MA009, MA010, MA011
+			from B00402
+			where MA001 = #{ma001}
+	</select>
+
+	<!-- 添加实例 -->
+	<insert id="insertInstance" parameterType="com.hw.hwsafe.corpinfo.pojo.B00402PO">
+		insert into B00402(MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008, MA009, MA010, MA011)
+			values(
+				#{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=VARCHAR},
+				#{ma004,jdbcType=VARCHAR},#{ma005,jdbcType=TIMESTAMP},#{ma006,jdbcType=NUMERIC},
+				#{ma007,jdbcType=VARCHAR},#{ma008,jdbcType=NUMERIC},#{ma009,jdbcType=VARCHAR},
+				#{ma010,jdbcType=TIMESTAMP},#{ma011,jdbcType=VARCHAR}
+			)
+	</insert>
+
+	<!-- 修改实例 -->
+	<update id="updateInstance" parameterType="com.hw.hwsafe.corpinfo.pojo.B00402PO">
+		update B00402
+			set
+				MA002 = #{ma002,jdbcType=VARCHAR}, MA003 = #{ma003,jdbcType=VARCHAR}, MA004 = #{ma004,jdbcType=VARCHAR}, 
+				MA005 = #{ma005,jdbcType=TIMESTAMP}, MA006 = #{ma006,jdbcType=NUMERIC}, MA007 = #{ma007,jdbcType=VARCHAR}, 
+				MA008 = #{ma008,jdbcType=NUMERIC}, MA009 = #{ma009,jdbcType=VARCHAR}, MA010 = #{ma010,jdbcType=TIMESTAMP}, 
+				MA011 = #{ma011,jdbcType=VARCHAR}
+			where MA001 = #{ma001}
+	</update>
+</mapper>

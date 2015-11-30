@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>安全生产综合监管与应急救援平台</title>
+<style type="text/css">
+<!--
+body,html{
+	 
+	background:url(images/loginbg.jpg) repeat-x left top #0B917C; margin:0px; padding:0px;
+	font-size:12px; 
+	font-family:"宋体",Verdana, Arial, Helvetica, sans-serif; 
+	color:#565656;
+}
+p{ margin:0px; padding:0px;}
+#registerbg{ width:1003px; background:url(images/registerbg.jpg)  top  repeat-y; margin:0 auto; position:relative;}
+#registerbottom{ width:1003px; background:url(images/registerbottombg.jpg) bottom center no-repeat; padding-top:191px;}
+#registermain{ width:1003px; background:url(images/registertopbg.jpg)  top center no-repeat;}
+#registermaincontent{ width:423px; margin:0 auto;}
+#registermaindiv{
+	background:url(images/hrbg.jpg) bottom no-repeat;
+	margin-bottom:17px;
+	padding-bottom: 23px;
+}
+.registertitle{
+	color:#45A292;
+	font-size:14px;
+	font-weight:bold;
+	margin-bottom: 10px;
+}
+#registerform{ margin-left:30px;}
+input{ background:url(images/reinputbg.jpg) left top repeat-x;  border:#62BBAD solid 1px; height:18px; font-size:12px; padding-left:4px; line-height:18px;}
+.input1{width:100%;}
+.input2{width:100%; color:#BEBEBE;}
+
+.red{ color:#FF0000;}
+#point{  position:relative; height:26px; margin-top:2px; margin-bottom:13px;}
+#pointcontent{background-color:#FFFFDE; border:#FFD2A1 solid 1px; line-height:20px; padding-left:4px; padding-right:4px; position:relative; z-index:-999px; margin-top:-1px;}
+#pointicon{ position:relative; z-index:999; height:5px;}
+#buttonarea{padding-bottom:131px; width:130px; margin:0 auto;}
+-->
+</style>
+<script type="text/JavaScript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+</head>
+
+<body onload="MM_preloadImages('images/backbuttona.jpg')">
+<div id="registerbg">
+  <div id="registermain">
+  <div id="registerbottom">
+    <div id="registermaincontent"> 
+	<div id="registermaindiv" style="padding-bottom:30px;">
+	  <div class="registertitle">填报单位信息</div>
+	  <div id="registerform"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="20%" align="left">填报单位名称</td>
+    <td width="48%" align="left"><input name="text5" type="text"  style="width:190px;"/></td>
+    <td width="3%" align="center" class="red">*</td>
+    <td width="29%" align="right"><a href="#"><img src="images/detectbutton.jpg" width="105" height="25" border="0" /></a></td>
+  </tr>
+  <tr>
+    <td align="left">&nbsp;</td>
+    <td colspan="3"><div id="point"><div id="pointicon"><img src="images/point.jpg" /></div>
+      <div id="pointcontent" style="width:163px;">按照工商营业执照上全称填写</div>
+    </div></td>
+    </tr>
+  <tr>
+    <td align="left">单&nbsp;位&nbsp;代&nbsp;&nbsp;码</td>
+    <td width="48%"><input name="" type="text"  style="width:60px;"/> - <input name="" type="text"  style="width:20px;"/> - <input name="" type="text"  style="width:60px;"/></td>
+    <td width="4%" align="center" class="red">*</td>
+    <td width="28%" align="right"><a href="#"><img src="images/detectbutton.jpg" width="105" height="25" border="0" /></a></td>
+  </tr>
+  <tr>
+    <td align="left">&nbsp;</td>
+    <td colspan="3"><div id="point"><div id="pointicon"><img src="images/point.jpg" /></div>
+      <div id="pointcontent" style="width:102px;">单位代码即用户名</div>
+    </div></td>
+    </tr>
+  <tr>
+    <td align="left">确认单位代码</td>
+    <td width="48%"><input name="" type="text"  style="width:60px;"/> - <input name="" type="text"  style="width:20px;"/> - <input name="" type="text"  style="width:60px;"/></td>
+    <td align="center"><span class="red">*</span></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</div>
+	</div>
+    <div id="registermaindiv"><div class="registertitle">填报单位信息</div>
+	  <div id="registerform">
+	    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="20%" height="37" align="left">用  户 密 &nbsp;码</td>
+            <td width="48%" height="37" align="left"><input name="text" type="text" class="input1" /></td>
+            <td width="4%" height="37" align="right"><span class="red">*</span></td>
+            <td width="28%" height="37">&nbsp;</td>
+          </tr>
+          <tr>
+            <td height="37" align="left">确认用户密码 </td>
+            <td height="37" align="left"><input name="text2" type="text" class="input1" /></td>
+            <td height="37" align="right"><span class="red">*</span></td>
+            <td height="37">&nbsp;</td>
+          </tr>
+          <tr>
+            <td height="37" align="left">联系 人姓 名 </td>
+            <td height="37" align="left"><input name="text3" type="text" class="input1" /></td>
+            <td height="37" align="right"><span class="red">*</span></td>
+            <td height="37">&nbsp;</td>
+          </tr>
+          <tr>
+            <td height="37" align="left">联系 人电 话 </td>
+            <td height="37" align="left"><input name="text4" type="text" class="input1" /></td>
+            <td height="37" align="right"><span class="red">*</span></td>
+            <td height="37">&nbsp;</td>
+          </tr>
+        </table>
+	  </div></div><div  style="margin-bottom:20px;"><div class="registertitle">填报地区信息</div>
+	  <div id="registerform">
+	    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="20%" height="37" align="left">省&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;份</td>
+            <td width="48%" height="37" align="left"><input name="text2" type="text" class="input2" value="河南省" /></td>
+            <td width="4%" height="37" align="right"><span class="red">*</span></td>
+            <td width="28%" height="37">&nbsp;</td>
+          </tr>
+          <tr>
+            <td height="37" align="left">区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市</td>
+            <td height="37" align="left"><input name="text3" type="text" class="input2" value="郑州市                          " /></td>
+            <td height="37" align="right"><span class="red">*</span></td>
+            <td height="37">&nbsp;</td>
+          </tr>
+          <tr>
+            <td height="37" align="left">区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;县</td>
+            <td height="37" align="left"><input name="text4" type="text" class="input2" value="高新区" /></td>
+            <td height="37" align="right"><span class="red">*</span></td>
+            <td height="37">&nbsp;</td>
+          </tr>
+        </table>
+	  </div></div>
+      <div id="buttonarea">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><a href="index.html"><img src="images/okbuttona.jpg" border="0" /></a></td>
+    <td><a href="login.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image6','','images/backbuttona.jpg',1)"><img src="images/backbutton.jpg" name="Image6" width="64" height="34" border="0" id="Image6" /></a></td>
+  </tr>
+</table>
+
+    </div></div>
+  </div>
+  </div>
+</div>
+</body>
+</html>

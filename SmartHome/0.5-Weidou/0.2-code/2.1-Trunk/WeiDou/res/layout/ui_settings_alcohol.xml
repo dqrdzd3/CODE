@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:fontawesometext="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res/com.hw.weiguo"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ui_setting_alcohol_title"
+        android:textSize="9pt" />
+
+    <RadioGroup
+        android:id="@+id/alcoholRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <RadioButton
+            android:id="@+id/alcoholGL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="mg/L"
+            android:textColor="@color/gray" />
+
+        <RadioButton
+            android:id="@+id/alcoholBAC100"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BAC%"
+            android:textColor="@color/gray" />
+
+        <RadioButton
+            android:id="@+id/BAC1000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BAC‰"
+            android:textColor="@color/gray" />
+
+        <RadioButton
+            android:id="@+id/MG100ML_US"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="mg/100mL美标"
+            android:textColor="@color/gray" />
+
+        <RadioButton
+            android:id="@+id/MG100ML_CN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="mg/100mL国标"
+            android:textColor="@color/gray" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/settingSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@null"
+            android:text="@string/submit"
+            bootstrapbutton:bb_roundedCorners="true"
+            bootstrapbutton:bb_size="default"
+            bootstrapbutton:bb_type="default" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/settingCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@null"
+            android:text="@string/cancel"
+            bootstrapbutton:bb_roundedCorners="true"
+            bootstrapbutton:bb_size="default"
+            bootstrapbutton:bb_type="default" />
+    </LinearLayout>
+
+</LinearLayout>

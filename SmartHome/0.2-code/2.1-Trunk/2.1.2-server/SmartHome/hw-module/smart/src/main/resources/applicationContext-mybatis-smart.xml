@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+  
+	<bean id="d002Dao" class="com.hw.hwsafe.smart.dao.impl.D002DaoImpl" />
+	
+	<bean id="s001Dao" class="com.hw.hwsafe.smart.dao.impl.S001DaoImpl" />
+	<bean id="s002Dao" class="com.hw.hwsafe.smart.dao.impl.S002DaoImpl" />
+	<bean id="s004Dao" class="com.hw.hwsafe.smart.dao.impl.S004DaoImpl" />
+	<bean id="s005Dao" class="com.hw.hwsafe.smart.dao.impl.S005DaoImpl" />
+	<bean id="s006Dao" class="com.hw.hwsafe.smart.dao.impl.S006DaoImpl" />
+	
+	<bean id="u001Dao" class="com.hw.hwsafe.smart.dao.impl.U001DaoImpl" />
+	<bean id="controlDeviceDao" class="com.hw.hwsafe.smart.dao.impl.ControlDeviceDaoImpl" />
+	
+	<bean id="a001Dao" class="com.hw.hwsafe.smart.dao.impl.A001DaoImpl" />
+	
+	<bean id="d005Dao" class="com.hw.hwsafe.smart.dao.impl.D005DaoImpl" />
+	<bean id="rankingDao" class="com.hw.hwsafe.smart.dao.impl.RankingDaoImpl" />
+	<bean id="s007Dao" class="com.hw.hwsafe.smart.dao.impl.S007DaoImpl" />
+	<bean id="w001Dao" class="com.hw.hwsafe.smart.dao.impl.W001DaoImpl" />
+	<bean id="sceneDao" class="com.hw.hwsafe.smart.dao.impl.SceneDaoImpl" />
+	<bean id="p2BDao" class="com.hw.hwsafe.smart.dao.impl.P2BDaoImpl" />
+	<bean id="corpAttachmentDao" class="com.hw.hwsafe.smart.dao.impl.CorpAttachmentDaoImpl" />
+	
+	<bean id="businessDao" class="com.hw.hwsafe.smart.dao.impl.BusinessDaoImpl" />
+	<bean id="corpBusinessDao" class="com.hw.hwsafe.smart.dao.impl.CorpBusinessDaoImpl" />
+	<bean id="corpCrmDao" class="com.hw.hwsafe.smart.dao.impl.CorpCrmDaoImpl" />
+	<bean id="corpMaterialDao" class="com.hw.hwsafe.smart.dao.impl.CorpMaterialDaoImpl" />
+	<bean id="corpOnlineDao" class="com.hw.hwsafe.smart.dao.impl.CorpOnlineDaoImpl" />
+	<bean id="corpRankDao" class="com.hw.hwsafe.smart.dao.impl.CorpRankDaoImpl" />
+	<bean id="bigScreenDao" class="com.hw.hwsafe.smart.dao.impl.BigScreenDaoImpl" />
+	
+	<bean id="updateDao" class="com.hw.hwsafe.smart.dao.impl.UpdateDaoImpl" />
+	<bean id="logDao" class="com.hw.hwsafe.smart.dao.impl.LogDaoImpl" />
+	<bean id="messageDao" class="com.hw.hwsafe.smart.dao.impl.MessageDaoImpl" />
+	<bean id="deviceDao" class="com.hw.hwsafe.smart.dao.impl.DeviceDaoImpl" />
+	<bean id="dataDao" class="com.hw.hwsafe.smart.dao.impl.DataDaoImpl" />
+	<bean id="userBaseDao" class="com.hw.hwsafe.smart.dao.impl.UserBaseDaoImpl" />
+</beans>

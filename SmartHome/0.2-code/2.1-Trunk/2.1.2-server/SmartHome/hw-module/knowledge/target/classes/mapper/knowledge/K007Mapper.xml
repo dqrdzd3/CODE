@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hw.hwsafe.knowledge.dao.IK007Dao">
+
+	
+	<!-- 根据OBJID查询 -->
+	<select id="retrieveK007ByID" parameterType="String" resultType="com.hw.hwsafe.knowledge.pojo.K007PO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+    		MA017,MA018,MA019,MA020
+			 FROM K007 WHERE MA001=#{MA001}
+	</select>
+
+		<!-- 根据条件查询所有  -->
+	<select id="retrieveK007ByPO" resultType="com.hw.hwsafe.knowledge.pojo.K007PO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+    		MA017,MA018,MA019,MA020
+		FROM K007 t 	
+		WHERE 1=1
+		<if test="MA001 != null">
+			<if test="MA001 != ''">
+			AND	MA001 = #{MA001}
+			</if>
+		</if> 
+		<if test="MA004 != null">
+			<if test="MA004 != ''">
+			AND	MA004  LIKE '%'||#{MA004}||'%' 
+			</if>
+		</if> 
+		<if test="MA005 != null">
+			<if test="MA005 != ''">
+			AND	MA005=#{MA005} 
+			</if>
+		</if> 
+		<if test="MA002 != null">
+			<if test="MA002 != ''">
+			AND	MA002=#{MA002} 
+			</if>
+		</if> 
+
+
+	
+	</select>
+	
+	<!-- 插入危险化学品知识 -->
+	<insert id="insertK007" parameterType="com.hw.hwsafe.knowledge.pojo.K007PO">
+      INSERT INTO K007(MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+    		MA017,MA018,MA019,MA020
+	   ) 
+      VALUES(
+         #{MA001,jdbcType=VARCHAR},#{MA002,jdbcType=VARCHAR},#{MA003,jdbcType=VARCHAR},#{MA004,jdbcType=VARCHAR},#{MA005,jdbcType=VARCHAR},#{MA006,jdbcType=VARCHAR},
+         #{MA007,jdbcType=VARCHAR},#{MA008,jdbcType=VARCHAR},#{MA009,jdbcType=VARCHAR},
+         #{MA010,jdbcType=VARCHAR},#{MA011,jdbcType=VARCHAR},#{MA012,jdbcType=VARCHAR},#{MA013,jdbcType=TIMESTAMP},#{MA014,jdbcType=VARCHAR},#{MA015,jdbcType=TIMESTAMP},#{MA016,jdbcType=VARCHAR},
+         #{MA017,jdbcType=TIMESTAMP},#{MA018,jdbcType=TIMESTAMP},#{MA019,jdbcType=TIMESTAMP},#{MA020,jdbcType=VARCHAR}
+       )
+	</insert>
+	<!-- 更新危险化学品知识 -->
+
+	<update id="updateK007" parameterType="com.hw.hwsafe.knowledge.pojo.K007PO">
+		UPDATE K007 
+		set	
+		 	MA004=#{MA004,jdbcType=VARCHAR},MA005=#{MA005,jdbcType=VARCHAR},
+		 	MA006=#{MA006,jdbcType=VARCHAR},MA007=#{MA007,jdbcType=VARCHAR},
+     		MA009=#{MA009,jdbcType=VARCHAR},MA010=#{MA010,jdbcType=VARCHAR},MA020=#{MA020,jdbcType=VARCHAR}
+		WHERE MA001 = #{MA001}
+	</update>
+
+<!-- 根据条件查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+    SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+        MA017,MA018,MA019,MA020,tc.name as yalxname
+    FROM K007 t left join tcodevalue tc on t.ma005=tc.value	
+		WHERE 1=1
+		<if test="po.MA004 != null">
+			<if test="po.MA004 != ''">
+			AND	t.MA004  LIKE '%'||#{po.MA004}||'%' 
+			</if>
+		</if> 
+		<if test="po.MA005 != null">
+			<if test="po.MA005 != ''">
+			AND	t.MA005=#{po.MA005} 
+			</if>
+		</if> 
+		<if test="ORGAN_UUID != null and ORGAN_UUID != ''">
+			AND t.MA002 = #{ORGAN_UUID}  
+		</if>
+		order by ma018 desc
+	</select>
+</mapper>

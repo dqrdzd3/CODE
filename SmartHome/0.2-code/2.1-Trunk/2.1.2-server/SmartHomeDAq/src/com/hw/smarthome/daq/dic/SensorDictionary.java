@@ -1,0 +1,174 @@
+package com.hw.smarthome.daq.dic;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class SensorDictionary {
+	public static Map<Integer, String> UNIT_DICTIONARY = new HashMap<Integer, String>();
+	static {
+		UNIT_DICTIONARY.put(0, "");
+		UNIT_DICTIONARY.put(1, "%LEL");
+		UNIT_DICTIONARY.put(2, "%VOL");
+		UNIT_DICTIONARY.put(3, "PPM");
+		UNIT_DICTIONARY.put(4, "μmol/mol");
+		UNIT_DICTIONARY.put(5, "℃");
+		UNIT_DICTIONARY.put(6, "%RH");
+		UNIT_DICTIONARY.put(7, "m");
+		UNIT_DICTIONARY.put(8, "m/s");
+		UNIT_DICTIONARY.put(9, "km/h");
+		UNIT_DICTIONARY.put(10, "LX");
+		UNIT_DICTIONARY.put(11, "Pa");
+		UNIT_DICTIONARY.put(12, "DB");
+		UNIT_DICTIONARY.put(13, "m3");
+		UNIT_DICTIONARY.put(14, "m2");
+		UNIT_DICTIONARY.put(15, "Kg");
+		UNIT_DICTIONARY.put(16, "g");
+		UNIT_DICTIONARY.put(17, "mm");
+		UNIT_DICTIONARY.put(18, "cm");
+		UNIT_DICTIONARY.put(19, "ug/m3");
+		UNIT_DICTIONARY.put(20, "pcs/ml");
+	};
+	public static Map<Integer, String> DEVICE_TYPE_DICTIONARY = new HashMap<Integer, String>();
+	{
+		DEVICE_TYPE_DICTIONARY.put(1, "GKII");
+		DEVICE_TYPE_DICTIONARY.put(2, "GDII");
+		DEVICE_TYPE_DICTIONARY.put(3, "GS");
+		DEVICE_TYPE_DICTIONARY.put(4, "KAD");
+		DEVICE_TYPE_DICTIONARY.put(65, "KB6000III");
+		DEVICE_TYPE_DICTIONARY.put(66, "KB8000II");
+		DEVICE_TYPE_DICTIONARY.put(67, "KB8600");
+		DEVICE_TYPE_DICTIONARY.put(68, "KB200");
+		DEVICE_TYPE_DICTIONARY.put(69, "KB200N");
+		DEVICE_TYPE_DICTIONARY.put(70, "KB2160");
+		DEVICE_TYPE_DICTIONARY.put(71, "联动控制柜");
+		DEVICE_TYPE_DICTIONARY.put(72, "BS03");
+		DEVICE_TYPE_DICTIONARY.put(73, "WD1200");
+	};
+	/**
+	 * 气体类型列表
+	 */
+	public static Map<Integer, String> GAS_TYPE_DICTIONARY = new HashMap<Integer, String>();
+	{
+		GAS_TYPE_DICTIONARY.put(0x01, "甲烷CH4");
+		GAS_TYPE_DICTIONARY.put(0x02, "氨气NH3");
+		GAS_TYPE_DICTIONARY.put(0x03, "硫化氢H2S");
+		GAS_TYPE_DICTIONARY.put(0x04, "一氧化碳CO");
+		GAS_TYPE_DICTIONARY.put(0x05, "氧气O2");
+		GAS_TYPE_DICTIONARY.put(0x06, "氢气H2");
+		GAS_TYPE_DICTIONARY.put(0x07, "乙烷C2H6");
+		GAS_TYPE_DICTIONARY.put(0x08, "乙烯C2H4");
+		GAS_TYPE_DICTIONARY.put(0x09, "乙炔C2H2");
+		GAS_TYPE_DICTIONARY.put(0x0A, "丙烷C3H8");
+		GAS_TYPE_DICTIONARY.put(0x0B, "丙烯C3H6");
+		GAS_TYPE_DICTIONARY.put(0x0C, "丁烷C4H10");
+		GAS_TYPE_DICTIONARY.put(0x0D, "丁烯C4H8");
+		GAS_TYPE_DICTIONARY.put(0x0E, "丁二烯C4H6");
+		GAS_TYPE_DICTIONARY.put(0x0F, "轻油");
+		GAS_TYPE_DICTIONARY.put(0x10, "重油");
+		GAS_TYPE_DICTIONARY.put(0x11, "汽油");
+		GAS_TYPE_DICTIONARY.put(0x12, "柴油");
+		GAS_TYPE_DICTIONARY.put(0x13, "煤油");
+		GAS_TYPE_DICTIONARY.put(0x14, "甲醇CH3OH");
+		GAS_TYPE_DICTIONARY.put(0x15, "乙醇C2H5OH");
+		GAS_TYPE_DICTIONARY.put(0x16, "异丙醇(CH3)2CHOH");
+		GAS_TYPE_DICTIONARY.put(0x17, "甲醛HCHO");
+		GAS_TYPE_DICTIONARY.put(0x18, "丁醛C3H7CHO");
+		GAS_TYPE_DICTIONARY.put(0x19, "丙酮C3H6O");
+		GAS_TYPE_DICTIONARY.put(0x1A, "丁酮CH3COC2H5");
+		GAS_TYPE_DICTIONARY.put(0x1B, "苯");
+		GAS_TYPE_DICTIONARY.put(0x1C, "甲苯");
+		GAS_TYPE_DICTIONARY.put(0x1D, "二甲苯");
+		GAS_TYPE_DICTIONARY.put(0x1E, "苯乙烯");
+		GAS_TYPE_DICTIONARY.put(0x1F, "苯酚");
+		GAS_TYPE_DICTIONARY.put(0x20, "乙醚");
+		GAS_TYPE_DICTIONARY.put(0x21, "二甲醚");
+		GAS_TYPE_DICTIONARY.put(0x22, "石油醚");
+		GAS_TYPE_DICTIONARY.put(0x23, "二甲胺");
+		GAS_TYPE_DICTIONARY.put(0x24, "三甲胺");
+		GAS_TYPE_DICTIONARY.put(0x25, "甲酰胺");
+		GAS_TYPE_DICTIONARY.put(0x26, "四氢呋喃");
+		GAS_TYPE_DICTIONARY.put(0x27, "醋酸乙酯");
+		GAS_TYPE_DICTIONARY.put(0x28, "氯代甲苯");
+		GAS_TYPE_DICTIONARY.put(0x29, "环氧乙烷");
+		GAS_TYPE_DICTIONARY.put(0x2A, "臭氧");
+		GAS_TYPE_DICTIONARY.put(0x2B, "二氧化硫");
+		GAS_TYPE_DICTIONARY.put(0x2C, "二氧化氮");
+		GAS_TYPE_DICTIONARY.put(0x2D, "一氧化氮");
+		GAS_TYPE_DICTIONARY.put(0x2E, "氯化氢");
+		GAS_TYPE_DICTIONARY.put(0x2F, "氰化氢");
+		GAS_TYPE_DICTIONARY.put(0x30, "二氧化碳");
+		GAS_TYPE_DICTIONARY.put(0x31, "氯气");
+		GAS_TYPE_DICTIONARY.put(0x32, "可燃气体");
+		GAS_TYPE_DICTIONARY.put(0x33, "丙稀腈C3H3N");
+		GAS_TYPE_DICTIONARY.put(0x34, "氟化氢HF");
+		GAS_TYPE_DICTIONARY.put(0x35, "磷化氢PH3");
+		GAS_TYPE_DICTIONARY.put(0x36, "二氧化氯CLO2");
+		GAS_TYPE_DICTIONARY.put(0x37, "四氢噻酚C4H8S");
+		GAS_TYPE_DICTIONARY.put(0x38, "碘甲烷CH3I");
+		GAS_TYPE_DICTIONARY.put(0x39, "三氯甲烷CHCL3");
+		GAS_TYPE_DICTIONARY.put(0x3A, "硅烷SiH4");
+		GAS_TYPE_DICTIONARY.put(0x3B, "氯乙烯C2H3CL");
+		GAS_TYPE_DICTIONARY.put(0x3C, "光气COCL2");
+		GAS_TYPE_DICTIONARY.put(0x3D, "三氢化砷AsH3");
+		GAS_TYPE_DICTIONARY.put(0x3E, "溴化氢HBr");
+		GAS_TYPE_DICTIONARY.put(0x3F, "二硫化碳CS2");
+		GAS_TYPE_DICTIONARY.put(0x40, "环己烷C6H12");
+		GAS_TYPE_DICTIONARY.put(0x41, "毒性气体");
+		GAS_TYPE_DICTIONARY.put(0x42, "一甲胺");
+		GAS_TYPE_DICTIONARY.put(0x43, "甲胺");
+		GAS_TYPE_DICTIONARY.put(0x44, "DMF");
+		GAS_TYPE_DICTIONARY.put(0x45, "有机胺");
+		GAS_TYPE_DICTIONARY.put(0x46, "六氟化硫SF6");
+		GAS_TYPE_DICTIONARY.put(0x47, "异丁烯");
+		GAS_TYPE_DICTIONARY.put(0x48, "苯胺");
+		GAS_TYPE_DICTIONARY.put(0x49, "双氧水H2O2");
+		GAS_TYPE_DICTIONARY.put(0x4A, "双光气");
+		GAS_TYPE_DICTIONARY.put(0x4B, "三乙胺");
+		GAS_TYPE_DICTIONARY.put(0x4C, "乙腈");
+		GAS_TYPE_DICTIONARY.put(0x4D, "硝酸");
+		GAS_TYPE_DICTIONARY.put(0x4E, "环氧氯丙烷（C3H5OCL)");
+		GAS_TYPE_DICTIONARY.put(0x4F, "二氯丙醇（C3H6CL2O)");
+		GAS_TYPE_DICTIONARY.put(0x50, "四氯化碳（CCL4)");
+		GAS_TYPE_DICTIONARY.put(201, "温度");
+		GAS_TYPE_DICTIONARY.put(202, "湿度");
+		GAS_TYPE_DICTIONARY.put(203, "压力");
+		GAS_TYPE_DICTIONARY.put(204, "流量");
+		GAS_TYPE_DICTIONARY.put(205, "风速");
+		GAS_TYPE_DICTIONARY.put(206, "风向");
+		GAS_TYPE_DICTIONARY.put(207, "液位");
+		GAS_TYPE_DICTIONARY.put(208, "光照度");
+		GAS_TYPE_DICTIONARY.put(209, "声音");
+		GAS_TYPE_DICTIONARY.put(210, "重量");
+		GAS_TYPE_DICTIONARY.put(211, "体积");
+		GAS_TYPE_DICTIONARY.put(212, "高度");
+		GAS_TYPE_DICTIONARY.put(213, "长度");
+		GAS_TYPE_DICTIONARY.put(214, "气压");
+		GAS_TYPE_DICTIONARY.put(215, "海拔");
+		GAS_TYPE_DICTIONARY.put(216, "PM2.5");
+		GAS_TYPE_DICTIONARY.put(217, "VOC");
+		GAS_TYPE_DICTIONARY.put(241, "排风机");
+		GAS_TYPE_DICTIONARY.put(242, "脉冲电磁阀");
+		GAS_TYPE_DICTIONARY.put(243, "电平电磁阀");
+		GAS_TYPE_DICTIONARY.put(244, "卷帘");
+		GAS_TYPE_DICTIONARY.put(245, "水帘");
+		GAS_TYPE_DICTIONARY.put(246, "继电器");
+		GAS_TYPE_DICTIONARY.put(247, "排风扇");
+	}
+	/**
+	 * 附件4 报警状态
+	 */
+	public static Map<Integer, String> ALARM_STATE_DICTIONARY = new HashMap<Integer, String>();
+	{
+		ALARM_STATE_DICTIONARY.put(0, "预热");
+		ALARM_STATE_DICTIONARY.put(1, "正常");
+		ALARM_STATE_DICTIONARY.put(2, "1级报警（低报）");
+		ALARM_STATE_DICTIONARY.put(3, "2级报警（高报）");
+		ALARM_STATE_DICTIONARY.put(4, "传感器故障");
+		ALARM_STATE_DICTIONARY.put(5, "保留");
+		ALARM_STATE_DICTIONARY.put(6, "3级报警");
+		ALARM_STATE_DICTIONARY.put(7, "4级报警");
+		ALARM_STATE_DICTIONARY.put(8, "5级报警");
+		ALARM_STATE_DICTIONARY.put(9, "6级报警");
+
+	}
+}

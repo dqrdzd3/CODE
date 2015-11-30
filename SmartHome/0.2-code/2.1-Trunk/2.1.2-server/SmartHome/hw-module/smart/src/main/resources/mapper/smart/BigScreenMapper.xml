@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.smart.dao.IBigScreenDao">
+
+
+	<!-- 通过id获取实例 -->
+	<select id="retrieveAdvertiseById" parameterType="String"
+		resultType="com.hw.hwsafe.smart.pojo.AdvertisePO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007,
+		MA008
+		from SH_ADVERTISE
+		where MA001 = #{value}
+	</select>
+	
+	<!-- 添加实例 -->
+	<insert id="insertAdvertise" parameterType="com.hw.hwsafe.smart.pojo.AdvertisePO">
+		insert into
+		SH_ADVERTISE(MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008)
+		values(
+		#{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=BLOB},
+		#{ma004,jdbcType=VARCHAR},#{ma005,jdbcType=VARCHAR},#{ma006,jdbcType=VARCHAR},
+		#{ma007,jdbcType=VARCHAR},#{ma008,jdbcType=VARCHAR}
+		)
+	</insert>
+	<!-- 修改实例 -->
+	<update id="updateAdvertise" parameterType="com.hw.hwsafe.smart.pojo.AdvertisePO">
+		update SH_ADVERTISE
+		<set>
+
+			<if test="ma004 != null">
+				MA004 = #{ma004,jdbcType=VARCHAR},
+			</if>
+			<if test="ma005 != null">
+				MA005 = #{ma005,jdbcType=VARCHAR},
+			</if>
+			<if test="ma006 != null">
+				MA006 = #{ma006,jdbcType=VARCHAR},
+			</if>
+			<if test="ma007 != null">
+				MA007 = #{ma007,jdbcType=VARCHAR},
+			</if>
+			<if test="ma008 != null">
+				MA008 = #{ma008,jdbcType=VARCHAR},
+			</if>
+			
+
+		</set>
+
+		where MA001 = #{ma001} 
+		
+	</update>
+
+	<!-- 通过id删除实例 -->
+	<delete id="deleteAdvertiseById" parameterType="String">
+		delete from SH_ADVERTISE
+		where MA001 = #{ma001}
+	</delete>
+	
+	<!-- 通过PO获取实例 -->
+	<select id="retrieveAdvertiseByPO" parameterType="com.hw.hwsafe.smart.pojo.AdvertisePO"
+		resultType="com.hw.hwsafe.smart.pojo.AdvertisePO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008
+		from SH_ADVERTISE
+		<where>
+			1 = 1
+			<if test="ma001 != null and ma001 != ''">
+				and MA001 = #{ma001}
+			</if>
+			<if test="ma006 != null and ma006 != 0">
+				and MA006 = #{ma006,jdbcType=NUMERIC}
+			</if>
+			<if test="ma002 != null and ma002 != ''">
+				and MA002 = #{ma002}
+			</if>
+			<if test="ma003 != null and ma003 != ''">
+				and MA003 = #{ma003}
+			</if>
+			
+		</where>
+	</select>
+	
+	
+	<!-- 通过id获取实例 -->
+	<select id="retrieveMessageById" parameterType="String"
+		resultType="com.hw.hwsafe.smart.pojo.InfomationPO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007,
+		MA008,MA009,MA010
+		from SH_MESSAGE
+		<where>
+		 MA001 = #{value}
+		
+		</where>
+	</select>
+	
+	<!-- 添加实例 -->
+	<insert id="insertMessage" parameterType="com.hw.hwsafe.smart.pojo.InfomationPO">
+		insert into
+		SH_MESSAGE(MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008,MA009,MA010)
+		values(
+		#{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=VARCHAR},
+		#{ma004,jdbcType=TIMESTAMP},#{ma005,jdbcType=TIMESTAMP},#{ma006,jdbcType=NUMERIC},
+		#{ma007,jdbcType=VARCHAR},#{ma008,jdbcType=VARCHAR},#{ma009,jdbcType=VARCHAR},#{ma010,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<!-- 通过id删除实例 -->
+	<delete id="deleteMessageById" parameterType="String">
+		delete from SH_MESSAGE
+		where MA001 = #{ma001}
+	</delete>
+	
+	<!-- 通过PO获取实例 -->
+	<select id="retrieveMessageByPO" parameterType="com.hw.hwsafe.smart.pojo.MessagePO"
+		resultType="com.hw.hwsafe.smart.pojo.MessagePO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008,MA009,MA010
+		from SH_MESSAGE
+		<where>
+			MA003 = #{ma003}
+			<if test="ma001 != null and ma001 != ''">
+				and MA001 = #{ma001}
+			</if>
+			<if test="ma004 != null and ma004 != ''">
+				and #{ma004,jdbcType=TIMESTAMP} &gt; MA004
+		
+				and #{ma004,jdbcType=TIMESTAMP} &lt; MA005
+			</if>
+		</where>
+	</select>
+
+
+<!-- 添加实例 -->
+	<insert id="insertDisp" parameterType="com.hw.hwsafe.smart.pojo.SceneDispPO">
+		insert into
+		SH_SCENE_DISP(MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015)
+		values(
+		#{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=NUMERIC},
+		#{ma004,jdbcType=NUMERIC},#{ma005,jdbcType=VARCHAR},#{ma006,jdbcType=VARCHAR},
+		#{ma007,jdbcType=VARCHAR},#{ma008,jdbcType=VARCHAR},#{ma009,jdbcType=VARCHAR},#{ma010,jdbcType=VARCHAR},#{ma011,jdbcType=VARCHAR}
+		,#{ma012,jdbcType=VARCHAR},#{ma013,jdbcType=VARCHAR},#{ma014,jdbcType=VARCHAR},#{ma015,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<!-- 通过id删除实例 -->
+	<delete id="deleteDispById" parameterType="String">
+		delete from SH_SCENE_DISP
+		where MA001 = #{ma001}
+	</delete>
+	
+	<!-- 通过PO获取实例 -->
+	<select id="retrieveDispByPO" parameterType="com.hw.hwsafe.smart.pojo.SceneDispPO"
+		resultType="com.hw.hwsafe.smart.pojo.SceneDispPO">
+		select D.MA001, D.MA002, D.MA003, D.MA004, S.MA004 AS MA005, D.MA006, D.MA007, D.MA008,D.MA009, A.MA004 AS MA010,D.MA011,D.MA012,D.MA013,D.MA014,D.MA015
+		from SH_SCENE_DISP D left join SH_ADVERTISE A on D.MA007 = A.MA001 left join SH_SCENE S on S.MA001 = D.MA005
+		<where>
+			D.MA006 = #{ma006}
+			<if test="ma001 != null and ma001 != ''">
+				and D.MA001 = #{ma001}
+			</if>
+			<if test="ma002 != null and ma002 != ''">
+				and D.MA002 = #{ma002}
+			</if>
+		</where>
+	</select>
+
+
+   <!-- 通过userid获取授权列表 -->
+	<select id="getBigscreenAuthList" parameterType="String"
+		resultType="com.hw.hwsafe.smart.pojo.BigScreenAuthPO">
+		select ID,MAC,NAME,MANUFACTURER,TO_CHAR(CREATE_TIME,'yyyy-MM-dd HH24:mi:ss') createTime,URL
+		from AR_BIGSCREEN_AUTH
+		<where>
+			USERID = #{value}
+			
+		</where>
+	</select>
+	
+	 <!-- 通过userid获取大屏列表 -->
+	<!-- <select id="getBigscreenList" parameterType="String"
+		resultType="com.hw.hwsafe.smart.pojo.BigScreenPO">
+		select ID,MAC,NAME,MANUFACTURER,TO_CHAR(CREATE_TIME,'yyyy-MM-dd HH24:mi:ss') createTime,URL
+		from AR_BIGSCREEN_AUTH
+		<where>
+			USERID = #{userid}
+			
+		</where>
+	</select> -->
+	
+	 <!-- 获得授权URL -->
+	<select id="auth" parameterType="String"
+		resultType="com.hw.hwsafe.smart.pojo.BigScreenAuthPO">
+		select ID,MAC,NAME,MANUFACTURER,TO_CHAR(CREATE_TIME,'yyyy-MM-dd HH24:mi:ss') createTime,URL,USERID
+		from AR_BIGSCREEN_AUTH
+		<where>
+			MAC = #{value}
+			
+		</where>
+	</select>
+	 <!-- 申请授权 -->
+	 <insert id="applyAuth" parameterType="com.hw.hwsafe.smart.pojo.BigScreenAuthPO">
+		insert into
+		AR_BIGSCREEN_AUTH(ID,MAC,NAME,MANUFACTURER,CREATE_TIME,URL,USERID)
+		values(
+		#{ID,jdbcType=VARCHAR},#{MAC,jdbcType=VARCHAR},#{NAME,jdbcType=NUMERIC},
+		#{MANUFACTURER,jdbcType=VARCHAR},#{CREATE_TIME,jdbcType=TIMESTAMP},#{URL,jdbcType=VARCHAR},
+		#{USERID,jdbcType=VARCHAR}
+		)
+	</insert>
+</mapper>

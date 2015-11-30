@@ -1,0 +1,24 @@
+#radiv {
+    
+}
+#radiv table{background-color:#e7fbff;
+	border:#6bb0c8 dashed 1px;
+	height:28px;
+	line-height:28px;
+	color:#089381;
+	padding-left:6px;
+	padding-right:6px;
+	margin-bottom:6px;
+	width:98%;
+}
+#radiv span{ color:#FF8400;}
+
+#radiv  a{
+	color:#1AAF08;
+	text-decoration:underline;
+}
+#radiv  a:hover{ color:#FF6D25; }
+#radiv td li{
+	float:left;
+	margin-right:10px;
+}

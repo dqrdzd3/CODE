@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hw.hwsafe.corpinfo.dao.IB018Dao">
+
+	
+	<!-- 根据主键查询 -->
+	<select id="retrieveB018ByID" parameterType="String" resultType="com.hw.hwsafe.corpinfo.pojo.B018PO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+    		MA017,MA018,MA019,MA020,MA021,MA022,MA023
+			 FROM B018 WHERE MA001=#{MA001}
+	</select>
+    <!-- 根据条件查询所有  -->
+	<select id="retrieveB018ByPO" resultType="com.hw.hwsafe.corpinfo.pojo.B018PO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+    		MA017,MA018,MA019,MA020,MA021,MA022,MA023
+		FROM B018 t 	
+		WHERE 1=1
+		<if test="MA003 != null">
+			<if test="MA003 != ''">
+			AND	MA003 = #{MA003}
+			</if>
+		</if> 
+		<if test="MA004 != null">
+			<if test="MA004 != ''">
+			AND	MA004  LIKE '%'||#{MA004}||'%' 
+			</if>
+		</if> 
+	</select>
+	
+	<!-- 插入应急药品基本信息 -->
+	<insert id="insertB018" parameterType="com.hw.hwsafe.corpinfo.pojo.B018PO">
+      INSERT INTO B018(MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+    		MA017,MA018,MA019,MA020,MA021,MA022,MA023,MA024,MA025
+	   ) 
+      VALUES(
+         #{MA001,jdbcType=VARCHAR},#{MA002,jdbcType=VARCHAR},#{MA003,jdbcType=VARCHAR},#{MA004,jdbcType=VARCHAR},#{MA005,jdbcType=VARCHAR},#{MA006,jdbcType=VARCHAR},
+         #{MA007,jdbcType=INTEGER},#{MA008,jdbcType=NUMERIC},#{MA009,jdbcType=NUMERIC},#{MA010,jdbcType=VARCHAR},#{MA011,jdbcType=TIMESTAMP},#{MA012,jdbcType=VARCHAR},
+         #{MA013,jdbcType=VARCHAR},#{MA014,jdbcType=VARCHAR},#{MA015,jdbcType=VARCHAR},#{MA016,jdbcType=VARCHAR},#{MA017,jdbcType=VARCHAR},#{MA018,jdbcType=VARCHAR},
+         #{MA019,jdbcType=VARCHAR},#{MA020,jdbcType=VARCHAR},#{MA021,jdbcType=VARCHAR},#{MA022,jdbcType=INTEGER},#{MA023,jdbcType=VARCHAR},#{MA024,jdbcType=VARCHAR},#{MA025,jdbcType=TIMESTAMP}
+       )
+	</insert>
+	<!-- 更新应急药品基本信息 -->
+
+	<update id="updateB018" parameterType="com.hw.hwsafe.corpinfo.pojo.B018PO">
+		UPDATE B018 
+		set	
+		 MA002=#{MA002,jdbcType=VARCHAR},MA003=#{MA003,jdbcType=VARCHAR},MA004=#{MA004,jdbcType=VARCHAR},MA005=#{MA005,jdbcType=VARCHAR},MA006=#{MA006,jdbcType=VARCHAR},
+         MA007=#{MA007,jdbcType=INTEGER},MA008=#{MA008,jdbcType=NUMERIC},MA009=#{MA009,jdbcType=NUMERIC},MA010=#{MA010,jdbcType=VARCHAR},MA011=#{MA011,jdbcType=TIMESTAMP},MA012=#{MA012,jdbcType=VARCHAR},
+         MA013=#{MA013,jdbcType=VARCHAR},MA014=#{MA014,jdbcType=VARCHAR},MA015=#{MA015,jdbcType=VARCHAR},MA016=#{MA016,jdbcType=VARCHAR},MA017=#{MA017,jdbcType=VARCHAR},MA018=#{MA018,jdbcType=VARCHAR},
+         MA019=#{MA019,jdbcType=VARCHAR},MA020=#{MA020,jdbcType=VARCHAR},MA021=#{MA021,jdbcType=VARCHAR},MA022=#{MA022,jdbcType=INTEGER},MA023=#{MA023,jdbcType=VARCHAR}
+		WHERE MA001 = #{MA001}
+	</update>
+
+<!-- 根据条件查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		SELECT * FROM B018 
+		<where>
+		1=1
+			<if test="po.MA004 != null and po.MA004 != ''">
+				 and MA004 like '%' || #{po.MA004} || '%'
+			</if>
+			<if test="po.MA003 != null and po.MA003 != ''">
+				AND MA003 like '%' || #{po.MA003} || '%'
+			</if>
+			<if test="po.MA002 != null and po.MA002 != ''">
+				AND MA002=#{po.MA002}
+			</if>
+			<if test="po.MA002 == null or po.MA002 == ''">
+			<if test="ORGAN_UUID != null and ORGAN_UUID != ''">
+				and ma002 = #{ORGAN_UUID}
+			</if>
+			</if>
+		</where>
+		order by ma025 desc
+	</select>
+</mapper>

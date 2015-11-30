@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- ========== 默认包 ========== -->
+	<package name="common" extends="interceptor">
+	
+		<action name="">
+			<result>/WEB-INF/jsp/login/login.jsp</result>
+		</action>
+		
+		<!-- 用户登录 -->
+		<action name="index" method="index" class="com.hwsensor.permission.action.LoginAction">
+			<result name="index">index.jsp</result>
+		</action>
+		<action name="login" method="login" class="com.hwsensor.permission.action.LoginAction">
+			<result name="input">/WEB-INF/jsp/login/login.jsp</result>
+			<result name="success" type="redirect">author</result>
+			<result name="badnameorpwd" type="redirectAction">
+				<param name="actionName">login</param>
+				<param name="msg">badnameorpwd</param>
+			</result>
+			<result name="bannedaccount" type="redirectAction">
+				<param name="actionName">login</param>
+				<param name="msg">bannedaccount</param>
+			</result>
+			<result name="notauditaccount" type="redirectAction">
+				<param name="actionName">login</param>
+				<param name="msg">notauditaccount</param>
+			</result>
+
+			<exception-mapping result="badnameorpwd" exception="com.hw.hwsafe.platform.exception.BadUserNameOrPassWordException"></exception-mapping>
+			<exception-mapping result="bannedaccount" exception="com.hw.hwsafe.platform.exception.BannedAccountException"></exception-mapping>
+			<exception-mapping result="notauditaccount" exception="com.hw.hwsafe.platform.exception.NotAuditAccountException"></exception-mapping>
+		</action>
+		
+		<action name="author">
+			<result >/WEB-INF/jsp/frame/index.jsp</result>
+		</action>
+		
+<!-- 		<action name="input" method="input" class="com.hwsensor.permission.action.LoginAction"> -->
+<!-- 			<result name="input" >/WEB-INF/jsp/login/login.jsp</result> -->
+<!-- 		</action> -->
+		
+		<action name="include(*)">
+			<result>/WEB-INF/jsp/common/include.jsp?name={1}</result>
+		</action>
+<!-- 		<action name="getPermButtons" class="com.hwsensor.permission.action.GetPermButtonsAction"/>		 -->
+	</package>
+	
+	<!-- ========== 权限系统 ========== -->
+	<package name="manager" namespace="/manager" extends="interceptor" >
+	
+		<!-- 欢迎页面 -->
+		<action name="welcome" method="welcome" class="com.hwsensor.permission.action.WelcomeAction">
+			<result name="welcome">welcome</result>
+		</action>
+		
+		<!-- 部门管理 -->
+		<action name="department" class="com.hwsensor.permission.action.DepartmentAction">
+			<result name="success">/WEB-INF/jsp/manager/department/index.jsp</result>
+			<result name="depttree">/WEB-INF/jsp/manager/department/dept_tree.jsp</result>
+			<result name="add">/WEB-INF/jsp/manager/department/dept_add.jsp</result>
+			<result name="edit">/WEB-INF/jsp/manager/department/dept_modify.jsp</result>
+			<result name="view">/WEB-INF/jsp/manager/department/dept_view.jsp</result>
+			<result name="list">/WEB-INF/jsp/manager/department/dept_list.jsp</result>
+			<result name="deptrole">/WEB-INF/jsp/manager/department/dept_role.jsp</result>
+		</action>
+			
+		<!-- 新权限系统 start -->
+		<!-- 模块，操作，资源 -->
+		<action name="sysmodule" class="com.hwsensor.permission.action.SysModuleAction">
+			<result name="success">/WEB-INF/jsp/manager/module/module_index.jsp</result>
+			<result name="list">/WEB-INF/jsp/manager/module/module_list.jsp</result>
+			<result name="loadtree">/WEB-INF/jsp/manager/module/module_tree.jsp</result>
+			<result name="add">/WEB-INF/jsp/manager/module/module_add.jsp</result>
+			<result name="edit">/WEB-INF/jsp/manager/module/module_modify.jsp</result>
+			<result name="view">/WEB-INF/jsp/manager/module/module_view.jsp</result>
+		</action>
+		
+		<action name="sysoperation" class="com.hwsensor.permission.action.SysOperationAction">
+			<result name="list">/WEB-INF/jsp/manager/operation/operation_list.jsp</result>
+		</action>
+		
+		<action name="sysresource" class="com.hwsensor.permission.action.SysResourceAction">
+			<result name="success">/WEB-INF/jsp/manager/resource/resource_index.jsp</result>
+			<result name="list">/WEB-INF/jsp/manager/resource/resource_list.jsp</result>
+			<result name="loadtree">/WEB-INF/jsp/manager/resource/resource_tree.jsp</result>
+			<result name="add">/WEB-INF/jsp/manager/resource/resource_add.jsp</result>
+			<result name="edit">/WEB-INF/jsp/manager/resource/resource_modify.jsp</result>
+			<result name="view">/WEB-INF/jsp/manager/resource/resource_view.jsp</result>
+		</action>
+		
+		<!-- 角色 -->
+		<action name="sysrole" class="com.hwsensor.permission.action.SysRoleAction">
+			<result name="success">/WEB-INF/jsp/manager/srole/role_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/manager/srole/role_add.jsp</result>
+			<result name="edit">/WEB-INF/jsp/manager/srole/role_modify.jsp</result>
+			<result name="view">/WEB-INF/jsp/manager/srole/role_view.jsp</result>
+			<result name="assignpermi">/WEB-INF/jsp/manager/srole/role_permi.jsp</result>
+			<result name="assignuser">/WEB-INF/jsp/manager/srole/role_user.jsp</result>
+		</action>
+		
+		<!-- 用户 -->
+		<action name="sysuser" class="com.hwsensor.permission.action.UserAction">
+			<result name="success">/WEB-INF/jsp/manager/suser/user_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/manager/suser/user_add.jsp</result>
+			<result name="edit">/WEB-INF/jsp/manager/suser/user_modify.jsp</result>
+			<result name="view">/WEB-INF/jsp/manager/suser/user_view.jsp</result>
+			<result name="userrole">/WEB-INF/jsp/manager/suser/user_role.jsp</result>
+			<result name="haveopers" type="json">
+				<param name="root">haveOpers</param>
+			</result>
+			<result name="editpassword">/WEB-INF/jsp/manager/suser/userpassword_modify.jsp</result>
+			<result name="userinfo">/WEB-INF/jsp/manager/suser/userinfo_modify.jsp</result>
+			<result name="xz">/WEB-INF/jsp/manager/suser/wz.jsp</result>
+		</action>
+		
+		<action name="userinfo" class="com.hwsensor.permission.action.UserAction" method="getUserInfo">
+			<result name="userinfo">/WEB-INF/jsp/manager/suser/userinfo_modify.jsp</result>
+		</action>
+		
+		<action name="userpasswordinfo" class="com.hwsensor.permission.action.UserAction" method="userPassWord">
+			<result name="editpassword">/WEB-INF/jsp/manager/suser/userpassword_modify.jsp</result>
+		</action>
+		
+		<action name="orguser" class="com.hwsensor.permission.action.UserAction" method="doIndex">
+			<result name="index">/WEB-INF/jsp/manager/orguser/orguser_index.jsp</result>
+			<result name="loadtree">/WEB-INF/jsp/manager/orguser/orguser_tree.jsp</result>
+			<result name="list">/WEB-INF/jsp/manager/orguser/orguser_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/manager/orguser/orguser_add.jsp</result>
+			<result name="edit">/WEB-INF/jsp/manager/orguser/orguser_modify.jsp</result>
+			<result name="view">/WEB-INF/jsp/manager/orguser/orguser_view.jsp</result>
+			<result name="userrole">/WEB-INF/jsp/manager/orguser/orguser_role.jsp</result>
+			<result name="haveopers" type="json">
+				<param name="root">haveOpers</param>
+			</result>
+		</action>
+		<!-- 新权限系统 end -->
+		
+		<!-- 首页业务模块切换时判断是否拥有此业务模块权限 start -->
+		<action name="switchmodule" class="com.hwsensor.permission.action.SwitchModuleAction" method="checkPermi">
+		</action>
+		<!-- 首页业务模块切换时判断是否拥有此业务模块权限 end -->
+	</package>
+	
+	<package name="sessionStatus">
+		<action name="sessionStatus" class="com.hwsensor.permission.action.SessionStatusAction" />
+	</package>
+</struts>

@@ -1,0 +1,115 @@
+DIV.digg {
+    TEXT-ALIGN: center
+}
+DIV.digg A {
+	BORDER: #60E0CC 1px solid; 
+	PADDING-RIGHT: 5px;  
+	PADDING-LEFT: 5px; 
+	PADDING-BOTTOM: 2px; 
+	MARGIN: 2px;  
+	COLOR: #11917A; 
+	PADDING-TOP: 2px;  
+	TEXT-DECORATION: none;
+}
+DIV.digg A:hover {
+	BORDER: #00A789 1px solid;  
+	COLOR: #FF6000; 
+}
+DIV.digg A:active {
+	BORDER: #00A789 1px solid;
+	color:#333;
+}
+DIV.digg SPAN.current {
+	BORDER: #00A789 1px solid; 
+	PADDING-RIGHT: 5px;  
+	PADDING-LEFT: 5px; 
+	FONT-WEIGHT: bold; 
+	PADDING-BOTTOM: 2px; 
+	MARGIN: 2px;  
+	COLOR: #fff; 
+	PADDING-TOP: 2px; 
+	BACKGROUND-COLOR: #00A789;
+}
+DIV.digg SPAN.disabled {
+	PADDING-RIGHT: 5px;
+	PADDING-BOTTOM: 2px;
+	MARGIN: 2px;
+	COLOR: #565656;
+	PADDING-TOP: 2px;
+}
+DIV.digg SPAN.disabled input{
+	width: 30px;
+	border: 1px solid #8BDED2;
+	height: 16px;
+	margin-left: 3px;
+	margin-right: 3px;
+}
+DIV.digg SPAN.disabled input[type="button"] {
+	background: url(images/backbg.jpg) left top no-repeat;
+	width: 47px;
+	height: 23px;
+	color: #128D78;
+	text-align: center;
+	line-height: 23px;
+	text-decoration: none;
+	margin-left: 0px;
+	border: none;
+}
+
+
+DIV.digg {
+    TEXT-ALIGN: center;
+}
+DIV.digg A {
+	BORDER: #60E0CC 1px solid; 
+	PADDING-RIGHT: 5px;  
+	PADDING-LEFT: 5px; 
+	PADDING-BOTTOM: 2px; 
+	MARGIN: 2px;  COLOR: #11917A;
+	PADDING-TOP: 2px;  
+	TEXT-DECORATION: none;
+}
+DIV.digg A:hover {
+	BORDER: #00A789 1px solid;  
+	COLOR: #FF6000; 
+}
+DIV.digg A:active {
+	BORDER: #00A789 1px solid; 
+	color:#333;
+}
+DIV.digg SPAN.current {
+	BORDER: #00A789 1px solid; 
+	PADDING-RIGHT: 5px;  
+	PADDING-LEFT: 5px; 
+	FONT-WEIGHT: bold; 
+	PADDING-BOTTOM: 2px; 
+	MARGIN: 2px;  
+	COLOR: #fff; 
+	PADDING-TOP: 2px; 
+	BACKGROUND-COLOR: #00A789;
+}
+DIV.digg SPAN.disabled {
+	PADDING-RIGHT: 5px;
+	PADDING-BOTTOM: 2px;
+	MARGIN: 2px;
+	COLOR: #565656;
+	PADDING-TOP: 2px;
+}
+DIV.digg SPAN.disabled input{
+	width: 30px;
+	border: 1px solid #8BDED2;
+	height: 16px;
+	margin-left: 3px;
+	margin-right: 3px;
+}
+DIV.digg SPAN.disabled input[type="button"] {
+	background: url(../images/backbg.jpg) left top no-repeat;
+	width: 47px;
+	height: 23px;
+	color: #128D78;
+	text-align: center;
+	line-height: 23px;
+	text-decoration: none;
+	margin-left: 0px;
+	border: none;
+}

@@ -1,0 +1,20 @@
+.branchleft{  width:172px; border-right:#6ED7C7 solid 1px; background-color:#F8FFFF;}
+.branchright{  padding:13px;}
+.branchrighttitle{ margin-bottom:10px;}
+.branchrighttitle span{ font-weight:bold; color:#FF6701; p3px; padding-right:3px;}
+.branchoperate{ margin:0 auto; text-align:center;}
+.branchoperate li{ padding-left:15px; color:#108772; margin-left:6px; display:inline; margin-right:3px;}
+.branchoperate li a{ color:#108772; text-decoration:none;}
+.branchoperate li a:hover{color:#FF6701;}
+.branchdelete{ background:url(../images/deletea.png) left no-repeat;}
+.branchedit{ background:url(../images/edita.png) left no-repeat;}
+.bottomjiange{ margin-bottom:10px;}
+.hui{ color:#B5B5B5;}
+.branchright input,textarea{
+}
+.branchrightinput{
+	height:18px;
+	width:300px;
+	border:#8BDED2 solid 1px;
+	line-height:18px;
+}

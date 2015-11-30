@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.smart.dao.ICorpOnlineDao">
+
+<!-- 获取分页信息 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		SELECT U.MA001,U.MA002,U.MA003,U.MA004,U.MA005,U.MA006,U.MA007,U.MA008,U.MA009,U.MA010,U.MA011,U.MA012,U.MA013,U.MA014,U.MA015,U.MA016,C.MA002 AS MA018,U.MA019,C.MA001 AS MA020  
+		FROM CORP_CRM C,D002 D,U001 U 
+		<where>
+		 C.MA002 = D.MA004 and C.MA003 = #{corpid} and D.MA002 = U.MA001
+		 <if test="tel != null and tel != ''">
+				and U.MA006 = #{tel}
+			</if>
+		 <if test="deviceid != null and deviceid != ''">
+				and C.MA002 = #{deviceid}
+			</if>	
+		 <if test="date1 != null and date1 != ''">
+				and U.MA007 &gt; #{date1,jdbcType=TIMESTAMP}
+			</if>
+		<if test="date2 != null and date2 != ''">
+				and U.MA007 &lt; #{date2,jdbcType=TIMESTAMP}
+		</if>
+		</where>
+		
+		ORDER BY C.MA002
+	</select>
+	<select id="rankWithConditionByWeek" parameterType="map" resultType="hashmap">
+		SELECT * FROM CORP_WEEK_RANK R
+		<where>
+			1 = 1
+			<if test="sensor != null and sensor != ''">
+				and R.MA002 = #{sensor}
+			</if>
+			<if test="province != null and province != ''">
+				and R.MA005 = #{province}
+			</if>
+			<if test="city != null and city != ''">
+				and R.MA006 = #{city}
+			</if>
+			and R.MA007 IN (SELECT DISTINCT C.MA002 FROM CORP_CRM C WHERE R.MA007 = C.MA002
+			and C.MA003 =#{corpid})
+			
+		</where>
+		ORDER BY R.MA004
+	</select>
+	<select id="rankWithConditionByMonth" parameterType="map" resultType="hashmap">
+		SELECT * FROM CORP_MONTH_RANK R
+		<where>
+			1 = 1
+			<if test="sensor != null and sensor != ''">
+				and R.MA002 = #{sensor}
+			</if>
+			<if test="province != null and province != ''">
+				and R.MA005 = #{province}
+			</if>
+			<if test="city != null and city != ''">
+				and R.MA006 = #{city}
+			</if>
+			and R.MA007 IN (SELECT DISTINCT C.MA002 FROM CORP_CRM C WHERE R.MA007 = C.MA002
+			and C.MA003 =#{corpid})
+			
+		</where>
+		ORDER BY R.MA004
+	</select>
+	
+	<!-- 通过id获取实例 -->
+	<select id="doQuery" parameterType="map"
+		resultType="com.hw.hwsafe.smart.pojo.U001PO">
+		SELECT U.MA001,U.MA002,U.MA003,U.MA004,U.MA005,U.MA006,U.MA007,U.MA008,U.MA009,U.MA010,U.MA011,U.MA012,U.MA013,U.MA014,U.MA015,U.MA016,C.MA002 AS MA018,U.MA019,C.MA001 AS MA020  
+		FROM CORP_CRM C,D002 D,U001 U 
+		<where>
+		 C.MA002 = D.MA004 and C.MA003 = #{corpid} and D.MA002 = U.MA001
+		 <if test="tel != null and tel != ''">
+				and U.MA006 = #{tel}
+			</if>
+		 <if test="deviceid != null and deviceid != ''">
+				and C.MA002 = #{deviceid}
+			</if>	
+		 <if test="date1 != null and date1 != ''">
+				and U.MA007 &gt; #{date1,jdbcType=TIMESTAMP}
+			</if>
+		<if test="date2 != null and date2 != ''">
+				and U.MA007 &lt; #{date2,jdbcType=TIMESTAMP}
+		</if>
+		</where>
+		
+		ORDER BY C.MA002
+	</select>
+	
+	<select id="countAll" parameterType="map" resultType="Integer">
+		SELECT count(*)
+		FROM CORP_CRM C,D002 D,U001 U 
+		<where>
+		 C.MA002 = D.MA004 and C.MA003 = #{corpid} and D.MA002 = U.MA001
+		 </where>
+	</select>
+	
+</mapper>

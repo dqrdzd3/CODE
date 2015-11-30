@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+<meta name="viewport"
+	content="target-densitydpi=device-dpi,initial-scale=1" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta content="telephone=no" name="format-detection">
+<meta charset="UTF-8">
+<title>大屏</title>
+<style>
+@font-face {
+	font-family: 'fontNameRegular';
+	src: local('fontName Regular'), local('fontName'), url('css/slim.TTF')
+		format('truetype');
+}
+
+@font-face {
+	font-family: 'fontNameRegular2';
+	src: local('fontName Regular'), local('fontName'), url('css/small.TTF')
+		format('truetype');
+}
+
+body {
+	background: #285171;
+	overflow: hidden;
+}
+
+#left {
+	position: absolute;
+	top: 10%;
+	left: 5.6%;
+	width: 58.8%;
+	height: 64.4%;
+	font-family: fontNameRegular2;
+	color: white;
+}
+
+#logo {
+	position: absolute;
+	top: 5%;
+	left: 5.6%;
+	width: 90%;
+	height: 64.4%;
+}
+
+#centerWeather {
+	position: absolute;
+	top: 79%;
+	left: 8%;
+	width: 15.6%;
+	height: 9.1%;
+	color: white;
+}
+
+#bottom {
+	position: absolute;
+	top: 80%;
+	left: 8%;
+	width: 85.7%;
+	height: 10.1%;
+	color: white;
+	font-family: fontNameRegular2;
+}
+
+#vertical {
+	position: absolute;
+	top: 12.4%;
+	left: 0%;
+	width: 67.5%;
+	height: 56.2%;
+	border-right: 1px solid rgba(255, 255, 255, 0.50);
+}
+
+#horizon {
+	position: absolute;
+	bottom: 0%;
+	left: 0%;
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+	height: 21.1%;
+	color: white;
+	border-top: 1px solid rgba(255, 255, 255, 0.50);
+}
+
+#right {
+	position: absolute;
+	top: 10%;
+	left: 70.6%;
+	width: 28.8%;
+	height: 64.4%;
+	color: white;
+	font-family: fontNameRegular2;
+}
+
+td {
+	text-align: center;
+}
+</style>
+<script type="text/javascript" src="js/zzr/jquery-1.9.1.min.js"></script>
+<script src="http://img.jb51.net/jslib/jquery/jquery14.js"></script>
+<script type="text/javascript" src="js/zzr/jQuery.fontFlex.js"></script>
+<script type="text/javascript" src="js/zzr/jquery.flot.js"></script>
+<script type="text/javascript" src="js/zzr/jquery.flot.resize.js"></script>
+<script type="text/javascript" src="js/zzr/modernizr.custom.79639.js"></script>
+<script type="text/javascript"
+	src="http://api.map.baidu.com/api?v=2.0&ak=HIVMFTwEqVzoGQSNXa1ZmLET"></script>
+
+<!-- Morris.js charts -->
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script type="text/javascript" src="js/zzr/morris.js"></script>
+
+<script type="text/javascript" src="js/zzr/Screen.js"></script>
+</head>
+<body>
+
+	<div id="vertical"></div>
+	<div id="horizon"></div>
+	<div id="vertical2"></div>
+
+	<!-- 室外PM2.5 -->
+
+
+	<div style="position: absolute; left: 70.8%; top: 38.9%; width: 25%">
+
+		<table
+			style="width: 100%; background-color: #40627E; color: #fff; border-radius: 5px">
+			<tr>
+				<td style="padding-top: 7%; padding-bottom: 7%"><span
+					class="unit" id="out_pm25" style="font-family: fontNameRegular2">90</span></td>
+				<td style="padding-top: 7%; padding-bottom: 7%"><span
+					class="unit" style="font-family: fontNameRegular2">PM2.5</span></td>
+
+			</tr>
+
+		</table>
+	</div>
+	<!-- 室内PM2.5 -->
+
+
+	<div style="position: absolute; right: 35.6%; top: 38.9%; width: 25%;">
+
+		<table
+			style="width: 100%; background-color: #40627E; color: #fff; border-radius: 5px">
+			<tr>
+				<td style="padding-top: 7%; padding-bottom: 7%"><span
+					class="unit" style="font-family: fontNameRegular2">PM2.5</span></td>
+				<td style="padding-top: 7%; padding-bottom: 7%"><span
+					class="unit" id="in_pm25" style="font-family: fontNameRegular2">90</span></td>
+
+			</tr>
+
+		</table>
+	</div>
+
+
+	<!-- logo -->
+	<div id="logo">
+		<img src="img/ui_home_013.png" STYLE="width: 5%"><img
+			src="img/AIRRADIO.png" style="width: 15%">
+	</div>
+
+
+
+	<div id="bottom">
+		<table style="width: 100%; height: 100%">
+			<tr>
+				<td style="border-right: 1px solid rgba(255, 255, 255, 0.50)">
+					<p style="margin-bottom: 0%">
+						<span id="realTime">08/24 星期一</span>
+					</p>
+					<p style="margin-top: 0%">
+						<span class="centerWea">气象台发布</span>
+					</p>
+				</td>
+				<td><span class="aqiData">AQI:&nbsp;</span><span
+					class="aqiData" id="cen_aqi"></span>&nbsp;&nbsp;<span></span><span
+					class="aqiData" id="cen_quality">良</span></td>
+				<td class="centerWea">湿度：<span class="centerWea" id="cen_hum"></span></td>
+				<td class="centerWea">温度：<span class="centerWea" id="cen_temp"></span></td>
+				<td class="centerWea">PM2.5：<span class="centerWea"
+					id="cen_pm25"></span></td>
+			</tr>
+
+		</table>
+	</div>
+
+	<div id="left">
+		<!-- 室内头部 -->
+		<div
+			style="position: absolute; top: 0%; left: 0%; text-align: right; width: 100%; height: 16%;">
+			<span class="headerDiv" style="font-family: fontNameRegular">室内数据</span>
+			<hr style="border-width: 0px">
+			<span class="little">更新时间&nbsp;</span><span class="little"
+				id="in_time">8/26 09:30</span>
+		</div>
+		<!--室内主内容-->
+		<div
+			style="position: absolute; top: 13%; left: 5%; text-align: left; width: 40%; height: 80%;">
+
+		</div>
+
+
+		<!--室内 PM2.5  显示数据-->
+		<div
+			style="position: absolute; top: 33.9%; right: 0%; text-align: right; width: 50%; height: 80%;">
+
+
+			<canvas id="can1" width="400px" height="20px" style=""></canvas>
+
+
+		</div>
+
+
+
+
+
+
+
+		<!--  显示co2  温度  湿度   -->
+		<div
+			style="position: absolute; bottom: 0%; right: 0%; text-align: left; width: 53.2%; height: 17.2%;">
+			<table style="width: 100%">
+				<tr>
+					
+					<td style="text-align: right;">噪声</td>
+					<td style="text-align: right;">湿度</td>
+					<td style="text-align: right;">温度</td>
+				</tr>
+				<tr>
+					
+					<td style="text-align: right; padding-top: 2%" id="in_co2">0</td>
+					<td style="text-align: right; padding-top: 2%" id="in_hum">0</td>
+					<td style="text-align: right; padding-top: 2%" id="in_temp">0</td>
+				</tr>
+			</table>
+		</div>
+
+		<!--  曲线图   -->
+		<div
+			style="position: absolute; top: 9%; left: 0%; text-align: left; width: 52.3%; height: 50.8%;">
+			<p style="margin: 6% 0% -2% 0%">
+				<span class="tip2">室内<span style="color: #D6AED4">&nbsp;PM2.5</span>
+					& <span style="color: #8AF6DB">噪声&nbsp;</span>历史曲线
+				</span>
+			</p>
+			<div id="line-chart" style="height: 78%; width: 85%"></div>
+		</div>
+
+		<!-- 小贴士 -->
+		<div
+			style="position: absolute; top: 70%; left: 0%; text-align: left; width: 40%; height: 28%; border: 1px solid rgba(255, 255, 255, 0.50); border-radius: 10px">
+			<p style="margin: 6% 6% 4% 6%">
+				<span id="tip">室内小贴士：</span>
+			</p>
+			<p style="margin-left: 6%; margin-top: 1%; margin-bottom: 1%;">
+				<span class="contentTip" id="tip_pm25">空气适宜，沁人心脾。</span>
+			</p>
+			<p style="margin-left: 6%; margin-top: 1%; margin-bottom: 1%;">
+				<span class="contentTip" id="tip_co2">室内空气清新，可自由呼吸。</span>
+			</p>
+
+		</div>
+
+	</div>
+
+	<div id="right">
+		<!--室外头部-->
+		<div
+			style="position: absolute; top: 0%; left: 0%; text-align: left; width: 90%; height: 16%;">
+			<span class="headerDiv" style="font-family: fontNameRegular">室外数据</span>
+			<hr style="border-width: 0px">
+			<span class="little">更新时间&nbsp;</span><span class="little"
+				id="out_time">8/26 09:30</span>
+		</div>
+
+
+		<!--室外 PM2.5  显示数据-->
+		<div
+			style="position: absolute; top: 33.9%; left: 0%; text-align: left; width: 50%; height: 80%;">
+
+
+			<canvas id="can2" width="400px" height="20px" style=""></canvas>
+
+
+		</div>
+
+
+
+
+		<!--  显示co2  温度  湿度   -->
+		<div
+			style="position: absolute; bottom: 0%; left: 0%; text-align: left; width: 100%; height: 17.2%;">
+			<table style="width: 100%">
+				<tr>
+					<td style="text-align: left;">温度</td>
+					<td style="text-align: left;">湿度</td>
+					<td style="text-align: left;">噪声</td>
+				</tr>
+				<tr>
+					<td style="text-align: left; padding-top: 2%" id="out_temp">0</td>
+					<td style="text-align: left; padding-top: 2%" id="out_hum">0</td>
+					<td style="text-align: left; padding-top: 2%" id="out_co2">0</td>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+
+</body>
+
+<script language="javascript" type="text/javascript">
+	//var _cityISO ;//= "%E9%83%91%E5%B7%9E";
+	//var  _cityname; //= "郑州";//remote_ip_info.city;
+
+	var map = new BMap.Map("allmap");
+	//var point = new BMap.Point(116.331398,39.897445);
+	//map.centerAndZoom(point,12);
+
+	function myFun(result) {
+		var cityName = result.name;
+		//map.setCenter(cityName);
+		var newstr = cityName.substring(0, cityName.length - 1);
+		var cityISO = encodeURI(newstr);
+
+		getCentralWeather(cityISO);
+
+	}
+
+	var myCity = new BMap.LocalCity();
+	myCity.get(myFun);
+	//ScrollImgLeft();
+	//alert(_cityISO);
+</script>
+
+<script>
+	var isFullScreen = false;
+	//进入全屏
+	function requestFullScreen() {
+		var de = document.documentElement;
+		if (de.requestFullscreen) {
+			de.requestFullscreen();
+		} else if (de.mozRequestFullScreen) {
+			de.mozRequestFullScreen();
+		} else if (de.webkitRequestFullScreen) {
+			de.webkitRequestFullScreen();
+		}
+		isFullScreen = true;
+	}
+	//退出全屏
+	function exitFullScreen() {
+		var de = document;
+		if (de.exitFullscreen) {
+			de.exitFullscreen();
+		} else if (de.mozCancelFullScreen) {
+			de.mozCancelFullScreen();
+		} else if (de.webkitCancelFullScreen) {
+			de.webkitCancelFullScreen();
+		}
+		isFullScreen = false;
+	}
+
+	document.body.addEventListener('click', function() {
+		/* requestFullScreen();
+		//5秒钟自动退出全屏
+		setTimeout(function(){
+		    exitFullscreen();
+		},5000); */
+		if (isFullScreen) {
+			exitFullScreen();
+		} else {
+			requestFullScreen();
+		}
+
+	}, false);
+
+	function GetQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null)
+			return unescape(r[2]);
+		return null;
+	}
+
+	var x;
+	var _currentSensorId1 = GetQueryString("IN");
+	var _currentSensorId2 = GetQueryString("OUT");
+	var _ad = GetQueryString("AD");
+	var _sessionId = GetQueryString("SESSIONID");
+	var _userid = GetQueryString("USERID");
+
+	$(document).ready(
+			function() {
+
+				x = window.innerWidth;
+				x = x / 4;
+
+				var canvas = document.getElementById("can1");
+				canvas.width = x;
+				var canvas2 = document.getElementById("can2");
+				canvas2.width = x;
+				var inPM25Data = $("#inPM25Data1");
+				inPM25Data.width = x - 10;
+
+				//alert(canvas.width);
+				//alert(inPM25Data.width);
+
+				systemTime();
+				var basePath = "";
+				var url = document.location.href;
+				//alert(url);
+				url = url.substring(7, url.length - 1);
+				//alert(url);
+				url = url.split("/");
+				url = url[0] + "/" + url[1] + "/";
+
+				basePath = url;
+				//alert(url);
+
+				var basePath = localStorage.getItem('basePath', '');
+
+				getHisData(basePath, _sessionId, _userid, _currentSensorId1, 1,
+						6, "line-chart");
+				getInData(basePath, _sessionId, _userid, _currentSensorId1);
+				getOutData(basePath, _sessionId, _userid, _currentSensorId2);
+
+			});
+
+	$(function() {
+
+		$('.headerDiv').fontFlex(35, 45, 42);
+		$('.little').fontFlex(10, 20, 15);
+		$('.inNum').fontFlex(23, 43, 38);
+		$('.unit').fontFlex(40, 45, 42);
+		$('.aqiData').fontFlex(20, 25, 22);
+
+		$('td').fontFlex(19, 25, 22);
+		$('#realTime').fontFlex(15, 20, 17);
+		$('.centerWea').fontFlex(18, 22, 19);
+		$('.centerWea2').fontFlex(13, 17, 14);
+
+		$('#tip').fontFlex(15, 20, 17);
+		$('.tip2').fontFlex(15, 20, 17);
+		$('.contentTip').fontFlex(13, 17, 14);
+
+		/* 绘制图形 */
+		// draw25('can1');
+		roundRect("can1", x - 10, 10, 5, 100);
+		roundRect("can2", x - 10, 10, 5, 100);
+		//numIn("can1",150,10,5,"#129950");
+
+	});
+	function draw25(id) {
+		var canvas = document.getElementById(id);
+		if (canvas == null)
+			return false;
+		var context = canvas.getContext('2d');
+
+		//可以把lg对象理解成GDI中线性brush
+		//这个渐进色可以当做fillstyle的一种颜色来处理，进行对画刷的属性设置
+		context.fillStyle = 'rgba(150,168,181,0.25)';
+		//再用这个brush来画正方形
+		context.fillRect(0, 0, 300, 20);
+	}
+	//圆角矩形
+	function roundRect(id, w, h, r, data) {
+		var canvas = document.getElementById(id);
+		if (canvas == null)
+			return false;
+		var context = canvas.getContext('2d');
+		var x = w;
+		var y = h;
+		var r = r;
+		var cell = w / 5;
+		var data = data;
+		var color;
+		var value = ((w + 20) * data) / 300;
+
+		if (value > 300) {
+			value = 300;
+		}
+		data = value;
+
+		if (value <= 100) {
+			color = "#8FC31F";
+		} else if (value > 100 && value <= 200) {
+			color = "#FFF100";
+		} else {
+			color = "#F39800";
+		}
+
+		context.beginPath();
+		context.moveTo(r, 0); // 创建开始点
+		context.lineTo(x + r, 0); // 创建水平线
+		context.quadraticCurveTo(2.5 * r + x, r, x + r, 2 * r);
+		context.lineTo(r, 2 * r);
+		//context.lineTo(r,0);
+		context.quadraticCurveTo(-0.5 * r, r, r, 0);
+		//context.moveTo(r,2*r);           // 创建开始点
+		// 创建水平线
+		//context.quadraticCurveTo(20,100,200,20);
+		//context.arc(100, 100, 100, 0, Math.PI , true);
+
+		context.fillStyle = "#96A8B5";
+		//context.lineWidth = 3;
+		context.fill();
+
+		context.beginPath();
+		context.moveTo(r, 0); // 创建开始点
+		context.lineTo(data + r, 0); // 创建水平线
+		context.quadraticCurveTo(2.5 * r + data, r, data + r, 2 * r);
+		context.lineTo(r, 2 * r);
+		//context.lineTo(r,0);
+		context.quadraticCurveTo(-0.5 * r, r, r, 0);
+		//context.moveTo(r,2*r);           // 创建开始点
+		// 创建水平线
+		//context.quadraticCurveTo(20,100,200,20);
+		//context.arc(100, 100, 100, 0, Math.PI , true);
+
+		context.fillStyle = color;
+		//context.lineWidth = 3;
+		context.fill();
+
+		context.beginPath();
+		context.moveTo(cell, 0); // 创建开始点
+		context.lineTo(cell, y);
+		context.moveTo(2 * cell, 0); // 创建开始点
+		context.lineTo(2 * cell, y);
+		context.moveTo(3 * cell, 0); // 创建开始点
+		context.lineTo(3 * cell, y);
+		context.moveTo(4 * cell, 0); // 创建开始点
+		context.lineTo(4 * cell, y);
+		context.strokeStyle = "#295270";
+		context.lineWidth = 2.5;
+		context.stroke();
+
+	}
+
+	//圆角矩形
+	function numIn(id, w, h, r, col) {
+		var canvas = document.getElementById(id);
+		if (canvas == null)
+			return false;
+		var context = canvas.getContext('2d');
+		var x = w;
+		var y = h;
+		var r = r;
+
+		context.beginPath();
+		context.moveTo(r, 0); // 创建开始点
+		context.lineTo(x + r, 0); // 创建水平线
+		context.quadraticCurveTo(2.5 * r + x, r, x + r, 2 * r);
+		context.lineTo(r, 2 * r);
+		//context.lineTo(r,0);
+		context.quadraticCurveTo(-0.5 * r, r, r, 0);
+		//context.moveTo(r,2*r);           // 创建开始点
+		// 创建水平线
+		//context.quadraticCurveTo(20,100,200,20);
+		//context.arc(100, 100, 100, 0, Math.PI , true);
+
+		context.fillStyle = col;
+		//context.lineWidth = 3;
+		context.fill();
+
+	}
+
+	//获取系统时间，将时间以指定格式显示到页面。  
+	function systemTime() {
+		//获取系统时间。  
+		d = new Date(); //创建一个Date对象
+		localTime = d.getTime();
+		localOffset = d.getTimezoneOffset() * 60000; //获得当地时间偏移的毫秒数
+		utc = localTime + localOffset; //utc即GMT时间
+
+		var d = new Date();
+		var offset = d.getTimezoneOffset() / 60;
+
+		//offset =8; //以北京时间为例，东10区
+		beijing = utc - (3600000 * offset);
+		dateTime = new Date(beijing);
+		//alert(dateTime);
+
+		var hh = dateTime.getHours();
+		var mm = dateTime.getMinutes();
+		var ss = dateTime.getSeconds();
+
+		var yy = dateTime.getFullYear();
+		var mon = dateTime.getMonth() + 1; //因为1月这个方法返回为0，所以加1
+		var dd = dateTime.getDate();
+
+		//alert(mon);
+		//分秒时间是一位数字，在数字前补0。  
+
+		mm = extra(mm);
+		ss = extra(ss);
+
+		//将时间显示到ID为time的位置，时间格式形如：19:18:02  
+		var str = "星期" + "日一二三四五六".charAt(new Date().getDay());
+		document.getElementById("realTime").innerHTML = mon + "-" + dd + "  "
+				+ str;
+		//document.getElementById("day").innerHTML=str;
+		//document.getElementById("time").innerHTML=hh+":"+mm+":"+ss;
+		//每隔1000ms执行方法systemTime()。  
+		setTimeout("systemTime()", 1000 * 60 * 5);
+	}
+
+	//补位函数。  
+	function extra(x) {
+		//如果传入数字小于10，数字前补一位0。  
+		if (x < 10) {
+			return "0" + x;
+		} else {
+			return x;
+		}
+	}
+</script>
+</html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.platform.dao.IOperLogDao">
+	
+	<select id="retrieveByPage" parameterType="map" resultType="map">
+		select ID, CODE, OPERATOR_ID, OPERATOR_NAME, RECORDING_TIME, CLASS_NAME, METHOD_NAME, CONTENT, IP
+		from SYS_OPER_LOG
+		where 1 = 1
+		<include refid="queryCondition"/>
+		order by CODE
+	</select>
+	
+	<select id="retrieveInstanceById" parameterType="string" 
+				resultType="com.hw.hwsafe.platform.pojo.OperLogPO" resultMap="operLogResultMap">
+		select ID, CODE, OPERATOR_ID, OPERATOR_NAME, RECORDING_TIME, CLASS_NAME, METHOD_NAME, CONTENT, IP
+		from SYS_OPER_LOG
+		where ID = #{id,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="retrieveMaxCode" resultType="string">
+		select max(CODE)
+		from SYS_OPER_LOG
+	</select>
+	
+	<insert id="insertOperLog" parameterType="com.hw.hwsafe.platform.pojo.OperLogPO">
+		insert into SYS_OPER_LOG(ID, CODE, OPERATOR_ID, OPERATOR_NAME, RECORDING_TIME, CLASS_NAME, METHOD_NAME, CONTENT, IP)
+			values(
+				#{id,jdbcType=VARCHAR},#{code,jdbcType=VARCHAR},#{operatorId,jdbcType=VARCHAR},
+				#{operatorName,jdbcType=VARCHAR},#{recordingTime,jdbcType=TIMESTAMP},
+				#{className,jdbcType=VARCHAR},#{methodName,jdbcType=VARCHAR},
+				#{content,jdbcType=VARCHAR},#{ip,jdbcType=VARCHAR}
+			)
+	</insert>
+	
+	<sql id="queryCondition">
+		<if test="po.code != null and po.code != ''">
+			and CODE = #{po.code,jdbcType=VARCHAR}
+		</if>
+		<if test="po.queryStartDate != null">
+			and RECORDING_TIME &gt;= #{po.queryStartDate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="po.queryEndDate != null">
+			and RECORDING_TIME &lt;= #{po.queryEndDate,jdbcType=TIMESTAMP}
+		</if>
+	</sql>
+	
+	<resultMap type="com.hw.hwsafe.platform.pojo.OperLogPO" id="operLogResultMap">
+		<result property="operatorId" column="OPERATOR_ID"/>
+		<result property="operatorName" column="OPERATOR_NAME"/>
+		<result property="recordingTime" column="RECORDING_TIME"/>
+		<result property="className" column="CLASS_NAME"/>
+		<result property="methodName" column="METHOD_NAME"/>
+	</resultMap>
+</mapper>

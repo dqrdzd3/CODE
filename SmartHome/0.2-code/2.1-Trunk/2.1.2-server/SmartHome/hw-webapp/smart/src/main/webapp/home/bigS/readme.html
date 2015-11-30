@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>jQuery之家</title>
+	<style type="text/css">
+		body{font-size: 14px;}
+		.content{
+			width: 800px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<h1>欢迎访问jQuery之家</h1>
+	<div class="content">
+	<p>更多精彩内容请访问jQuery之家：<a href="http://www.htmleaf.com">http://www.htmleaf.com</a></p>
+	<p>jQuery之家致力于搜集和整理各种jQuery插件，jQuery特效，jquery ui，jQuery 教程，JS特效，网页特效，以及各种html5，css3动画和效果。</p>
+	<p>为前端开发者提供最全面的网页开发素材。</p>
+	<video width="320" height="240" controls="controls" autoplay="autoplay">  
+        <source src="http://192.168.111.186:8080/smart/home/bigS/ad.mp4" type="video/mp4" >示例视频1</source>  
+        您的浏览器不支持video标签  
+    </video>
+    
+    <input type="file" id="file" onchange="onInputFileChange()">  
+<audio id="audio_id" controls autoplay loop>Your browser can't support HTML5 Audio</audio>  
+<script>  
+function onInputFileChange() {  
+   var file = document.getElementById('file').files[0];  
+   var url = URL.createObjectURL(file);  
+   console.log(url);  
+   document.getElementById("audio_id").src = url;  
+}  
+</script> 
+</div>
+</body>
+</html>

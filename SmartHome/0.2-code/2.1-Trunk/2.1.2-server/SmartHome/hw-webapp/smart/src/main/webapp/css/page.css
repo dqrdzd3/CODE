@@ -1,0 +1,13 @@
+#page{
+    clear:both;
+    padding-top:13px;
+    width:100%;
+    padding-bottom: 13px;
+}
+#pageleft{ float:left; color:#108772; text-decoration:none;}
+#pageleft span{ color:#FF6C00;}
+#pageright{ float:right; color:#178868; width:312px;}
+#pageright li{ float:left; margin-left:3px; line-height:18px;}
+#pageright li a{ display:block;background:url(../images/pagebuttonbg.jpg) left top repeat-x; border:#4ED0C7 solid 1px; padding-left:7px; padding-right:7px; text-align:center; color:#178B69; text-decoration:none; line-height:13px; float:left; vertical-align:top; padding-top:2px; height:11px; line-height:11px;}
+#pageright li a:hover{background:url(../images/pagebuttonoverbg.jpg) left top repeat-x; border:#16A69A solid 1px; color:#FFF;}
+#pageright li input{ border:#4AD1C3 solid 1px; width:24px; height:13px;}

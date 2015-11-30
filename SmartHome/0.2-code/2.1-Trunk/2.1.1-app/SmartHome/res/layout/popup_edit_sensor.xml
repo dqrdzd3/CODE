@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+       xmlns:app="http://schemas.android.com/apk/res/com.hw.smarthome"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white" >
+     <EditText
+                        android:id="@+id/sname"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:background="@null"
+                        android:hint="设备别名"
+                        android:padding="10.0dip"
+                        android:textColor="#444444"
+                        android:textSize="16.0sp" />
+      <com.beardedhen.androidbootstrap.BootstrapButton
+                     android:id="@+id/sbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="修改"
+                    app:bb_text_gravity="center"
+                    bootstrapbutton:bb_roundedCorners="true"
+                    bootstrapbutton:bb_size="default"
+                    bootstrapbutton:bb_type="info" />
+
+</LinearLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hw.hwsafe.knowledge.dao.ITcorpambDao">
+	<!-- 根据OBJID查询 -->
+	<select id="retrieveTcorpambByID" parameterType="String" resultType="com.hw.hwsafe.knowledge.pojo.TcorpambPO">
+		SELECT  OBJID,CORPID,NAME,PURPOSE,BASED,RANGE,YANSYSTEM,PRINCIPLE,GENERAL,ANALYSIS,YJSYSTEM,ZHIHUIZHIZE,WXYJK,YJACTION,INFOREPORT
+		,RESPONSEFJ,RESPONSEPROGRAM,YJEND,INFORELEASE,LATEDISPOSAL,INFOSECURITY,DWSECURITY,ZHBSECURITY,JFSECURITY,OTHERSECURITY,TRAINING,DRILL,
+		REWARDSANDPUNISHMENTS,DEFINE,RECORD,UPDATES,FORMULATE,IMPLEMENT,UPDATEDATE,ISOUT,ISAUDIT,CORPORATION_FK,CODE,CORPNAME,CREATETIME,REMARKS,STATUS
+			 FROM TCORPAMB WHERE OBJID=#{objid}
+	</select>
+		<!-- 根据条件查询所有  -->
+	<select id="retrieveTcorpambByPO" resultType="com.hw.hwsafe.knowledge.pojo.TcorpambPO">
+		SELECT  OBJID,CORPID,NAME,PURPOSE,BASED,RANGE,YANSYSTEM,PRINCIPLE,GENERAL,ANALYSIS,YJSYSTEM,ZHIHUIZHIZE,WXYJK,YJACTION,INFOREPORT
+		,RESPONSEFJ,RESPONSEPROGRAM,YJEND,INFORELEASE,LATEDISPOSAL,INFOSECURITY,DWSECURITY,ZHBSECURITY,JFSECURITY,OTHERSECURITY,TRAINING,DRILL,
+		REWARDSANDPUNISHMENTS,DEFINE,RECORD,UPDATES,FORMULATE,IMPLEMENT,UPDATEDATE,ISOUT,ISAUDIT,CORPORATION_FK,CODE,CORPNAME,CREATETIME,REMARKS,STATUS
+		FROM TCORPAMB t 	
+		WHERE 1=1
+		<if test="name != null">
+			<if test="name != ''">
+			AND	NAME  LIKE '%'||#{name}||'%' 
+			</if>
+		</if> 
+		<if test="creator != null and creator != ''">AND CREATOR = #{creator} </if>
+	</select>
+		<!-- 根据条件查询所有  -->
+	<select id="reduplicateTcorpamb" resultType="com.hw.hwsafe.knowledge.pojo.TcorpambPO">
+		SELECT  OBJID,CORPID,NAME,PURPOSE,BASED,RANGE,YANSYSTEM,PRINCIPLE,GENERAL,ANALYSIS,YJSYSTEM,ZHIHUIZHIZE,WXYJK,YJACTION,INFOREPORT
+		,RESPONSEFJ,RESPONSEPROGRAM,YJEND,INFORELEASE,LATEDISPOSAL,INFOSECURITY,DWSECURITY,ZHBSECURITY,JFSECURITY,OTHERSECURITY,TRAINING,DRILL,
+		REWARDSANDPUNISHMENTS,DEFINE,RECORD,UPDATES,FORMULATE,IMPLEMENT,UPDATEDATE,ISOUT,ISAUDIT,CORPORATION_FK,CODE,CORPNAME,CREATETIME,REMARKS,STATUS
+		FROM TCORPAMB t 	
+		WHERE 1=1
+		<if test="name != null and name != ''">AND NAME = #{name} </if>
+		<if test="creator != null and creator != ''">AND CREATOR = #{creator} </if>
+	</select>
+	
+	<!-- 插入预案知识 -->
+	<insert id="insertTcorpamb" parameterType="com.hw.hwsafe.knowledge.pojo.TcorpambPO">
+	 INSERT INTO TCORPAMB(OBJID,CORPID,NAME,PURPOSE,BASED,RANGE,YANSYSTEM,PRINCIPLE,GENERAL,ANALYSIS,YJSYSTEM,ZHIHUIZHIZE,WXYJK,YJACTION,INFOREPORT
+		,RESPONSEFJ,RESPONSEPROGRAM,YJEND,INFORELEASE,LATEDISPOSAL,INFOSECURITY,DWSECURITY,ZHBSECURITY,JFSECURITY,OTHERSECURITY,TRAINING,DRILL,
+		REWARDSANDPUNISHMENTS,DEFINE,RECORD,UPDATES,FORMULATE,IMPLEMENT,CODE,CORPNAME,REMARKS,creator,CREATETIME
+      ) 
+      VALUES(
+     #{objid,jdbcType=VARCHAR},#{corpid,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{purpose,jdbcType=VARCHAR},#{based,jdbcType=VARCHAR},#{range,jdbcType=VARCHAR},#{yansystem,jdbcType=VARCHAR},#{principle,jdbcType=VARCHAR},#{general,jdbcType=VARCHAR},#{analysis,jdbcType=VARCHAR},#{yjsystem,jdbcType=VARCHAR},#{zhihuizhize,jdbcType=VARCHAR},#{wxyjk,jdbcType=VARCHAR},#{yjaction,jdbcType=VARCHAR},#{inforeport,jdbcType=VARCHAR}
+	,#{responsefj,jdbcType=VARCHAR},#{responseprogram,jdbcType=VARCHAR},#{yjend,jdbcType=VARCHAR},#{inforelease,jdbcType=VARCHAR},#{latedisposal,jdbcType=VARCHAR},#{infosecurity,jdbcType=VARCHAR},#{dwsecurity,jdbcType=VARCHAR},#{zhbsecurity,jdbcType=VARCHAR},#{jfsecurity,jdbcType=VARCHAR},#{othersecurity,jdbcType=VARCHAR},#{training,jdbcType=VARCHAR},#{drill,jdbcType=VARCHAR}
+	,#{rewardsandpunishments,jdbcType=VARCHAR},#{define,jdbcType=VARCHAR},#{record,jdbcType=VARCHAR},#{updates,jdbcType=VARCHAR},#{formulate,jdbcType=VARCHAR},#{implement,jdbcType=VARCHAR},#{code,jdbcType=VARCHAR},#{corpname,jdbcType=VARCHAR},#{remarks,jdbcType=VARCHAR},#{creator,jdbcType=VARCHAR},#{createtime,jdbcType=TIMESTAMP}
+	
+    )
+    </insert>
+	<!-- 更新预案知识 -->
+	<update id="updateTcorpamb" parameterType="com.hw.hwsafe.knowledge.pojo.TcorpambPO">
+	  	UPDATE TCORPAMB 
+		set	
+			NAME=#{name,jdbcType=VARCHAR},
+			PURPOSE=#{purpose,jdbcType=VARCHAR},BASED=#{based,jdbcType=VARCHAR},RANGE=#{range,jdbcType=VARCHAR},YANSYSTEM=#{yansystem,jdbcType=VARCHAR},PRINCIPLE=#{principle,jdbcType=VARCHAR},GENERAL=#{general,jdbcType=VARCHAR},ANALYSIS=#{analysis,jdbcType=VARCHAR}
+			,YJSYSTEM=#{yjsystem,jdbcType=VARCHAR},ZHIHUIZHIZE=#{zhihuizhize,jdbcType=VARCHAR},WXYJK=#{wxyjk,jdbcType=VARCHAR},YJACTION=#{yjaction,jdbcType=VARCHAR},INFOREPORT=#{inforeport,jdbcType=VARCHAR}
+			,RESPONSEFJ=#{responsefj,jdbcType=VARCHAR},RESPONSEPROGRAM=#{responseprogram,jdbcType=VARCHAR},YJEND=#{yjend,jdbcType=VARCHAR},INFORELEASE=#{inforelease,jdbcType=VARCHAR},LATEDISPOSAL=#{latedisposal,jdbcType=VARCHAR}
+			,INFOSECURITY=#{infosecurity,jdbcType=VARCHAR},DWSECURITY=#{dwsecurity,jdbcType=VARCHAR},ZHBSECURITY=#{zhbsecurity,jdbcType=VARCHAR},JFSECURITY=#{jfsecurity,jdbcType=VARCHAR},OTHERSECURITY=#{othersecurity,jdbcType=VARCHAR}
+			,TRAINING=#{training,jdbcType=VARCHAR},DRILL=#{drill,jdbcType=VARCHAR},
+			REWARDSANDPUNISHMENTS=#{rewardsandpunishments},DEFINE=#{define,jdbcType=VARCHAR},RECORD=#{record,jdbcType=VARCHAR},UPDATES=#{updates,jdbcType=VARCHAR},FORMULATE=#{formulate,jdbcType=VARCHAR},IMPLEMENT=#{implement,jdbcType=VARCHAR}
+			,CODE=#{code,jdbcType=VARCHAR},CORPNAME=#{corpname,jdbcType=VARCHAR}
+			,REMARKS=#{remarks,jdbcType=VARCHAR}
+		WHERE OBJID = #{objid}
+	</update>
+<!-- 根据条件查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		SELECT  OBJID,CORPID,NAME,PURPOSE,BASED,RANGE,YANSYSTEM,PRINCIPLE,GENERAL,ANALYSIS,YJSYSTEM,ZHIHUIZHIZE,WXYJK,YJACTION,INFOREPORT
+		,RESPONSEFJ,RESPONSEPROGRAM,YJEND,INFORELEASE,LATEDISPOSAL,INFOSECURITY,DWSECURITY,ZHBSECURITY,JFSECURITY,OTHERSECURITY,TRAINING,DRILL,
+		REWARDSANDPUNISHMENTS,DEFINE,RECORD,UPDATES,FORMULATE,IMPLEMENT,UPDATEDATE,ISOUT,ISAUDIT,CORPORATION_FK,CODE,CORPNAME,CREATETIME,REMARKS,STATUS
+		FROM TCORPAMB t 	
+		WHERE 1=1
+		<if test="po.name != null">
+			<if test="po.name != ''">
+			AND	t.NAME  LIKE '%'||#{po.name}||'%' 
+			</if>
+		</if> 
+		<if test="ORGAN_UUID != null and ORGAN_UUID != ''">
+			AND t.CORPID = #{ORGAN_UUID}  
+		</if>
+	order  by createtime desc
+	</select>
+</mapper>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC    
+
+      "-//OpenSymphony Group//XWork Validator 1.0//EN"    
+ 
+       "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">  
+       
+<validators>  
+
+   <field name="tregulationPO.ma004">  
+   
+   <field-validator type="requiredstring">  
+           <message>名称不能为空啊：</message>  
+   </field-validator>
+   
+    
+   </field>  
+   
+   
+   
+   
+   
+   <field name="tregulationPO.ma006">  
+   
+   <field-validator type="requiredstring">  
+           <message>单位不能为空啊：</message>  
+   </field-validator>
+   
+    
+   </field>  
+   
+   
+   
+   
+   
+   
+   <field name="tregulationPO.ma009">  
+   
+   <field-validator type="requiredstring">  
+           <message>编制人不能为空啊：</message>  
+   </field-validator>
+   
+    
+   </field>  
+   
+   
+   
+   
+   <field name="tregulationPO.ma008">  
+   
+   <field-validator type="date">  
+           <message>输入时间：</message>  
+   </field-validator>
+   
+    
+   </field>  
+   
+   
+   
+   
+   
+   <field name="tregulationPO.ma010">  
+   
+   <field-validator type="date">  
+           <message>输入时间：</message>  
+   </field-validator>
+   
+    
+   </field>  
+   
+   
+   
+   
+   
+   <field name="tregulationPO.ma005">  
+   
+   <field-validator type="requiredstring">  
+           <message>摘要不能为空啊：</message>  
+   </field-validator>
+   
+    
+   </field>  
+   
+   
+   
+</validators>
+       

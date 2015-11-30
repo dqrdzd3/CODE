@@ -1,0 +1,48 @@
+/**
+ * 自定义	ztree的按钮图标的样式文件
+ * 样式命名规则：必须是操作名称代码(action_code)+Icon 如：addIcon
+ * 每添加一个操作按钮，要在此处添加相应的样式，并在images/ztree/中添加相应的图片
+ */
+/*
+ *目录打开，关闭图标
+ */
+.ztree li span.button.pIcon_ico_open{margin-right:2px; background: url(../images/ztree/parent_open.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.pIcon_ico_close{margin-right:2px; background: url(../images/ztree/parent_close.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.pIcon_ico_docu{margin-right:2px; background: url(../images/ztree/parent_close.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+/**
+ * 页面打开关闭图标	
+ */
+.ztree li span.button.cIcon_ico_open{margin-right:2px; background: url(../images/ztree/child.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.cIcon_ico_close{margin-right:2px; background: url(../images/ztree/child.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.cIcon_ico_docu{margin-right:2px; background: url(../images/ztree/child.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+/**
+ * 各种操作图标
+ */
+.ztree li span.button.addIcon_ico_docu{margin-right:2px; background: url(../images/ztree/add.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.editIcon_ico_docu{margin-right:2px; background: url(../images/ztree/edit.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.deleteIcon_ico_docu{margin-right:2px; background: url(../images/ztree/delete.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.viewIcon_ico_docu{margin-right:2px; background: url(../images/ztree/view.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.auditIcon_ico_docu{margin-right:2px; background: url(../images/ztree/audit.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.downloadIcon_ico_docu{margin-right:2px; background: url(../images/ztree/download.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.submitIcon_ico_docu{margin-right:2px; background: url(../images/ztree/submit.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.sbIcon_ico_docu{margin-right:2px; background: url(../images/ztree/sb.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.operIcon_ico_docu{margin-right:2px; background: url(../images/ztree/oper.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.passwordIcon_ico_docu{margin-right:2px; background: url(../images/ztree/password.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.roleIcon_ico_docu{margin-right:2px; background: url(../images/ztree/role.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.permiIcon_ico_docu{margin-right:2px; background: url(../images/ztree/permi.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.printIcon_ico_docu{margin-right:2px; background: url(../images/ztree/print.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.appfilingIcon_ico_docu{margin-right:2px; background: url(../images/ztree/appfiling.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.applyIcon_ico_docu{margin-right:2px; background: url(../images/ztree/apply.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.apptrackIcon_ico_docu{margin-right:2px; background: url(../images/ztree/apptrack.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.conditionIcon_ico_docu{margin-right:2px; background: url(../images/ztree/condition.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.elearnIcon_ico_docu{margin-right:2px; background: url(../images/ztree/elearn.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.entdataIcon_ico_docu{margin-right:2px; background: url(../images/ztree/entdata.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.govdataIcon_ico_docu{margin-right:2px; background: url(../images/ztree/govdata.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.locationIcon_ico_docu{margin-right:2px; background: url(../images/ztree/location.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.overviewIcon_ico_docu{margin-right:2px; background: url(../images/ztree/overview.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.planIcon_ico_docu{margin-right:2px; background: url(../images/ztree/plan.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.reviseIcon_ico_docu{margin-right:2px; background: url(../images/ztree/revise.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.selcoursesIcon_ico_docu{margin-right:2px; background: url(../images/ztree/selcourses.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.summaryIcon_ico_docu{margin-right:2px; background: url(../images/ztree/summary.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.trainIcon_ico_docu{margin-right:2px; background: url(../images/ztree/train.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+

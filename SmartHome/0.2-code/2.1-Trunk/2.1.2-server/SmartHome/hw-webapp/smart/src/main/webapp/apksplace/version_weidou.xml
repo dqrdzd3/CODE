@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<update>
+	<version>1</version>
+	<name>1.0.0</name>
+	<url>WeiDou.apk</url>
+	<content><![CDATA[<html><head><title></title></head><body><p><strong>1.修改了服务端的域名<br>2.增加了VOC
+<br>3.降低了排名功能向后端的请求频率
+</strong></p></body></html>]]></content>
+</update>

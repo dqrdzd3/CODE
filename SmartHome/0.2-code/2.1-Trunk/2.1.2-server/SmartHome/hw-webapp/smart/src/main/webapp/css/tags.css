@@ -1,0 +1,81 @@
+#tags {
+	PADDING-RIGHT: 0px; 
+	PADDING-LEFT: 0px; 
+	PADDING-BOTTOM: 0px; 
+	MARGIN: 0px 0px 0px 0px; 
+	PADDING-TOP: 0px;
+	background:url(../images/titlebg2.jpg) left top repeat-x; 
+	height:23px; 
+	padding-top:3PX; 
+	padding-left:2PX;
+}
+#tags LI {
+	BACKGROUND: url(../images/tagleft.gif) no-repeat left bottom; 
+	FLOAT: left; 
+	MARGIN-RIGHT:1px; 
+	LIST-STYLE-TYPE: none; 
+	HEIGHT: 23px;
+}
+#tags LI A {
+	PADDING-RIGHT:8px; 
+	PADDING-LEFT:8px; 
+	BACKGROUND: url(../images/tagright.gif) no-repeat right bottom; 
+	FLOAT: left; 
+	PADDING-BOTTOM: 0px; 
+	COLOR: #137ebc; 
+	LINE-HEIGHT: 23px; 
+	PADDING-TOP: 0px; 
+	HEIGHT: 23px; 
+	TEXT-DECORATION: none;
+}
+#tags LI.emptyTag {
+	BACKGROUND: none transparent scroll repeat 0% 0%; 
+	WIDTH: 4px;
+}
+#tags LI.selectTag {
+	BACKGROUND-POSITION: left top; 
+	MARGIN-BOTTOM: -1px; 
+	POSITION: relative; 
+	HEIGHT: 23px;
+	BORDER-TOP: #FFF 1px solid;
+}
+#tags LI.selectTag A {
+	BACKGROUND-POSITION: right top; 
+	COLOR: #FF7901; 
+	LINE-HEIGHT: 23px; 
+	HEIGHT: 23px; 
+	font-weight:bold;
+}
+
+#tags LI A span.tabStar {
+	font-weight:bold;
+}
+
+#tags LI.errLI {
+}
+	
+#tags LI.errLI a {
+	color:red; 
+	font-weight:bold;
+}
+
+#tagContent {
+	PADDING-RIGHT: 0px; 
+	PADDING-LEFT: 1px; 
+	PADDING-BOTTOM: 1px; 
+	PADDING-TOP: 1px; 
+	BORDER-TOP: #B4EBE7 1px solid; 
+	BACKGROUND-COLOR: #fff;
+}
+.tagContent {
+	PADDING-RIGHT: 10px; 
+	DISPLAY: none; 
+	PADDING-LEFT: 10px; 
+	BACKGROUND: url(../images/bg.gif) repeat-x; 
+	PADDING-BOTTOM: 10px;  
+	COLOR: #474747; 
+	PADDING-TOP: 0px; 
+}
+#tagContent DIV.selectTag {
+    DISPLAY: block;
+}

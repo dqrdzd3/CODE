@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+ 
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>空气电台</title>
+
+    <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+	
+	
+	    
+      
+        
+        <link rel="stylesheet" type="text/css" href="css/component.css" />
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<style>  
+#warp {   
+  position: absolute;   
+  width:500px;   
+  height:200px;   
+  left:50%;   
+  top:40%;   
+  margin-left:-250px;   
+  margin-top:-100px;   
+  border: 0px;   
+}   
+</style> 
+<script>
+
+	function addCookie(name,value,days,path){   /**添加设置cookie**/  
+    var name = escape(name);  
+    var value = escape(value);  
+    var expires = new Date();  
+    expires.setTime(expires.getTime() + days * 3600000 * 24);  
+    //path=/，表示cookie能在整个网站下使用，path=/temp，表示cookie只能在temp目录下使用  
+    path = path == "" ? "" : ";path=" + path;  
+    //GMT(Greenwich Mean Time)是格林尼治平时，现在的标准时间，协调世界时是UTC  
+    //参数days只能是数字型  
+    var _expires = (typeof days) == "string" ? "" : ";expires=" + expires.toUTCString();  
+    document.cookie = name + "=" + value + _expires + path;  
+}  
+
+
+	function TestUser(obj){
+
+  	if(obj.value.length>=16){
+
+  		alert('请输入16以内的字符');
+
+  		return false;
+
+  	}
+
+  }
+
+  function TestPwd(obj){
+
+  	if(obj.value.length>=16){
+
+  		alert('请输入16位以内的密码');
+
+  		return false;
+
+  	}
+
+  }
+
+		//addCookie("userName",userName,7,"/");  
+       // addCookie("userPass",userPass,7,"/");  
+
+</script>
+</head>
+
+<body>
+<div class="container demo-2">
+			<div class="content">
+                <div id="large-header" class="large-header">
+                    <canvas id="demo-canvas"></canvas>
+                    	 <div id=warp>
+<center><img src="img/admin_logo.png" />
+
+ <form>
+    <fieldset>
+      <!-- Entypo &#128100; = User -->
+      <input type="text" name="username" id="username" placeholder="用户名"   onblur="TestUser(this)" />
+      <label for="username" data-icon="&#128100;">Username</label>
+      <!-- Entypo &#128274; = Locked -->
+      <input type="password" name="password" id="password" placeholder="密码"   onblur="TestPwd(this)" />
+      <label for="password" data-icon="&#128274;">Password</label>
+      <!-- Entypo &#58542; = Right Arrow -->
+      <button value="Submit" data-icon="&#58542;" />
+    </fieldset>
+  </form>
+
+<center>
+
+</div>  
+				</div>
+                </div>
+                
+            </div>
+		</div><!-- /container -->
+
+
+			
+
+
+
+
+
+ 
+
+
+  <script src='js/jQuery.js'></script>
+
+  <script src="js/index.js"></script>
+
+	<script src="js/demo-2.js"></script>
+       <script src="js/jquery-1.10.0.min.js"></script>
+
+</body>
+
+</html>

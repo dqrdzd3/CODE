@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:chart="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/ui_home_history_bg_color"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <!-- 二层布局 显示实时更新数 bgn -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.3"
+        android:background="@color/ui_home_history_bg_color"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dip"
+            android:text="@string/ui_home_current_value"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/historyCurDataContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="2dip"
+            android:text="@string/ui_home_current_value_default"
+            android:textColor="@color/black"
+            android:textSize="50sp"  />
+
+        <TextView
+            android:id="@+id/historyDataUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black" />
+    </LinearLayout>
+    <!-- 二层布局 显示实时更新数 end -->
+    <!-- 二层布局 显示分钟(minute)内的实时数据 bgn -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/historyMinuteContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <!-- 二层布局 显示分钟内的实时数据 end -->
+    <!-- 二层布局 显示小时(hour)内的实时数据 bgn -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/historyHourContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <!-- 二层布局 显示小时内的实时数据 end -->
+
+</LinearLayout>

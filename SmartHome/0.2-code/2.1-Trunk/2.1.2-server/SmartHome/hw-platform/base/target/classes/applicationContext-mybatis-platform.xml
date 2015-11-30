@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:p="http://www.springframework.org/schema/p"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+    <!-- Framework mapper package -->
+<!--     <bean id="ibaseDao" class="org.mybatis.spring.mapper.MapperFactoryBean">   
+	    <property name="mapperInterface" value="com.hw.hwsafe.platform.dao.IBaseDao" />  
+	</bean>  -->
+	<bean id="ibaseDao" class="com.hw.hwsafe.platform.dao.impl.BaseDaoImpl"/>
+	
+	<bean id="commonDao" class="org.mybatis.spring.mapper.MapperFactoryBean">   
+	    <property name="mapperInterface" value="com.hw.hwsafe.platform.dao.ICommonDao" />  
+	</bean> 
+	
+	<bean id="dBDateDao" class="org.mybatis.spring.mapper.MapperFactoryBean">   
+	    <property name="mapperInterface" value="com.hw.hwsafe.platform.dao.IDBDateDao" />  
+	</bean> 
+	
+	<bean id="codeValueDao" class="org.mybatis.spring.mapper.MapperFactoryBean">   
+	    <property name="mapperInterface" value="com.hw.hwsafe.platform.dao.CodeValueDao" />  
+	</bean>
+	
+	<bean id="dictionaryDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.hw.hwsafe.platform.dao.IDictionaryDao" />
+	</bean>
+	
+	<bean id="codeSequenceDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.hw.hwsafe.platform.dao.ICodeSequenceDao" />
+	</bean>
+
+	<bean id="operLogDao" class="com.hw.hwsafe.platform.dao.impl.OperLogDaoImpl"/>
+	
+	<bean id="exceptionLogDao" class="com.hw.hwsafe.platform.dao.impl.ExceptionLogDaoImpl"/>
+	
+	<bean id="loginLogDao" class="com.hw.hwsafe.platform.dao.impl.LoginLogDaoImpl"/>
+	
+	<bean id="sysLoginLogDao" class="com.hw.hwsafe.platform.dao.impl.SysLoginLogDaoImpl"/>
+	
+	<bean id="sysRecordDao" class="com.hw.hwsafe.platform.dao.impl.SysRecordDaoImpl"/>
+</beans>

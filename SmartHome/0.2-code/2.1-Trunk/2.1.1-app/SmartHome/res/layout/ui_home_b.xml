@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main2_fragment"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/ui_home_bg" >
+
+    <LinearLayout
+        android:id="@+id/uiHomeLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <!--
+    android:background="@drawable/ui_home_bg3"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingTop="10dip" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_horizontal"
+            android:text="@string/home_com_status"
+            android:textColor="@color/ui_home_text"
+            android:textSize="15.0sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_horizontal"
+            android:text="@string/home_bug_status"
+            android:textColor="@color/ui_home_text"
+            android:textSize="15.0sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_horizontal"
+            android:text="@string/home_web_statusy"
+            android:textColor="@color/ui_home_text"
+            android:textSize="15.0sp" />
+    </LinearLayout>
+        -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.60"
+            android:orientation="vertical" >
+
+            <FrameLayout
+                android:id="@+id/uiHomeMenu"
+                android:layout_width="fill_parent"
+                android:layout_height="23dip" >
+
+                <Button
+                    android:id="@+id/title_bar_left_menu"
+                    android:layout_width="28dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="left|center_vertical|bottom"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/titlebar_menu_selector" />
+
+                <Button
+                    android:id="@+id/title_bar_right_menu"
+                    android:layout_width="28dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="right|center_vertical|bottom"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/titlebar_menu_selector" />
+            </FrameLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/homePager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+            </android.support.v4.view.ViewPager>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/guideIMage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/ui_home_guide" />
+    </LinearLayout>
+
+</FrameLayout>

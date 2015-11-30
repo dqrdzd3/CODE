@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+<meta name="viewport"
+	content="target-densitydpi=device-dpi,initial-scale=1" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta content="telephone=no" name="format-detection">
+<meta charset="UTF-8">
+<title>大屏</title>
+<style>
+@font-face {
+	font-family: 'fontNameRegular';
+	src: local('fontName Regular'), local('fontName'), url('css/slim.TTF')
+		format('truetype');
+}
+
+@font-face {
+	font-family: 'fontNameRegular2';
+	src: local('fontName Regular'), local('fontName'), url('css/small.TTF')
+		format('truetype');
+}
+
+body {
+	background: #285171;
+	overflow: hidden;
+}
+
+#left {
+	position: absolute;
+	top: 10%;
+	left: 5.6%;
+	width: 58.8%;
+	height: 64.4%;
+	font-family: fontNameRegular2;
+	color: white;
+}
+
+#logo {
+	position: absolute;
+	top: 5%;
+	left: 5.6%;
+	width: 90%;
+	height: 64.4%;
+}
+
+#centerWeather {
+	position: absolute;
+	top: 79%;
+	left: 8%;
+	width: 15.6%;
+	height: 9.1%;
+	color: white;
+}
+
+#bottom {
+	position: absolute;
+	top: 80%;
+	left: 8%;
+	width: 85.7%;
+	height: 10.1%;
+	color: white;
+	font-family: fontNameRegular2;
+}
+
+#vertical {
+	position: absolute;
+	top: 12.4%;
+	left: 0%;
+	width: 67.5%;
+	height: 76.2%;
+	border-right: 1px solid rgba(255, 255, 255, 0.50);
+}
+
+#horizon {
+	position: absolute;
+	bottom: 0%;
+	left: 0%;
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+	height: 21.1%;
+	color: white;
+	border-top: 1px solid rgba(255, 255, 255, 0.50);
+}
+
+#right {
+	position: absolute;
+	top: 10%;
+	left: 70.6%;
+	width: 28.8%;
+	height: 64.4%;
+	color: white;
+	font-family: fontNameRegular2;
+}
+
+td {
+	text-align: center;
+}
+</style>
+<script type="text/javascript" src="js/zzr/jquery-1.9.1.min.js"></script>
+<script src="http://img.jb51.net/jslib/jquery/jquery14.js"></script>
+<script type="text/javascript" src="js/zzr/jQuery.fontFlex.js"></script>
+<script type="text/javascript" src="js/zzr/jquery.flot.js"></script>
+<script type="text/javascript" src="js/zzr/jquery.flot.resize.js"></script>
+<script type="text/javascript" src="js/zzr/modernizr.custom.79639.js"></script>
+
+
+<!-- Morris.js charts -->
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script type="text/javascript" src="js/zzr/morris.js"></script>
+
+<!-- <script type="text/javascript" src="js/zzr/Screen.js"></script> -->
+<script language=JavaScript>
+<!--
+if (self.parent.location!=document.location) { self.parent.location=document.location };
+self.moveTo(0,0); self.resizeTo(screen.availWidth,screen.availHeight); self.focus();
+//-->
+</script>
+
+</head>
+<body>
+
+	<div id="vertical"></div>
+
+	<div id="vertical2"></div>
+
+	<!-- 室外PM2.5 -->
+
+
+	<div style="position: absolute; left: 70.8%; top: 38.9%; width: 25%">
+
+		<table
+			style="width: 100%; background-color: #40627E; color: #fff; border-radius: 5px">
+			<tr>
+				<td style="padding-top: 3%; padding-bottom: 3%"><span
+					class="unit" id="out_pm25" style="font-family: fontNameRegular2">90</span></td>
+				<td style="padding-top: 3%; padding-bottom: 3%"><span
+					class="unit2" style="font-family: fontNameRegular2">PM2.5</span></td>
+
+			</tr>
+
+		</table>
+	</div>
+	<!-- 室内PM2.5 -->
+
+
+	<div style="position: absolute; right: 35.6%; top: 38.9%; width: 25%;">
+
+		<table
+			style="width: 100%; background-color: #40627E; color: #fff; border-radius: 5px">
+			<tr>
+				<td style="padding-top: 3%; padding-bottom: 3%"><span
+					class="unit2" style="font-family: fontNameRegular2;">PM2.5</span></td>
+				<td style="padding-top: 3%; padding-bottom: 3%"><span
+					class="unit" id="in_pm25" style="font-family: fontNameRegular2">90</span></td>
+
+			</tr>
+
+		</table>
+	</div>
+
+
+	<!-- logo -->
+	<div id="logo">
+		<img id="logo_img"
+			src="img/AIRRADIO.png" style="width: 15%" />
+	</div>
+
+
+
+<!--	<div id="bottom">
+		<table style="width: 100%; height: 100%">
+			<tr>
+				<td style="border-right: 1px solid rgba(255, 255, 255, 0.50)">
+					<p style="margin-bottom: 0%">
+						<span id="realTime">08/24 星期一</span>
+					</p>
+					<p style="margin-top: 0%">
+						<span class="centerWea">气象台发布</span>
+					</p>
+				</td>
+				<td><span class="aqiData">AQI:&nbsp;</span><span
+					class="aqiData" id="cen_aqi"></span>&nbsp;&nbsp;<span></span><span
+					class="aqiData" id="cen_quality">良</span></td>
+				<td class="centerWea">湿度：<span class="centerWea" id="cen_hum"></span></td>
+				<td class="centerWea">温度：<span class="centerWea" id="cen_temp"></span></td>
+				<td class="centerWea">PM2.5：<span class="centerWea"
+					id="cen_pm25"></span></td>
+			</tr>
+
+		</table>
+	</div>-->
+
+	<div id="left">
+		<!-- 室内头部 -->
+		<div
+			style="position: absolute; top: 0%; left: 0%; text-align: right; width: 100%; height: 16%;">
+			<span class="headerDiv" style="font-family: fontNameRegular">室内数据</span>
+			<hr style="border-width: 0px">
+			<span class="little">更新时间&nbsp;</span><span class="little"
+				id="in_time">8/26 09:30</span>
+		</div>
+		<!--室内主内容-->
+		<div
+			style="position: absolute; top: 13%; left: 5%; text-align: left; width: 40%; height: 80%;">
+
+		</div>
+
+
+		<!--室内 PM2.5  显示数据-->
+		<div
+			style="position: absolute; top: 33.9%; right: 0%; text-align: right; width: 50%; height: 80%;">
+
+
+			<canvas id="can1" width="400px" height="20px" style=""></canvas>
+
+
+		</div>
+
+
+
+
+
+
+
+		<!--  显示co2  温度  湿度   -->
+		<div
+			style="position: absolute;bottom:15%; right: 0%; text-align: left; width: 53.2%; height: 17.2%;">
+			<table style="width: 100%;padding-left: 20%;">
+                <tr>
+                    <td style="text-align: center;"><img src="../images/hum.png" style="width:60%"></td>
+                    <td style="text-align: center;"><img src="../images/temp2.png" style="width:60%"></td>
+                </tr>
+                <tr>
+
+                    <td style="text-align: center; padding-top: 1.5%" id="in_hum">0</td>
+                    <td style="text-align: center; padding-top: 1.5%" id="in_temp">0</td>
+                </tr>
+				<tr>
+					<td style="text-align: center;padding-top: 3%;visibility:hidden;"><img src="../images/dB.png" style="width:60%"></td>
+					<td style="text-align: center;padding-top: 3%;"><img src="../images/dB2.png" style="width:60%"></td>
+                 </tr>
+                <tr>
+                    <td style="text-align: center; padding-top: 1.5%;visibility:hidden;" id="in_voc">0</td>
+                    <td style="text-align: center; padding-top: 1.5%" id="in_co2">0</td>
+                </tr>
+
+			</table>
+		</div>
+
+		<!--  曲线图   -->
+		<div
+			style="position: absolute; top: 15%; left: 0%; text-align: left; width: 52.3%; height: 50.8%;">
+			<p style="margin: 6% 0% 6% 0%">
+				<span class="tip2">室内<span style="color: #D6AED4">PM2.5</span>
+					& <span style="color: #8AF6DB">噪声</span>历史曲线
+				</span>
+			</p>
+			<div id="line-chart" style="height: 100%; width: 100%"></div>
+		</div>
+
+		<!-- 小贴士 -->
+		<div
+			style="position: absolute; top: 90%; left: 0%; text-align: left; width: 52%; height: 38%; border: 1px solid rgba(255, 255, 255, 0.50); border-radius: 10px">
+			<p style="margin: 3% 6% 4% 6%">
+              <span id = "day" style="color: #BABEC1;"></span><span>&nbsp;</span> <span id="cen_time" style="color: #BABEC1;">00:00</span>&nbsp;<span id="tip" style="color: #BABEC1;">气象台发布</span>
+			</p>
+
+            <table style="width: 100%; height:10%">
+                <tr>
+                    <td >
+
+                        
+                            <span class="centerWea" id = "date"></span>
+                     </td>   
+                     
+                    <td style="text-align: center" rowspan="2">
+                        <div style="width: 1px; height:60%;background-color:rgba(255, 255, 255, 0.50);"> </div>
+                    </td>
+                    <td style = "text-align: center; padding-bottom: -20px" colspan="2"><span class="aqiData">PM2.5：&nbsp;</span><span
+                            class="aqiData" id="cen_pm25"></span><span>&nbsp;</span><span
+                            class="aqiData" id="cen_quality">良</span>
+                    </td>
+                <!--    <td class="centerWea">湿度：<span class="centerWea" id="cen_hum"></span></td>-->
+                  <!--  <td class="centerWea">温度：<span class="centerWea" id="cen_temp"></span></td>
+                    <td class="centerWea">PM2.5：<span class="centerWea"
+                                                      id="cen_pm25"></span></td>-->
+                </tr>
+                <tr>
+                	<td>   
+                            <span class="centerWea" id = "cen_type">晴转多云</span>
+                      
+
+                    </td>
+                    <td style = "padding-top:0px;"><span class="centerWea">湿度：</span><span class="centerWea" id="cen_hum"></span></td>
+                    <td style = "padding-top:0px;"><span class="centerWea">温度：</span><span class="centerWea" id="cen_temp"></span></td>
+
+
+                </tr>
+
+            </table>
+
+		</div>
+
+	</div>
+
+	<div id="right">
+		<!--室外头部-->
+		<div
+			style="position: absolute; top: 0%; left: 0%; text-align: left; width: 90%; height: 16%;">
+			<span class="headerDiv" style="font-family: fontNameRegular">室外数据</span>
+			<hr style="border-width: 0px">
+			<span class="little">更新时间&nbsp;</span><span class="little"
+				id="out_time">8/26 09:30</span>
+		</div>
+
+
+		<!--室外 PM2.5  显示数据-->
+		<div
+			style="position: absolute; top: 33.9%; left: 0%; text-align: left; width: 50%; height: 80%;">
+
+
+			<canvas id="can2" width="400px" height="20px" style=""></canvas>
+
+
+		</div>
+
+
+
+
+		<!--  显示co2  温度  湿度   -->
+		<div
+			style="position: absolute; bottom: 15%; left: 0%; text-align: left; width: 100%; height: 17.2%;">
+			<table style="width: 100%;padding-right: 12%;">
+				<tr>
+					<td style="text-align: center;"><img src="../images/temp2.png" style="width:60%"></td>
+					<td style="text-align: center;"><img src="../images/hum.png" style="width:60%"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; padding-top: 1.5%" id="out_temp">0</td>
+                    <td style="text-align: center; padding-top: 1.5%" id="out_hum">0</td>
+                </tr>
+                <tr class = "out_co2_tr">
+					<td style="text-align: center;padding-top: 3%;"><img src="../images/dB2.png" style="width:60%"></td>
+                    <td style="text-align: center;"></td>
+				</tr>
+				<tr class = "out_co2_tr">
+            		<td style="text-align: center; padding-top: 1.5%" id="out_co2">0</td>
+                    <td style="text-align: center; padding-top: 1.5%" ></td>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+
+</body>
+
+
+
+<script>
+	var isFullScreen = false;
+	//进入全屏
+	function requestFullScreen() {
+	
+		var de = document.documentElement;
+		if (de.requestFullscreen) {
+			de.requestFullscreen();
+		} else if (de.mozRequestFullScreen) {
+			de.mozRequestFullScreen();
+		} else if (de.webkitRequestFullScreen) {
+			de.webkitRequestFullScreen();
+		}
+		isFullScreen = true;
+	}
+	//退出全屏
+	function exitFullScreen() {
+		var de = document;
+		if (de.exitFullscreen) {
+			de.exitFullscreen();
+		} else if (de.mozCancelFullScreen) {
+			de.mozCancelFullScreen();
+		} else if (de.webkitCancelFullScreen) {
+			de.webkitCancelFullScreen();
+		}
+		isFullScreen = false;
+	}
+
+	document.body.addEventListener('click', function() {
+		/* requestFullScreen();
+		//5秒钟自动退出全屏
+		setTimeout(function(){
+		    exitFullscreen();
+		},5000); */
+		if (isFullScreen) {
+			exitFullScreen();
+		} else {
+			requestFullScreen();
+		}
+
+	}, false);
+
+	function GetQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null)
+			return unescape(r[2]);
+		return null;
+	}
+
+	var x;
+	var _currentSensorId1 = GetQueryString("IN");
+	var _currentSensorId2 = GetQueryString("OUT");
+	var _ad = GetQueryString("AD");
+	var _sessionId = GetQueryString("SESSIONID");
+	var _userid = GetQueryString("USERID");
+
+	$(document).ready(
+			function() {
+				
+				x = window.innerWidth;
+				x = x / 4;
+
+				var canvas = document.getElementById("can1");
+				canvas.width = x;
+				var canvas2 = document.getElementById("can2");
+				canvas2.width = x;
+				var inPM25Data = $("#inPM25Data1");
+				inPM25Data.width = x - 10;
+
+				//alert(canvas.width);
+				//alert(inPM25Data.width);
+
+				//20150906   大屏定位  绿地  郑州
+				if( _currentSensorId1 ==  "500005AD8E27"){
+				var cityISO = encodeURI("郑州");
+				getCentralWeather(cityISO);
+				}
+
+
+
+				systemTime();
+				var basePath = "";
+				var url = document.location.href;
+				//alert(url);
+				url = url.substring(7, url.length - 1);
+				//alert(url);
+				url = url.split("/");
+				url = url[0] + "/" + url[1] + "/";
+
+				basePath = "http://"+url;
+				//alert(basePath);
+
+				//var basePath = localStorage.getItem('basePath', '');
+				//alert(basePath);
+				
+				getLogo(basePath);
+				
+				getInData(basePath, _sessionId, _userid, _currentSensorId1);
+				getOutData(basePath, _sessionId, _userid, _currentSensorId2);
+
+				getHisData(basePath, _sessionId, _userid, _currentSensorId1, 1,
+						6, "line-chart");
+				
+				
+				
+				
+
+			});
+
+	$(function() {
+		//requestFullScreen();
+		$("body").click();
+		$('.headerDiv').fontFlex(35, 45, 42);
+		$('.little').fontFlex(10, 20, 15);
+		$('.inNum').fontFlex(23, 43, 38);
+		$('.unit').fontFlex(40, 45, 42);
+		$('.unit2').fontFlex(30, 35, 33);
+		$('.aqiData').fontFlex(15, 20, 17);
+
+		$('td').fontFlex(19, 25, 22);
+		$('#realTime').fontFlex(10, 15, 12);
+		$('.centerWea').fontFlex(10, 16, 12);
+		$('.centerWea2').fontFlex(13, 17, 14);
+
+		//$('#tip').fontFlex(15, 20, 17);
+		$('.tip2').fontFlex(15, 20, 17);
+		$('.contentTip').fontFlex(13, 17, 14);
+
+		/* 绘制图形 */
+		// draw25('can1');
+		roundRect("can1", x - 10, 10, 5, 100);
+		roundRect("can2", x - 10, 10, 5, 100);
+		//numIn("can1",150,10,5,"#129950");
+
+	});
+	
+	function getLogo(basepa){
+		 $.post(basepa+'hwmobile/smart/weather!getAdvertise',
+			      {
+					USERID : localStorage.getItem('USERID',''),
+					SESSIONID : localStorage.getItem('SESSIONID',''),
+					MA006 : "3"
+			      },
+			      function (data,status) //回传函数
+			      {
+			    	  
+			    		
+			    	 	if(data.code == 1){
+	
+			    			var obj = data.dataObject;
+			    			
+			    		    if(obj[0].ma008 !=null){
+			    			$("#logo_img").attr("src","data:image/png;base64,"+obj[0].ma008);
+			    		    }else{
+			    		    	$("#logo_img").attr("src","img/AIRRADIO.png");
+			    		    }
+			    		    
+			    			
+						}
+			    
+			    	  	
+			      }
+			    ); 
+	}
+	
+	
+	function draw25(id) {
+		var canvas = document.getElementById(id);
+		if (canvas == null)
+			return false;
+		var context = canvas.getContext('2d');
+
+		//可以把lg对象理解成GDI中线性brush
+		//这个渐进色可以当做fillstyle的一种颜色来处理，进行对画刷的属性设置
+		context.fillStyle = 'rgba(150,168,181,0.25)';
+		//再用这个brush来画正方形
+		context.fillRect(0, 0, 300, 20);
+	}
+	//圆角矩形
+	function roundRect(id, w, h, r, data) {
+		var canvas = document.getElementById(id);
+		if (canvas == null)
+			return false;
+		var context = canvas.getContext('2d');
+		var x = w;
+		var y = h;
+		var r = r;
+		var cell = w / 5;
+		var data = data;
+		var color;
+		var value = w * data / 300;
+
+		if (value > 300) {
+			value = w;
+		}
+		data = value;
+
+		if (value <= 100) {
+			color = "#8FC31F";
+		} else if (value > 100 && value <= 200) {
+			color = "#FFF100";
+		} else {
+			color = "#F39800";
+		}
+
+		context.beginPath();
+		context.moveTo(r, 0); // 创建开始点
+		context.lineTo(x + r, 0); // 创建水平线
+		context.quadraticCurveTo(2.5 * r + x, r, x + r, 2 * r);
+		context.lineTo(r, 2 * r);
+		//context.lineTo(r,0);
+		context.quadraticCurveTo(-0.5 * r, r, r, 0);
+		//context.moveTo(r,2*r);           // 创建开始点
+		// 创建水平线
+		//context.quadraticCurveTo(20,100,200,20);
+		//context.arc(100, 100, 100, 0, Math.PI , true);
+
+		context.fillStyle = "#96A8B5";
+		//context.lineWidth = 3;
+		context.fill();
+
+		context.beginPath();
+		context.moveTo(r, 0); // 创建开始点
+		context.lineTo(data + r, 0); // 创建水平线
+		context.quadraticCurveTo(2.5 * r + data, r, data + r, 2 * r);
+		context.lineTo(r, 2 * r);
+		//context.lineTo(r,0);
+		context.quadraticCurveTo(-0.5 * r, r, r, 0);
+		//context.moveTo(r,2*r);           // 创建开始点
+		// 创建水平线
+		//context.quadraticCurveTo(20,100,200,20);
+		//context.arc(100, 100, 100, 0, Math.PI , true);
+
+		context.fillStyle = color;
+		//context.lineWidth = 3;
+		context.fill();
+
+		context.beginPath();
+		context.moveTo(cell, 0); // 创建开始点
+		context.lineTo(cell, y);
+		context.moveTo(2 * cell, 0); // 创建开始点
+		context.lineTo(2 * cell, y);
+		context.moveTo(3 * cell, 0); // 创建开始点
+		context.lineTo(3 * cell, y);
+		context.moveTo(4 * cell, 0); // 创建开始点
+		context.lineTo(4 * cell, y);
+		context.strokeStyle = "#295270";
+		context.lineWidth = 2.5;
+		context.stroke();
+
+	}
+
+	//圆角矩形
+	function numIn(id, w, h, r, col) {
+		var canvas = document.getElementById(id);
+		if (canvas == null)
+			return false;
+		var context = canvas.getContext('2d');
+		var x = w;
+		var y = h;
+		var r = r;
+
+		context.beginPath();
+		context.moveTo(r, 0); // 创建开始点
+		context.lineTo(x + r, 0); // 创建水平线
+		context.quadraticCurveTo(2.5 * r + x, r, x + r, 2 * r);
+		context.lineTo(r, 2 * r);
+		//context.lineTo(r,0);
+		context.quadraticCurveTo(-0.5 * r, r, r, 0);
+		//context.moveTo(r,2*r);           // 创建开始点
+		// 创建水平线
+		//context.quadraticCurveTo(20,100,200,20);
+		//context.arc(100, 100, 100, 0, Math.PI , true);
+
+		context.fillStyle = col;
+		//context.lineWidth = 3;
+		context.fill();
+
+	}
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/* 设置室内数据 */
+	function getInData(basePath,SESSIONID,USERID,currentSensorId) {
+	
+	    $.post(
+	            basePath+'hwmobile/smart/weather!doContentDetail',
+	        {
+	            SESSIONID : SESSIONID,//localStorage.getItem('SESSIONID',''),//'2F37FE55ECB0E3D27607A01E5312EE86',
+	            USERID : USERID//localStorage.getItem('USERID','')//'f3d46750-e022-4bf6-88d0-2893caed8b24',
+	        },
+	        function(data) {
+	  
+	            if(data.dataObject){
+	              // alert(data.dataObject[0].sensorList[0].air.temperature);
+	      
+	                for (var i = 0; i < data.dataObject[0].sensorList.length ; i++) {
+	                    if (currentSensorId != null && data.dataObject[0].sensorList[i].sensorId==currentSensorId){
+	                        if (data.dataObject[0].sensorList[i].air != null){
+
+	                        	
+	                        
+	                        	
+	                            /* 室内二氧化碳 赋值 */
+	                            if(data.dataObject[0].sensorList[i].air.co2<=800){
+	                                $('#in_co2').css({"border-color": "#10E600"});
+	                                $("#tip_co2").html("空气适宜，沁人心脾");
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.co2>800 && data.dataObject[0].sensorList[i].air.co2<=1200){
+	                                $('#in_co2').css({"border-color": "#CDE00E"});
+	                                $("#tip_co2").html("令人昏昏欲睡，请立即开启新风换气");
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.co2>1200 && data.dataObject[0].sensorList[i].air.co2<=2000){
+	                                $('#in_co2').css({"border-color": "#E66013"});
+	                                $("#tip_co2").html("身体开始感觉不适，请立即开启新风换气");
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.co2>2000){
+	                                $('#in_co2').css({"border-color": "#FF0100"});
+	                                $("#tip_co2").html("警惕二氧化碳中毒，请立即开启新风换气");
+	                            }
+	                            $('#in_co2').html(data.dataObject[0].sensorList[i].air.co2);
+
+
+	                            /* PM2.5 赋值 */
+	                            if(data.dataObject[0].sensorList[i].air.pm25<=50){
+	                                $('#in_pm25').css({"border-color": "#10E600"});
+	                                $("#tip_pm25").html("可打开空气净化器；");
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.pm25>50 && data.dataObject[0].sensorList[i].air.pm25<=100){
+	                                $('#in_pm25').css({"border-color": "#CDE00E"});
+	                                $("#tip_pm25").html("请立即打开空气净化器；");
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.pm25>100 && data.dataObject[0].sensorList[i].air.pm25<=200){
+	                                $('#in_pm25').css({"border-color": "#E66013"});
+	                                $("#tip_pm25").html("身体开始感觉不适，请立即打开空气净化器；");
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.pm25>200){
+	                                $('#in_pm25').css({"border-color": "#FF0100"});
+	                                $("#tip_pm25").html("对身体严重危害，请立即打开空气净化器；");
+	                            }
+	                            $('#in_pm25').html(data.dataObject[0].sensorList[i].air.pm25);
+	                            /* ./PM2.5 */
+
+
+	                            /* voc 赋值 */
+	                            if(data.dataObject[0].sensorList[i].air.voc<=10){
+	                                $('#in_voc').css({"border-color": "#10E600"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.voc>10 && data.dataObject[0].sensorList[i].air.voc<=20){
+	                                $('#in_voc').css({"border-color": "#CDE00E"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.voc>20 && data.dataObject[0].sensorList[i].air.voc<=40){
+	                                $('#in_voc').css({"border-color": "#E66013"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.voc>40){
+	                                $('#in_voc').css({"border-color": "#FF0100"});
+	                            }
+	                            $('#in_voc').html(data.dataObject[0].sensorList[i].air.voc);
+	                            /* ./voc */
+
+
+	                            /* 湿度 赋值 */
+	                            if(data.dataObject[0].sensorList[i].air.humidity<=35){
+	                                $('#in_hum').css({"border-color": "#E7E632"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.humidity>35 && data.dataObject[0].sensorList[i].air.humidity<=65){
+	                                $('#in_hum').css({"border-color": "#04E500"});
+	                            }
+
+	                            if(data.dataObject[0].sensorList[i].air.humidity>65){
+	                                $('#in_hum').css({"border-color": "#3AF4FF"});
+	                            }
+	                            $('#in_hum').html(data.dataObject[0].sensorList[i].air.humidity+"%");
+	                            /* ./湿度 */
+
+
+	                            /* 温度 赋值 */
+	                            if(data.dataObject[0].sensorList[i].air.temperature<=10){
+	                                $('#in_temp').css({"border-color": "#09098F"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.temperature>10 && data.dataObject[0].sensorList[i].air.temperature<=15){
+	                                $('#in_temp').css({"border-color": "#3030FF"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.temperature>15 && data.dataObject[0].sensorList[i].air.temperature<=22){
+	                                $('#in_temp').css({"border-color": "#25FED3"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.temperature>22 && data.dataObject[0].sensorList[i].air.temperature<=28){
+	                                $('#in_temp').css({"border-color": "#06E500"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.temperature>28 && data.dataObject[0].sensorList[i].air.temperature<=32){
+	                                $('#in_temp').css({"border-color": "#E65D13"});
+	                            }
+
+	                            if(data.dataObject[0].sensorList[i].air.temperature>32){
+	                                $('#in_temp').css({"border-color": "#E60000"});
+	                            }
+	                            $('#in_temp').html(data.dataObject[0].sensorList[i].air.temperature+"℃");
+	                            /* ./温度 */
+
+	                            /* 室外发布时间赋值 */
+	                            var createTime = data.dataObject[0].sensorList[i].air.createTime;
+	                            $('#in_time').html(createTime.substring(5,createTime.length-3));
+	                            /* ./室外发布时间赋值 */
+
+	                            
+	                            roundRect("can1",x-10,10,5,data.dataObject[0].sensorList[i].air.pm25);
+	                            
+	                            
+	                            //$('#airradio_voc').html(data.dataObject[0].sensorList[i].air.voc);
+
+	                            //set_air_quilty(data.dataObject[0].sensorList[i].air.pm25);
+	                        }
+
+	                    }
+
+	                }
+	            }
+
+	        });
+
+
+	    setTimeout(function(){getInData(basePath,SESSIONID,USERID,currentSensorId)},15*1000);
+	}
+
+	/* 设置室外数据 */
+	function getOutData(basePath,SESSIONID,USERID,currentSensorId) {
+
+	    $.post(
+	            basePath+'hwmobile/smart/weather!doContentDetail',
+	        {
+	            SESSIONID : SESSIONID,//localStorage.getItem('SESSIONID',''),//'2F37FE55ECB0E3D27607A01E5312EE86',
+	            USERID : USERID//localStorage.getItem('USERID','')//'f3d46750-e022-4bf6-88d0-2893caed8b24',
+	        },
+	        function(data) {
+	            if(data.dataObject){
+	                //alert(data.dataObject[0].sensorList[0].air.temperature);
+	                //alert(data);
+	                for (var i = 0; i < data.dataObject[0].sensorList.length ; i++) {
+	                    if (currentSensorId != null && data.dataObject[0].sensorList[i].sensorId==currentSensorId){
+	                        if (data.dataObject[0].sensorList[i].air != null){
+
+
+	                            /* 室内二氧化碳 赋值 */
+	                            if(data.dataObject[0].sensorList[i].air.co2<=800){
+	                                $('#out_co2').css({"border-color": "#10E600"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.co2>800 && data.dataObject[0].sensorList[i].air.co2<=1200){
+	                                $('#out_co2').css({"border-color": "#CDE00E"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.co2>1200 && data.dataObject[0].sensorList[i].air.co2<=2000){
+	                                $('#out_co2').css({"border-color": "#E66013"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.co2>2000){
+	                                $('#out_co2').css({"border-color": "#FF0100"});
+	                            }
+	                            $('#out_co2').html(data.dataObject[0].sensorList[i].air.co2);
+	                            
+	                            
+
+	                            /* PM2.5 赋值 */
+	                            if(data.dataObject[0].sensorList[i].air.pm25<=50){
+	                                $('#out_pm25').css({"border-color": "#10E600"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.pm25>50 && data.dataObject[0].sensorList[i].air.pm25<=100){
+	                                $('#out_pm25').css({"border-color": "#CDE00E"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.pm25>100 && data.dataObject[0].sensorList[i].air.pm25<=200){
+	                                $('#out_pm25').css({"border-color": "#E66013"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.pm25>200){
+	                                $('#out_pm25').css({"border-color": "#FF0100"});
+	                            }
+	                           // $('#out_pm25').html(data.dataObject[0].sensorList[i].air.pm25);
+	                            /* ./PM2.5 */
+
+
+	                            /* voc 赋值 */
+	                            if(data.dataObject[0].sensorList[i].air.voc<=10){
+	                                $('#out_voc').css({"border-color": "#10E600"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.voc>10 && data.dataObject[0].sensorList[i].air.voc<=20){
+	                                $('#out_voc').css({"border-color": "#CDE00E"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.voc>20 && data.dataObject[0].sensorList[i].air.voc<=40){
+	                                $('#out_voc').css({"border-color": "#E66013"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.voc>40){
+	                                $('#out_voc').css({"border-color": "#FF0100"});
+	                            }
+	                            $('#out_voc').html(data.dataObject[0].sensorList[i].air.voc);
+	                            /* ./voc */
+
+
+	                            /* 湿度 赋值 */
+	                            if(data.dataObject[0].sensorList[i].air.humidity<=35){
+	                                $('#out_hum').css({"border-color": "#E7E632"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.humidity>35 && data.dataObject[0].sensorList[i].air.humidity<=65){
+	                                $('#out_hum').css({"border-color": "#04E500"});
+	                            }
+
+	                            if(data.dataObject[0].sensorList[i].air.humidity>65){
+	                                $('#out_hum').css({"border-color": "#3AF4FF"});
+	                            }
+	                            $('#out_hum').html(data.dataObject[0].sensorList[i].air.humidity+"%");
+	                            /* ./湿度 */
+
+
+	                            /* 温度 赋值 */
+	                            if(data.dataObject[0].sensorList[i].air.temperature<=10){
+	                                $('#out_temp').css({"border-color": "#09098F"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.temperature>10 && data.dataObject[0].sensorList[i].air.temperature<=15){
+	                                $('#out_temp').css({"border-color": "#3030FF"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.temperature>15 && data.dataObject[0].sensorList[i].air.temperature<=22){
+	                                $('#out_temp').css({"border-color": "#25FED3"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.temperature>22 && data.dataObject[0].sensorList[i].air.temperature<=28){
+	                                $('#out_temp').css({"border-color": "#06E500"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.temperature>28 && data.dataObject[0].sensorList[i].air.temperature<=32){
+	                                $('#out_temp').css({"border-color": "#E65D13"});
+	                            }
+	                            if(data.dataObject[0].sensorList[i].air.temperature>32){
+	                                $('#out_temp').css({"border-color": "#E60000"});
+	                            }
+	                            $('#out_temp').html(data.dataObject[0].sensorList[i].air.temperature+"℃");
+	                            /* ./温度 */
+
+	                            /* 室外发布时间赋值 */
+	                            var createTime = data.dataObject[0].sensorList[i].air.createTime;
+	                            $('#out_time').html(createTime.substring(5,createTime.length-3));
+	                            /* ./室外发布时间赋值 */
+
+	                            //roundRect("can2",x-10,10,5,data.dataObject[0].sensorList[i].air.pm25);		
+	                            //$('#airradio_voc').html(data.dataObject[0].sensorList[i].air.voc);
+
+	                            //set_air_quilty(data.dataObject[0].sensorList[i].air.pm25);
+	                        }
+
+	                    }
+
+	                }
+	            }
+
+	        });
+
+
+	    setTimeout(function(){getOutData(basePath,SESSIONID,USERID,currentSensorId)},15*1000);
+	}
+
+
+
+	/* 获取中央气象数据 */
+
+	function getCentralWeather(cityISO) {
+	    $.ajax({
+	        url: 'http://wthrcdn.etouch.cn/WeatherApi?city=' + cityISO,
+	        type: 'post',
+	        dataType: 'xml',
+	        success: function (xml) {
+	            //alert(xml);
+	            $(xml).find("resp").each(function (i) {
+	                var cen_pm25 = $(this).children("environment").children("pm25").text();
+
+	                var cen_aqi = $(this).children("environment").children("aqi").text();
+	                var cen_quality = $(this).children("environment").children("quality").text();
+	                var cen_time = $(this).children("updatetime").text();
+
+	    
+
+	                var cen_temp = $(this).children("wendu").text();
+	                var cen_hum = $(this).children("shidu").text();
+	                var cen_high = $(this).children("forecast").children("weather").children("high").eq(0).text();
+	                var cen_low = $(this).children("forecast").children("weather").children("low").eq(0).text();
+
+	                cen_high = cen_high.substring(2, cen_high.length);
+	                cen_low = cen_low.substring(2, cen_low.length);
+
+	                var cen_type = $(this).children("forecast").children("weather").children("day").eq(0).children("type").text();
+	                var cen_windDirection = $(this).children("forecast").children("weather").children("day").eq(0).children("fengxiang").text();
+	                var cen_windForce = $(this).children("forecast").children("weather").children("day").eq(0).children("fengli").text();
+	                //alert(cityname);
+	                //document.getElementById("city").innerHTML = cityname;
+	                //document.getElementById("fengxiang").innerHTML = "哈哈哈";
+	                $("#cen_quality").html(cen_quality);
+
+
+	                $("#cen_windForce").html(cen_windForce);
+	                //$("#tianqi").html(temp+"℃");
+	                $("#cen_hum").html(cen_hum);
+	                $("#cen_pm25").html(cen_pm25);
+
+					var in_pm25 = Math.floor(((Math.floor(Math.random()*(90-85+1)+85))/100)*cen_pm25);
+					$('#out_pm25').html(in_pm25);
+					
+					roundRect("can2",x-10,10,5,in_pm25);
+
+
+	                $("#cen_type").html(cen_type);
+	                $("#cen_aqi").html(cen_aqi);
+	                $("#cen_time").html(cen_time);
+	                $("#cen_windDirec").html(cen_windDirection);
+	                $("#cen_temp").html(cen_temp+"℃");
+
+	                /*	alert("城市："+cityname+"\n"+" 日期： "+date+"\n"+" 天气状况："+type+"\n"+" 当前温度："+temp+"\n"+" PM2.5："+pm25+"\n"+" 空气质量："+quality+"\n"+" 湿度："+humidty+"\n"+" 最高气温："+high+"\n"+" 最低气温："+low+"\n"+" PM10："+pm10+"\n");     */
+
+	            });
+	        }
+	    });
+	    
+	    setTimeout(function(){getCentralWeather(cityISO)},60*1000*5);
+	    
+	}
+
+
+
+	/* 获取小时 */
+	function getTimeDif(t){
+	    var date = new Date ();
+	    var yy=date.getFullYear();
+	    var mon=date.getMonth()+1;  //因为1月这个方法返回为0，所以加1
+	    var dd=date.getDate();
+
+	    var tim = date.getHours () - t;
+
+	    return yy+"-"+mon+"-"+dd+" "+tim+":00";
+	}
+
+	/*  图表初始化  */
+
+	function setChart(dataP,dataC,id){
+
+	    $("#"+id).html("");
+	    line = Morris.Line({
+	        element: id,
+	        resize: true,
+	        data: [
+	            {y: getTimeDif(6), item1: dataP[0]},
+	            {y: getTimeDif(5), item1: dataP[1]},
+	            {y: getTimeDif(4), item1: dataP[2]},
+	            {y: getTimeDif(3), item1: dataP[3]},
+	            {y: getTimeDif(2), item1: dataP[4]},
+	            {y: getTimeDif(1), item1: dataP[5]},
+	            {y: getTimeDif(0)},
+	            {y: getTimeDif(6), item2: dataC[0]},
+	            {y: getTimeDif(5), item2: dataC[1]},
+	            {y: getTimeDif(4), item2: dataC[2]},
+	            {y: getTimeDif(3), item2: dataC[3]},
+	            {y: getTimeDif(2), item2: dataC[4]},
+	            {y: getTimeDif(1), item2: dataC[5]},
+	            {y: getTimeDif(0)}
+	        ],
+
+	        xkey: 'y',
+	        ykeys: ['item1','item2'],
+	        labels: ['Item 1'],
+	        lineColors: ['#D6AED4','#8AF6DB'],
+	        lineWidth: 2,
+	        hideHover: 'always',
+	        gridTextColor: "#fff",
+	        gridStrokeWidth: 0.4,
+	        pointSize: 2,
+	        pointStrokeColors: ['#D6AED4','#8AF6DB'],
+	        gridLineColor: "#efefef",
+	        gridTextFamily: "Open Sans",
+	        gridTextSize: 15
+	    });
+	}
+	/*  空气电台历史数据获取  */
+	/* 异步请求数据 */
+	function getHisData(basePath,SESSIONID,USERID,currentSensorId,type,lastpar,id){
+		
+	    var dataP_lastPar = [];
+	    var dataC_lastPar = [];
+	    $.post(	 basePath+'hwmobile/smart/weather!doListDetailHistory',
+	        {
+	            SESSIONID : SESSIONID,//localStorage.getItem('SESSIONID',''),//'2F37FE55ECB0E3D27607A01E5312EE86',
+	            USERID : USERID,//localStorage.getItem('USERID',''),//'f3d46750-e022-4bf6-88d0-2893caed8b24',
+	            SENSORID : currentSensorId,// 室内A1  设备编号
+	            TYPE: type,
+	            LASTPAR: lastpar
+
+	        }, function(data) {
+
+	            if(data.dataObject){
+
+	                if (data.dataObject[0].sensorList.length>0){
+	                    if(data.dataObject[0].sensorList[0].air.temperature != undefined){
+	                        for (var i = 0; i < data.dataObject[0].sensorList.length; i++)
+	                        {
+	                            dataP_lastPar[i]=(parseInt(data.dataObject[0].sensorList[i].air.pm25));
+	                            dataC_lastPar[i]=(parseInt(data.dataObject[0].sensorList[i].air.co2));
+	                        }
+	                        dataP_lastPar.length = lastpar;
+	                        dataC_lastPar.length = lastpar;
+	                      
+
+	                    }
+	                    setChart(dataP_lastPar,dataC_lastPar,id);
+	                }
+
+	            }
+
+	        });
+	    setTimeout(function(){getHisData(basePath,SESSIONID,USERID,currentSensorId,type,lastpar,id)},60*1000);
+
+	}
+	
+	
+	
+	//获取系统时间，将时间以指定格式显示到页面。  
+	function systemTime()  
+	{  
+	    //获取系统时间。  
+	    	d=new Date(); //创建一个Date对象
+	localTime = d.getTime();
+	localOffset=d.getTimezoneOffset()*60000; //获得当地时间偏移的毫秒数
+	utc = localTime + localOffset; //utc即GMT时间
+
+	 var d = new Date();
+	         var offset = d.getTimezoneOffset()/60;
+
+
+	//offset =8; //以北京时间为例，东10区
+	beijing = utc - (3600000*offset); 
+	dateTime = new Date(beijing); 
+	
+
+
+	          var hh=dateTime.getHours();
+	          var mm=dateTime.getMinutes();
+	  var ss=dateTime.getSeconds();
+	          
+	  var yy=dateTime.getFullYear();
+	  var mon=dateTime.getMonth()+1;  //因为1月这个方法返回为0，所以加1
+	  var dd=dateTime.getDate();
+	     
+	    //alert(mon);
+	    //分秒时间是一位数字，在数字前补0。  
+
+	    mm = extra(mm);  
+	    ss = extra(ss);  
+	      
+	    //将时间显示到ID为time的位置，时间格式形如：19:18:02  
+	    var str = "星期" + "日一二三四五六".charAt(new Date().getDay()); 
+	    document.getElementById("date").innerHTML=mon+"-"+dd;
+	      document.getElementById("day").innerHTML=str;
+	//document.getElementById("time").innerHTML=hh+":"+mm+":"+ss;
+	    //每隔1000ms执行方法systemTime()。  
+	    setTimeout("systemTime()",1000);  
+	}  
+	  
+	//补位函数。  
+	function extra(x)  
+	{  
+	    //如果传入数字小于10，数字前补一位0。  
+	    if(x < 10)  
+	    {  
+	        return "0" + x;  
+	    }  
+	    else  
+	    {  
+	        return x;  
+	    }  
+	}  
+	
+</script>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>��ȡ����ʱ���Html5ʱ����Ч</title>
+</head>
+<body>
+<div style="width:520px;margin:0 auto;">
+	<canvas id="clock" width="520" height="520">��������֧��canvas��ǩ</canvas>
+</div>
+<script type="text/javascript">
+var canvas = document.getElementById('clock');
+var clock = canvas.getContext('2d');
+function drowClock(){
+	//���
+	clock.clearRect(0, 0, 800, 800);
+	var now = new Date();
+	var secd = now.getSeconds();
+	var min = now.getMinutes();
+	var hour = now.getHours();
+	//Сʱ�����ȡ�������ͣ�Сʱ+����ת����Сʱ��
+	//ʱ���ʽ19:23:30
+	//��24Сʱ����װ��Ϊ12Сʱ����
+	hour = hour + (min / 60);
+	hour = hour > 12 ? hour - 12 : hour;
+	//����
+	clock.beginPath();
+	clock.lineWidth = 10;
+	clock.strokeStyle = "blue";
+	clock.arc(250, 250, 200, 0, 360, false);
+	clock.stroke();
+	clock.closePath();
+	//�̶�
+	//ʱ�̶�
+	for (var i = 0; i < 12; i++) {
+		clock.save();
+		//����ʱ��Ĵ�ϸ
+		clock.lineWidth = 7;
+		//����ʱ�����ɫ
+		clock.strokeStyle = "#000";
+		//������0,0��
+		clock.translate(250, 250);
+		//��������ת�Ƕ�
+		clock.rotate((i * 30) * Math.PI / 180);//�Ƕ�*Math.PI/180=����
+		 clock.beginPath();
+		clock.moveTo(0, -170);
+		clock.lineTo(0, -190);
+		clock.closePath(); 
+		clock.stroke();
+		clock.restore();
+	}
+	//�̶ֿ�
+ for (var i = 0; i < 60; i++) {
+		clock.save();
+		//����ʱ��Ĵ�ϸ
+		clock.lineWidth = 3;
+		//����ʱ�����ɫ
+		clock.strokeStyle = "#000";
+		//������0,0��
+		clock.translate(250, 250);
+		//��������ת�Ƕ�
+		clock.rotate((i * 6) * Math.PI / 180);//�Ƕ�*Math.PI/180=����
+		clock.beginPath();
+		clock.moveTo(0, -180);
+		clock.lineTo(0, -190);
+		clock.closePath();
+		clock.stroke();
+		clock.restore();
+	} 
+	//ʱ��
+ 	clock.save();
+	clock.lineWidth = 7;
+	clock.strokeStyle = "black";
+	clock.translate(250, 250);
+	clock.rotate(hour * 30 * Math.PI / 180);
+	clock.beginPath();
+	clock.moveTo(0, -140);
+	clock.lineTo(0, 10);
+	clock.stroke();
+	clock.closePath();
+	clock.restore();
+		////����
+	clock.save();
+	clock.lineWidth = 5;
+	clock.strokeStyle = "black";
+	clock.translate(250, 250);
+	clock.rotate(min * 6 * Math.PI / 180);
+	clock.beginPath();
+	clock.moveTo(0, -160);
+	clock.lineTo(0, 10);
+	clock.stroke();
+	clock.closePath();
+	clock.restore();
+		//����
+	clock.save();
+	clock.lineWidth = 3;
+	clock.strokeStyle = "red";
+	clock.translate(250, 250);
+	clock.rotate(secd * 6 * Math.PI / 180);
+	clock.beginPath();
+	clock.moveTo(0, -170);
+	clock.lineTo(0, 10);
+	clock.closePath();
+	clock.stroke();
+		//�������
+	clock.beginPath();
+	clock.arc(0, 0, 5, 0, 360, false);
+	clock.closePath();
+	clock.fillStyle = "gray";
+	clock.fill();
+	clock.stroke();
+	clock.beginPath();
+	clock.arc(0, -150, 5, 0, 360, false);
+	clock.closePath();
+	clock.fillStyle = "gray";
+	clock.fill();
+	clock.stroke();
+	clock.restore(); 
+}
+//ʹ��setInternal�����룬�����룩ʱ�䣩  ��ʱ�Ӷ���4
+drowClock();
+setInterval(drowClock, 1000);
+</script>
+</body>
+</html>

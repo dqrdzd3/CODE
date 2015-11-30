@@ -1,0 +1,56 @@
+create table B009
+(
+  ma001 VARCHAR2(40) not null,
+  ma002 VARCHAR2(40),
+  ma003 VARCHAR2(50) not null,
+  ma004 VARCHAR2(100),
+  ma005 NUMBER(4),
+  ma006 NUMBER(19,2),
+  ma007 VARCHAR2(100),
+  ma008 NUMBER(4),
+  ma009 NUMBER(19,2),
+  ma010 VARCHAR2(100),
+  ma011 NUMBER(4),
+  ma012 NUMBER(19,2),
+  ma013 VARCHAR2(100),
+  ma015 NUMBER(19,2),
+  ma016 VARCHAR2(100),
+  ma017 NUMBER(4),
+  ma018 NUMBER(19,2),
+  ma019 VARCHAR2(100),
+  ma020 NUMBER(4),
+  ma021 NUMBER(19,2),
+  ma022 VARCHAR2(100),
+  ma014 NUMBER(4),
+  ma023 NUMBER(2),
+  ma024 VARCHAR2(50),
+  ma025 VARCHAR2(200),
+  ma026 DATE,
+  ma027 VARCHAR2(50),
+  ma028 NUMBER,
+  ma029 NUMBER(2),
+  ma030 NUMBER(2),
+  ma031 NUMBER(2),
+  ma032 NUMBER(2),
+  ma033 NUMBER(2),
+  ma034 NUMBER(2),
+  ma035 VARCHAR2(200),
+  ma036 VARCHAR2(200),
+  ma037 VARCHAR2(200),
+  ma038 NUMBER(2),
+  ma039 VARCHAR2(40),
+  ma040 VARCHAR2(20),
+  ma041 VARCHAR2(20),
+  ma042 DATE,
+  ma043 DATE,
+  ma044 DATE,
+  ma045 VARCHAR2(200),
+  ma046 NUMBER(2),
+  ma047 NUMBER(2)
+)
+;
+
+create index CIX_B009_MA002 on B009 (MA002);
+create index CIX_B009_MA003 on B009 (MA003);
+alter table B009
+  add constraint B009_PK primary key (MA001);

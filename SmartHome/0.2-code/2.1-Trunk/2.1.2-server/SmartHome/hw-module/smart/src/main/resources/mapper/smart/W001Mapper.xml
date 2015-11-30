@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.smart.dao.IW001Dao">
+
+	
+
+	<!-- 添加实例 -->
+	<insert id="insertInstance" parameterType="com.hw.hwsafe.smart.pojo.W001PO">
+		insert into
+		W001(MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008, MA009,
+		MA010, MA011, MA012,MA013,MA014, MA015, MA016)
+		values(
+		#{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=VARCHAR},
+		#{ma004,jdbcType=VARCHAR},#{ma005,jdbcType=VARCHAR},#{ma006,jdbcType=VARCHAR},
+		#{ma007,jdbcType=VARCHAR},#{ma008,jdbcType=VARCHAR},#{ma009,jdbcType=VARCHAR},
+		#{ma010,jdbcType=VARCHAR},#{ma011,jdbcType=VARCHAR},#{ma012,jdbcType=VARCHAR},#{ma013,jdbcType=VARCHAR},
+		#{ma014,jdbcType=TIMESTAMP},#{ma015,jdbcType=VARCHAR},#{ma016,jdbcType=VARCHAR}
+		)
+	</insert>
+
+</mapper>

@@ -1,0 +1,82 @@
+/*windows*/
+#windows{
+	width:100%;
+	margin:0 auto;
+	background-color:#0b6391;
+}
+#windowstop{ display:none;width:100%; height:41px; background:url(../images/windowstitlebg.jpg) left top repeat-x;}
+#windowstopleft{ background:url(../images/windowstitleleft.jpg) left top no-repeat; height:41px; padding-left:16px;}
+#windowstopleft li{ background:url(../images/windowstitleright.jpg) right top no-repeat; height:41px; width:auto; font-size:14px; color:#E7F7F6; float:left; display:block; padding-right:60px; line-height:36px; font-weight:bold;}
+#windowsmain{ background-color:#FFF; margin-left:5px; margin-right:5px;}
+#windowsbottom{
+	background:url(../images/wdbottombg.jpg) left top repeat-x;
+	height:57px;
+	width:100%;
+	clear: both;
+}
+#windowsbottomleft{ background:url(../images/wdbottomleft.jpg) left top no-repeat;height:57px;} 
+#windowsbottomright{ background:url(../images/wdbottomright.jpg) right top no-repeat;height:57px; text-align:right;  padding-right:5px;}
+#windowsbottomright li{ float:right; line-height:32px; color:#B5B5B5; margin-right:8px;margin-top:15px;}
+#windowsbottomright li span{ color:#FF0000;}
+
+
+#windowdiv{ padding-bottom:1px;}
+#windowtitle{ background:url(../images/titlebg.jpg) left top repeat-x; height:27px;}
+#windowtitleleft{ background:url(../images/titleleft.jpg) left top no-repeat; height:27px; padding-left:32px; }
+#windowtitleleft div{color:#1c7a98; font-weight:bold; line-height:27px; float: left;font-size:12px;}
+#windowtitleleft span a{ float:right; display:block; background:url(../images/wdhiddlebutton.jpg) right no-repeat; width:115px; height:27px; text-decoration:none;}
+#windowtitleleft span a:hover{  background:url(../images/wdhiddlebuttonover.jpg) right no-repeat; width:115px; height:27px;}
+/*修改如下*/
+#windowdivmain{ width:100%;height:100%;overflow:auto;}
+.windowdivmaintable{border-collapse:collapse; border: solid 1px #93c1db; font-size:12px; color:#565656; padding:0px; margin:0 auto; width:100%;}
+
+.windowdivmaintable span{ color:#F00;}
+
+.windowdivmaintable td {
+	border-left: 1px solid #93c1db;
+	border-bottom: 1px solid #93c1db;
+	border-top: 1px solid #93c1db; 
+	font-size: 12px;
+	padding:3px 4px 3px 3px; 
+	height:21px;
+	word-wrap:break-word;
+}
+.windowdivmaintable  a{
+	color:#1AAF08;
+	text-decoration:underline;
+}
+.windowdivmaintable  a:hover{ color:#FF6D25; }
+
+
+.windowdivmaintable th{ 
+	background-color: #e7fbff;
+	color:#137ebc; 
+	text-align:right; 
+	width:100px; 
+	font-weight: normal; 
+	border-left: 1px solid #93c1db;
+	border-bottom: 1px solid #93c1db;
+	border-top: 1px solid #93c1db;
+	font-size: 12px;
+	padding-right:6px;
+	height:26px;
+}
+#windowdivmaintable .radiostyle{border:none; width:auto; height:auto; }
+.windowdivmaintable input,textarea,select{
+	border:#93c1db solid 1px;
+	height:19px;
+	margin: 0; 
+	padding: 0;
+	font-size:12px; 
+	font-family:Verdana, Geneva, sans-serif;  
+	line-height:19px; 
+	color:#666;
+	resize:none;
+}
+.windowdivmaintable input{width:expression((this.type=="text")?"100%":"16px");border-color:expression((this.type=="text")?"#93c1db":"#FFF");}
+.windowdivmaintable input[type="radio"]{border:none; width:auto; height:auto;}
+.windowdivmaintable input[type="text"]{border:1px solid #93c1db; width:100%;}
+.windowdivmaintable input[type="password"]{border:1px solid #93c1db; width:100%;}
+.windowdivmaintable input[type="checkbox"]{border:none; width:auto; height:auto;}
+
+#windowdivmaintable .noedit{ border:#93c1db solid 1px; background-color:#EEEEEE;line-height:20px; width:100%;}

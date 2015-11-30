@@ -1,0 +1,32 @@
+#declare{ padding:8px; padding-top:12px;}
+#declaretop{
+	background-color:#E5F8F7;
+	border:#86DDD1 solid 1px;
+	height:24px;
+	line-height:26px;
+	color:#089381;
+	padding-left: 11px;
+	margin-bottom:6px;
+}
+#declaretop span{ color:#FF8400;}
+.declaretitle{
+	font-family:"微软雅黑","黑体","宋体";
+	font-size:20px;
+	line-height:42px;
+	clear:both;
+	text-align:center;
+	color: #1c7a98;
+	font-weight:bold;
+}
+#declarebutton{
+	margin:0 auto;
+	clear:both;
+	text-align: center; 
+	padding-bottom:12px; 
+	background:url(../images/hrabg.jpg) left bottom repeat-x;
+}
+#declarebutton span{color: #FF8400;padding-right:6px;}
+#declare span{ display:inline; margin-right:3px;height:22px;}
+#declarecontent{background:url(../images/hrabg.jpg) left bottom repeat-x;padding-left:12px;height:35px; line-height:35px;  }
+#declarecontent div{ float:left;background:url(../images/shenbaoicon.jpg) left no-repeat; padding-left:27px; color:#089381; font-size:14px;}
+#declarecontent span{ float:right; width:103px; height:25px; margin-right:10px; margin-top:6px;  }

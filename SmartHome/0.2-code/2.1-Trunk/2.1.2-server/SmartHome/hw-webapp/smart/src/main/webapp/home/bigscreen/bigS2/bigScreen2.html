@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+		<meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href='http://fonts.useso.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+		
+		
+		<style>
+		b{
+		display:inline-block;width:0;height:0;margin-top:-10px;border-style: dashed dashed solid dashed;border-width:9px;border-color: #ff6600 #ff6600 #ff6600 #ff6600;overflow: hidden;zoom: 1;font-size: 0;}
+		#tabP{
+			position: fixed;
+			bottom: 67px;
+			left: 0%;
+			width: 33.33334%;
+			height: 7px;
+			border-bottom: 3px solid #ff6600;
+			overflow: hidden;
+			text-align: center;
+			margin:0px;
+			padding:0px;
+			z-index: 1002;
+		}
+		.tablecolor{
+		background:#233C66;
+		}
+		#tableBar{
+		position: fixed;
+		bottom: 34px;
+		width: 100%;
+		background:#30518A;
+		color:#fff;
+		font-size: 16px;
+		height: 34px;
+		text-align:center;
+		line-height: 34px;
+		font-size:33px;
+		z-index: 1001;
+		}
+	
+		#gongao{
+		width:95%;
+		height:0px;overflow:hidden;line-height:30px;font-size:30px;
+		font-family:'宋体';background:#000;
+		color:#fff;font-weight:bold;} 
+		#gongao #scroll_begin, #gongao #scroll_end{
+		
+
+		display:inline
+		} 
+
+			#ads{
+				width:100%;
+				height:100%;
+				background: url('img/ad2.jpg');
+				filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";  
+				-moz-background-size:100% 100%;  
+				background-size:100% 100%; 
+			}
+			
+			#div1 a{
+			display:block;line-height:30px;
+			height:50px;text-decoration:none;
+			color:#000;font-family:Arial;
+			font-size:25px;
+			
+			}
+		</style>
+		
+		
+
+		<!--[if lte IE 8]>
+			 <link rel="stylesheet" type="text/css" href="css/simple.css" />
+		<![endif]-->
+    </head>
+    <body>
+        <div class="container">
+			<div class="st-container">
+			
+			 <p id = "tabP"></p>
+			<table id = "tableBar">
+				<tbody>
+					<tr>
+						<td id = "table-1" >户外</td>
+						<td id = "table-2">室内</td>
+						<td id = "table-3">广告</td>
+					</tr>
+				</tbody>
+				</table>
+		
+				
+					
+			<div id="gongao"> 
+				<div style="position:fixed;bottom:0px;left:2%;width:95%;height:34px;z-index: 1001;margin:0 auto;white-space: nowrap;overflow:hidden;" id="scroll_div" class="scroll_div"> 
+				<div id="scroll_begin"> 
+    威果世界
+威果的世界——爱和家的世界
+16年科技创新
+16年安全可靠保障
+16年用心服务
+16年超4000万用户体验
+国内传感器龙头企业
+气体检测行业最精英团队精心打造
+工业品专业制造品质保障能力+消费类电子产品创新设计完美结合
+2014年智能家居倾情巨献
+威果，爱和家的世界！
+威果，用心呵护您的健康安全！
+威果简介
+北京威果智能科技有限公司（以下简称“威果智能”）是汉威电子（股票代码：300007）旗下一家专业从事智能生活物联网产品研发、生产、销售的控股子公司。 威果是威果智能历经16载打造的消费类电子智慧生活高端品牌，主要包括智能家居、可穿戴设备等系列产品。它继承和发扬了威果智能“科技创新、安全可靠”优良基因，以传统工业设计理念与与消费类电子的现代艺术创新紧密结合，旨在为用户创造安全、环保、健康、智慧、便捷、舒适的工作、生活环境。
+
+威果文化
+威果愿景：以传感器为核心，做中国领先的智慧生活品牌企业。
+威果使命：为人们创造安全、环保、健康、智慧、便捷、舒适的工作、生活环境。
+威果精神：尽责、创新、快乐、协作、共赢、发展
+
+				</div> 
+				<div id="scroll_end"></div> 
+				</div> 
+				
+				</div>
+
+			
+
+
+				
+					
+					<div class="st-panel" id="st-panel-1" >
+				<!--		<div class="st-deco" data-icon="威"></div>   -->
+						<h2 id = "time" style = "top:20%;left:10%;text-align:left;"></h2>
+						<h2 id = "date" style = "top:30%;left:10%;font-weight:bold;text-align:left;"></h2>
+						<h2 id = "day" style = "top:40%;left:10%;text-align:left;"></h2>
+
+						
+						<h2 id = "type" style = "top:20%;left:45%;text-align:left;"></h2>
+						<h2 id = "fengxiang" style = "top:30%;left:45%;text-align:left;"></h2>
+						<h2 id = "wendu" style = "font-weight:bold;top:40%;left:45%;text-align:left;"></h2>
+						
+
+						<canvas id="tianqi" width="200" height="150" style = "position:fixed;top:9%;left:74%;"></canvas>
+						
+					    <h2 id = "fengli" style = "top:30%;left:40%"></h2>   
+						<h2 id = "quality" style = "top:40%;left:74%;color:#fff;background:#f00;width:200px;"></h2>   
+
+						<h2 style = "positon:fixed; left:10%;top:57%;width:80%;height:35%;border-top:2px solid #5997D0"></h2>
+
+						<h2 style = "positon:fixed; left:50%;top:60%;width:50%;height:35%;border-left:2px solid #5997D0"></h2>
+
+						<h2 style = "top:66%;left:10%"><span  style = "float:left;">城市</span></h2><h2 style = "top:66%;left:30%"><span  style = "float:left">AQI</span></h2>
+						<h2 style = "top:84%;left:10%"><span  style = "float:left;" id = "city"></span></h2><h2 style = "top:84%;left:30%"><span  style = "float:left;" id = "aqi"></span></h2>
+
+						<h2 style = "top:60%;left:55%;"><span  style = "float:left;">PM2.5</span></h2><h2 style = "top:60%;left:80%;"><span  id = "pm25" style = "float:left"></span></h2>
+						<h2 style = "top:67%;left:55%;"><span  style = "float:left;">PM10</span></h2><h2 style = "top:67%;left:80%;"><span id = "pm10" style = "float:left"></span></h2>
+						<h2 style = "top:74%;left:55%;"><span  style = "float:left;">CO</span></h2><h2 style = "top:74%;left:80%;"><span id = "co" style = "float:left"></span></h2>
+						<h2 style = "top:81%;left:55%;"><span  style = "float:left;">NO2</span></h2><h2 style = "top:81%;left:80%;"><span id = "no2" style = "float:left"></span></h2>
+						<h2 style = "top:88%;left:55%;"><span  style = "float:left;">SO2</span></h2><h2 style = "top:88%;left:80%;"><span id = "so2" style = "float:left"></span></h2>
+						<h2 style = "top:94%;left:55%;"><span  style = "float:left;">O3</span></h2><h2 style = "top:94%;left:80%;"><span id = "o3" style = "float:left"></span></h2>
+						
+					
+						<!--<div class="htmleaf-links">
+							<a class="htmleaf-icon icon-home" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> jQuery之家</span></a>
+							<a class="htmleaf-icon icon-arrow-right3" href="" title="返回下载页" target="_blank"><span> 返回下载页</span></a>
+						</div>-->
+					</div>
+					
+					<div class="st-panel st-color" id="st-panel-2" style = "display:none">
+					<!--	<div class="st-deco" data-icon="果"></div> -->
+						<h2 style = "top:20%;left:6%"><span style = "float:left;">北京威果智能科技有限公司</span></h2>
+						<h2 style = "top:20%;left:67%"><span style = "float:left;">空气电台检测布点</span></h2>
+
+						<h2 style = "top:48%;left:10%"><span style = "float:left;font-weight:bold;">PM2.5</span></h2>
+						<h2 style = "top:48%;left:30%"><span id = "pm25In" style = "float:left;font-weight:bold;">75</span></h2>
+						<h2 style = "top:60%;left:10%"><span style = "float:left;">VOC</span></h2>
+						<h2 style = "top:60%;left:30%"><span id = "vocIn" style = "float:left;">5</span></h2>
+						<h2 style = "top:70%;left:10%"><span style = "float:left;">CO2</span></h2>
+						<h2 style = "top:70%;left:30%"><span id = "co2In" style = "float:left;">500</span></h2>
+						<h2 style = "top:80%;left:10%"><span style = "float:left;">温度</span></h2>
+						<h2 style = "top:80%;left:30%"><span id = "tempIn" style = "float:left;">25</span><span></span></h2>
+						<h2 style = "top:90%;left:10%"><span style = "float:left;">湿度</span></h2>
+						<h2 style = "top:90%;left:30%"><span id = "humIn" style = "float:left;">60</span><span></span></h2>
+					
+						<h2 style = "positon:fixed; left:50%;top:50%;width:50%;height:45%;border-left:2px solid #fff"></h2>
+
+						<h2 style = "top:48%;left:55%"><span style = "float:left;font-size:65px;font-weight:bold;"></span></h2>
+						<h2 style = "top:48%;left:70%"><span style = "float:left;font-weight:bold;">空气质量</span></h2>
+
+						<h2 style = "top:60%;left:55%;"><span style = "float:left;font-weight:bold;">1楼一号房间</span></h2>
+						<h2 style = "top:60%;left:85%;;"><span style = "float:left;font-weight:bold;color:#E3FF39">良</span></h2>
+
+						<h2 style = "top:67%;left:55%"><span style = "float:left;font-weight:bold;">2楼一号房间</span></h2>
+						<h2 style = "top:67%;left:85%"><span style = "float:left;font-weight:bold;color:#28FE20">优</span></h2>
+
+						<h2 style = "top:74%;left:55%"><span style = "float:left;font-weight:bold;">3楼二号房间</span></h2>
+						<h2 style = "top:74%;left:85%"><span style = "float:left;font-weight:bold;color:#E3FF39">良</span></h2>
+
+						<h2 style = "top:81%;left:55%"><span style = "float:left;font-weight:bold;">4楼三号房间</span></h2>
+						<h2 style = "top:81%;left:85%"><span style = "float:left;font-weight:bold;color:#FE4B11;">较差</span></h2>
+
+						<h2 style = "top:88%;left:55%"><span style = "float:left;font-weight:bold;">5楼一号房间</span></h2>
+						<h2 style = "top:88%;left:85%"><span style = "float:left;font-weight:bold;color:#E3FF39">良</span></h2>
+
+					</div>
+					
+					<div class="st-panel" id="st-panel-5" style = "padding:0px;margin:0px;display:none">
+					<h2 id = "ads" style = "top:8%;left:0%;margin-top:-100px;margin-right:-100px;"></h2>
+			<!--		<h2 id = "ads" style = "width:100%;height:100%;padding:0px;margin:0px">
+					</h2> 
+					<img src = "img/ad.jpg" style = "width:100%;height:100%">
+					</img>
+						<div class="st-deco" data-icon="B"></div>
+						<h2>Tranquillity</h2>
+						<p>Sint aute occaecat id vice. Post-ironic fap pork belly next level godard, id fanny pack williamsburg forage truffaut.</p>
+						-->
+					</div>
+					
+	<!--				<section class="st-panel st-color" id="st-panel-4">
+						<div class="st-deco" data-icon="x"></div>
+						<h2>Positivity</h2>
+						<p>Mixtape fap leggings art party, butcher authentic farm-to-table you probably haven't heard of them do labore cosby sweater.</p>
+					</section>
+					
+					<section class="st-panel" id="st-panel-5">
+						<div class="st-deco" data-icon="Ç"></div>
+						<h2>Passion</h2>
+						<p>Fixie ad odd future polaroid dreamcatcher, nesciunt carles bicycle rights accusamus mcsweeney's mumblecore nulla irony.</p>
+					</section>
+-->
+				</div><!-- // st-scroll -->
+				
+			</div><!-- // st-container -->
+			
+        </div>
+	</body>
+	
+		<script type="text/javascript" src="js/modernizr.custom.79639.js"></script>
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+		<script src="http://img.jb51.net/jslib/jquery/jquery14.js"></script> 
+		<script type="text/javascript" src="js/jQuery.fontFlex.js"></script>
+		
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=HIVMFTwEqVzoGQSNXa1ZmLET"></script>
+
+
+<script language="javascript" type="text/javascript">
+//var _cityISO ;//= "%E9%83%91%E5%B7%9E";
+//var  _cityname; //= "郑州";//remote_ip_info.city;
+
+
+	var map = new BMap.Map("allmap");
+	//var point = new BMap.Point(116.331398,39.897445);
+	//map.centerAndZoom(point,12);
+
+	function myFun(result){
+		var cityName = result.name;
+		//map.setCenter(cityName);
+		var newstr=cityName.substring(0,cityName.length-1);
+		var cityISO = encodeURI(newstr);
+		//alert(cityISO);
+		//_cityname = result.name;
+		
+	$.ajax({
+            url:'http://wthrcdn.etouch.cn/WeatherApi?city='+cityISO,
+            type:'post',
+            dataType:'xml',
+            success:function(xml){
+									
+							//alert(xml);
+						$(xml).find("resp").each(function(i)
+								{
+									//var oid = $(this).attr("id");
+									
+									var pm25 = $(this).children("environment").children("pm25").text();
+									//alert(pm25);
+									var aqi = $(this).children("environment").children("aqi").text();
+									var quality = $(this).children("environment").children("quality").text();
+									var pm10 = $(this).children("environment").children("pm10").text();
+									var o3= $(this).children("environment").children("o3").text();
+									var co = $(this).children("environment").children("co").text();
+									var no2 = $(this).children("environment").children("no2").text();
+									var so2 = $(this).children("environment").children("so2").text();
+
+									var temp = $(this).children("wendu").text();
+									var humidty = $(this).children("shidu").text();
+									var high = $(this).children("forecast").children("weather").children("high").eq(0).text();
+									var low = $(this).children("forecast").children("weather").children("low").eq(0).text();
+									 
+									high=high.substring(2,high.length);
+									low = low.substring(2,low.length);
+									/* var date = $(this).children("forecast").children("weather").children("date").eq(0).text(); */
+									var type= $(this).children("forecast").children("weather").children("day").eq(0).children("type").text();
+									var fengxiang= $(this).children("forecast").children("weather").children("day").eq(0).children("fengxiang").text();
+									var fengli= $(this).children("forecast").children("weather").children("day").eq(0).children("fengli").text();
+									//alert(cityname);
+									//document.getElementById("city").innerHTML = cityname;
+									//document.getElementById("fengxiang").innerHTML = "哈哈哈";
+									$("#quality").html(quality); 
+									$("#city").html(newstr); 
+									/* $("#date").html(date); */
+									$("#fengli").html(temp+"℃");
+									$("#hum").html(humidty);
+									$("#pm25").html(pm25);
+									$("#type").html(type);
+									$("#aqi").html(aqi);
+									$("#pm10").html(pm10);
+									$("#co").html(co);
+									$("#no2").html(no2);
+									$("#so2").html(so2);
+									$("#o3").html(o3);
+									//$("#city").html("["+cityname+"]");
+									$("#fengxiang").html(fengxiang);
+									$("#wendu").html(low+"-"+high);
+
+						/*			alert("城市："+cityname+"\n"+" 日期： "+date+"\n"+" 天气状况："+type+"\n"+" 当前温度："+temp+"\n"+" PM2.5："+pm25+"\n"+" 空气质量："+quality+"\n"+" 湿度："+humidty+"\n"+" 最高气温："+high+"\n"+" 最低气温："+low+"\n"+" PM10："+pm10+"\n");     */
+									///后续操作。。。
+								});
+
+            }
+             
+        })
+
+		//alert(result.name);
+		//alert(cityName);
+	}
+	
+	var myCity = new BMap.LocalCity();
+	myCity.get(myFun);
+	//alert(_cityISO);
+	
+</script>
+
+<script type="text/javascript">
+
+var _currentSensorId1;
+var _currentSensorId2;
+var _ad
+var basePath;
+var _sessionId;
+var _userid;
+
+//var dataP_6 = [];
+//var dataC_6 = [];
+
+function GetQueryString(name) 
+{ 
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); 
+     var r = window.location.search.substr(1).match(reg); 
+     if(r!=null)return  unescape(r[2]); return null; 
+} 
+
+
+
+_currentSensorId1 = GetQueryString("IN");
+_currentSensorId2 = GetQueryString("OUT");
+_ad = GetQueryString("AD");
+_sessionId = GetQueryString("SESSIONID");
+_userid = GetQueryString("USERID");
+
+    $(function() {
+    	
+    	var url = document.location.href;
+		//alert(url);
+		url = url.substring(7, url.length - 1);
+		//alert(url);
+		url = url.split("/");
+		url = url[0] + "/" + url[1] + "/";
+
+		basePath = url;
+    	
+    	setLeftData();
+    	
+    	
+    	 
+
+    });
+</script>
+ 
+
+
+<script type="text/javascript"> 
+
+$(function() {
+
+
+
+
+
+ 
+  // All elements
+  $('body').fontFlex(14, 20, 70);
+ 
+  // H1 only
+  $('h2').fontFlex(20, 60, 40); 
+   $('#city').fontFlex(48, 60, 50); 
+   $('#aqi').fontFlex(48, 60, 50); 
+   //$('#fengli').fontFlex(80, 80, 80); 
+    
+	
+
+  });
+
+
+function ScrollImgLeft(){ 
+var speed=50; 
+var scroll_begin = document.getElementById("scroll_begin"); 
+var scroll_end = document.getElementById("scroll_end"); 
+var scroll_div = document.getElementById("scroll_div"); 
+scroll_end.innerHTML=scroll_begin.innerHTML; 
+function Marquee(){ 
+if(scroll_end.offsetWidth-scroll_div.scrollLeft<=0) 
+scroll_div.scrollLeft-=scroll_begin.offsetWidth; 
+else 
+scroll_div.scrollLeft++; 
+} 
+var MyMar=setInterval(Marquee,speed); 
+scroll_div.onmouseover=function() {clearInterval(MyMar);} 
+scroll_div.onmouseout=function() {MyMar=setInterval(Marquee,speed);} 
+} 
+</script> 
+<script>
+
+$(document).ready(function(){
+	//alert(cityISO);
+	//alert(cityname);
+	systemTime();
+	draw12One("tianqi");
+
+});
+
+</script>
+		<script>
+		var x = 1;
+			$(document).ready(function(){
+			//setTimeout("setTime()",5*1000);
+				setTime();
+				
+			});
+			function setTime(){
+				
+			//	$("#st-panel-1").hide();
+			//	$("#st-panel-2").hide();
+
+			//	$("#st-panel-5").show();
+				
+	/*			$("#st-panel-1").hide();
+				$("#st-panel-2").show();   */
+				if(x == 1){
+
+				$('#tabP').stop(false,true).animate({'left' :  '0%'},300);
+
+				$("#table-1").addClass("tablecolor");
+				$("#table-2").removeClass("tablecolor");
+				$("#table-3").removeClass("tablecolor");
+				$("#st-panel-5").hide();
+					$("#st-panel-1").show();
+					$("#st-panel-2").hide();
+					
+				}
+				if(x == 2){
+				$('#tabP').stop(false,true).animate({'left' :  '33.3334%'},300);
+				$("#table-1").removeClass("tablecolor");
+				$("#table-2").addClass("tablecolor");
+				$("#table-3").removeClass("tablecolor");
+					$("#st-panel-2").show();
+					$("#st-panel-1").hide();
+					$("#st-panel-5").hide();
+				}
+				if(x == 3){
+				$('#tabP').stop(false,true).animate({'left' :  '66.66667%'},300);
+				$("#table-1").removeClass("tablecolor");
+				$("#table-2").removeClass("tablecolor");
+				$("#table-3").addClass("tablecolor");
+					$("#st-panel-5").show();
+					$("#st-panel-1").hide();
+					$("#st-panel-2").hide();
+				}
+				x++;
+				if(x == 4) x = 1;
+				setTimeout("setTime()",5*1000);   
+			}
+		</script>
+		<script>
+		
+		/* 设置室内数据 */
+		function setLeftData() {
+
+			$.post(
+						basePath+'hwmobile/smart/weather!doContentDetail',
+								{
+									SESSIONID : _sessionId,//'2F37FE55ECB0E3D27607A01E5312EE86',
+									USERID : _userid,//'f3d46750-e022-4bf6-88d0-2893caed8b24',
+								},
+								function(data) {
+									
+									//alert(data.dataObject[0].sensorList[0].air.temperature);
+								 	//alert(data);
+										  for (var i = 0; i < data.dataObject[0].sensorList.length ; i++) {
+												if (_currentSensorId1 != null && data.dataObject[0].sensorList[i].sensorId==_currentSensorId1){
+													if (data.dataObject[0].sensorList[i].air != null){
+														
+														/* 室内温度 赋值 */
+														//$('#temp').html(data.dataObject[0].sensorList[i].air.temperature);
+														
+														
+														/* 室内湿度 赋值  */
+														//$('#hum').html(data.dataObject[0].sensorList[i].air.humidity);
+						
+														/* 室内二氧化碳 赋值 */
+															if(data.dataObject[0].sensorList[i].air.co2<=800){
+															  $('#co2In').css({ color: "#10E600"});
+															  }
+															  if(data.dataObject[0].sensorList[i].air.co2>800 && data.dataObject[0].sensorList[i].air.co2<=1200){
+																  $('#co2In').css({ color: "#CDE00E"});
+																  }
+															  if(data.dataObject[0].sensorList[i].air.co2>1200 && data.dataObject[0].sensorList[i].air.co2<=2000){
+																  $('#co2In').css({ color: "#E66013"});
+																  }
+															  if(data.dataObject[0].sensorList[i].air.co2>2000){
+																  $('#co2In').css({ color: "#FF0100"});
+																  }
+														  $('#co2In').html(data.dataObject[0].sensorList[i].air.co2);
+														  
+														  
+														  /* PM2.5 赋值 */
+														  if(data.dataObject[0].sensorList[i].air.pm25<=50){
+														  $('#pm25In').css({ color: "#10E600"});
+														  }
+														  if(data.dataObject[0].sensorList[i].air.pm25>50 && data.dataObject[0].sensorList[i].air.pm25<=100){
+															  $('#pm25In').css({ color: "#CDE00E"});
+															  }
+														  if(data.dataObject[0].sensorList[i].air.pm25>100 && data.dataObject[0].sensorList[i].air.pm25<=200){
+															  $('#pm25In').css({ color: "#E66013"});
+															  }
+														  if(data.dataObject[0].sensorList[i].air.pm25>200){
+															  $('#pm25In').css({ color: "#FF0100"});
+															  }
+														  $('#pm25In').html(data.dataObject[0].sensorList[i].air.pm25);
+														  /* ./PM2.5 */
+														  
+														  
+														  /* voc 赋值 */
+														  if(data.dataObject[0].sensorList[i].air.voc<=10){
+														  $('#vocIn').css({ color: "#10E600"});
+														  }
+														  if(data.dataObject[0].sensorList[i].air.voc>10 && data.dataObject[0].sensorList[i].air.voc<=20){
+															  $('#vocIn').css({ color: "#CDE00E"});
+															  }
+														  if(data.dataObject[0].sensorList[i].air.voc>20 && data.dataObject[0].sensorList[i].air.voc<=40){
+															  $('#vocIn').css({ color: "#E66013"});
+															  }
+														  if(data.dataObject[0].sensorList[i].air.voc>40){
+															  $('#vocIn').css({ color: "#FF0100"});
+															  }
+														  $('#vocIn').html(data.dataObject[0].sensorList[i].air.voc);
+														  /* ./voc */
+														  
+														  
+														  /* 湿度 赋值 */
+														  if(data.dataObject[0].sensorList[i].air.humidity<=35){
+														  $('#humIn').css({ color: "#E7E632"});
+														  }
+														  if(data.dataObject[0].sensorList[i].air.humidity>35 && data.dataObject[0].sensorList[i].air.humidity<=65){
+															  $('#humIn').css({ color: "#04E500"});
+															  }
+														  
+														  if(data.dataObject[0].sensorList[i].air.humidity>65){
+															  $('#humIn').css({ color: "#3AF4FF"});
+															  }
+														  $('#humIn').html(data.dataObject[0].sensorList[i].air.humidity+"%");
+														  /* ./湿度 */
+														  
+														  
+														  /* 温度 赋值 */
+														  if(data.dataObject[0].sensorList[i].air.temperature<=10){
+														  $('#tempIn').css({ color: "#09098F"});
+														  }
+														  if(data.dataObject[0].sensorList[i].air.temperature>10 && data.dataObject[0].sensorList[i].air.temperature<=15){
+															  $('#tempIn').css({ color: "#3030FF"});
+															  }
+														  if(data.dataObject[0].sensorList[i].air.temperature>15 && data.dataObject[0].sensorList[i].air.temperature<=22){
+															  $('#tempIn').css({ color: "#25FED3"});
+															  }
+														  if(data.dataObject[0].sensorList[i].air.temperature>22 && data.dataObject[0].sensorList[i].air.temperature<=28){
+															  $('#tempIn').css({ color: "#06E500"});
+															  }
+														  if(data.dataObject[0].sensorList[i].air.temperature>28 && data.dataObject[0].sensorList[i].air.temperature<=32){
+															  $('#tempIn').css({ color: "#E65D13"});
+															  }
+														  
+														  if(data.dataObject[0].sensorList[i].air.temperature>32){
+															  $('#tempIn').css({ color: "#E60000"});
+															  }
+														  $('#tempIn').html(data.dataObject[0].sensorList[i].air.temperature+"℃");
+														  /* ./温度 */
+														  
+														  
+														  
+														  /* 室外发布时间赋值 */
+														  //var createTime = data.dataObject[0].sensorList[i].air.createTime;
+														  //$('#inTime').html(createTime.substring(5,createTime.length - 3)+" 发布");
+														  /* ./室外发布时间赋值 */
+														  
+						
+														  
+														  
+														//$('#airradio_voc').html(data.dataObject[0].sensorList[i].air.voc);
+														
+														//set_air_quilty(data.dataObject[0].sensorList[i].air.pm25);
+													}
+													
+												}
+												
+										  }
+
+										});
+			
+			setTimeout("setLeftData()",10*1000);
+			
+		}
+		
+		
+		
+//获取系统时间，将时间以指定格式显示到页面。  
+function systemTime()  
+{  
+    //获取系统时间。  
+    	d=new Date(); //创建一个Date对象
+		localTime = d.getTime();
+		localOffset=d.getTimezoneOffset()*60000; //获得当地时间偏移的毫秒数
+		utc = localTime + localOffset; //utc即GMT时间
+		
+		 var d = new Date();
+         var offset = d.getTimezoneOffset()/60;
+		
+
+		//offset =8; //以北京时间为例，东10区
+		beijing = utc - (3600000*offset); 
+		dateTime = new Date(beijing); 
+		//alert(dateTime);
+
+
+          var hh=dateTime.getHours();
+          var mm=dateTime.getMinutes();
+		  var ss=dateTime.getSeconds();
+          
+		  var yy=dateTime.getFullYear();
+		  var mon=dateTime.getMonth()+1;  //因为1月这个方法返回为0，所以加1
+		  var dd=dateTime.getDate();
+     
+    //alert(mon);
+    //分秒时间是一位数字，在数字前补0。  
+	
+    mm = extra(mm);  
+    ss = extra(ss);  
+      
+    //将时间显示到ID为time的位置，时间格式形如：19:18:02  
+    var str = "星期" + "日一二三四五六".charAt(new Date().getDay()); 
+    document.getElementById("date").innerHTML=yy+"年"+mon+"月"+dd+"日 ";  
+      document.getElementById("day").innerHTML=str;
+	document.getElementById("time").innerHTML=hh+":"+mm+":"+ss;
+    //每隔1000ms执行方法systemTime()。  
+    setTimeout("systemTime()",1000);  
+}  
+  
+//补位函数。  
+function extra(x)  
+{  
+    //如果传入数字小于10，数字前补一位0。  
+    if(x < 10)  
+    {  
+        return "0" + x;  
+    }  
+    else  
+    {  
+        return x;  
+    }  
+}  
+Array.prototype.remove=function(dx)
+　{
+　　if(isNaN(dx)||dx>this.length){return false;}
+　　for(var i=0,n=0;i<this.length;i++)
+　　{
+　　　　if(this[i]!=this[dx])
+　　　　{
+　　　　　　this[n++]=this[i]
+　　　　}
+　　}
+　　this.length-=1
+　}
+
+
+ function draw12(id) {
+          
+            var image = new Image();
+
+			image.src = "img/a_1.gif";
+            var canvas = document.getElementById(id);
+
+            if (canvas == null)
+                return false;
+            var context = canvas.getContext("2d");
+            context.fillStyle = "#EEEEFF";
+           
+            //context.fillRect(0, 0, 400, 300);
+            image.onload = function () {
+                context.drawImage(image, 0, 0, 100, 100);
+            }
+		
+
+			var image1 = new Image();
+
+			image1.src = "img/a_1.gif";
+			image1.onload = function () {
+                context.drawImage(image1, 100, 0, 100, 100);
+            }
+
+			
+
+        }
+
+		 function draw12One(id) {
+          
+            var image = new Image();
+
+			image.src = "img/a_1.gif";
+            var canvas = document.getElementById(id);
+
+            if (canvas == null)
+                return false;
+            var context = canvas.getContext("2d");
+            context.fillStyle = "#EEEEFF";
+           
+            //context.fillRect(0, 0, 400, 300);
+            image.onload = function () {
+                context.drawImage(image, 50, 0, 100, 100);
+            }
+		
+
+			
+
+			
+
+        }
+</script>
+<script type="text/javascript">ScrollImgLeft();</script> 
+</html>

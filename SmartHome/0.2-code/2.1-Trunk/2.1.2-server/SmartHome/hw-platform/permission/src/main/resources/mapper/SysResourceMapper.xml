@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwsensor.permission.dao.ISysResourceDao">
+
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+
+	<!-- 添加 -->
+	<insert id="insertSysResource" parameterType="com.hwsensor.permission.pojo.SysResourcePO">
+		INSERT INTO S_BUSI_RESOURCE
+		  (UUID, RESOURCE_NAME, RESOURCE_TYPE, MODULE_OPERA_UUID, 
+		  URL, IS_DEFAULT, CREATOR, CREATE_DATE, BIND_FUNC)
+		VALUES
+		  (#{UUID,jdbcType=VARCHAR}, #{RESOURCE_NAME,jdbcType=VARCHAR}, 
+		  #{RESOURCE_TYPE,jdbcType=VARCHAR}, #{MODULE_OPERA_UUID,jdbcType=VARCHAR}, 
+		  NVL(#{URL,jdbcType=VARCHAR},'#'), #{IS_DEFAULT,jdbcType=VARCHAR}, 
+		  #{CREATOR,jdbcType=VARCHAR}, #{CREATE_DATE,jdbcType=TIMESTAMP}, #{BIND_FUNC,jdbcType=VARCHAR})
+	</insert>
+	<!-- 修改 -->
+	<update id="updateSysResource" parameterType="com.hwsensor.permission.pojo.SysResourcePO">
+		UPDATE S_BUSI_RESOURCE
+		   SET UUID = #{UUID,jdbcType=VARCHAR},
+		       RESOURCE_NAME = #{RESOURCE_NAME,jdbcType=VARCHAR},
+		       RESOURCE_TYPE = #{RESOURCE_TYPE,jdbcType=VARCHAR},
+		       MODULE_OPERA_UUID = #{MODULE_OPERA_UUID,jdbcType=VARCHAR},
+		       URL = NVL(#{URL,jdbcType=VARCHAR},'#'),
+		       IS_DEFAULT = #{IS_DEFAULT,jdbcType=VARCHAR},
+		       CREATOR = #{CREATOR,jdbcType=VARCHAR},
+		       CREATE_DATE = #{CREATE_DATE,jdbcType=TIMESTAMP},
+		       BIND_FUNC = #{BIND_FUNC,jdbcType=VARCHAR}
+		 WHERE UUID = #{UUID,jdbcType=VARCHAR}
+	</update>
+	<!-- 动态修改 -->
+	<update id="updateSysResourceByMap" parameterType="map">
+		UPDATE S_BUSI_RESOURCE
+			<set>
+				<if test="UUID != null">
+				    UUID = #{UUID,jdbcType=VARCHAR},
+				</if>
+				<if test="RESOURCE_NAME != null">
+			       RESOURCE_NAME = #{RESOURCE_NAME,jdbcType=VARCHAR},
+				</if>
+				<if test="RESOURCE_TYPE != null">
+			       RESOURCE_TYPE = #{RESOURCE_TYPE,jdbcType=VARCHAR},
+				</if>
+				<if test="MODULE_OPERA_UUID != null">
+			       MODULE_OPERA_UUID = #{MODULE_OPERA_UUID,jdbcType=VARCHAR},
+				</if>
+				<if test="URL != null">
+			       URL = NVL(#{URL,jdbcType=VARCHAR},'#'),
+				</if>
+				<if test="IS_DEFAULT != null">
+			       IS_DEFAULT = #{IS_DEFAULT,jdbcType=VARCHAR},
+				</if>
+				<if test="CREATOR != null">
+			       CREATOR = #{CREATOR,jdbcType=VARCHAR},
+				</if>
+				<if test="CREATE_DATE != null">
+			       CREATE_DATE = #{CREATE_DATE,jdbcType=TIMESTAMP},
+				</if>
+				<if test="BIND_FUNC != null">
+			       BIND_FUNC = #{BIND_FUNC,jdbcType=VARCHAR}
+				</if>
+			</set>
+		 WHERE UUID = #{UUID,jdbcType=VARCHAR}
+				<if test="RESOURCE_TYPE != null">
+			      AND RESOURCE_TYPE = #{RESOURCE_TYPE,jdbcType=VARCHAR}
+				</if>
+				<if test="MODULE_OPERA_UUID != null">
+			      AND MODULE_OPERA_UUID = #{MODULE_OPERA_UUID,jdbcType=VARCHAR}
+				</if>
+				<if test="IS_DEFAULT != null">
+			      AND IS_DEFAULT = #{IS_DEFAULT,jdbcType=VARCHAR}
+				</if>
+		 
+	</update>
+	
+	<!-- 删除 -->
+	<delete id="deleteSysResource" parameterType="com.hwsensor.permission.pojo.SysResourcePO">
+		DELETE S_BUSI_RESOURCE WHERE UUID = #{UUID,jdbcType=VARCHAR}
+	</delete>
+	<!-- 动态删除 -->
+	<delete id="deleteSysResourceByMap" parameterType="map">
+		DELETE S_BUSI_RESOURCE WHERE 1=1
+			<include refid="queryCondition"/>
+	</delete>
+	<!-- 查询list -->
+	<select id="retrieveByCondition" resultType="com.hwsensor.permission.pojo.SysResourcePO" parameterType="map">
+		SELECT UUID, RESOURCE_NAME, RESOURCE_TYPE, MODULE_OPERA_UUID, URL, IS_DEFAULT, CREATOR,
+		 CREATE_DATE, BIND_FUNC FROM S_BUSI_RESOURCE WHERE 1=1
+		 	<include refid="queryCondition"/>
+	</select>
+	<!-- 查询po -->
+	<select id="retrieveSysResourceByMap" resultType="com.hwsensor.permission.pojo.SysResourcePO" parameterType="map">
+		SELECT UUID, RESOURCE_NAME, RESOURCE_TYPE, MODULE_OPERA_UUID, URL, IS_DEFAULT, CREATOR,
+		 CREATE_DATE, BIND_FUNC FROM S_BUSI_RESOURCE WHERE 1=1
+		 	<include refid="queryCondition"/>
+	</select>
+	<!-- 查询分页 -->
+	<select id="retrieveByPage" parameterType="map" resultType="map">
+		SELECT UUID, RESOURCE_NAME, RESOURCE_TYPE, MODULE_OPERA_UUID, URL, IS_DEFAULT, CREATOR,
+		 CREATE_DATE, BIND_FUNC 
+ 		<trim prefix=",">
+			(SELECT DISPLAY FROM SYS_DICTIONARY WHERE KEY LIKE 'resType%' AND VALUE=RESOURCE_TYPE) RESOURCE_TYPE_NAME ,
+			(SELECT DISPLAY FROM SYS_DICTIONARY WHERE KEY LIKE 'isDefaultRes%' AND VALUE=IS_DEFAULT) IS_DEFAULT_NAME
+		</trim>
+		 FROM S_BUSI_RESOURCE
+		 <where>
+		 	<if test="po.UUID != null and po.UUID !=''">
+			   UUID = #{po.UUID,jdbcType=VARCHAR}
+			</if>
+			<if test="po.RESOURCE_NAME != null and po.RESOURCE_NAME != ''">
+		       AND RESOURCE_NAME LIKE '%'||#{po.RESOURCE_NAME,jdbcType=VARCHAR}||'%'
+			</if>
+			<if test="po.RESOURCE_TYPE != null and po.RESOURCE_TYPE != ''">
+		       AND RESOURCE_TYPE = #{po.RESOURCE_TYPE,jdbcType=VARCHAR}
+			</if>
+			<if test="po.MODULE_OPERA_UUID != null and po.MODULE_OPERA_UUID != ''">
+		       AND MODULE_OPERA_UUID = #{po.MODULE_OPERA_UUID,jdbcType=VARCHAR}
+			</if>
+			<if test="po.URL != null and po.URL != ''">
+		       AND URL = #{po.URL,jdbcType=VARCHAR}
+			</if>
+			<if test="po.IS_DEFAULT != null and po.IS_DEFAULT != ''">
+		       AND IS_DEFAULT = #{po.IS_DEFAULT,jdbcType=VARCHAR}
+			</if>
+			<if test="po.CREATOR != null and po.CREATOR != ''">
+		       AND CREATOR = #{po.CREATOR,jdbcType=VARCHAR}
+			</if>
+			<if test="po.CREATE_DATE != null and po.CREATE_DATE != ''">
+		       AND CREATE_DATE = #{po.CREATE_DATE,jdbcType=TIMESTAMP}
+			</if>
+			<if test="po.BIND_FUNC != null and po.BIND_FUNC != ''">
+		       AND BIND_FUNC = #{po.BIND_FUNC,jdbcType=VARCHAR}
+			</if>
+		 </where>
+	</select>
+	
+	<sql id="queryCondition">
+		<if test="UUID != null and UUID !=''">
+		   AND UUID = #{UUID,jdbcType=VARCHAR}
+		</if>
+		<if test="RESOURCE_NAME != null and RESOURCE_NAME != ''">
+	       AND RESOURCE_NAME = #{RESOURCE_NAME,jdbcType=VARCHAR}
+		</if>
+		<if test="RESOURCE_TYPE != null and RESOURCE_TYPE != ''">
+	       AND RESOURCE_TYPE = #{RESOURCE_TYPE,jdbcType=VARCHAR}
+		</if>
+		<if test="MODULE_OPERA_UUID != null and MODULE_OPERA_UUID != ''">
+	       AND MODULE_OPERA_UUID = #{MODULE_OPERA_UUID,jdbcType=VARCHAR}
+		</if>
+		<if test="URL != null and URL != ''">
+	       AND URL = #{URL,jdbcType=VARCHAR}
+		</if>
+		<if test="IS_DEFAULT != null and IS_DEFAULT != ''">
+	       AND IS_DEFAULT = #{IS_DEFAULT,jdbcType=VARCHAR}
+		</if>
+		<if test="CREATOR != null and CREATOR != ''">
+	       AND CREATOR = #{CREATOR,jdbcType=VARCHAR}
+		</if>
+		<if test="CREATE_DATE != null and CREATE_DATE != ''">
+	       AND CREATE_DATE = #{CREATE_DATE,jdbcType=TIMESTAMP}
+		</if>
+		<if test="BIND_FUNC != null and BIND_FUNC != ''">
+	       AND BIND_FUNC = #{BIND_FUNC,jdbcType=VARCHAR}
+		</if>
+	</sql>
+	
+		<select id="retrieveAllUrl" resultType="String">
+		SELECT br.url FROM s_busi_resource br WHERE br.url != '#'
+	</select>
+	
+	<select id="retrieveUrlByUserId" resultType="String">
+    SELECT distinct br.url
+      FROM s_busi_resource br, s_role_perm rp, s_user_role ur
+           , s_busi_module bm, s_busi_operation bo
+      WHERE 1 = 1
+         AND ((br.resource_type = '10' AND br.module_opera_uuid = bm.uuid AND bm.is_valid = '10')
+               OR(br.resource_type = '20' AND br.module_opera_uuid = bo.uuid AND bo.is_valid = '10'))
+         AND (br.module_opera_uuid = rp.module_uuid OR br.module_opera_uuid = rp.opera_uuid)
+         AND rp.role_uuid = ur.role_uuid
+         AND br.url != '#'
+         AND ur.user_uuid = #{userId}
+      union 
+      SELECT distinct br.url
+      FROM s_busi_resource br, s_role_perm rp, s_user u,s_dept_role dr,
+           s_busi_module bm, s_busi_operation bo
+      WHERE 1 = 1
+         AND ((br.resource_type = '10' AND br.module_opera_uuid = bm.uuid AND bm.is_valid = '10')
+               OR(br.resource_type = '20' AND br.module_opera_uuid = bo.uuid AND bo.is_valid = '10'))
+         AND (br.module_opera_uuid = rp.module_uuid OR br.module_opera_uuid = rp.opera_uuid)
+         AND rp.role_uuid = dr.role_uuid
+         And u.depart_uuid = dr.depart_uuid
+         AND br.url != '#'
+         AND u.uuid = #{userId}
+	       
+	</select>
+</mapper>

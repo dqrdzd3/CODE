@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+     android:background="@color/ui_setting_bg" >
+    
+<TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10.0dip"
+            android:layout_marginTop="10.0dip"
+            android:gravity="center_vertical"
+            android:paddingLeft="4.0dip"
+            android:text="@string/chg_pw"
+            android:textColor="@color/gray"
+            android:textSize="16.0sp" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_marginLeft="2.0dip"
+                android:layout_marginRight="2.0dip"
+                android:background="@color/white"
+                android:paddingBottom="16.0dip"
+                android:paddingTop="16.0dip" >
+
+                <TextView
+                    android:layout_width="100dip"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="10.0dip"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="17.0dip"
+                    android:text="@string/pw"
+                    android:textColor="@color/black"
+                    android:textSize="16.0sp" />
+
+                <EditText
+                    android:id="@+id/chgPw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/pw_hint"
+                    android:inputType="textPassword"
+                    android:textSize="16.0sp" >
+                </EditText>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_marginLeft="2.0dip"
+                android:layout_marginRight="2.0dip"
+                android:background="@color/white"
+                android:paddingBottom="16.0dip"
+                android:paddingTop="16.0dip" >
+
+                <TextView
+                    android:layout_width="100dip"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="10.0dip"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="17.0dip"
+                    android:text="@string/pw_new"
+                    android:textColor="@color/black"
+                    android:textSize="16.0sp" />
+
+                <EditText
+                    android:id="@+id/chgPwNew"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/pw_new_hint"
+                    android:inputType="textPassword"
+                    android:textSize="16.0sp" >
+                </EditText>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_marginLeft="2.0dip"
+                android:layout_marginRight="2.0dip"
+                android:background="@color/white"
+                android:paddingBottom="16.0dip"
+                android:paddingTop="16.0dip" >
+
+                <TextView
+                    android:layout_width="100dip"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="10.0dip"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="17.0dip"
+                    android:text="@string/pw_new_repeat"
+                    android:textColor="@color/black"
+                    android:textSize="16.0sp" />
+
+                <EditText
+                    android:id="@+id/pwNewRepeat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/pw_new_repeat_hint"
+                    android:inputType="textPassword"
+                    android:textSize="16.0sp" >
+                </EditText>
+            </TableRow>
+        </TableLayout>
+       <Button 
+             android:id="@+id/changepw"
+             android:layout_marginTop="20sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="修改"
+                    android:onClick="changepw"
+                    android:background="@drawable/btn_style_alert_dialog_special"/>
+</LinearLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 企业登记 -->
+	<package name="register" namespace="/register" extends="interceptor">
+	
+		<action name="c001" class="com.hw.hwsafe.cpnyreg.action.C001Action" method="doList">
+			<result name="success" >/WEB-INF/jsp/cpnyreg/c001/c001_list.jsp</result>
+			<result name="add" >/WEB-INF/jsp/cpnyreg/c001/c001_add.jsp</result>
+			<result name="c001Json" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="root">c001Json</param>
+			</result>
+		</action>
+		
+		<action name="c006" class="com.hw.hwsafe.register.action.C006Action" >
+			<result name="success" >/WEB-INF/jsp/register/c006/c006_list.jsp</result>
+			<result name="register" >/WEB-INF/jsp/register/c006/c006_register.jsp</result>
+			<result name="add" >/WEB-INF/jsp/register/c006/c006_add.jsp</result>
+			<result name="hc" >/WEB-INF/jsp/register/c006/c006_hc.jsp</result>
+			<result name="dloption">/WEB-INF/jsp/register/c006/option_dl.jsp</result>
+			<result name="success1" >/WEB-INF/jsp/register/c006/success.jsp</result>
+			<result name="zloption" type="json">
+				<param name="root">zlList</param>
+			</result>
+			<result name="zgdwdata" type="json">
+				<param name="root">zgdwData</param>
+			</result>
+			<result name="xloption" type="json">
+				<param name="root">xlList</param>
+			</result>
+			
+			<result name="loginRegister">/WEB-INF/jsp/register/c006/c006_login.jsp</result>	
+		</action>
+	</package>
+</struts>

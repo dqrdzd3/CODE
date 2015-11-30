@@ -1,0 +1,3594 @@
+﻿body {
+    margin: 0px;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+#u0 {
+    position:absolute;
+    left:13px;
+    top:131px;
+    width:945px;
+    height:345px
+}
+
+.u1_normal {
+    background-image: url('../实时传感器数据查询_files/u1_normal.png');
+}
+
+.u1_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:29px;
+    height:30px;
+}
+
+#u1_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:35px;
+    height:36px;
+}
+
+.u2 {
+    position:absolute;
+    left:2px;
+    top:7px;
+    width:25px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u3_normal {
+    background-image: url('../实时传感器数据查询_files/u3_normal.png');
+}
+
+.u3_container {
+    position:absolute;
+    left:29px;
+    top:0px;
+    width:37px;
+    height:30px;
+}
+
+#u3_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:43px;
+    height:36px;
+}
+
+.u4 {
+    position:absolute;
+    left:2px;
+    top:7px;
+    width:33px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u5_normal {
+    background-image: url('../实时传感器数据查询_files/u5_normal.png');
+}
+
+.u5_container {
+    position:absolute;
+    left:66px;
+    top:0px;
+    width:161px;
+    height:30px;
+}
+
+#u5_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:36px;
+}
+
+.u6 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:157px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u7_normal {
+    background-image: url('../实时传感器数据查询_files/u7_normal.png');
+}
+
+.u7_container {
+    position:absolute;
+    left:227px;
+    top:0px;
+    width:100px;
+    height:30px;
+}
+
+#u7_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:36px;
+}
+
+.u8 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:96px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u9_normal {
+    background-image: url('../实时传感器数据查询_files/u9_normal.png');
+}
+
+.u9_container {
+    position:absolute;
+    left:327px;
+    top:0px;
+    width:138px;
+    height:30px;
+}
+
+#u9_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:144px;
+    height:36px;
+}
+
+.u10 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:134px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u11_normal {
+    background-image: url('../实时传感器数据查询_files/u11_normal.png');
+}
+
+.u11_container {
+    position:absolute;
+    left:465px;
+    top:0px;
+    width:103px;
+    height:30px;
+}
+
+#u11_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:109px;
+    height:36px;
+}
+
+.u12 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:99px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u13_normal {
+    background-image: url('../实时传感器数据查询_files/u13_normal.png');
+}
+
+.u13_container {
+    position:absolute;
+    left:568px;
+    top:0px;
+    width:211px;
+    height:30px;
+}
+
+#u13_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:217px;
+    height:36px;
+}
+
+.u14 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:207px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u15_normal {
+    background-image: url('../实时传感器数据查询_files/u5_normal.png');
+}
+
+.u15_container {
+    position:absolute;
+    left:779px;
+    top:0px;
+    width:161px;
+    height:30px;
+}
+
+#u15_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:36px;
+}
+
+.u16 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:157px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u17_normal {
+    background-image: url('../实时传感器数据查询_files/u17_normal.png');
+}
+
+.u17_container {
+    position:absolute;
+    left:0px;
+    top:30px;
+    width:29px;
+    height:30px;
+}
+
+#u17_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:35px;
+    height:36px;
+}
+
+.u18 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:25px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u19_normal {
+    background-image: url('../实时传感器数据查询_files/u19_normal.png');
+}
+
+.u19_container {
+    position:absolute;
+    left:29px;
+    top:30px;
+    width:37px;
+    height:30px;
+}
+
+#u19_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:43px;
+    height:36px;
+}
+
+.u20 {
+    position:absolute;
+    left:2px;
+    top:7px;
+    width:33px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u21_normal {
+    background-image: url('../实时传感器数据查询_files/u21_normal.png');
+}
+
+.u21_container {
+    position:absolute;
+    left:66px;
+    top:30px;
+    width:161px;
+    height:30px;
+}
+
+#u21_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:36px;
+}
+
+.u22 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:157px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u23_normal {
+    background-image: url('../实时传感器数据查询_files/u23_normal.png');
+}
+
+.u23_container {
+    position:absolute;
+    left:227px;
+    top:30px;
+    width:100px;
+    height:30px;
+}
+
+#u23_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:36px;
+}
+
+.u24 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:96px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u25_normal {
+    background-image: url('../实时传感器数据查询_files/u25_normal.png');
+}
+
+.u25_container {
+    position:absolute;
+    left:327px;
+    top:30px;
+    width:138px;
+    height:30px;
+}
+
+#u25_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:144px;
+    height:36px;
+}
+
+.u26 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:134px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u27_normal {
+    background-image: url('../实时传感器数据查询_files/u27_normal.png');
+}
+
+.u27_container {
+    position:absolute;
+    left:465px;
+    top:30px;
+    width:103px;
+    height:30px;
+}
+
+#u27_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:109px;
+    height:36px;
+}
+
+.u28 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:99px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u29_normal {
+    background-image: url('../实时传感器数据查询_files/u29_normal.png');
+}
+
+.u29_container {
+    position:absolute;
+    left:568px;
+    top:30px;
+    width:211px;
+    height:30px;
+}
+
+#u29_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:217px;
+    height:36px;
+}
+
+.u30 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:207px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u31_normal {
+    background-image: url('../实时传感器数据查询_files/u21_normal.png');
+}
+
+.u31_container {
+    position:absolute;
+    left:779px;
+    top:30px;
+    width:161px;
+    height:30px;
+}
+
+#u31_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:36px;
+}
+
+.u32 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:157px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u33_normal {
+    background-image: url('../实时传感器数据查询_files/u33_normal.png');
+}
+
+.u33_container {
+    position:absolute;
+    left:0px;
+    top:60px;
+    width:29px;
+    height:28px;
+}
+
+#u33_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:35px;
+    height:34px;
+}
+
+.u34 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:25px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u35_normal {
+    background-image: url('../实时传感器数据查询_files/u35_normal.png');
+}
+
+.u35_container {
+    position:absolute;
+    left:29px;
+    top:60px;
+    width:37px;
+    height:28px;
+}
+
+#u35_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:43px;
+    height:34px;
+}
+
+.u36 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:33px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u37_normal {
+    background-image: url('../实时传感器数据查询_files/u37_normal.png');
+}
+
+.u37_container {
+    position:absolute;
+    left:66px;
+    top:60px;
+    width:161px;
+    height:28px;
+}
+
+#u37_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:34px;
+}
+
+.u38 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:157px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u39_normal {
+    background-image: url('../实时传感器数据查询_files/u39_normal.png');
+}
+
+.u39_container {
+    position:absolute;
+    left:227px;
+    top:60px;
+    width:100px;
+    height:28px;
+}
+
+#u39_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:34px;
+}
+
+.u40 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:96px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u41_normal {
+    background-image: url('../实时传感器数据查询_files/u41_normal.png');
+}
+
+.u41_container {
+    position:absolute;
+    left:327px;
+    top:60px;
+    width:138px;
+    height:28px;
+}
+
+#u41_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:144px;
+    height:34px;
+}
+
+.u42 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:134px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u43_normal {
+    background-image: url('../实时传感器数据查询_files/u43_normal.png');
+}
+
+.u43_container {
+    position:absolute;
+    left:465px;
+    top:60px;
+    width:103px;
+    height:28px;
+}
+
+#u43_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:109px;
+    height:34px;
+}
+
+.u44 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:99px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u45_normal {
+    background-image: url('../实时传感器数据查询_files/u45_normal.png');
+}
+
+.u45_container {
+    position:absolute;
+    left:568px;
+    top:60px;
+    width:211px;
+    height:28px;
+}
+
+#u45_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:217px;
+    height:34px;
+}
+
+.u46 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:207px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u47_normal {
+    background-image: url('../实时传感器数据查询_files/u37_normal.png');
+}
+
+.u47_container {
+    position:absolute;
+    left:779px;
+    top:60px;
+    width:161px;
+    height:28px;
+}
+
+#u47_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:34px;
+}
+
+.u48 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:157px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u49_normal {
+    background-image: url('../实时传感器数据查询_files/u49_normal.png');
+}
+
+.u49_container {
+    position:absolute;
+    left:0px;
+    top:88px;
+    width:29px;
+    height:28px;
+}
+
+#u49_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:35px;
+    height:34px;
+}
+
+.u50 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:25px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u51_normal {
+    background-image: url('../实时传感器数据查询_files/u51_normal.png');
+}
+
+.u51_container {
+    position:absolute;
+    left:29px;
+    top:88px;
+    width:37px;
+    height:28px;
+}
+
+#u51_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:43px;
+    height:34px;
+}
+
+.u52 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:33px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u53_normal {
+    background-image: url('../实时传感器数据查询_files/u53_normal.png');
+}
+
+.u53_container {
+    position:absolute;
+    left:66px;
+    top:88px;
+    width:161px;
+    height:28px;
+}
+
+#u53_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:34px;
+}
+
+.u54 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:157px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u55_normal {
+    background-image: url('../实时传感器数据查询_files/u55_normal.png');
+}
+
+.u55_container {
+    position:absolute;
+    left:227px;
+    top:88px;
+    width:100px;
+    height:28px;
+}
+
+#u55_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:34px;
+}
+
+.u56 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:96px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u57_normal {
+    background-image: url('../实时传感器数据查询_files/u57_normal.png');
+}
+
+.u57_container {
+    position:absolute;
+    left:327px;
+    top:88px;
+    width:138px;
+    height:28px;
+}
+
+#u57_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:144px;
+    height:34px;
+}
+
+.u58 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:134px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u59_normal {
+    background-image: url('../实时传感器数据查询_files/u59_normal.png');
+}
+
+.u59_container {
+    position:absolute;
+    left:465px;
+    top:88px;
+    width:103px;
+    height:28px;
+}
+
+#u59_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:109px;
+    height:34px;
+}
+
+.u60 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:99px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u61_normal {
+    background-image: url('../实时传感器数据查询_files/u61_normal.png');
+}
+
+.u61_container {
+    position:absolute;
+    left:568px;
+    top:88px;
+    width:211px;
+    height:28px;
+}
+
+#u61_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:217px;
+    height:34px;
+}
+
+.u62 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:207px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u63_normal {
+    background-image: url('../实时传感器数据查询_files/u53_normal.png');
+}
+
+.u63_container {
+    position:absolute;
+    left:779px;
+    top:88px;
+    width:161px;
+    height:28px;
+}
+
+#u63_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:34px;
+}
+
+.u64 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:157px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u65_normal {
+    background-image: url('../实时传感器数据查询_files/u33_normal.png');
+}
+
+.u65_container {
+    position:absolute;
+    left:0px;
+    top:116px;
+    width:29px;
+    height:28px;
+}
+
+#u65_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:35px;
+    height:34px;
+}
+
+.u66 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:25px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u67_normal {
+    background-image: url('../实时传感器数据查询_files/u35_normal.png');
+}
+
+.u67_container {
+    position:absolute;
+    left:29px;
+    top:116px;
+    width:37px;
+    height:28px;
+}
+
+#u67_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:43px;
+    height:34px;
+}
+
+.u68 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:33px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u69_normal {
+    background-image: url('../实时传感器数据查询_files/u37_normal.png');
+}
+
+.u69_container {
+    position:absolute;
+    left:66px;
+    top:116px;
+    width:161px;
+    height:28px;
+}
+
+#u69_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:34px;
+}
+
+.u70 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:157px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u71_normal {
+    background-image: url('../实时传感器数据查询_files/u39_normal.png');
+}
+
+.u71_container {
+    position:absolute;
+    left:227px;
+    top:116px;
+    width:100px;
+    height:28px;
+}
+
+#u71_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:34px;
+}
+
+.u72 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:96px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u73_normal {
+    background-image: url('../实时传感器数据查询_files/u41_normal.png');
+}
+
+.u73_container {
+    position:absolute;
+    left:327px;
+    top:116px;
+    width:138px;
+    height:28px;
+}
+
+#u73_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:144px;
+    height:34px;
+}
+
+.u74 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:134px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u75_normal {
+    background-image: url('../实时传感器数据查询_files/u43_normal.png');
+}
+
+.u75_container {
+    position:absolute;
+    left:465px;
+    top:116px;
+    width:103px;
+    height:28px;
+}
+
+#u75_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:109px;
+    height:34px;
+}
+
+.u76 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:99px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u77_normal {
+    background-image: url('../实时传感器数据查询_files/u45_normal.png');
+}
+
+.u77_container {
+    position:absolute;
+    left:568px;
+    top:116px;
+    width:211px;
+    height:28px;
+}
+
+#u77_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:217px;
+    height:34px;
+}
+
+.u78 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:207px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u79_normal {
+    background-image: url('../实时传感器数据查询_files/u37_normal.png');
+}
+
+.u79_container {
+    position:absolute;
+    left:779px;
+    top:116px;
+    width:161px;
+    height:28px;
+}
+
+#u79_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:34px;
+}
+
+.u80 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:157px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u81_normal {
+    background-image: url('../实时传感器数据查询_files/u49_normal.png');
+}
+
+.u81_container {
+    position:absolute;
+    left:0px;
+    top:144px;
+    width:29px;
+    height:28px;
+}
+
+#u81_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:35px;
+    height:34px;
+}
+
+.u82 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:25px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u83_normal {
+    background-image: url('../实时传感器数据查询_files/u51_normal.png');
+}
+
+.u83_container {
+    position:absolute;
+    left:29px;
+    top:144px;
+    width:37px;
+    height:28px;
+}
+
+#u83_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:43px;
+    height:34px;
+}
+
+.u84 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:33px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u85_normal {
+    background-image: url('../实时传感器数据查询_files/u53_normal.png');
+}
+
+.u85_container {
+    position:absolute;
+    left:66px;
+    top:144px;
+    width:161px;
+    height:28px;
+}
+
+#u85_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:34px;
+}
+
+.u86 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:157px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u87_normal {
+    background-image: url('../实时传感器数据查询_files/u55_normal.png');
+}
+
+.u87_container {
+    position:absolute;
+    left:227px;
+    top:144px;
+    width:100px;
+    height:28px;
+}
+
+#u87_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:34px;
+}
+
+.u88 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:96px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u89_normal {
+    background-image: url('../实时传感器数据查询_files/u57_normal.png');
+}
+
+.u89_container {
+    position:absolute;
+    left:327px;
+    top:144px;
+    width:138px;
+    height:28px;
+}
+
+#u89_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:144px;
+    height:34px;
+}
+
+.u90 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:134px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u91_normal {
+    background-image: url('../实时传感器数据查询_files/u59_normal.png');
+}
+
+.u91_container {
+    position:absolute;
+    left:465px;
+    top:144px;
+    width:103px;
+    height:28px;
+}
+
+#u91_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:109px;
+    height:34px;
+}
+
+.u92 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:99px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u93_normal {
+    background-image: url('../实时传感器数据查询_files/u61_normal.png');
+}
+
+.u93_container {
+    position:absolute;
+    left:568px;
+    top:144px;
+    width:211px;
+    height:28px;
+}
+
+#u93_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:217px;
+    height:34px;
+}
+
+.u94 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:207px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u95_normal {
+    background-image: url('../实时传感器数据查询_files/u53_normal.png');
+}
+
+.u95_container {
+    position:absolute;
+    left:779px;
+    top:144px;
+    width:161px;
+    height:28px;
+}
+
+#u95_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:34px;
+}
+
+.u96 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:157px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u97_normal {
+    background-image: url('../实时传感器数据查询_files/u33_normal.png');
+}
+
+.u97_container {
+    position:absolute;
+    left:0px;
+    top:172px;
+    width:29px;
+    height:28px;
+}
+
+#u97_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:35px;
+    height:34px;
+}
+
+.u98 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:25px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u99_normal {
+    background-image: url('../实时传感器数据查询_files/u35_normal.png');
+}
+
+.u99_container {
+    position:absolute;
+    left:29px;
+    top:172px;
+    width:37px;
+    height:28px;
+}
+
+#u99_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:43px;
+    height:34px;
+}
+
+.u100 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:33px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u101_normal {
+    background-image: url('../实时传感器数据查询_files/u37_normal.png');
+}
+
+.u101_container {
+    position:absolute;
+    left:66px;
+    top:172px;
+    width:161px;
+    height:28px;
+}
+
+#u101_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:34px;
+}
+
+.u102 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:157px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u103_normal {
+    background-image: url('../实时传感器数据查询_files/u39_normal.png');
+}
+
+.u103_container {
+    position:absolute;
+    left:227px;
+    top:172px;
+    width:100px;
+    height:28px;
+}
+
+#u103_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:34px;
+}
+
+.u104 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:96px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u105_normal {
+    background-image: url('../实时传感器数据查询_files/u41_normal.png');
+}
+
+.u105_container {
+    position:absolute;
+    left:327px;
+    top:172px;
+    width:138px;
+    height:28px;
+}
+
+#u105_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:144px;
+    height:34px;
+}
+
+.u106 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:134px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u107_normal {
+    background-image: url('../实时传感器数据查询_files/u43_normal.png');
+}
+
+.u107_container {
+    position:absolute;
+    left:465px;
+    top:172px;
+    width:103px;
+    height:28px;
+}
+
+#u107_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:109px;
+    height:34px;
+}
+
+.u108 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:99px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u109_normal {
+    background-image: url('../实时传感器数据查询_files/u45_normal.png');
+}
+
+.u109_container {
+    position:absolute;
+    left:568px;
+    top:172px;
+    width:211px;
+    height:28px;
+}
+
+#u109_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:217px;
+    height:34px;
+}
+
+.u110 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:207px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u111_normal {
+    background-image: url('../实时传感器数据查询_files/u37_normal.png');
+}
+
+.u111_container {
+    position:absolute;
+    left:779px;
+    top:172px;
+    width:161px;
+    height:28px;
+}
+
+#u111_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:34px;
+}
+
+.u112 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:157px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u113_normal {
+    background-image: url('../实时传感器数据查询_files/u49_normal.png');
+}
+
+.u113_container {
+    position:absolute;
+    left:0px;
+    top:200px;
+    width:29px;
+    height:28px;
+}
+
+#u113_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:35px;
+    height:34px;
+}
+
+.u114 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:25px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u115_normal {
+    background-image: url('../实时传感器数据查询_files/u51_normal.png');
+}
+
+.u115_container {
+    position:absolute;
+    left:29px;
+    top:200px;
+    width:37px;
+    height:28px;
+}
+
+#u115_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:43px;
+    height:34px;
+}
+
+.u116 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:33px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u117_normal {
+    background-image: url('../实时传感器数据查询_files/u53_normal.png');
+}
+
+.u117_container {
+    position:absolute;
+    left:66px;
+    top:200px;
+    width:161px;
+    height:28px;
+}
+
+#u117_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:34px;
+}
+
+.u118 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:157px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u119_normal {
+    background-image: url('../实时传感器数据查询_files/u55_normal.png');
+}
+
+.u119_container {
+    position:absolute;
+    left:227px;
+    top:200px;
+    width:100px;
+    height:28px;
+}
+
+#u119_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:34px;
+}
+
+.u120 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:96px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u121_normal {
+    background-image: url('../实时传感器数据查询_files/u57_normal.png');
+}
+
+.u121_container {
+    position:absolute;
+    left:327px;
+    top:200px;
+    width:138px;
+    height:28px;
+}
+
+#u121_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:144px;
+    height:34px;
+}
+
+.u122 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:134px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u123_normal {
+    background-image: url('../实时传感器数据查询_files/u59_normal.png');
+}
+
+.u123_container {
+    position:absolute;
+    left:465px;
+    top:200px;
+    width:103px;
+    height:28px;
+}
+
+#u123_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:109px;
+    height:34px;
+}
+
+.u124 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:99px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u125_normal {
+    background-image: url('../实时传感器数据查询_files/u61_normal.png');
+}
+
+.u125_container {
+    position:absolute;
+    left:568px;
+    top:200px;
+    width:211px;
+    height:28px;
+}
+
+#u125_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:217px;
+    height:34px;
+}
+
+.u126 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:207px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u127_normal {
+    background-image: url('../实时传感器数据查询_files/u53_normal.png');
+}
+
+.u127_container {
+    position:absolute;
+    left:779px;
+    top:200px;
+    width:161px;
+    height:28px;
+}
+
+#u127_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:34px;
+}
+
+.u128 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:157px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u129_normal {
+    background-image: url('../实时传感器数据查询_files/u129_normal.png');
+}
+
+.u129_container {
+    position:absolute;
+    left:0px;
+    top:228px;
+    width:29px;
+    height:28px;
+}
+
+#u129_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:35px;
+    height:34px;
+}
+
+.u130 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:25px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u131_normal {
+    background-image: url('../实时传感器数据查询_files/u131_normal.png');
+}
+
+.u131_container {
+    position:absolute;
+    left:29px;
+    top:228px;
+    width:37px;
+    height:28px;
+}
+
+#u131_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:43px;
+    height:34px;
+}
+
+.u132 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:33px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u133_normal {
+    background-image: url('../实时传感器数据查询_files/u133_normal.png');
+}
+
+.u133_container {
+    position:absolute;
+    left:66px;
+    top:228px;
+    width:161px;
+    height:28px;
+}
+
+#u133_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:34px;
+}
+
+.u134 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:157px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u135_normal {
+    background-image: url('../实时传感器数据查询_files/u135_normal.png');
+}
+
+.u135_container {
+    position:absolute;
+    left:227px;
+    top:228px;
+    width:100px;
+    height:28px;
+}
+
+#u135_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:34px;
+}
+
+.u136 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:96px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u137_normal {
+    background-image: url('../实时传感器数据查询_files/u137_normal.png');
+}
+
+.u137_container {
+    position:absolute;
+    left:327px;
+    top:228px;
+    width:138px;
+    height:28px;
+}
+
+#u137_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:144px;
+    height:34px;
+}
+
+.u138 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:134px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u139_normal {
+    background-image: url('../实时传感器数据查询_files/u139_normal.png');
+}
+
+.u139_container {
+    position:absolute;
+    left:465px;
+    top:228px;
+    width:103px;
+    height:28px;
+}
+
+#u139_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:109px;
+    height:34px;
+}
+
+.u140 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:99px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u141_normal {
+    background-image: url('../实时传感器数据查询_files/u141_normal.png');
+}
+
+.u141_container {
+    position:absolute;
+    left:568px;
+    top:228px;
+    width:211px;
+    height:28px;
+}
+
+#u141_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:217px;
+    height:34px;
+}
+
+.u142 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:207px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u143_normal {
+    background-image: url('../实时传感器数据查询_files/u133_normal.png');
+}
+
+.u143_container {
+    position:absolute;
+    left:779px;
+    top:228px;
+    width:161px;
+    height:28px;
+}
+
+#u143_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:34px;
+}
+
+.u144 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:157px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u145_normal {
+    background-image: url('../实时传感器数据查询_files/u49_normal.png');
+}
+
+.u145_container {
+    position:absolute;
+    left:0px;
+    top:256px;
+    width:29px;
+    height:28px;
+}
+
+#u145_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:35px;
+    height:34px;
+}
+
+.u146 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:25px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u147_normal {
+    background-image: url('../实时传感器数据查询_files/u51_normal.png');
+}
+
+.u147_container {
+    position:absolute;
+    left:29px;
+    top:256px;
+    width:37px;
+    height:28px;
+}
+
+#u147_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:43px;
+    height:34px;
+}
+
+.u148 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:33px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u149_normal {
+    background-image: url('../实时传感器数据查询_files/u53_normal.png');
+}
+
+.u149_container {
+    position:absolute;
+    left:66px;
+    top:256px;
+    width:161px;
+    height:28px;
+}
+
+#u149_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:34px;
+}
+
+.u150 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:157px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u151_normal {
+    background-image: url('../实时传感器数据查询_files/u55_normal.png');
+}
+
+.u151_container {
+    position:absolute;
+    left:227px;
+    top:256px;
+    width:100px;
+    height:28px;
+}
+
+#u151_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:34px;
+}
+
+.u152 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:96px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u153_normal {
+    background-image: url('../实时传感器数据查询_files/u57_normal.png');
+}
+
+.u153_container {
+    position:absolute;
+    left:327px;
+    top:256px;
+    width:138px;
+    height:28px;
+}
+
+#u153_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:144px;
+    height:34px;
+}
+
+.u154 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:134px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u155_normal {
+    background-image: url('../实时传感器数据查询_files/u59_normal.png');
+}
+
+.u155_container {
+    position:absolute;
+    left:465px;
+    top:256px;
+    width:103px;
+    height:28px;
+}
+
+#u155_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:109px;
+    height:34px;
+}
+
+.u156 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:99px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u157_normal {
+    background-image: url('../实时传感器数据查询_files/u61_normal.png');
+}
+
+.u157_container {
+    position:absolute;
+    left:568px;
+    top:256px;
+    width:211px;
+    height:28px;
+}
+
+#u157_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:217px;
+    height:34px;
+}
+
+.u158 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:207px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u159_normal {
+    background-image: url('../实时传感器数据查询_files/u53_normal.png');
+}
+
+.u159_container {
+    position:absolute;
+    left:779px;
+    top:256px;
+    width:161px;
+    height:28px;
+}
+
+#u159_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:34px;
+}
+
+.u160 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:157px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u161_normal {
+    background-image: url('../实时传感器数据查询_files/u129_normal.png');
+}
+
+.u161_container {
+    position:absolute;
+    left:0px;
+    top:284px;
+    width:29px;
+    height:28px;
+}
+
+#u161_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:35px;
+    height:34px;
+}
+
+.u162 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:25px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u163_normal {
+    background-image: url('../实时传感器数据查询_files/u131_normal.png');
+}
+
+.u163_container {
+    position:absolute;
+    left:29px;
+    top:284px;
+    width:37px;
+    height:28px;
+}
+
+#u163_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:43px;
+    height:34px;
+}
+
+.u164 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:33px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u165_normal {
+    background-image: url('../实时传感器数据查询_files/u133_normal.png');
+}
+
+.u165_container {
+    position:absolute;
+    left:66px;
+    top:284px;
+    width:161px;
+    height:28px;
+}
+
+#u165_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:34px;
+}
+
+.u166 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:157px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u167_normal {
+    background-image: url('../实时传感器数据查询_files/u135_normal.png');
+}
+
+.u167_container {
+    position:absolute;
+    left:227px;
+    top:284px;
+    width:100px;
+    height:28px;
+}
+
+#u167_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:34px;
+}
+
+.u168 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:96px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u169_normal {
+    background-image: url('../实时传感器数据查询_files/u137_normal.png');
+}
+
+.u169_container {
+    position:absolute;
+    left:327px;
+    top:284px;
+    width:138px;
+    height:28px;
+}
+
+#u169_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:144px;
+    height:34px;
+}
+
+.u170 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:134px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u171_normal {
+    background-image: url('../实时传感器数据查询_files/u139_normal.png');
+}
+
+.u171_container {
+    position:absolute;
+    left:465px;
+    top:284px;
+    width:103px;
+    height:28px;
+}
+
+#u171_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:109px;
+    height:34px;
+}
+
+.u172 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:99px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u173_normal {
+    background-image: url('../实时传感器数据查询_files/u141_normal.png');
+}
+
+.u173_container {
+    position:absolute;
+    left:568px;
+    top:284px;
+    width:211px;
+    height:28px;
+}
+
+#u173_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:217px;
+    height:34px;
+}
+
+.u174 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:207px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u175_normal {
+    background-image: url('../实时传感器数据查询_files/u133_normal.png');
+}
+
+.u175_container {
+    position:absolute;
+    left:779px;
+    top:284px;
+    width:161px;
+    height:28px;
+}
+
+#u175_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:34px;
+}
+
+.u176 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:157px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u177_normal {
+    background-image: url('../实时传感器数据查询_files/u49_normal.png');
+}
+
+.u177_container {
+    position:absolute;
+    left:0px;
+    top:312px;
+    width:29px;
+    height:28px;
+}
+
+#u177_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:35px;
+    height:34px;
+}
+
+.u178 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:25px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u179_normal {
+    background-image: url('../实时传感器数据查询_files/u51_normal.png');
+}
+
+.u179_container {
+    position:absolute;
+    left:29px;
+    top:312px;
+    width:37px;
+    height:28px;
+}
+
+#u179_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:43px;
+    height:34px;
+}
+
+.u180 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:33px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u181_normal {
+    background-image: url('../实时传感器数据查询_files/u53_normal.png');
+}
+
+.u181_container {
+    position:absolute;
+    left:66px;
+    top:312px;
+    width:161px;
+    height:28px;
+}
+
+#u181_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:34px;
+}
+
+.u182 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:157px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u183_normal {
+    background-image: url('../实时传感器数据查询_files/u55_normal.png');
+}
+
+.u183_container {
+    position:absolute;
+    left:227px;
+    top:312px;
+    width:100px;
+    height:28px;
+}
+
+#u183_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:34px;
+}
+
+.u184 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:96px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u185_normal {
+    background-image: url('../实时传感器数据查询_files/u57_normal.png');
+}
+
+.u185_container {
+    position:absolute;
+    left:327px;
+    top:312px;
+    width:138px;
+    height:28px;
+}
+
+#u185_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:144px;
+    height:34px;
+}
+
+.u186 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:134px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u187_normal {
+    background-image: url('../实时传感器数据查询_files/u59_normal.png');
+}
+
+.u187_container {
+    position:absolute;
+    left:465px;
+    top:312px;
+    width:103px;
+    height:28px;
+}
+
+#u187_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:109px;
+    height:34px;
+}
+
+.u188 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:99px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u189_normal {
+    background-image: url('../实时传感器数据查询_files/u61_normal.png');
+}
+
+.u189_container {
+    position:absolute;
+    left:568px;
+    top:312px;
+    width:211px;
+    height:28px;
+}
+
+#u189_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:217px;
+    height:34px;
+}
+
+.u190 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:207px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u191_normal {
+    background-image: url('../实时传感器数据查询_files/u53_normal.png');
+}
+
+.u191_container {
+    position:absolute;
+    left:779px;
+    top:312px;
+    width:161px;
+    height:28px;
+}
+
+#u191_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:167px;
+    height:34px;
+}
+
+.u192 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:157px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u193_normal {
+    background-image: url('../实时传感器数据查询_files/u193_normal.png');
+}
+
+.u193_container {
+    position:absolute;
+    left:13px;
+    top:55px;
+    width:940px;
+    height:75px;
+}
+
+#u193_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:946px;
+    height:81px;
+}
+
+.u194 {
+    position:absolute;
+    left:2px;
+    top:30px;
+    width:936px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u195_normal {
+    background-image: url('../实时传感器数据查询_files/u195_normal.png');
+}
+
+.u195_container {
+    position:absolute;
+    left:13px;
+    top:476px;
+    width:940px;
+    height:41px;
+}
+
+#u195_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:946px;
+    height:47px;
+}
+
+.u196 {
+    position:absolute;
+    left:2px;
+    top:12px;
+    width:936px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u197 {
+    position:absolute;
+    left:333px;
+    top:485px;
+    width:63px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u198 {
+    position:absolute;
+    left:101px;
+    top:67px;
+    width:130px;
+    height:21px;
+    ;
+    ;
+    text-align: left;;
+    font-family:'Arial';
+    font-size: 13px;
+    color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+.u199 {
+    position:absolute;
+    left:32px;
+    top:67px;
+    width:62px;
+    height:32px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u200 {
+    position:absolute;
+    left:415px;
+    top:481px;
+    width:50px;
+    height:22px;
+    ;
+    ;
+    ;
+    font-family:'Arial';
+    font-size: 11px;
+    color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+.u201_normal {
+    background-image: url('../实时传感器数据查询_files/u201_normal.png');
+}
+
+.u201_container {
+    position:absolute;
+    left:20px;
+    top:104px;
+    width:50px;
+    height:22px;
+}
+
+#u201_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:56px;
+    height:28px;
+}
+
+.u202 {
+    position:absolute;
+    left:2px;
+    top:3px;
+    width:46px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u203 {
+    position:absolute;
+    left:460px;
+    top:71px;
+    width:62px;
+    height:32px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u204 {
+    position:absolute;
+    left:536px;
+    top:69px;
+    width:175px;
+    height:22px;
+    ;
+    ;
+    ;
+    font-family:'Arial';
+    font-size: 13px;
+    color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+.u205 {
+    position:absolute;
+    left:314px;
+    top:68px;
+    width:130px;
+    height:21px;
+    ;
+    ;
+    text-align: left;;
+    font-family:'Arial';
+    font-size: 13px;
+    color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+.u206 {
+    position:absolute;
+    left:245px;
+    top:68px;
+    width:62px;
+    height:32px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u207_normal {
+    background-image: url('../实时传感器数据查询_files/u207_normal.png');
+}
+
+.u207_container {
+    position:absolute;
+    left:54px;
+    top:168px;
+    width:16px;
+    height:16px;
+}
+
+#u207_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:16px;
+    height:16px;
+}
+
+.u208 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:12px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u209_normal {
+    background-image: url('../实时传感器数据查询_files/u201_normal.png');
+}
+
+.u209_container {
+    position:absolute;
+    left:731px;
+    top:68px;
+    width:50px;
+    height:22px;
+}
+
+#u209_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:56px;
+    height:28px;
+}
+
+.u210 {
+    position:absolute;
+    left:2px;
+    top:3px;
+    width:46px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+

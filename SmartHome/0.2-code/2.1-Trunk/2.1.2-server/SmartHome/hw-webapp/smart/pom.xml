@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.hwsensor.hwsafe</groupId>
+		<artifactId>hw-webapp</artifactId>
+		<version>2.1-SNAPSHOT</version>
+	</parent>
+    
+	<artifactId>smart</artifactId>
+	<packaging>war</packaging>
+	<version>2.1.0-SNAPSHOT</version>
+	
+	<name>smart Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<dependencies>
+		<!--Fckeditor 配置-->
+		<dependency>
+			<groupId>net.fckeditor</groupId>
+			<artifactId>java-core</artifactId>
+			<version>${fckeditor.java-core.version}</version>
+		</dependency>
+	</dependencies>
+	
+	<!-- 即使用maven 又使用lib -->
+	<build>
+		<finalName>smart</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven-war-plugin.version}</version>
+<!-- 				<configuration>
+					<webResources>
+						<resource>
+							<directory>WebContent</directory>
+						</resource>
+					</webResources>
+				</configuration> -->
+			</plugin>
+		
+			<!--  
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
+				<version>${tomcat-maven-plugin.version}</version>
+				<configuration>
+					<url>http://192.168.111.237:8084/manager</url>
+					<username>admin</username>
+					<password>admin</password>
+					<path>/hwsafe</path>
+				</configuration>
+				<executions>
+					<execution>
+						<id>tomcat-deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			-->
+			
+			<!-- 
+			<plugin>
+			    <groupId>org.codehaus.mojo</groupId>
+			    <artifactId>findbugs-maven-plugin</artifactId>
+			    <version>${findbugs-maven-plugin.version}</version>
+			    <configuration>
+				    <findbugsXmlOutput>true</findbugsXmlOutput>
+				    <findbugsXmlWithMessages>true</findbugsXmlWithMessages>
+				    <xmlOutput>true</xmlOutput>
+			    </configuration>
+   			</plugin>
+   			-->
+		</plugins>
+	</build>
+</project>

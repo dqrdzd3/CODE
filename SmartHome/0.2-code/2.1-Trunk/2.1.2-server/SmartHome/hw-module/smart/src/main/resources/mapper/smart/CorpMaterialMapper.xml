@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.smart.dao.ICorpMaterialDao">
+
+<!-- 获取分页信息 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		select D.MA001, D.MA002, D.MA003, D.MA004, D.MA005, D.MA006, D.MA007, M.MA002 AS MA008,C.MA005 AS MA009,D.MA010,D.MA011
+		from CORP_MATERIEL_DETAIL D,CORP_MATERIEL M,CORP_CRM C
+		<where>
+			D.MA002 = M.MA001 and D.MA003 = C.MA002
+			<if test="ma001 != null and ma001 != ''">
+				and D.MA001 = #{ma001}
+			</if>
+			<if test="ma002 != null and ma002 != ''">
+				and D.MA002 = #{ma002}
+			</if>
+			<if test="ma003 != null and ma003 != ''">
+				and D.MA003 = #{ma003}
+			</if>
+			<if test="ma007 != null and ma007 != ''">
+				and D.MA007 = #{ma007}
+			</if>
+			<if test="ma004 != null and ma004 != ''">
+				and D.MA004 &gt; #{ma004,jdbcType=TIMESTAMP}
+			</if>
+			<if test="ma005 != null and ma005 != ''">
+				and D.MA005 &lt; #{ma005,jdbcType=TIMESTAMP}
+			</if>
+			<if test="ma006 != null and ma006 != ''">
+				and D.MA006 = #{ma006,jdbcType=INTEGER}
+			</if>
+			<if test="ma009 != null and ma009 != ''">
+				and C.MA005 = #{ma009}
+			</if>
+
+		</where>
+		order by MA006 DESC,MA005 ASC
+	</select>
+
+	<!-- 通过id获取实例 -->
+	<select id="retrieveInstanceById" parameterType="String"
+		resultType="com.hw.hwsafe.smart.pojo.CorpMaterialPO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007,
+		MA008
+		from CORP_MATERIEL
+		where MA001 = #{value}
+	</select>
+	<!-- 通过id获取实例 -->
+	<select id="retrieveDetailById" parameterType="String"
+		resultType="com.hw.hwsafe.smart.pojo.CorpMaterialDetailPO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007,
+		MA008,MA009,MA010,MA011
+		from CORP_MATERIEL_DETAIL
+		where MA001 = #{value}
+	</select>
+	<!-- 通过PO获取实例 -->
+	<select id="retrieveInstanceByPO" parameterType="com.hw.hwsafe.smart.pojo.CorpMaterialPO"
+		resultType="com.hw.hwsafe.smart.pojo.CorpMaterialPO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008
+		from CORP_MATERIEL
+		<where>
+			1 = 1
+			<if test="ma001 != null and ma001 != ''">
+				and MA001 = #{ma001}
+			</if>
+			<if test="ma002 != null and ma002 != ''">
+				and MA002 = #{ma002}
+			</if>
+			<if test="ma004 != null and ma004 != ''">
+				and MA004 = #{ma004}
+			</if>
+
+		</where>
+	</select>
+<!-- 通过PO获取实例 -->
+	<select id="retrieveDetailByPO" parameterType="com.hw.hwsafe.smart.pojo.CorpMaterialDetailPO"
+		resultType="com.hw.hwsafe.smart.pojo.CorpMaterialDetailPO">
+		select D.MA001, D.MA002, D.MA003, D.MA004, D.MA005, D.MA006, D.MA007, M.MA002 AS MA008,C.MA005 AS MA009,D.MA010,D.MA011
+		from CORP_MATERIEL_DETAIL D,CORP_MATERIEL M,CORP_CRM C
+		<where>
+			D.MA002 = M.MA001 and D.MA003 = C.MA002
+			<if test="ma001 != null and ma001 != ''">
+				and D.MA001 = #{ma001}
+			</if>
+			<if test="ma002 != null and ma002 != ''">
+				and D.MA002 = #{ma002}
+			</if>
+			<if test="ma003 != null and ma003 != ''">
+				and D.MA003 = #{ma003}
+			</if>
+			<if test="ma007 != null and ma007 != ''">
+				and D.MA007 = #{ma007}
+			</if>
+			<if test="ma004 != null and ma004 != ''">
+				and D.MA004 &gt; #{ma004,jdbcType=TIMESTAMP}
+			</if>
+			<if test="ma005 != null and ma005 != ''">
+				and D.MA005 &lt; #{ma005,jdbcType=TIMESTAMP}
+			</if>
+			<if test="ma006 != null and ma006 != ''">
+				and D.MA006 = #{ma006,jdbcType=INTEGER}
+			</if>
+			<if test="ma009 != null and ma009 != ''">
+				and C.MA005 = #{ma009}
+			</if>
+
+		</where>
+		order by MA006 DESC,MA005 ASC
+	</select>
+	<!-- 通过PO获取实例 -->
+	<select id="retrieveDetails" parameterType="com.hw.hwsafe.smart.pojo.CorpMaterialDetailPO"
+		resultType="com.hw.hwsafe.smart.pojo.CorpMaterialDetailPO">
+		select D.MA001, D.MA002, D.MA003, D.MA004, D.MA005, D.MA006, D.MA007, M.MA002 AS MA008,C.MA005 AS MA009,D.MA010,D.MA011
+		from CORP_MATERIEL_DETAIL D,CORP_MATERIEL M,CORP_CRM C
+		<where>
+			D.MA002 = M.MA001 and D.MA003 = C.MA002
+		and D.MA007 = #{ma007}
+		and (D.MA006 = 2 or (D.MA006 = 1 and D.MA005 &lt; sysdate + 70))
+
+		</where>
+		order by MA006 DESC,MA005 ASC
+	</select>
+	
+	<!-- 添加实例 -->
+	<insert id="insertInstance" parameterType="com.hw.hwsafe.smart.pojo.CorpMaterialPO">
+		insert into
+		CORP_MATERIEL(MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008)
+		values(
+		#{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=INTEGER},
+		#{ma004,jdbcType=VARCHAR},#{ma005,jdbcType=VARCHAR},#{ma006,jdbcType=VARCHAR},
+		#{ma007,jdbcType=VARCHAR},#{ma008,jdbcType=VARCHAR}
+		)
+	</insert>
+<!-- 添加实例 -->
+	<insert id="insertDetail" parameterType="com.hw.hwsafe.smart.pojo.CorpMaterialDetailPO">
+		insert into
+		CORP_MATERIEL_DETAIL(MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008,MA009,MA010,MA011)
+		values(
+		#{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=VARCHAR},
+		#{ma004,jdbcType=TIMESTAMP},#{ma005,jdbcType=TIMESTAMP},#{ma006,jdbcType=INTEGER},
+		#{ma007,jdbcType=VARCHAR},#{ma008,jdbcType=VARCHAR},#{ma009,jdbcType=VARCHAR},#{ma010,jdbcType=VARCHAR},#{ma011,jdbcType=VARCHAR}
+		)
+	</insert>
+	<!-- 修改实例 -->
+	<update id="updateInstance" parameterType="com.hw.hwsafe.smart.pojo.CorpMaterialPO">
+		update CORP_MATERIEL
+		<set>
+			<if test="ma002 != null">
+				MA002 = #{ma002,jdbcType=VARCHAR},
+			</if>
+			<if test="ma003 != null">
+				MA003 = #{ma003,jdbcType=INTEGER},
+			</if>
+			<if test="ma004 != null">
+				MA004 = #{ma004,jdbcType=VARCHAR},
+			</if>
+			<if test="ma005 != null">
+				MA005 = #{ma005,jdbcType=VARCHAR},
+			</if>
+			<if test="ma006 != null">
+				MA006 = #{ma006,jdbcType=VARCHAR},
+			</if>
+			<if test="ma007 != null">
+				MA007 = #{ma007,jdbcType=VARCHAR},
+			</if>
+			<if test="ma008 != null">
+				MA008 = #{ma008,jdbcType=VARCHAR},
+			</if>
+			
+		
+			
+
+		</set>
+
+		where MA001 = #{ma001} 
+
+		
+	</update>
+<!-- 修改实例 -->
+	<update id="updateDetail" parameterType="com.hw.hwsafe.smart.pojo.CorpMaterialDetailPO">
+		update CORP_MATERIEL_DETAIL
+		<set>
+			<if test="ma002 != null">
+				MA002 = #{ma002,jdbcType=VARCHAR},
+			</if>
+			<if test="ma003 != null">
+				MA003 = #{ma003,jdbcType=VARCHAR},
+			</if>
+			<if test="ma004 != null">
+				MA004 = #{ma004,jdbcType=TIMESTAMP},
+			</if>
+			<if test="ma005 != null">
+				MA005 = #{ma005,jdbcType=TIMESTAMP},
+			</if>
+			<if test="ma006 != null">
+				MA006 = #{ma006,jdbcType=INTEGER},
+			</if>
+			<if test="ma007 != null">
+				MA007 = #{ma007,jdbcType=VARCHAR},
+			</if>
+			<if test="ma008 != null">
+				MA008 = #{ma008,jdbcType=VARCHAR},
+			</if>
+			<if test="ma009 != null">
+				MA009 = #{ma009,jdbcType=VARCHAR},
+			</if>
+			<if test="ma010 != null">
+				MA010 = #{ma010,jdbcType=VARCHAR},
+			</if>
+			<if test="ma011 != null">
+				MA011 = #{ma011,jdbcType=VARCHAR},
+			</if>
+
+		</set>
+
+		where MA001 = #{ma001} 
+
+		
+	</update>
+	<!-- 通过id删除实例 -->
+	<delete id="deleteInstanceById" parameterType="String">
+		delete from CORP_MATERIEL
+		where MA001 = #{ma001}
+	</delete>
+	<!-- 通过id批量删除实例 -->
+	<delete id="delBatchInstance" parameterType="map">
+		DELETE FROM CORP_MATERIEL WHERE MA001 IN
+		<foreach collection="idArray" item="id" open="(" separator=","
+			close=")">#{id}</foreach>
+	</delete>
+	<select id="countAll" parameterType="map" resultType="Integer">
+		select count(*) from CORP_MATERIEL_DETAIL
+		where MA007 = #{corpid} and MA006=2
+	</select>
+</mapper>

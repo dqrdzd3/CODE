@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hwsensor.permission.dao.IDepartmentDao">
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+
+
+	<!-- 列名语句段 -->
+	<sql id="columns">
+		UUID, DEPART_NAME, DEPART_CODE, PARENT_UUID, ORGAN_UUID,REMARK,CREATOR,CREATE_DATE
+	</sql>
+	
+	<!-- 查询所有部门 -->
+	<select id="retrieveAllDepartment" resultType="com.hwsensor.permission.pojo.DepartmentPO" >
+		SELECT <include refid="columns"/> FROM SYS_DEPARTMENT 
+	</select>
+	
+	<!-- 根据企业ID查询所有部门 -->
+	<select id="retrieveAllDepartmentByCorpID" resultType="com.hwsensor.permission.pojo.DepartmentPO">
+		SELECT <include refid="columns"/> FROM S_DEPARTMENT where ORGAN_UUID=#{id}
+	</select>
+	<!-- 根据ID查询 -->
+	<select id="retrieveDepartmentByDeptId" parameterType="String" resultType="com.hwsensor.permission.pojo.DepartmentPO">
+		SELECT <include refid="columns"/> FROM S_DEPARTMENT WHERE UUID=#{id}
+	</select>
+	<!-- 依据代码统计字典数据条数 -->
+	<select id="countDeptByKey" parameterType="String" resultType="Integer">
+		SELECT count(1) FROM S_DEPARTMENT WHERE depart_code=#{key}
+	</select>
+	<!-- 根据部门编码查询 -->
+	<select id="retrieveDepartmentByFullkey" parameterType="String" resultType="com.hwsensor.permission.pojo.DepartmentPO">
+		SELECT <include refid="columns"/> FROM S_DEPARTMENT WHERE DEPART_CODE=#{key}
+	</select>
+	<!-- 根据父ID查询所有子部门 -->
+	<select id="retrieveDepartmentsByParentId" parameterType="map" resultType="com.hwsensor.permission.pojo.DepartmentPO">
+		SELECT <include refid="columns"/> FROM S_DEPARTMENT WHERE PARENT_UUID=#{pId} AND PARENT_UUID != UUID
+		and ORGAN_UUID=#{ogrgan_uuid}
+	</select>
+	
+	<select id="retrieveAllRootDept"  resultType="com.hwsensor.permission.pojo.DepartmentPO" parameterType="String">
+		SELECT <include refid="columns"/> FROM S_DEPARTMENT WHERE PARENT_UUID=UUID and ORGAN_UUID=#{id}
+	</select>
+	<!-- 添加或修改部门前查询部门名称是否已存在 -->
+	<select id="checkDeptName" resultType="java.lang.Integer">
+	   select count(1) from S_DEPARTMENT where DEPART_NAME=#{name} and ORGAN_UUID=#{corpid}
+	   <if test="id != null and id != ''">
+	    and uuid !=#{id}
+	   </if>
+	</select>
+	<!-- 插入部门 -->
+	<insert id="insertDepartment" parameterType="com.hwsensor.permission.pojo.DepartmentPO">
+		INSERT INTO S_DEPARTMENT(<include refid="columns"/>) VALUES (
+			#{uuid,jdbcType=VARCHAR},#{depart_name,jdbcType=VARCHAR},#{depart_code,jdbcType=VARCHAR},#{parent_uuid,jdbcType=VARCHAR},#{organ_uuid,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},#{creator,jdbcType=VARCHAR},
+			<if test="create_date != null">
+				#{create_date,jdbcType=TIMESTAMP}
+			</if>
+			<if test="create_date == null">
+				sysdate
+			</if>
+		)
+	</insert>
+	
+	<!-- 更新部门 -->
+	<update id="updateDepartment" parameterType="com.hwsensor.permission.pojo.DepartmentPO">
+		UPDATE S_DEPARTMENT	
+		<set> 
+		     <if test="depart_name != null">DEPART_NAME = #{depart_name},</if>
+			 <if test="remark != null">REMARK= #{remark}</if>
+		</set>
+			 
+		WHERE UUID = #{uuid}
+	</update>
+	
+	<!-- 根据ID删除部门 -->
+	<delete id="deleteDepartmentByDeptId" parameterType="String">
+		DELETE FROM SYS_DEPARTMENT WHERE ID = #{id}
+	</delete>
+	
+	<!-- 删除部门后修改系统用户表的部门信息 -->
+	<update id="updateSysUserInfo" parameterType="map">
+		update s_user s set s.DEPART_UUID='',s.DEPART_CODE=''  where s.DEPART_UUID in
+		<foreach collection="ids" item="id" open="(" separator="," close=")">
+			'${id}'
+		</foreach>
+	</update>
+	
+	<!-- 删除部门信息后删除部门角色表的关联数据 -->
+	<delete id='delDepRole' parameterType="map">
+	DELETE FROM s_dept_role WHERE depart_uuid IN
+		<foreach collection="ids" item="id" open="(" separator="," close=")">
+			'${id}'
+		</foreach>
+	</delete>
+	
+	<!--删除部门前首先查询该部门下存在用户个数  -->
+	<select id="retrieveUsernum" resultType="java.lang.Integer" useCache="false">
+	 select count(1) from s_user s where s.DEPART_UUID in
+		<foreach collection="ids" item="id" open="(" separator="," close=")">
+			'${id}'
+		</foreach>
+	</select>
+	<!-- 删除部门的所有角色授权 -->
+	<delete id='delDepRoleEmpower' parameterType="String">
+	DELETE FROM s_dept_role WHERE DEPART_UUID=#{depart_uuid}
+	</delete>
+	<!-- 删除部门数据 -->
+	<delete id='delBatch' parameterType="map">
+	DELETE FROM S_DEPARTMENT WHERE uuid IN
+		<foreach collection="ids" item="id" open="(" separator="," close=")">
+			'${id}'
+		</foreach>
+	</delete>
+	<!-- 添加部门角色授权 -->
+	<insert id="deptEmpower" parameterType="map">
+	insert into s_dept_role(UUID,DEPART_UUID,ROLE_UUID,CREATOR,CREATE_DATE)
+	values(#{uuid},#{deptid},#{roleid},#{creator},sysdate)
+	</insert>
+	
+	<delete id="deleteDepartmentsByParentId" parameterType="String">
+		DELETE FROM SYS_DEPARTMENT WHERE PARENTID = #{parentId} OR ID = #{parentId}
+	</delete>
+	
+	 <!-- 查询部门已有角色 -->
+	 <select id="retrieveDeptRole" parameterType="String" resultType="HashMap">
+	 select role_uuid from s_dept_role where depart_uuid=#{id}
+	 </select>
+	 
+	 <!-- 查询条件语句片段 -->
+	<sql id="condition">
+		<where>
+		1=1
+			<if test="po.parent_uuid != null and po.parent_uuid != ''">
+				and PARENT_UUID = #{po.parent_uuid} AND PARENT_UUID != UUID
+			</if>
+			<if test="organ_uuid != null and organ_uuid != ''">
+				and ORGAN_UUID=#{organ_uuid}
+			</if>
+			<if test="po.parent_uuid == null or po.parent_uuid == ''">
+				and PARENT_UUID = UUID
+			</if>
+			<if test="po.name != null and po.name != ''">
+				and depart_name like  '%' || #{po.name} || '%'
+			</if>
+		</where>
+	</sql>	 
+	 
+	<!-- 分页查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap" >
+		SELECT <include refid="columns"/> FROM S_DEPARTMENT
+		<include refid="condition"/>
+	</select>
+</mapper>

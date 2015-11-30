@@ -1,0 +1,55 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+	
+    <diskStore path="java.io.tmpdir"/>
+<!--     <diskStore path="D:\apache-tomcat-6.0.35\temp"/> -->
+    
+    <defaultCache
+            maxElementsInMemory="10"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            maxElementsOnDisk="10"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU">
+    </defaultCache>
+    
+    <!-- spring 配置缓存拦截器是使用的缓存 -->
+    <!--     
+   	<cache name="DEFAULT_CACHE"
+		maxElementsInMemory="10000"
+		eternal="false"
+		timeToIdleSeconds="300000"
+		timeToLiveSeconds="600000"
+		overflowToDisk="true"
+	/>
+	-->
+	
+	<!--  页面缓存 start --> 
+	<!-- 单页面缓存 -->
+	<cache name="SimplePageCachingFilter"
+		  maxEntriesLocalHeap="10"
+		  eternal="false"
+		  timeToIdleSeconds="120"
+		  timeToLiveSeconds="120"
+		  overflowToDisk="true"
+	/>
+		<!--  部分页面缓存 --> 
+	<cache name="SimplePageFragmentCachingFilter"
+		  maxEntriesLocalHeap="10"
+		  eternal="false"
+		  timeToIdleSeconds="120"
+		  timeToLiveSeconds="120"
+		  overflowToDisk="true"
+	/>
+		<!--  get请求头缓存 --> 
+	<cache name="SimpleCachingHeadersPageCachingFilter"
+		  maxEntriesLocalHeap="10"
+		  eternal="false"
+		  timeToIdleSeconds="120"
+		  timeToLiveSeconds="120"
+		  overflowToDisk="true"
+	/>
+
+	<!--  页面缓存 end --> 
+</ehcache>

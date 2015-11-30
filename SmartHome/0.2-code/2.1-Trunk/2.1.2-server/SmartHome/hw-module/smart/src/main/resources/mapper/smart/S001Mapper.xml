@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.smart.dao.IS001Dao">
+
+	<!-- 获取分页信息 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		select MA001, MA002, MA003, MA004, MA005,
+		MA006,TO_CHAR(MA004,'yyyy-MM-dd HH24:mi:ss') MA004D
+		from S001
+		<where>
+		    1 = 1
+			<if test="po.ma002 != null and po.ma002 != ''">
+				and MA002 LIKE '%'||#{po.ma002}||'%'
+			</if>
+			<if test="po.ma003 != null and po.ma003 != ''">
+				and MA003 LIKE '%'||#{po.ma003}||'%'
+			</if>
+			<if test="po.ma004 != null and po.ma004 != ''">
+				and MA004 LIKE '%'||#{po.ma004}||'%'
+			</if>
+		</where>
+		order by MA004 desc
+	</select>
+
+	<!-- 通过id获取实例 -->
+	<select id="retrieveInstanceById" parameterType="String"
+		resultType="com.hw.hwsafe.smart.pojo.S001PO">
+		select MA001, MA002, MA003, MA004, MA005, MA006
+		from S001
+		where MA001 = #{ma001}
+	</select>
+
+	<!-- 添加实例 -->
+	<insert id="insertInstance" parameterType="com.hw.hwsafe.smart.pojo.S001PO">
+		insert into
+		S001(MA001, MA002, MA003, MA004, MA005, MA006)
+		values(
+		#{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=VARCHAR},
+		#{ma004,jdbcType=VARCHAR},#{ma005,jdbcType=TIMESTAMP},#{ma006,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<!-- 修改实例 -->
+	<update id="updateInstance" parameterType="com.hw.hwsafe.smart.pojo.S001PO">
+		update S001
+		set
+		MA002 = #{ma002,jdbcType=VARCHAR}, MA003 = #{ma003,jdbcType=VARCHAR}, MA004
+		= #{ma004,jdbcType=TIMESTAMP},
+		MA005 = #{ma005,jdbcType=VARCHAR}, MA006 = #{ma006,jdbcType=VARCHAR}
+		where MA001 = #{ma001}
+	</update>
+
+	<!-- 通过id删除实例 -->
+	<delete id="deleteInstanceById" parameterType="String">
+		delete from S001
+		where MA001 = #{ma001}
+	</delete>
+	<!-- 通过id批量删除实例 -->
+	<delete id="delBatchS001" parameterType="map">
+		DELETE FROM S001 WHERE MA001 IN
+		<foreach collection="idArray" item="id" open="(" separator=","
+			close=")">#{id}</foreach>
+	</delete>
+	<!--接口:常见问题列表 问题列表 -->
+	<select id="getQAList" parameterType="String"
+		resultType="hashmap">
+		select MA001, MA002, MA003, MA005,
+		MA006,TO_CHAR(MA004,'yyyy-MM-dd HH24:mi:ss') MA004
+		from S001 order by MA004 DESC
+	</select>
+</mapper>

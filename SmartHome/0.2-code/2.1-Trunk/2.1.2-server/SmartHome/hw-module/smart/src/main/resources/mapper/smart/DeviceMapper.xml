@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.smart.dao.IDeviceDao">
+
+
+	<!-- 通过id获取实例 -->
+	<select id="getAllDeviceShare" parameterType="map"
+		resultType="com.hw.hwsafe.smart.pojo.DeviceSharePO">
+		select ID,FROM_PHONE,TO_PHONE,DEVICEID,IS_SHARED,TO_CHAR(CREATE_TIME,'yyyy-MM-dd HH24:mi:ss') CREATE_TIME
+		from AR_DEV_SHARE
+		<where>
+			<if test="from != null and from != ''">
+				and FROM_PHONE = #{from}
+			</if>
+			<if test="to != null and to != ''">
+				and TO_PHONE = #{to}
+			</if>
+			<if test="deviceId != null and deviceId != ''">
+				and DEVICEID = #{deviceId}
+			</if>
+			<if test="id != null and id != ''">
+				and ID = #{id}
+			</if>
+			<if test="userid != null and userid != ''">
+				and USERID = #{userid}
+			</if>
+		</where>
+	</select>
+	<select id="OnlyDeviceShareInvalid" parameterType="map"
+		resultType="map">
+		select ID,FROM_PHONE,TO_PHONE,DEVICEID,IS_SHARED,TO_CHAR(CREATE_TIME,'yyyy-MM-dd HH24:mi:ss') CREATE_TIME
+		from AR_DEV_SHARE
+		<where>
+			 DEVICEID = #{DEVICEID}
+			
+				and USERID = #{USERID}
+			
+		</where>
+	</select>
+	
+	<!-- 通过id获取实例 -->
+	<select id="getDeviceShare" parameterType="map"
+		resultType="com.hw.hwsafe.smart.pojo.DeviceSharePO">
+		select ID,FROM_PHONE,TO_PHONE,DEVICEID,IS_SHARED,TO_CHAR(CREATE_TIME,'yyyy-MM-dd HH24:mi:ss') CREATE_TIME
+		from AR_DEV_SHARE
+		<where>			
+			<if test="id != null and id != ''">
+				and ID = #{id}
+			</if>
+		</where>
+	</select>
+	
+	
+	 <insert id="insertDeviceShare" parameterType="com.hw.hwsafe.smart.pojo.DeviceSharePO">
+		insert into
+		AR_DEV_SHARE(ID,FROM_PHONE,TO_PHONE,DEVICEID,IS_SHARED,CREATE_TIME)
+		values(
+		#{ID,jdbcType=VARCHAR},#{FROM_PHONE,jdbcType=VARCHAR},#{TO_PHONE,jdbcType=VARCHAR},
+		#{DEVICEID,jdbcType=VARCHAR},#{IS_SHARED,jdbcType=NUMERIC},#{CREATE_TIME,jdbcType=TIMESTAMP}
+		)
+	</insert>
+	
+	<!-- 通过id删除实例 -->
+	<delete id="deleteShareDeviceById" parameterType="map">
+		delete from AR_DEV_SHARE
+		where ID = #{id}
+	</delete>
+	
+	
+	<!-- 通过id获取实例 -->
+	<select id="getDeviceLinkage" parameterType="map"
+		resultType="map">
+		select ID,USERID,MASTER_DEVICE,NAME,LINKAGE_IDS,LINKAGE_STATE,OP_NAME,OP_VALUE,TO_CHAR(BEGIN_TIME,'yyyy-MM-dd HH24:mi:ss') BEGIN_TIME,TO_CHAR(END_TIME,'yyyy-MM-dd HH24:mi:ss') END_TIME,TO_CHAR(CREATE_TIME,'yyyy-MM-dd HH24:mi:ss') CREATE_TIME
+		from AR_DEV_LINKAGE
+		<where>
+			<if test="userid != null and userid != ''">
+				and USERID = #{userid}
+			</if>
+			<if test="masterid != null and masterid != ''">
+				and MASTER_DEVICE = #{masterid}
+			</if>
+			<if test="linkid != null and linkid != ''">
+				and LINKAGE_IDS = #{deviceId}
+			</if>
+			<if test="id != null and id != ''">
+				and ID = #{id}
+			</if>
+		</where>
+	</select>
+	<select id="OnlyDeviceLinkageInvalid" parameterType="map"
+		resultType="map">
+		select ID,USERID,MASTER_DEVICE,NAME,LINKAGE_IDS,LINKAGE_STATE,OP_NAME,OP_VALUE,TO_CHAR(BEGIN_TIME,'yyyy-MM-dd HH24:mi:ss') BEGIN_TIME,TO_CHAR(END_TIME,'yyyy-MM-dd HH24:mi:ss') END_TIME,TO_CHAR(CREATE_TIME,'yyyy-MM-dd HH24:mi:ss') CREATE_TIME
+		from AR_DEV_LINKAGE
+		<where>
+			 USERID = #{USERID}
+			 and LINKAGE_IDS = #{LINKAGE_IDS,jdbcType=VARCHAR}
+			
+		</where>
+	</select>
+	 <insert id="insertDeviceLinkage" parameterType="map">
+		insert into
+		AR_DEV_LINKAGE(ID,USERID,MASTER_DEVICE,NAME,LINKAGE_IDS,LINKAGE_STATE,OP_NAME,OP_VALUE,BEGIN_TIME,END_TIME,CREATE_TIME)
+		values(
+		#{ID,jdbcType=VARCHAR},#{USERID,jdbcType=VARCHAR},#{MASTER_DEVICE,jdbcType=VARCHAR},#{NAME,jdbcType=VARCHAR},
+		#{LINKAGE_IDS,jdbcType=VARCHAR},#{LINKAGE_STATE,jdbcType=NUMERIC},#{OP_NAME,jdbcType=VARCHAR},#{OP_VALUE,jdbcType=VARCHAR},
+		#{BEGIN_TIME,jdbcType=TIMESTAMP},to_date(#{CREATE_TIME},'yyyy-mm-dd hh24:mi:ss'),to_date(#{CREATE_TIME},'yyyy-mm-dd hh24:mi:ss')
+		)
+	</insert>
+	<!-- 修改实例 -->
+	<update id="updateDeviceLinkage" parameterType="map">
+		update AR_DEV_LINKAGE
+		<set>
+			<if test="name != null">
+				NAME = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="opname != null">
+				OP_NAME = #{opname,jdbcType=NUMERIC},
+			</if>
+			<if test="opvalue != null">
+				OP_VALUE = #{opvalue,jdbcType=VARCHAR},
+			</if>
+			<if test="begin != null">
+				BEGIN_TIME = #{begin,jdbcType=VARCHAR},
+			</if>
+			<if test="end != null">
+				END_TIME = #{end,jdbcType=VARCHAR},
+			</if>
+			
+
+		</set>
+
+		where ID = #{id} 
+
+		
+	</update>
+	<!-- 通过id删除实例 -->
+	<delete id="deleteDeviceLinkageById" parameterType="map">
+		delete from AR_DEV_LINKAGE
+		where ID = #{id}
+	</delete>
+	
+	
+	<!-- 通过id获取实例 -->
+	<select id="getDeviceAir" parameterType="map"
+		resultType="map">
+		select ID,USERID,MANUFACTURER,NAME,DEVICEID,CATEGORY,TYPE,TO_CHAR(CREATE_TIME,'yyyy-MM-dd HH24:mi:ss') CREATE_TIME
+		from AR_DEV
+		<where>
+			<if test="userid != null and userid != ''">
+				and USERID = #{userid}
+			</if>
+			<if test="deviceid != null and deviceid != ''">
+				and DEVICEID = #{deviceid}
+			</if>
+			<if test="category != null and category != ''">
+				and CATEGORY = #{category}
+			</if>
+			<if test="type != null and type != ''">
+				and TYPE = #{type}
+			</if>
+			<if test="id != null and id != ''">
+				and ID = #{id}
+			</if>
+		</where>
+	</select>
+	<select id="OnlyDeviceAirInvalid" parameterType="map"
+		resultType="map">
+		select ID,USERID,MANUFACTURER,NAME,DEVICEID,CATEGORY,TYPE,TO_CHAR(CREATE_TIME,'yyyy-MM-dd HH24:mi:ss') CREATE_TIME
+		from AR_DEV
+		where
+			 USERID = #{USERID}			
+				and DEVICEID = #{DEVICEID}
+
+	</select>
+	 <insert id="insertDeviceAir" parameterType="map">
+		insert into
+		AR_DEV(ID,USERID,MANUFACTURER,NAME,DEVICEID,CATEGORY,TYPE,CREATE_TIME)
+		values(
+		#{ID,jdbcType=VARCHAR},#{USERID,jdbcType=VARCHAR},#{MANUFACTURER,jdbcType=VARCHAR},#{NAME,jdbcType=VARCHAR},
+		#{DEVICEID,jdbcType=VARCHAR},#{CATEGORY,jdbcType=VARCHAR},#{TYPE,jdbcType=VARCHAR},
+		to_date(#{CREATE_TIME},'yyyy-mm-dd hh24:mi:ss')
+		)
+	</insert>
+	<!-- 修改实例 -->
+	<update id="updateDeviceAir" parameterType="map">
+		update AR_DEV
+		<set>
+			<if test="name != null">
+				NAME = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="category != null">
+				CATEGORY = #{category,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				TYPE = #{type,jdbcType=VARCHAR},
+			</if>
+			
+			
+
+		</set>
+
+		where ID = #{id} 
+
+		
+	</update>
+	<!-- 通过id删除实例 -->
+	<delete id="deleteDeviceAirById" parameterType="map">
+		delete from AR_DEV
+		where ID = #{id}
+	</delete>
+</mapper>

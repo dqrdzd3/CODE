@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwsensor.permission.dao.ISysModuleDao">
+
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+	
+	<!-- 添加 -->
+	<insert id="insertSysModule" parameterType="com.hwsensor.permission.pojo.SysModulePO">
+	INSERT INTO S_BUSI_MODULE
+		(UUID, MENU_NAME, MENU_CODE, PARENT_UUID, URL, USER_TYPE, IS_VALID,
+		MENU_TYPE, REMARK, ORDERNUM, CREATOR, CREATE_DATE, EDITOR,MODIFIED_DATE,IS_SHOW)
+	VALUES
+		(#{UUID,jdbcType=VARCHAR}, #{MENU_NAME,jdbcType=VARCHAR}, #{MENU_CODE,jdbcType=VARCHAR}, 
+		#{PARENT_UUID,jdbcType=VARCHAR}, NVL(#{URL,jdbcType=VARCHAR},'#'), #{USER_TYPE,jdbcType=VARCHAR},
+		#{IS_VALID,jdbcType=VARCHAR}, #{MENU_TYPE,jdbcType=VARCHAR}, #{REMARK,jdbcType=VARCHAR},
+		#{ORDERNUM,jdbcType=INTEGER}, #{CREATOR,jdbcType=VARCHAR},#{CREATE_DATE,jdbcType=TIMESTAMP},
+		 #{EDITOR,jdbcType=VARCHAR}, #{MODIFIED_DATE,jdbcType=TIMESTAMP}, #{IS_SHOW,jdbcType=VARCHAR})
+	</insert>
+	<!-- 修改 -->
+	<update id="updateSysModule" parameterType="com.hwsensor.permission.pojo.SysModulePO">
+		UPDATE S_BUSI_MODULE
+		   SET UUID = #{UUID,jdbcType=VARCHAR},
+		       MENU_NAME = #{MENU_NAME,jdbcType=VARCHAR},
+		       MENU_CODE = #{MENU_CODE,jdbcType=VARCHAR},
+		       PARENT_UUID = #{PARENT_UUID,jdbcType=VARCHAR},
+		       URL = NVL(#{URL,jdbcType=VARCHAR},'#'),
+		       USER_TYPE = #{USER_TYPE,jdbcType=VARCHAR},
+		       IS_VALID = #{IS_VALID,jdbcType=VARCHAR},
+		       MENU_TYPE = #{MENU_TYPE,jdbcType=VARCHAR},
+		       REMARK = #{REMARK,jdbcType=VARCHAR},
+		       ORDERNUM = #{ORDERNUM,jdbcType=INTEGER},
+		       CREATOR = #{CREATOR,jdbcType=VARCHAR},
+		       CREATE_DATE = #{CREATE_DATE,jdbcType=TIMESTAMP},
+		       EDITOR = #{EDITOR,jdbcType=VARCHAR},
+		       MODIFIED_DATE = #{MODIFIED_DATE,jdbcType=TIMESTAMP},
+		       IS_SHOW=#{IS_SHOW,jdbcType=VARCHAR}
+		 WHERE UUID = #{UUID,jdbcType=VARCHAR}
+	</update>
+	<!-- 动态修改 -->
+	<update id="updateSysModuleByMap" parameterType="map">
+		UPDATE S_BUSI_MODULE
+			<set>
+				<if test="UUID != null">
+		  		   UUID = #{UUID,jdbcType=VARCHAR},
+				</if>
+				<if test="MENU_NAME != null">
+			       MENU_NAME = #{MENU_NAME,jdbcType=VARCHAR},
+				</if>
+				<if test="MENU_CODE != null">
+			       MENU_CODE = #{MENU_CODE,jdbcType=VARCHAR},
+				</if>
+				<if test="PARENT_UUID != null">
+			       PARENT_UUID = #{PARENT_UUID,jdbcType=VARCHAR},
+				</if>
+				<if test="URL != null">
+			       URL = NVL(#{URL,jdbcType=VARCHAR},'#'),
+				</if>
+				<if test="USER_TYPE != null">
+			       USER_TYPE = #{USER_TYPE,jdbcType=VARCHAR},
+				</if>
+				<if test="IS_VALID != null">
+			       IS_VALID = #{IS_VALID,jdbcType=VARCHAR},
+				</if>
+				<if test="MENU_TYPE != null">
+			       MENU_TYPE = #{MENU_TYPE,jdbcType=VARCHAR},
+				</if>
+				<if test="REMARK != null">
+			       REMARK = #{REMARK,jdbcType=VARCHAR},
+				</if>
+				<if test="ORDERNUM != null">
+			       ORDERNUM = #{ORDERNUM,jdbcType=INTEGER},
+				</if>
+				<if test="CREATOR != null">
+			       CREATOR = #{CREATOR,jdbcType=VARCHAR},
+				</if>
+				<if test="CREATE_DATE != null">
+			       CREATE_DATE = #{CREATE_DATE,jdbcType=TIMESTAMP},
+				</if>
+				<if test="EDITOR != null">
+			       EDITOR = #{EDITOR,jdbcType=VARCHAR},
+				</if>
+				<if test="MODIFIED_DATE != null">
+			       MODIFIED_DATE = #{MODIFIED_DATE,jdbcType=TIMESTAMP},
+				</if>
+				<if test="IS_SHOW != null">
+			       IS_SHOW=#{IS_SHOW,jdbcType=VARCHAR}
+				</if>
+			</set>
+		 WHERE UUID = #{UUID,jdbcType=VARCHAR}
+	</update>
+	
+	<!-- 删除 -->
+	<delete id="deleteSysModule" parameterType="com.hwsensor.permission.pojo.SysModulePO">
+		DELETE S_BUSI_MODULE WHERE UUID = #{UUID,jdbcType=VARCHAR}
+	</delete>
+	<!-- 动态删除 -->
+	<delete id="deleteSysModuleByMap" parameterType="map">
+		DELETE S_BUSI_MODULE WHERE 1=1
+			<include refid="queryCondition"/>
+	</delete>
+	<!-- 查询list -->
+	<select id="retrieveByCondition" resultType="com.hwsensor.permission.pojo.SysModulePO" parameterType="map">
+		SELECT <include refid="columns"/> 
+		FROM S_BUSI_MODULE  WHERE 1=1
+			<include refid="queryCondition"/>
+		ORDER BY  ORDERNUM,CREATE_DATE DESC, IS_VALID DESC
+	</select>
+	<!-- 查询po -->
+	<select id="retrieveSysModuleByMap" resultType="com.hwsensor.permission.pojo.SysModulePO" parameterType="map">
+		SELECT <include refid="columns"/>
+		FROM S_BUSI_MODULE  WHERE 1=1
+			<include refid="queryCondition"/>
+	</select>
+	<!-- 查询分页 -->
+	<select id="retrieveByPage" parameterType="map" resultType="map">
+		SELECT <include refid="columns"/>
+		<trim prefix=",">
+			(SELECT DISPLAY FROM SYS_DICTIONARY WHERE KEY LIKE 'menutype%' AND VALUE=MENU_TYPE) MENU_TYPE_NAME ,
+			(SELECT DISPLAY FROM SYS_DICTIONARY WHERE KEY LIKE 'usertype%' AND VALUE=USER_TYPE) USER_TYPE_NAME ,
+			(SELECT DISPLAY FROM SYS_DICTIONARY WHERE KEY LIKE 'isValid%' AND VALUE=IS_VALID) IS_VALID_NAME
+		</trim>
+		FROM S_BUSI_MODULE
+		<where>
+			<if test="po.UUID != null and po.UUID !=''">
+				UUID = #{po.UUID}
+			</if>
+			<if test="po.MENU_NAME != null and po.MENU_NAME !=''">
+				AND MENU_NAME LIKE '%'||#{po.MENU_NAME}||'%'
+			</if>
+			<if test="po.MENU_CODE != null and po.MENU_CODE !=''">
+				MENU_CODE = #{po.MENU_CODE}
+			</if>
+			<if test="po.PARENT_UUID != null and po.PARENT_UUID !=''">
+				AND PARENT_UUID = #{po.PARENT_UUID}
+				AND PARENT_UUID != UUID
+			</if>
+			<if test="po.IS_VALID != null and po.IS_VALID !=''">
+				AND IS_VALID = #{po.IS_VALID}
+			</if>
+			<if test="po.MENU_TYPE != null and po.MENU_TYPE !=''">
+				AND MENU_TYPE = #{po.MENU_TYPE}
+			</if>
+			<if test="po.USER_TYPE != null and po.USER_TYPE !=''">
+				AND USER_TYPE = #{po.USER_TYPE}
+			</if>
+		</where>
+		ORDER BY  ORDERNUM,CREATE_DATE DESC, IS_VALID DESC
+	</select>
+	
+	<sql id="queryCondition">
+			<if test="UUID != null and UUID != ''">
+	  		   AND UUID = #{UUID,jdbcType=VARCHAR}
+			</if>
+			<if test="MENU_NAME != null and MENU_NAME != ''">
+		       AND MENU_NAME LIKE #{MENU_NAME,jdbcType=VARCHAR}||'%'
+			</if>
+			<if test="MENU_CODE != null and MENU_CODE != ''">
+		       AND MENU_CODE = #{MENU_CODE,jdbcType=VARCHAR}
+			</if>
+			<if test="PARENT_UUID != null and PARENT_UUID != ''">
+		       AND PARENT_UUID = #{PARENT_UUID,jdbcType=VARCHAR}
+			</if>
+			<if test="URL != null and URL != ''">
+		       AND URL = #{URL,jdbcType=VARCHAR}
+			</if>
+			<if test="USER_TYPE != null and USER_TYPE != ''">
+		       AND USER_TYPE = #{USER_TYPE,jdbcType=VARCHAR}
+			</if>
+			<if test="IS_VALID != null and IS_VALID != ''">
+		       AND IS_VALID = #{IS_VALID,jdbcType=VARCHAR}
+			</if>
+			<if test="MENU_TYPE != null and MENU_TYPE != ''">
+		       AND MENU_TYPE = #{MENU_TYPE,jdbcType=VARCHAR}
+			</if>
+			<if test="REMARK != null and REMARK != ''">
+		       AND REMARK = #{REMARK,jdbcType=VARCHAR}
+			</if>
+			<if test="ORDERNUM != null and ORDERNUM != ''">
+		       AND ORDERNUM = #{ORDERNUM,jdbcType=INTEGER}
+			</if>
+			<if test="CREATOR != null and CREATOR != ''">
+		       AND CREATOR = #{CREATOR,jdbcType=VARCHAR}
+			</if>
+			<if test="CREATE_DATE != null and CREATE_DATE != ''">
+		       AND CREATE_DATE = #{CREATE_DATE,jdbcType=TIMESTAMP}
+			</if>
+			<if test="EDITOR != null and EDITOR != ''">
+		       AND EDITOR = #{EDITOR,jdbcType=VARCHAR}
+			</if>
+			<if test="MODIFIED_DATE != null and MODIFIED_DATE != ''">
+		       AND MODIFIED_DATE = #{MODIFIED_DATE,jdbcType=TIMESTAMP}
+			</if>
+			<if test="IS_SHOW != null and IS_SHOW != ''">
+		       AND IS_SHOW = #{IS_SHOW,jdbcType=VARCHAR}
+			</if>
+			<if test=" DISABLED != null">
+		       AND UUID NOT IN 
+		       	<foreach collection="DISABLED" open="(" close=")" index="index" item="item" separator=",">
+		       	 '${item}'
+		       	</foreach>
+			</if>
+			<choose>
+				<when test="ISEQUAL != null and ISEQUAL !=''">
+					<if test="ISEQUAL == 1">
+						AND PARENT_UUID = UUID
+					</if>
+					<if test="ISEQUAL == 0">
+						AND PARENT_UUID != UUID
+					</if>
+				</when>
+			</choose>
+	</sql>
+	
+	<!-- 根据用户id查询所拥有权限 -->
+	<select id="retrieveAllUserPermByUserId" parameterType="string" resultType="com.hwsensor.permission.pojo.SysModulePO" useCache="false">
+		SELECT sm.UUID, sm.MENU_NAME, sm.MENU_CODE, sm.PARENT_UUID, sm.URL, sm.USER_TYPE,
+			   sm.IS_VALID, sm.MENU_TYPE, sm.REMARK, sm.ORDERNUM, sm.CREATOR,sm.IS_SHOW,
+			   sm.CREATE_DATE, sm.EDITOR, sm.MODIFIED_DATE
+		FROM S_BUSI_MODULE sm,S_USER_ROLE sur,S_ROLE_PERM srp
+		WHERE sur.ROLE_UUID=srp.ROLE_UUID
+		AND srp.MODULE_UUID=sm.UUID
+		AND sm.IS_VALID = '10'
+		AND sur.USER_UUID = #{UUID,jdbcType=VARCHAR}
+		ORDER BY  sm.ORDERNUM,sm.CREATE_DATE DESC, sm.IS_VALID DESC
+	</select>
+	<!--查询所拥有权限 -->
+	<select id="retrieveAllUserPermByMap" parameterType="map" resultType="com.hwsensor.permission.pojo.SysModulePO" useCache="false">
+		SELECT sm.UUID, sm.MENU_NAME, sm.MENU_CODE, sm.PARENT_UUID, sm.URL, sm.USER_TYPE,
+			   sm.IS_VALID, sm.MENU_TYPE, sm.REMARK, sm.ORDERNUM, sm.CREATOR,sm.IS_SHOW,
+			   sm.CREATE_DATE, sm.EDITOR, sm.MODIFIED_DATE
+		FROM S_BUSI_MODULE sm,S_USER_ROLE sur,S_ROLE_PERM srp
+		WHERE sur.ROLE_UUID=srp.ROLE_UUID
+		AND srp.MODULE_UUID=sm.UUID
+		AND sm.IS_VALID = #{IS_VALID}
+		AND sur.USER_UUID = #{UUID}
+		<if test="ORGAN_UUID != null">
+			AND srp.ORGAN_UUID = #{ORGAN_UUID}
+		</if>
+		<if test="rootperm != null and rootperm == 1">
+			AND sm.PARENT_UUID = sm.UUID 
+		</if>
+		ORDER BY  sm.ORDERNUM,sm.CREATE_DATE DESC, sm.IS_VALID DESC
+	</select>
+	
+	<!-- 查询所有根权限 -->
+	<select id="queryRootPer" resultType="com.hwsensor.permission.pojo.SysModulePO" parameterType="map">
+		SELECT <include refid="columns"/>
+		FROM S_BUSI_MODULE  WHERE PARENT_UUID = UUID 
+		<if test=" USER_TYPE != null and USER_TYPE !=''">
+			AND	USER_TYPE=#{USER_TYPE}
+		</if>
+		<if test=" IS_VALID != null and IS_VALID !=''">
+			AND	IS_VALID=#{IS_VALID}
+		</if>
+		ORDER BY  ORDERNUM,CREATE_DATE DESC, IS_VALID DESC
+	</select>
+	
+	<!-- 查询企业/政府普通用户权限 -->
+	<select id="retrieveOrgUserPermByMap" resultType="com.hwsensor.permission.pojo.SysModulePO" parameterType="map" useCache="false">
+		SELECT A.UUID, A.MENU_NAME, A.MENU_CODE, A.PARENT_UUID, A.URL,
+		A.USER_TYPE, A.IS_VALID, A.MENU_TYPE, A.REMARK,
+		A.ORDERNUM, A.CREATOR,A.IS_SHOW,
+		A.CREATE_DATE, A.EDITOR, A.MODIFIED_DATE FROM(
+			SELECT sm.UUID, sm.MENU_NAME, sm.MENU_CODE, sm.PARENT_UUID, sm.URL,
+			sm.USER_TYPE,
+			sm.IS_VALID, sm.MENU_TYPE, sm.REMARK, sm.ORDERNUM, sm.CREATOR,
+			sm.CREATE_DATE, sm.EDITOR, sm.MODIFIED_DATE,sm.IS_SHOW
+			FROM S_BUSI_MODULE sm,S_USER_ROLE sur,S_ROLE_PERM srp
+			WHERE sur.ROLE_UUID=srp.ROLE_UUID
+			AND srp.MODULE_UUID=sm.UUID
+			AND sm.IS_VALID = #{IS_VALID}
+			AND sur.USER_UUID = #{UUID}
+			<if test="ORGAN_UUID != null and ORGAN_UUID !=''">
+				AND srp.ORGAN_UUID = #{ORGAN_UUID}
+			</if>
+			<if test="rootperm != null and rootperm == 1">
+				AND sm.PARENT_UUID = sm.UUID
+			</if>
+			
+			<choose>
+				<when test="DEPART_UUID != null and DEPART_UUID !=''">
+					UNION
+				
+					SELECT sm.UUID, sm.MENU_NAME, sm.MENU_CODE, sm.PARENT_UUID, sm.URL,
+					sm.USER_TYPE, sm.IS_VALID, sm.MENU_TYPE, sm.REMARK,
+					sm.ORDERNUM, sm.CREATOR,
+					sm.CREATE_DATE, sm.EDITOR, sm.MODIFIED_DATE,sm.IS_SHOW
+					FROM S_BUSI_MODULE sm,S_ROLE_PERM srp,S_DEPT_ROLE sdr
+					WHERE srp.MODULE_UUID=sm.UUID
+					AND sdr.ROLE_UUID=srp.ROLE_UUID
+					AND sm.IS_VALID = #{IS_VALID}
+					AND sdr.DEPART_UUID = #{DEPART_UUID}
+					<if test="ORGAN_UUID != null and ORGAN_UUID !=''">
+						AND srp.ORGAN_UUID = #{ORGAN_UUID}
+					</if>
+					<if test="rootperm != null and rootperm == 1">
+						AND sm.PARENT_UUID = sm.UUID
+					</if>
+				
+				</when>
+			</choose>
+		) A 
+		ORDER BY  A.ORDERNUM,A.CREATE_DATE DESC, A.IS_VALID DESC
+	</select>
+	
+	<!-- 所有字段 -->
+	<sql id="columns">
+		UUID, MENU_NAME, MENU_CODE, PARENT_UUID, URL, USER_TYPE, IS_VALID, MENU_TYPE, 
+		REMARK, ORDERNUM, CREATOR, CREATE_DATE, EDITOR, MODIFIED_DATE ,IS_SHOW
+	</sql>
+	
+	<!-- 查询模块的排序号 -->
+	<select id="queryModuleOrderNum" resultType="_int"  useCache="false">
+		SELECT COUNT(1)+1 FROM S_BUSI_MODULE
+	</select>
+</mapper>

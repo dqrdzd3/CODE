@@ -1,0 +1,93 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>main-right</title>
+<link href="main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<s:url value="/js/jquery-1.4.4.min.js"/>"></script>
+<style type="text/css">
+<!--
+body,html{
+	margin: 0px;
+	padding:0px;
+	height:100%;
+	overflow:hidden;
+	background-color:#FFF; overflow-x:hidden; 
+}
+#welcome{ width:783px; height:548px; margin:0 auto; position:relative;}
+-->
+</style>
+<script type="text/javascript">
+	/**
+	 *  新增标签调用方法 
+	 * @param {Object} showId 		显示层
+	 * @param {Object} url			请求URL
+	 */
+	function page_tag_add(showId,url){
+		jQuery('body').append('<div class="page_right_div_class" id="'+showId+'"></div>');
+		jQuery.get(
+			url,
+			function(data){
+				jQuery('#'+showId).html(data);
+			}
+		);
+		jQuery('.page_right_div_class').each(function(){
+			if(jQuery(this).attr('id')!=showId){
+				jQuery(this).attr('style','display: none;');
+			};
+		});
+	}
+	 
+	/**
+	 * 单击标签时做DIV显示处理  
+	 * @param {Object} showId 
+	 */
+	function page_tab_choose(showId){
+		jQuery('.page_right_div_class').each(function(){
+			if(jQuery(this).attr('id')!=showId){
+				jQuery(this).attr('style','display: none;');
+			}
+		});
+		jQuery('#'+showId).attr('style','display: block;');
+	}
+	 
+	/**
+	 * 标签关闭时操作
+	 * 移除DIV 减轻页面负担 
+	 * @param {Object} showId
+	 */
+	function pager_tab_close(showId){
+		jQuery('#'+showId).remove();
+	}
+</script>
+</head>
+
+<body>
+<div id="first" class="page_right_div_class">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+    <tr>
+      <td height="20%" align="left" valign="bottom"><img src="<s:url value="/"/>images/welcomepictitle.jpg" width="580" height="54" /></td>
+    </tr>
+    <tr>
+      <td height="80%" align="center" valign="middle"><img src="<s:url value="/"/>images/welcomepic.jpg" width="557" height="418" usemap="#Map" border="0" /></td>
+    </tr>
+    
+  </table>
+
+<map name="Map" id="Map">
+	<!-- 权限管理 -->
+	<area shape="circle" onfocus="this.blur()" coords="41,277,40" href="main_left.action?id=<s:property value="moduleID['权限管理']"/>" target="leftFrame"/>
+	<!-- 日常普查 -->
+	<area onfocus="this.blur()" shape="circle" coords="72,129,40" href="main_left.action?id=<s:property value="moduleID['日常普查']"/>" target="leftFrame"/>	
+	<!-- 行政执法 -->
+	<area onfocus="this.blur()" shape="circle" coords="362,40,40" href="main_left.action?id=<s:property value="moduleID['行政执法']"/>" target="leftFrame"/>
+	<!-- 实时监测预警 -->
+	<area onfocus="this.blur()" shape="circle" coords="502,150,40" href="main_left.action?id=<s:property value="moduleID['实时监测']"/>" target="leftFrame"/>
+	<!-- 应急救援 -->
+	<area onfocus="this.blur()" shape="circle" coords="499,299,40" href="main_left.action?id=<s:property value="moduleID['应急救援']"/>" target="leftFrame"/>
+</map>
+</div>
+</body>
+</html>

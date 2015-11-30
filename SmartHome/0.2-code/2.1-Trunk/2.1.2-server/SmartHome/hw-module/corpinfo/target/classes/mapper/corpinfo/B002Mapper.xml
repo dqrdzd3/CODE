@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hw.hwsafe.corpinfo.dao.IB002Dao">
+
+	<!-- 根据主键查询 -->
+	<select id="retrieveB002ByID" parameterType="String" resultType="com.hw.hwsafe.corpinfo.pojo.B002PO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+    		MA017,MA018,MA019,MA020,MA021,MA022,MA023,MA024
+			 FROM B002 WHERE MA001=#{MA001}
+	</select>
+
+	<!-- 分页查询某企业下的机构  -->
+	<select id="retrieveB002ByCorp" parameterType="map" resultType="com.hw.hwsafe.corpinfo.pojo.B002PO">
+		select * from 
+				(select tmp.*, rownum rn from 
+						(SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,MA017,MA018,MA019,MA020,MA021,MA022,MA023,MA024
+						 	FROM B002 WHERE MA003=#{corpID}
+						 	<if test="govType != null and govType != ''">
+						 		<if test="govType == 0">
+									and (MA021 = 1 or MA021 =2)				 		
+						 		</if>
+						 		<if test="govType == 1">
+						 			and MA021 = 2
+						 		</if>
+						 	</if>
+						 	) tmp
+				 	where rownum &lt;= #{EndRow})	 
+			where rn >= #{StartRow}	 	
+	</select>
+
+	<!--企业机构信息时查询企业机构名称是否重复  -->
+	<select id="upretrieveB002ByName"  resultType="java.lang.Integer">
+		SELECT count(1)
+		FROM B002 t WHERE MA004 =#{MA004} and MA003=#{MA003}
+		<if test="MA001 != null">
+			<if test="MA001 != ''">
+			and MA001 !=#{MA001}
+			</if>
+		</if> 
+	</select>
+		<!-- 根据条件查询所有  -->
+	<select id="retrieveB002ByPO" resultType="com.hw.hwsafe.corpinfo.pojo.B002PO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+    		MA017,MA018,MA019,MA020,MA021,MA022,MA023,MA024
+		FROM B002 t 	
+		WHERE 1=1
+		<if test="MA001 != null">
+			<if test="MA001 != ''">
+			AND	MA001 = #{MA001}
+			</if>
+		</if> 
+		<if test="MA004 != null">
+			<if test="MA004 != ''">
+			AND	MA004  LIKE '%'||#{MA004}||'%' 
+			</if>
+		</if> 
+	</select>
+	
+	<!-- 插入机构信息 -->
+	<insert id="insertB002" parameterType="com.hw.hwsafe.corpinfo.pojo.B002PO">
+      INSERT INTO B002(MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+    		MA017,MA018,MA019,MA020,MA021,MA022,MA023,MA024,MA025
+	   ) 
+      VALUES(
+         #{MA001,jdbcType=VARCHAR},#{MA002,jdbcType=VARCHAR},#{MA003,jdbcType=VARCHAR},#{MA004,jdbcType=VARCHAR},#{MA005,jdbcType=NUMERIC},#{MA006,jdbcType=INTEGER},
+         #{MA007,jdbcType=INTEGER},#{MA008,jdbcType=INTEGER},#{MA009,jdbcType=VARCHAR},#{MA010,jdbcType=VARCHAR},#{MA011,jdbcType=VARCHAR},#{MA012,jdbcType=VARCHAR},
+         #{MA013,jdbcType=VARCHAR},#{MA014,jdbcType=VARCHAR},#{MA015,jdbcType=VARCHAR},#{MA016,jdbcType=VARCHAR},#{MA017,jdbcType=INTEGER},#{MA018,jdbcType=INTEGER},
+         #{MA019,jdbcType=VARCHAR},#{MA020,jdbcType=VARCHAR},'0',SYSDATE,SYSDATE,#{MA024,jdbcType=VARCHAR},#{MA025,jdbcType=VARCHAR}
+       )
+	</insert>
+	<!-- 更新机构信息 -->
+
+	<update id="updateB002" parameterType="com.hw.hwsafe.corpinfo.pojo.B002PO">
+		UPDATE B002 
+		set	
+		 MA002=#{MA002,jdbcType=VARCHAR},MA003=#{MA003,jdbcType=VARCHAR},MA004=#{MA004,jdbcType=VARCHAR},MA005=#{MA005,jdbcType=NUMERIC},MA006=#{MA006,jdbcType=INTEGER},
+         MA007=#{MA007,jdbcType=INTEGER},MA008=#{MA008,jdbcType=INTEGER},MA009=#{MA009,jdbcType=VARCHAR},MA010=#{MA010,jdbcType=VARCHAR},MA011=#{MA011,jdbcType=VARCHAR},MA012=#{MA012,jdbcType=VARCHAR},
+         MA013=#{MA013,jdbcType=VARCHAR},MA014=#{MA014,jdbcType=VARCHAR},MA015=#{MA015,jdbcType=VARCHAR},MA016=#{MA016,jdbcType=VARCHAR},MA017=#{MA017,jdbcType=INTEGER},MA018=#{MA018,jdbcType=INTEGER},
+         MA019=#{MA019,jdbcType=VARCHAR},MA020=#{MA020,jdbcType=VARCHAR},MA023=SYSDATE,MA024=#{MA024,jdbcType=VARCHAR}
+		WHERE MA001 = #{MA001}
+	</update>
+	
+		<!-- 修改业务表的标注状态：是否上报 -->
+	<update id="updateB002SBSJ" >
+		UPDATE B002 
+		   SET 	MA021 = 1
+		WHERE MA001 in
+		<foreach collection="ids" separator="," item="item" open="(" close=")" >#{item}</foreach>
+	</update>
+	
+	<update id="updateCorpSBSJ" parameterType="String" >
+		UPDATE B002 
+		   SET 	MA021 = 0  WHERE MA003 = #{value}
+	</update>
+	<update id="updateCorpSBSJ2" parameterType="map">
+		UPDATE B002 
+		   SET 	MA021 = #{state} where MA003 = #{corpID}
+		   <if test="conditionState != null and conditionState != ''">
+		 		and MA021 = #{conditionState}
+			</if>
+	</update>
+
+	<!-- 根据条件查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		SELECT b.*,decode(MA021,1,'企业上报',0,'未上报',2,'县区上报') MA021D FROM B002 b
+		<where>
+		    1=1
+			<if test="po.MA002 != null and po.MA002 != ''">
+			    AND	b.MA002 like '%' || #{po.MA002} || '%'
+			</if>
+			<if test="po.MA004 != null and po.MA004 != ''">
+				AND b.MA004 like '%' || #{po.MA004} || '%'
+			</if>
+			<if test="po.MA003 != null and po.MA003 != ''">
+				AND	b.ma003 = #{po.MA003} 
+			</if>
+			<if test="po.MA003 == null or po.MA003 == ''">
+			<if test="ORGAN_UUID != null and ORGAN_UUID != ''">
+				AND b.MA003 =#{ORGAN_UUID}
+			</if>
+			</if>
+			<if test="govType != null and govType != ''">
+		 		<if test="govType == 0">
+					and (MA021 = 1 or MA021 =2)				 		
+		 		</if>
+		 		<if test="govType == 1">
+		 			and MA021 = 2
+		 		</if>
+		 	</if>
+		</where>
+		order by b.ma022 desc
+	</select>
+</mapper>

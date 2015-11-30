@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwsensor.permission.dao.ISysRolePermDao">
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+	
+	<!-- 添加 -->
+	<insert id="insertSysRolePerm" parameterType="com.hwsensor.permission.pojo.SysRolePermPO">
+		INSERT INTO S_ROLE_PERM
+		  (UUID, ROLE_UUID, MODULE_UUID, OPERA_UUID, ORGAN_UUID, CREATOR, CREATE_DATE)
+		VALUES
+		  (#{UUID,jdbcType=VARCHAR}, #{ROLE_UUID,jdbcType=VARCHAR}, #{MODULE_UUID,jdbcType=VARCHAR}, 
+		   #{OPERA_UUID,jdbcType=VARCHAR}, #{ORGAN_UUID,jdbcType=VARCHAR}, #{CREATOR,jdbcType=VARCHAR},
+		    #{CREATE_DATE,jdbcType=TIMESTAMP})
+	</insert>
+	<!-- 修改 -->
+	<update id="updateSysRolePerm" parameterType="com.hwsensor.permission.pojo.SysRolePermPO">
+		UPDATE S_ROLE_PERM
+		   SET UUID = #{UUID,jdbcType=VARCHAR},
+		       ROLE_UUID = #{ROLE_UUID,jdbcType=VARCHAR},
+		       MODULE_UUID = #{MODULE_UUID,jdbcType=VARCHAR}, 
+		       OPERA_UUID = #{OPERA_UUID,jdbcType=VARCHAR},
+		       ORGAN_UUID = #{ORGAN_UUID,jdbcType=VARCHAR},
+		       CREATOR = #{CREATOR,jdbcType=VARCHAR},
+		       CREATE_DATE = #{CREATE_DATE,jdbcType=TIMESTAMP}
+		 WHERE UUID = #{UUID,jdbcType=VARCHAR}
+	</update>
+	<!-- 动态修改 -->
+	<update id="updateSysRolePermByMap" parameterType="map">
+		UPDATE S_ROLE_PERM
+			<set>	
+				<if test="UUID != null">
+		   		   UUID = #{UUID,jdbcType=VARCHAR},
+				</if>
+				<if test="ROLE_UUID != null">
+			       ROLE_UUID = #{ROLE_UUID,jdbcType=VARCHAR},
+				</if>
+				<if test="MODULE_UUID != null">
+			       MODULE_UUID = #{MODULE_UUID,jdbcType=VARCHAR}, 
+				</if>
+				<if test="OPERA_UUID != null">
+			       OPERA_UUID = #{OPERA_UUID,jdbcType=VARCHAR},
+				</if>
+				<if test="ORGAN_UUID != null">
+			       ORGAN_UUID = #{ORGAN_UUID,jdbcType=VARCHAR},
+				</if>
+				<if test="CREATOR != null">
+			       CREATOR = #{CREATOR,jdbcType=VARCHAR},
+				</if>
+				<if test="CREATE_DATE != null">
+			       CREATE_DATE = #{CREATE_DATE,jdbcType=TIMESTAMP}
+				</if>
+			</set>
+		 WHERE UUID = #{UUID,jdbcType=VARCHAR}
+	
+	</update>
+	
+	<!-- 删除 -->
+	<delete id="deleteSysRolePerm" parameterType="com.hwsensor.permission.pojo.SysRolePermPO">
+		DELETE S_ROLE_PERM WHERE UUID = #{UUID,jdbcType=VARCHAR}
+	</delete>
+	<!-- 动态删除 -->
+	<delete id="deleteSysRolePermByMap" parameterType="map">
+		DELETE S_ROLE_PERM WHERE 1=1
+		<include refid="queryCondition"/>
+	</delete>
+	<!-- 查询list -->
+	<select id="retrieveByCondition" resultType="com.hwsensor.permission.pojo.SysRolePermPO" parameterType="map">
+		SELECT UUID, ROLE_UUID, MODULE_UUID, OPERA_UUID, ORGAN_UUID, CREATOR, CREATE_DATE 
+		FROM S_ROLE_PERM  WHERE 1=1
+		<include refid="queryCondition"/>
+	</select>
+	<!-- 查询po -->
+	<select id="retrieveSysRolePermByMap" resultType="com.hwsensor.permission.pojo.SysRolePermPO" parameterType="map">
+		SELECT UUID, ROLE_UUID, MODULE_UUID, OPERA_UUID, ORGAN_UUID, CREATOR, CREATE_DATE 
+		FROM S_ROLE_PERM  WHERE 1=1
+		<include refid="queryCondition"/>
+	</select>
+	
+	<sql id="queryCondition">
+		<if test="UUID != null">
+   		   AND UUID = #{UUID,jdbcType=VARCHAR}
+		</if>
+		<if test="ROLE_UUID != null">
+	       AND ROLE_UUID = #{ROLE_UUID,jdbcType=VARCHAR}
+		</if>
+		<if test="MODULE_UUID != null">
+	       AND MODULE_UUID = #{MODULE_UUID,jdbcType=VARCHAR}
+		</if>
+		<if test="OPERA_UUID != null">
+	       AND OPERA_UUID = #{OPERA_UUID,jdbcType=VARCHAR}
+		</if>
+		<if test="ORGAN_UUID != null">
+	       AND ORGAN_UUID = #{ORGAN_UUID,jdbcType=VARCHAR}
+		</if>
+		<if test="CREATOR != null">
+	       AND CREATOR = #{CREATOR,jdbcType=VARCHAR}
+		</if>
+		<if test="CREATE_DATE != null">
+	       AND CREATE_DATE = #{CREATE_DATE,jdbcType=TIMESTAMP}
+		</if>
+	</sql>
+</mapper>

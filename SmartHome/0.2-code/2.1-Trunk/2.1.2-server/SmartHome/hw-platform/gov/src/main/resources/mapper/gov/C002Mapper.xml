@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.gov.dao.IC002Dao">
+	
+	<!-- 通过MA001字段查询C002实体 -->
+	<select id="retrieveC002ByMa001" parameterType="String" resultType="com.hw.hwsafe.gov.pojo.C002PO">
+		SELECT * 
+			FROM C002 
+			WHERE MA017='1' and MA001 = #{ma001}
+	</select>
+	
+	<!-- 通过C002PO查询C002实体 -->
+	<select id="retrieveC002ByPO" parameterType="com.hw.hwsafe.gov.pojo.C002PO" resultType="com.hw.hwsafe.gov.pojo.C002PO">
+		SELECT *
+			FROM C002
+			<where> MA017='1'
+				<if test="ma001 != null">
+					<if test="ma001 != ''">
+						AND MA001 = #{ma001}
+					</if>
+				</if>
+				<if test="ma004 != null">
+					<if test="ma004 != ''">
+						AND MA004 = #{ma004}
+					</if>
+				</if>
+			</where>
+	</select>
+	
+	<!-- 通过MA002字段查询C002实体 -->
+	<select id="retrieveC002ByMa002" parameterType="String" resultType="com.hw.hwsafe.gov.pojo.C002PO">
+		SELECT *
+			FROM C002
+			WHERE MA017='1' and MA002 = #{ma002}
+	</select>
+	
+	<!-- 获取所有C002PO实例集合 -->
+	<select id="retrieveAll" resultType="com.hw.hwsafe.gov.pojo.C002PO">
+		SELECT * FROM C002 where MA017='1' order by MA011 desc
+	</select>
+	
+	<!-- 获取所有有效的C002PO实例集合 -->
+	<select id="retrieveAllValid" resultType="com.hw.hwsafe.gov.pojo.C002PO">
+		SELECT * FROM C002 where MA017='1' and MA008='10' order by MA011 desc
+	</select>
+	
+	<!-- 通过MA002字段查询子C002实体 -->
+	<select id="retrieveChildC002ListByMa002" parameterType="String" resultType="com.hw.hwsafe.gov.pojo.C002PO">
+		SELECT *
+			FROM C002
+			WHERE MA017='1' and MA002 LIKE '' || #{ma002} || '%'
+				AND MA002 != #{ma002}
+			ORDER BY MA002 ASC
+	</select>
+	
+	<!-- 通过MA002字段统计C002实体的个数 -->
+	<select id="countC002ByMa002" parameterType="String" resultType="Integer">
+		SELECT COUNT(1)
+			FROM C002
+			WHERE MA017='1' and MA002 = #{ma002}
+	</select>
+
+	<!-- 插入C002 -->
+	<insert id="insertC002" parameterType="com.hw.hwsafe.gov.pojo.C002PO">
+		INSERT INTO C002(MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA014,MA015,MA016,MA017,MA018,MA019)
+			VALUES(
+				#{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=VARCHAR},#{ma004,jdbcType=VARCHAR},
+				#{ma005,jdbcType=VARCHAR},#{ma006,jdbcType=VARCHAR},#{ma007,jdbcType=VARCHAR},#{ma008,jdbcType=VARCHAR},
+				#{ma009,jdbcType=VARCHAR},#{ma010,jdbcType=VARCHAR},#{ma011,jdbcType=TIMESTAMP},
+				#{ma014,jdbcType=NUMERIC},#{ma015,jdbcType=VARCHAR},#{ma016,jdbcType=VARCHAR},
+				#{ma017,jdbcType=VARCHAR},#{ma018,jdbcType=VARCHAR},#{ma019,jdbcType=VARCHAR}
+			)
+	</insert>
+	
+	<!-- 修改C002 -->
+	<update id="updateC002" parameterType="com.hw.hwsafe.gov.pojo.C002PO">
+		UPDATE C002
+			SET
+				MA002 = #{ma002,jdbcType=VARCHAR}, MA003 = #{ma003,jdbcType=VARCHAR}, MA005 = #{ma005,jdbcType=VARCHAR}, 
+				MA006 = #{ma006,jdbcType=VARCHAR}, MA007 = #{ma007,jdbcType=VARCHAR}, MA008 = #{ma008,jdbcType=VARCHAR}, 
+				MA009 = #{ma009,jdbcType=VARCHAR}, MA012 = #{ma012,jdbcType=VARCHAR}, MA013 = #{ma013,jdbcType=TIMESTAMP},
+				MA014 = #{ma014,jdbcType=NUMERIC}, MA015 = #{ma015,jdbcType=VARCHAR}, MA016 = #{ma016,jdbcType=VARCHAR},
+				MA018 = #{ma018,jdbcType=VARCHAR}, MA019 = #{ma019,jdbcType=VARCHAR}, MA004 = #{ma004,jdbcType=VARCHAR}
+			WHERE MA001 = #{ma001} and ma017='1'
+	</update>
+	
+	<!-- 分页查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		SELECT *
+			FROM C002
+			<where> ma017='1'
+				<if test="(po.ma002==null or po.ma002=='') and (po.ma003==null or po.ma003=='') and (po.ma004 != null and po.ma004 != '')">
+					AND MA004 = #{po.ma004}
+					AND MA004 != MA001
+				</if>
+				<if test="(po.ma002==null or po.ma002=='') and (po.ma003==null or po.ma003=='') and (po.ma004 == null or po.ma004 == '')">
+					AND MA004 = MA001
+				</if>
+				<if test="po.ma002!=null and po.ma002!=''">
+					and MA002 like '%' || #{po.ma002} || '%'
+				</if>
+				<if test="po.ma003!=null and po.ma003!=''">
+					and MA003 like '%' || #{po.ma003} || '%'
+				</if>
+			</where>
+			order by MA011 desc
+	</select>
+	
+	<!-- 根据主键删除政府机构注册信息-->
+	<update id="deleteC002ByIds" parameterType="java.util.Map">
+		update C002 set ma017='0' WHERE MA001 in 
+		<foreach collection="ids" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</update>
+	
+	<!-- 统计子节点数量 -->
+	<select id="countChildByIds" parameterType="java.util.Map" resultType="Integer">
+		select count(1) from c002 where MA017='1' and MA001!=MA004 and MA004 in 
+		<foreach collection="ids" item="id" open="(" separator="," close=")">
+			'${id}'
+		</foreach>
+	</select>
+	
+	<!-- 通过MA003字段统计C002实体的个数 -->
+	<select id="countInstanceByMa003" parameterType="com.hw.hwsafe.gov.pojo.C002PO" resultType="Integer">
+		SELECT COUNT(1)
+			FROM C002
+			WHERE MA017='1' and MA003 = #{ma003}
+			<if test="ma001!=null and ma001!=''">
+				and MA001!=#{ma001}
+			</if>
+	</select>
+	
+	<!-- 通过机构代码统计实例个数 -->
+	<select id="countInstanceByCode" parameterType="com.hw.hwsafe.gov.pojo.C002PO" resultType="Integer">
+		SELECT count(1) FROM C002 WHERE MA017='1' and MA002=#{ma002}
+		<if test="ma001!=null and ma001!=''">
+			and ma001!=#{ma001}
+		</if>
+	</select>
+	
+	<select id="countInstanceByMa007" parameterType="com.hw.hwsafe.gov.pojo.C002PO" resultType="Integer">
+		SELECT count(1) FROM C002 WHERE MA017='1' and MA007=#{ma007}
+		<if test="ma001!=null and ma001!=''">
+			and ma001!=#{ma001}
+		</if>
+	</select>
+	
+	<!--  通过企业id查询当前企业直属的政府单位 -->
+	<select id="getC002InfoByCorpId" resultType="com.hw.hwsafe.gov.pojo.C002PO" parameterType="String">
+		SELECT C2.* FROM C001 C1, C002 C2 WHERE C1.MA004 = C2.MA001 AND C1.MA001 = #{value}
+	</select>
+</mapper>

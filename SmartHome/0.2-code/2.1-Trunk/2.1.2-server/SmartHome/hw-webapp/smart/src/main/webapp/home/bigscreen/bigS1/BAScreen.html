@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta name="viewport"
+          content="target-densitydpi=device-dpi,initial-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta content="telephone=no" name="format-detection">
+    <meta charset="UTF-8">
+    <title>大屏</title>
+
+    <style>
+    @font-face {
+	font-family: 'fontNameRegular';
+	src: local('fontName Regular'), local('fontName'), url('css/slim.TTF')
+		format('truetype');
+		}
+        @font-face {
+            font-family: 'superslim';
+            src: local('fontName Regular'), local('fontName'), url('css/方正兰亭超细黑简体.ttf')
+            format('truetype');
+        }
+
+        @font-face {
+            font-family: 'slim';
+            src: local('fontName Regular'), local('fontName'), url('css/方正兰亭细黑简体.TTF')
+            format('truetype');
+        }
+        body {
+            background: #285070;
+            overflow: hidden;
+        }
+        #logo {
+            position: absolute;
+            top: 5%;
+            left: 5.6%;
+            width: 90%;
+            height: 64.4%;
+        }
+        #pm25_div{
+            position: absolute;
+            top:23.5%;
+            right: 66.8%;
+            color: #ffffff;
+
+        }
+        #pm25_lable_div{
+            position: absolute;
+            top:45.3%;
+            right: 66.8%;
+            color: #ffffff;
+        }
+        #pm25_time_div{
+            position: absolute;
+            top:59.8%;
+            right: 66.8%;
+        }
+        #chart_div{
+            position: absolute;
+            top:23.5%;
+            left: 44.1%;
+            height:38.2%;
+            width:32.7%;
+            color:#ffffff;
+            border: 1px solid #96A9B8;
+            font-family: slim;
+        }
+
+        #co2_div{
+            position: absolute;
+            left: 5.06%;
+            bottom: 11.1%;
+            height: 16.9%;
+            width:15.6%;
+            color: #ffffff;
+            background-color: #244864;
+            font-family: slim;
+        }
+        #voc_div{
+            position: absolute;
+            left: 24.4%;
+            bottom: 11.1%;
+            height: 16.9%;
+            width:15.6%;
+            color: #ffffff;
+            background-color: #244864;
+            font-family: slim;
+        }
+        #temp_div{
+            position: absolute;
+            left: 44%;
+            bottom: 11.1%;
+            height: 16.9%;
+            width:15.6%;
+            color: #ffffff;
+            background-color: #244864;
+            font-family: slim;
+        }
+        #hum_div{
+            position: absolute;
+            left: 63.6%;
+            bottom: 11.1%;
+            height: 16.9%;
+            width:15.6%;
+            color: #ffffff;
+            background-color: #244864;
+            font-family: slim;
+        }
+
+        #cen_div{
+            position: absolute;
+            right: 4.9%;
+            top: 11.3%;
+            height: 77.2%;
+            width:12.2%;
+            color: #ffffff;
+            border: 1px solid #96A9B8;
+            font-family: slim;
+        }
+
+    </style>
+
+    <script type="text/javascript" src="js/zzr/jquery-1.9.1.min.js"></script>
+    <script src="http://img.jb51.net/jslib/jquery/jquery14.js"></script>
+    <script type="text/javascript" src="js/zzr/jQuery.fontFlex.js"></script>
+    <script type="text/javascript" src="js/zzr/jquery.flot.js"></script>
+    <script type="text/javascript" src="js/zzr/jquery.flot.resize.js"></script>
+    <script type="text/javascript" src="js/zzr/modernizr.custom.79639.js"></script>
+
+    <!-- Morris.js charts -->
+    <script
+            src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script type="text/javascript" src="js/zzr/morris.js"></script>
+
+    <script type="text/javascript" src="js/zzr/Screen.js"></script>
+    <script>
+    var isFullScreen = false;
+    function clickButton()
+    {
+        document.getElementById('body').click();
+    }
+    var isFullScreen = false;
+    //进入全屏
+    function requestFullScreen() {
+        alert("dd");
+        var de = document.documentElement;
+        if (de.requestFullscreen) {
+            de.requestFullscreen();
+        } else if (de.mozRequestFullScreen) {
+            de.mozRequestFullScreen();
+        } else if (de.webkitRequestFullScreen) {
+            de.webkitRequestFullScreen();
+        }
+        isFullScreen = true;
+    }
+    //退出全屏
+    function exitFullScreen() {
+        var de = document;
+        if (de.exitFullscreen) {
+            de.exitFullscreen();
+        } else if (de.mozCancelFullScreen) {
+            de.mozCancelFullScreen();
+        } else if (de.webkitCancelFullScreen) {
+            de.webkitCancelFullScreen();
+        }
+        isFullScreen = false;
+    }
+
+    document.body.addEventListener('click', function() {
+        /* requestFullScreen();
+         //5秒钟自动退出全屏
+         setTimeout(function(){
+         exitFullscreen();
+         },5000); */
+        if (isFullScreen) {
+            exitFullScreen();
+        } else {
+            requestFullScreen();
+        }
+
+    }, false);
+
+
+    </script>
+</head>
+<body>
+
+<!-- logo -->
+<div id="logo">
+    <img src="img/ui_home_013.png" STYLE="width: 5%"><img
+        src="img/AIRRADIO.png" style="width: 15%">
+</div>
+
+<!-- 最大 pM2.5 数值-->
+<div id="pm25_div">
+
+
+
+    <span id="in_pm25" style="font-family: fontNameRegular;" class="Data140">36</span>
+
+
+</div>
+
+<!--  pM.5-->
+<div id="pm25_lable_div">
+
+
+    <span style="font-family: slim;" class="Data48">PM2.5</span>
+
+</div>
+
+<!-- 更新时间 pM.5-->
+<div id="pm25_time_div">
+
+
+    <span class="Data20" style="font-family: slim;color: #B2BCC5">更新时间：</span><span class="Data20" style="font-family: slim;color: #B2BCC5" id = "in_time"></span>
+
+</div>
+
+
+<!-- 曲线图 -->
+<div id = "chart_div">
+    <p style="margin: 6% 0% -2% 8%">
+				<span class="centerDate">室内<span class="centerDate" style="color: #D6AED4">&nbsp;PM2.5</span>
+					& <span style="color: #8AF6DB" class="centerDate">CO₂&nbsp;</span>历史曲线
+				</span>
+    </p>
+    <div id="line-chart" style="height: 78%; width: 85%;margin-left: 6%"></div>
+</div>
+
+<!-- Co2-->
+<div id = "co2_div" class="dataFour">
+    <table style="width: 100%;height: 100%;text-align: center">
+        <tr>
+            <td>CO₂</td>
+        </tr>
+        <tr>
+            <td id = in_co2>0</td>
+        </tr>
+    </table>
+</div>
+
+<!-- voc-->
+<div id = "voc_div" class="dataFour">
+    <table style="width: 100%;height: 100%;text-align: center">
+        <tr>
+            <td>VOC</td>
+        </tr>
+        <tr>
+            <td id = in_voc>0</td>
+        </tr>
+    </table>
+</div>
+
+<!-- temp-->
+<div id = "temp_div" class="dataFour">
+    <table style="width: 100%;height: 100%;text-align: center">
+        <tr>
+            <td>温度</td>
+        </tr>
+        <tr>
+            <td id = in_temp>0</td>
+        </tr>
+    </table>
+</div>
+
+<!-- hum-->
+<div id = "hum_div" class="dataFour">
+    <table style="width: 100%;height: 100%;text-align: center">
+        <tr>
+            <td>湿度</td>
+        </tr>
+        <tr>
+            <td id = "in_hum">0</td>
+        </tr>
+    </table>
+</div>
+
+
+<!-- 中央气象 -->
+<div id = "cen_div">
+    <table style = "width: 100%;height: 100%;text-align: center" >
+        <tr>
+            <td>
+                <table style="width: 100%;height: 100%;text-align: center">
+                    <tr>
+
+                        <td>
+                            <span id = "date" style="text-align: center"  class="Data18">0</span>
+                            <span>&nbsp;&nbsp;</span>
+                            <span id = "day"  style = "text-align: center"  class="Data18">0</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="Data24">气象台发布</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="width: 70%; height:1px;margin-left:15%;background-color:#96A9B8;"> </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table style="width: 100%;height: 100%;text-align: center">
+                    <tr>
+                        <td class="Data30">AQI</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <span class="Data30" id = "cen_aqi" style="text-align: center">0</span>
+                            <span>&nbsp;&nbsp;</span>
+                        <span class="Data30" id = "cen_quality"  style = "text-align: center">差</span>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="width: 50%; height:1px;margin-left:25%;background-color:#96A9B8;"> </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table style="width: 100%;height: 100%;text-align: center">
+                    <tr>
+                        <td class = "centerDate">温度</td>
+                    </tr>
+                    <tr>
+                        <td class = "centerDate" id="cen_temp">0</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="width: 50%; height:1px;margin-left:25%;background-color:#96A9B8;"> </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table style="width: 100%;height: 100%;text-align: center">
+                    <tr>
+                        <td class = "centerDate">湿度</td>
+                    </tr>
+                    <tr>
+                        <td class = "centerDate" id = "cen_hum">0</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr >
+
+            <td>
+                <div style="width: 50%; height:1px;margin-left:25%;background-color:#96A9B8;"> </div>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <table style="width: 100%;height: 100%;text-align: center">
+                    <tr>
+                        <td class = "centerDate">风向</td>
+                    </tr>
+                    <tr>
+                        <td class = "centerDate" id = "cen_windDirec">0</td>
+                    </tr>
+                    <tr>
+                        <td class = "centerDate" id="cen_windForce">0</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+    </table>
+</div>
+<script>
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return null;
+    }
+
+    var _currentSensorId1 = GetQueryString("IN");
+
+    var _ad = GetQueryString("AD");
+    var _sessionId = GetQueryString("SESSIONID");
+    var _userid = GetQueryString("USERID");
+    $(function() {
+
+        systemTime();
+        var cityISO = encodeURI("郑州");
+        getCentralWeather(cityISO);
+
+        var basePath = "";
+        var url = document.location.href;
+        //alert(url);
+        url = url.substring(7, url.length - 1);
+        //alert(url);
+        url = url.split("/");
+        url = url[0] + "/" + url[1] + "/";
+
+        basePath = "http://"+url;
+
+        getInData(basePath,_sessionId,_userid,_currentSensorId1);
+        getHisData(basePath,_sessionId,_userid,_currentSensorId1,1,6, "line-chart");
+
+
+
+        //字体大小  数据four
+        var dataFour = window.innerHeight;
+        dataFour = dataFour*0.04;
+        $('.dataFour').fontFlex(dataFour, dataFour, dataFour);
+
+        //字体大小 中央
+        var centerDate = window.innerHeight;
+        centerDate = centerDate*0.024;
+        $('.centerDate').fontFlex(centerDate, centerDate, centerDate);
+
+        //字体大小 24
+        var Data24 = window.innerHeight;
+        Data24 = Data24*0.0267;
+        $('.Data24').fontFlex(Data24, Data24, Data24);
+
+        //字体大小 20
+        var Data20 = window.innerHeight;
+        Data20 = Data20*0.0222;
+        $('.Data20').fontFlex(Data20, Data20, Data20);
+
+        //字体大小 18
+        var Data18 = window.innerHeight;
+        Data18 = Data18*0.02;
+        $('.Data18').fontFlex(Data18, Data18, Data18);
+
+        //字体大小 30
+        var Data30 = window.innerHeight;
+        Data30 = Data30*0.0333;
+        $('.Data30').fontFlex(Data30, Data30, Data30);
+
+        //字体大小 48
+        var Data48 = window.innerHeight;
+        Data48 = Data48*0.05333;
+        $('.Data48').fontFlex(Data48, Data48, Data48);
+
+        //字体大小 140
+        var Data140 = window.innerHeight;
+        Data140 = Data140*0.155;
+        $('.Data140').fontFlex(Data140, Data140, Data140);
+
+        $(window).resize(function() {
+
+            //字体大小  数据four
+            var dataFour = window.innerHeight;
+            dataFour = dataFour*0.04;
+            $('.dataFour').fontFlex(dataFour, dataFour, dataFour);
+
+            //字体大小 中央
+            var centerDate = window.innerHeight;
+            centerDate = centerDate*0.024;
+            $('.centerDate').fontFlex(centerDate, centerDate, centerDate);
+
+        });
+
+        /*  图表  */
+        var line = new Morris.Line({
+            element: 'line-chart',
+            resize: true,
+            data: [
+                {y: '2012-02-24 11:00', item1: 2666},
+                {y: '2012-02-24 12:00', item1: 2778},
+                {y: '2012-02-24 13:00', item1: 4912},
+                {y: '2012-02-24 14:00', item1: 3767},
+                {y: '2012-02-24 15:00', item1: 8432},
+                {y: '2012-02-24 11:00', item2: 1111},
+                {y: '2012-02-24 12:00', item2: 2222},
+                {y: '2012-02-24 13:00', item2: 3333},
+                {y: '2012-02-24 14:00', item2: 1474},
+                {y: '2012-02-24 15:00', item2: 4444}
+            ],
+
+            xkey: 'y',
+            ykeys: ['item1','item2'],
+            labels: ['Item 1'],
+            lineColors: ['#D6AED4','#8AF6DB'],
+            lineWidth: 2,
+            hideHover: 'always',
+            gridTextColor: "#fff",
+            gridStrokeWidth: 0.4,
+            pointSize: 4,
+            pointStrokeColors: ["#efefef"],
+            gridLineColor: "#efefef",
+            gridTextFamily: "Open Sans",
+            gridTextSize: 10
+        });
+
+    });
+
+
+
+    //获取系统时间，将时间以指定格式显示到页面。
+    function systemTime() {
+        //获取系统时间。
+        d = new Date(); //创建一个Date对象
+        localTime = d.getTime();
+        localOffset = d.getTimezoneOffset() * 60000; //获得当地时间偏移的毫秒数
+        utc = localTime + localOffset; //utc即GMT时间
+
+        var d = new Date();
+        var offset = d.getTimezoneOffset() / 60;
+
+        //offset =8; //以北京时间为例，东10区
+        beijing = utc - (3600000 * offset);
+        dateTime = new Date(beijing);
+        //alert(dateTime);
+
+        var hh = dateTime.getHours();
+        var mm = dateTime.getMinutes();
+        var ss = dateTime.getSeconds();
+
+        var yy = dateTime.getFullYear();
+        var mon = dateTime.getMonth() + 1; //因为1月这个方法返回为0，所以加1
+        var dd = dateTime.getDate();
+
+        //alert(mon);
+        //分秒时间是一位数字，在数字前补0。
+
+        mm = extra(mm);
+        ss = extra(ss);
+
+        //将时间显示到ID为time的位置，时间格式形如：19:18:02
+        var str = "星期" + "日一二三四五六".charAt(new Date().getDay());
+        document.getElementById("date").innerHTML = mon + "-" + dd+"  ";
+        document.getElementById("day").innerHTML="  "+str;
+        //document.getElementById("time").innerHTML=hh+":"+mm+":"+ss;
+        //每隔1000ms执行方法systemTime()。
+
+        setTimeout("systemTime()", 1000 * 60 * 5);
+    }
+
+    //补位函数。
+    function extra(x) {
+        //如果传入数字小于10，数字前补一位0。
+        if (x < 10) {
+            return "0" + x;
+        } else {
+            return x;
+        }
+    }
+</script>
+</body>
+</html>

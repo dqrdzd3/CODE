@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:onClick="camTalkListener" >
+<!-- 户外和设备名bgn -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/camSensorName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/camWeatherPM25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/camWeatherTem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/camSysTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <!-- 户外和设备名end -->
+    <LinearLayout
+        android:id="@+id/camLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/camTmp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cam_init_temp"
+            android:textColor="@color/cam_font_color"
+            android:textSize="@dimen/cam_layout3_title_font_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_temperature"
+            android:textColor="@color/cam_font_color"
+            android:textSize="@dimen/cam_layout3_value_font_size" />
+
+        <TextView
+            android:id="@+id/camHum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cam_init_hum"
+            android:textColor="@color/cam_font_color"
+            android:textSize="@dimen/cam_layout3_title_font_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_humidity"
+            android:textColor="@color/cam_font_color"
+            android:textSize="@dimen/cam_layout3_value_font_size" />
+
+        <TextView
+            android:id="@+id/camCo2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cam_init_co2"
+            android:textColor="@color/cam_font_color"
+            android:textSize="@dimen/cam_layout3_title_font_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_co2"
+            android:textColor="@color/cam_font_color"
+            android:textSize="@dimen/cam_layout3_value_font_size" />
+
+        <TextView
+            android:id="@+id/camPm25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cam_init_pm25"
+            android:textColor="@color/cam_font_color"
+            android:textSize="@dimen/cam_layout3_title_font_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_pm25"
+            android:textColor="@color/cam_font_color"
+            android:textSize="@dimen/cam_layout3_value_font_size" />
+
+        <TextView
+            android:id="@+id/camVoc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cam_init_voc"
+            android:textColor="@color/cam_font_color"
+            android:textSize="@dimen/cam_layout3_title_font_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_voc"
+            android:textColor="@color/cam_font_color"
+            android:textSize="@dimen/cam_layout3_value_font_size" />
+
+        <TextView
+            android:id="@+id/camLoc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/camLayout3"
+            android:layout_toRightOf="@+id/camLayout3"
+            android:text="@string/cam_init_loc"
+            android:textColor="@color/black"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/camCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cam_init_loc"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/camDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cam_init_loc"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/camTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cam_init_loc"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/camState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cam_init_loc"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</RelativeLayout>

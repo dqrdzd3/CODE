@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ctrl_page_down_bg" >
+<ScrollView 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+       android:scrollbars="none" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" 
+        >
+
+        <!-- 传感器内容显示区bgn -->
+        <LinearLayout
+            android:id="@+id/top_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/ctrl_page_up_bg"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/uiHomeUpdateTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@null"
+                android:textColor="@color/ctrl_page_sensor_txt"
+                android:textSize="15.0sp" />
+
+            <RelativeLayout
+              
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="50dp"
+                android:gravity="center_horizontal" >
+
+                <TextView
+                    android:id="@+id/sensorType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="20dp"
+                    android:text="--"
+                    android:textColor="@color/ctrl_page_sensor_txt"
+                    android:textSize="@dimen/cam_layout3_title_font_size" />
+
+                <RelativeLayout
+                    android:layout_width="200dip"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sensorType"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/ctrl_page_textview_border"
+                    android:gravity="center_horizontal" >
+
+                    <TextView
+                        android:id="@+id/linkSensorVal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="20dp"
+                        android:text="--"
+                        android:textColor="@color/ctrl_page_sensor_txt"
+                        android:textSize="60sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </RelativeLayout>
+            <LinearLayout
+                 android:id="@+id/major" 
+                   android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                 android:orientation="vertical"></LinearLayout>
+        </LinearLayout>
+        <!-- 传感器内容显示区 end -->
+		<!-- 控制区域 bgn -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+			android:layout_marginTop="20dp"
+            android:layout_weight="3"
+            android:background="@color/ctrl_page_down_bg"
+            android:orientation="vertical" >
+			<!-- id区域 bgn -->
+            <LinearLayout
+                android:id="@+id/op_area"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:id="@+id/leftImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:gravity="center_horizontal" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ui_home_page_left" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/alias"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/load_ing"
+                        android:textColor="@color/white"
+                        android:textStyle="italic|bold" />
+
+                    <TextView
+                        android:id="@+id/status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="[]"
+                        android:textColor="@color/white"
+                        android:textStyle="italic|bold" />
+
+                    <TextView
+                        android:id="@+id/code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:singleLine="true"
+                        android:text=""
+                        android:textColor="@color/white"
+                        android:textStyle="italic|bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rightImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:gravity="center_horizontal" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ui_home_page_right" />
+                </LinearLayout>
+            </LinearLayout>
+			<!-- id区域 end -->
+            <ListView
+                android:id="@+id/listSwitcher"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:cacheColorHint="#00000000"
+                android:divider="@null"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:listSelector="#00000000"
+                android:scrollbars="none" 
+                android:layout_marginTop="10dp">
+            </ListView>
+        </LinearLayout>
+        <!-- 控制区域end -->
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>

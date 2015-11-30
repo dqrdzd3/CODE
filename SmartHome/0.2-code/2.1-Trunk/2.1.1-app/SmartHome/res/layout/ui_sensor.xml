@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res/com.hw.smarthome"
+    xmlns:fontawesometext="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/ui_setting_bg" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/ui_setting_bg"
+            android:orientation="vertical"
+            android:paddingTop="25dip" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="10.0dip"
+                android:paddingRight="10.0dip" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10.0dip"
+                    android:layout_marginTop="10.0dip"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="4.0dip"
+                    android:text="@string/sensor"
+                    android:textColor="@color/gray"
+                    android:textSize="14.0sp" />
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="2.0dip"
+                        android:layout_marginRight="2.0dip"
+                        android:background="@color/white" >
+
+                        <com.beardedhen.androidbootstrap.BootstrapButton
+                            android:id="@+id/uiSensorScan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@null"
+                            android:text="@string/sensor_scan"
+                            app:bb_text_gravity="center"
+                            bootstrapbutton:bb_roundedCorners="true"
+                            bootstrapbutton:bb_size="default"
+                            bootstrapbutton:bb_type="default" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="vertical" >
+
+                            <EditText
+                                android:id="@+id/uiSensor2D"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:background="@null"
+                                android:gravity="center_vertical"
+                                android:hint="@string/sensor_2dbar_hint"
+                                android:paddingBottom="16.0dip"
+                                android:paddingTop="16.0dip"
+                                android:textSize="14.0sp" >
+
+                                <!-- android:text="5fffffff"> -->
+                            </EditText>
+                        </LinearLayout>
+                    </TableRow>
+                </TableLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dip"
+                    android:layout_marginLeft="2.0dip"
+                    android:layout_marginRight="2.0dip" >
+
+                    <com.beardedhen.androidbootstrap.BootstrapButton
+                        android:id="@+id/uiSensorSubmit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sensor_submit"
+                        app:bb_text_gravity="center"
+                        bootstrapbutton:bb_roundedCorners="true"
+                        bootstrapbutton:bb_size="default"
+                        bootstrapbutton:bb_type="info" />
+                </LinearLayout>
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="2.0dip"
+                        android:layout_marginRight="2.0dip"
+                        android:background="@color/white"
+                        android:paddingBottom="16.0dip"
+                        android:paddingTop="16.0dip" >
+
+                        <TextView
+                            android:layout_width="100dip"
+                            android:layout_height="match_parent"
+                            android:drawablePadding="10.0dip"
+                            android:gravity="center_vertical"
+                            android:includeFontPadding="false"
+                            android:paddingLeft="15.0dip"
+                            android:text="Wi-Fi名称"
+                            android:textColor="@color/black"
+                            android:textSize="14.0sp" />
+
+                        <!--
+                    <EditText
+                        android:id="@+id/uiSensorSSID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="@string/sensor_wifi_hint"
+                        android:textColor="@color/black"
+                        android:textSize="14.0sp" >
+                    </EditText>
+                        -->
+
+                        <TextView
+                            android:id="@+id/uiSensorSSID"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="@string/sensor_wifi_name_default"
+                            android:textColor="@color/black"
+                            android:textSize="14.0sp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="2.0dip"
+                        android:layout_marginRight="2.0dip"
+                        android:background="@color/white"
+                        android:paddingBottom="16.0dip"
+                        android:paddingTop="16.0dip" >
+
+                        <TextView
+                            android:layout_width="100dip"
+                            android:layout_height="match_parent"
+                            android:drawablePadding="10.0dip"
+                            android:gravity="center_vertical"
+                            android:includeFontPadding="false"
+                            android:paddingLeft="15.0dip"
+                            android:text="@string/sensor_wifi_pw"
+                            android:textColor="@color/black"
+                            android:textSize="14.0sp" />
+
+                        <EditText
+                            android:id="@+id/uiSensorPw"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="@string/sensor_wifi_pw_hint"
+                            android:inputType="textPassword"
+                            android:textColor="@color/black"
+                            android:textSize="14.0sp" >
+
+                            <!-- android:text="rjb123456" > -->
+                        </EditText>
+                    </TableRow>
+                </TableLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dip"
+                    android:layout_marginLeft="2.0dip"
+                    android:layout_marginRight="2.0dip" >
+
+                    <com.beardedhen.androidbootstrap.BootstrapButton
+                        android:id="@+id/uiSensorWifiSubmit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sensor_wifi_regist"
+                        app:bb_text_gravity="center"
+                        bootstrapbutton:bb_roundedCorners="true"
+                        bootstrapbutton:bb_size="default"
+                        bootstrapbutton:bb_type="info" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:paddingLeft="10.0dip"
+                android:paddingRight="10.0dip" >
+
+                <TextView
+                    android:id="@+id/uiSensorListTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10.0dip"
+                    android:layout_marginTop="10.0dip"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="4.0dip"
+                    android:text="@string/sensor_edit"
+                    android:textColor="@color/gray"
+                    android:textSize="14.0sp" />
+                <!--
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2.0dip"
+                android:layout_marginRight="2.0dip"
+                android:background="@color/pink"
+                android:orientation="horizontal"
+                android:paddingBottom="16.0dip"
+                android:paddingTop="16.0dip" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="@string/sensor_id"
+                    android:textColor="@color/gray"
+                    android:textSize="14.0sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="@string/sensor_name"
+                    android:textColor="@color/gray"
+                    android:textSize="14.0sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="@string/sensor_online_status"
+                    android:textColor="@color/gray"
+                    android:textSize="14.0sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="        "
+                    android:textColor="@color/gray"
+                    android:textSize="14.0sp" />
+            </LinearLayout>
+
+          
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_marginLeft="2.0dip"
+            android:layout_marginRight="2.0dip"
+            android:background="@color/white" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/sensor_test_name"
+                android:textColor="@color/black"
+                android:textSize="14.0sp" />
+
+            <me.xiaopan.android.switchbutton.SwitchButton
+                android:id="@+id/switch_main_1"
+                style="@style/switch_button_item"
+                android:layout_weight="1"
+                android:checked="true"
+                app:frameDrawable="@drawable/switch_frame"
+                app:sliderDrawable="@drawable/selector_switch_slider"
+                app:stateDrawable="@drawable/selector_switch_state"
+                app:stateMaskDrawable="@drawable/switch_state_mask"
+                app:withTextInterval="16dp" />
+
+            <RadioButton
+                android:id="@+id/radioButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="@string/sensor_online_status_on" />
+        </TableRow>
+                -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="2.0dip"
+                    android:layout_marginRight="2.0dip"
+                    android:background="@color/white"
+                    android:orientation="vertical" >
+
+                    <ListView
+                        android:id="@+id/uiSensorList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15.0dip" >
+                    </ListView>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="40dip" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

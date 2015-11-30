@@ -1,0 +1,19 @@
+
+.suggestiDiv {
+   position: absolute;
+   color: #565656;
+   width:100px;
+   display:none;
+   left:0px;
+   top:0px;
+   z-Index:999;
+   background-color: #ECFFFF;border:#8BDED2 solid 1px; border-top-style:none;
+}
+
+.suggestiDiv ul{ margin:0px; padding:0px; list-style:none;}
+.suggestiDiv li{margin:0px; padding:0px; list-style:none;}
+.suggestiDiv li a{ display:block; background-color:#FFF; padding-left:6px; line-height:20px;color: #565656; text-decoration:none; font-size:12px; padding-top:4px;}
+.suggestiDiv li a:hover{ background-color:#E7FBFA;}
+.suggestinput{border: 1px solid #8BDED2;
+    height:21px;width:100%;}
+.suggestinput input{ border-style:none;height: 18px;width:96%; border:0px;}

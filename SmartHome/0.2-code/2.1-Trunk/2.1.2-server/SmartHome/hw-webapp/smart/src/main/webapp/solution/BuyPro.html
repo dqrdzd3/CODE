@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="css/fonts/font-awesome.min.css">
+        <link rel="stylesheet" href="css/ui-box.css">
+        <link rel="stylesheet" href="css/ui-base.css">
+        <link rel="stylesheet" href="css/ui-color.css">
+        <link rel="stylesheet" href="css/appcan.icon.css">
+        <link rel="stylesheet" href="css/appcan.control.css">
+        <link rel="stylesheet" href="BuyPro_content/css/main.css">
+    </head>
+    <body class="um-vp " ontouchstart>
+        <div id="page_0" class="up ub ub-ver bc-bg" tabindex="0">
+            <!--header开始-->
+            <div id="header" class="uh bc-text-head ub bc-head">
+                <div class="nav-btn" id="nav-left">
+                    <a href="ULifeMallProShow.html"><div class="fa fa-angle-left fa-2x"></div></a>
+                </div>
+                <h1 class="ut ub-f1 ulev-3 ut-s tx-c" tabindex="0">产品购买页</h1>
+                <div class="nav-btn nav-bt" id="nav-right"></div>
+            </div>
+            <!--header结束--><!--content开始-->
+            <div id="content" class="ub-f1 tx-l">
+                <div class="ub ub-ver">
+            <div class="ub ub-ver c-wh">
+                <div id="listview1"  class="ubt bc-border c-wh">
+
+                </div>
+
+                <div class="uinn-a7">
+                    <div class="uinn-a1 ub ub-ac">
+                        <div class="checkbox umar-r">
+                            <input type="checkbox" class="uabs ub-con">
+                        </div>
+                        <div class="uh-app1 uw-app2 mar-ar1 ub-img" style="background-image:url('BuyPro_content/css/myImg/scImg1.png');"></div>
+                        <div class="ub-f1 ub-pe ub ub-ac">
+                            <div class="ub ub-ver umar-r-esc2 ub-pe">
+                                <div class="ulev-app1 sc-text-warn tx-r">
+                                    ￥195
+                                </div>
+                                <div class="ulev-4 ub-ae tx-r umar-at2 sc-text">
+                                    x1
+                                </div>
+                            </div>
+                            <div class="uba uc-a-app1 bc-border uinput uwh-pSC1 umar-r-esc c-wh">
+                                <input placeholder="2"  type="text" class="uinn-pSC3 t-bla tx-c">
+                            </div>
+                            <div class="uwh-esc umar-r-esc ub-img share"></div>
+                            <div class="uwh-esc ub-img del"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ub ub-ver c-wh umar-at2 b-gra-d6 ubt c-wh">
+
+                <div id="listview2"  class="ubt bc-border sc-bg c-wh">
+
+                </div>
+                <div class="uinn-a7">
+                    <div class="uinn-a1 ubb b-gra-d6 ub ub-ac">
+                        <div class="checkbox umar-r">
+                            <input type="checkbox" class="uabs ub-con">
+                        </div>
+                        <div class="uh-app1 uw-app2 mar-ar1 ub-img" style="background-image:url('BuyPro_content/css/myImg/scImg2.png');"></div>
+                        <div class=" ub-f1 ulev-1 mar-ar1">
+                            室内环境改善电仪表...
+                        </div>
+                        <div class="ub ub-ver ub-ac">
+                            <div class="ub-f1 ub-ac sc-text-warn ufm1 ulev-4">
+                                ￥19.5
+                            </div>
+                            <div class="ub-f1 ub-ac sc-text ufm1 ulev-2 utx-de">
+                                ￥29.5
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uinn-a1 ub ub-ac ubb b-gra-d6">
+                        <div class="checkbox umar-r">
+                            <input type="checkbox" class="uabs ub-con">
+                        </div>
+                        <div class="uh-app1 uw-app2 mar-ar1 ub-img" style="background-image:url('BuyPro_content/css/myImg/scImg3.png');"></div>
+                        <div class=" ub-f1 ulev-1 mar-ar1">
+                            室内环境改善电仪表...
+                        </div>
+                        <div class="ub ub-ver ub-ac">
+                            <div class="ub-f1 ub-ac sc-text-warn ufm1 ulev-4">
+                                ￥19.5
+                            </div>
+                            <div class="ub-f1 ub-ac sc-text ufm1 ulev-2 utx-de">
+                                ￥29.5
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ub ub-ac uinn-a1 ub-ac">
+                        <div class="ub-f1 ub-pe tx-r ub">
+                            <span class="t-gra5 ulev-4">商品合计：</span><span class="sc-text-warn ufm1 ulev-app1">￥198</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+            <!--content结束-->
+
+        </div>
+        <script src="js/appcan.js"></script>
+        <script src="js/appcan.control.js"></script>
+        <script src="js/appcan.listview.js"></script>
+    </body>
+    <script>
+        appcan.ready(function() {
+            appcan.initBounce();
+        })
+        var lv1 = appcan.listview({
+            selector : "#listview1",
+            type : "thinLine",
+            hasIcon : false,
+            hasAngle : false,
+            hasSubTitle : false,
+            multiLine : 1,
+            hasCheckbox : true,
+            align : 'left'
+        });
+        lv1.set([{
+            title : "<div class=\"ub\"><div>德煦电子</div><div class=\"tx-r ub-f1 ulev-4 t-org-c9\">购买</div></div>",
+        }]);
+        var lv2 = appcan.listview({
+            selector : "#listview2",
+            type : "thinLine",
+            hasIcon : false,
+            hasAngle : false,
+            hasSubTitle : false,
+            multiLine : 1,
+            hasCheckbox : true,
+            align : 'left'
+        });
+        lv2.set([{
+            title : "<div class=\"ub\"><div>德思环保</div><div class=\"tx-r ub-f1 ulev-4 t-org-c9\">购买</div></div>",
+        }]);
+
+    </script>
+</html>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hw.hwsafe.register.dao.IC006Dao">
+
+	<sql id="columns">
+        		  c.MA001,c.MA002,c.MA003,c.MA004,c.MA005,c.MA006,c.MA007,c.MA008,
+                  (SELECT DISPLAY FROM SYS_DICTIONARY WHERE KEY LIKE 'jjlx%' AND VALUE=c.MA007) MA007NAME,
+                  (SELECT DISPLAY FROM SYS_DICTIONARY WHERE KEY LIKE 'sshy%' AND VALUE=c.MA008) MA008NAME,
+                  c.MA009,c.MA010,c.MA011,c.MA012,c.MA013,
+                  c.MA014,c.MA015,c.MA016,c.MA017,c.MA018,c.MA019,c.MA020,
+                  decode(c.ma020,'10','未审核','20','审核通过','30','审核未通过') MA020Name,
+                  c.MA021,c.MA022,c.MA023,c.MA024,c.HYMLID,c.HYDLID,c.HYZLID,c.HYXLID,
+                  (SELECT DISPLAY FROM C007 c7 WHERE  c7.id=c.hymlid) HYMLNAME,
+                  (SELECT DISPLAY FROM C007 c7 WHERE  c7.id=c.hydlid) HYDLNAME,
+                  (SELECT DISPLAY FROM C007 c7 WHERE  c7.id=c.hyzlid) HYZLNAME,
+                  (SELECT DISPLAY FROM C007 c7 WHERE  c7.id=c.hyxlid) HYXLNAME
+	</sql>
+
+	<!-- 查询所有记录-->
+	<select id="retrieveAllC006" resultType="com.hw.hwsafe.register.pojo.C006PO">
+		SELECT <include refid="columns"/> FROM C006 c 
+	</select>
+	
+	<!-- 查询顶级父节点-->
+	<select id="getZgdwList" resultType="com.hw.hwsafe.gov.pojo.C002PO">
+		select * from c002 c where  ma017='1'
+	</select>
+	<!-- 根据父节点查询子节点-->
+	<select id="getZgdwData" resultType="com.hw.hwsafe.gov.pojo.C002PO">
+		select * from c002 c where c.ma004=#{id} and c.ma001!=c.ma004 and ma017='1'
+	</select>
+	<!-- 根据OBJID查询 -->
+	<select id="retrieveC006ByID" parameterType="String" resultType="com.hw.hwsafe.register.pojo.C006PO">
+ 		SELECT c.MA001,c.MA002,c.MA003,c.MA004,c.MA005,c.MA006,c.MA007,c.MA008,
+                  (SELECT DISPLAY FROM SYS_DICTIONARY WHERE KEY LIKE 'jjlx%' AND VALUE=c.MA007) MA007NAME,
+                  (SELECT DISPLAY FROM SYS_DICTIONARY WHERE KEY LIKE 'sshy%' AND VALUE=c.MA008) MA008NAME,
+                  c.MA009,c.MA010,c.MA011,c.MA012,c.MA013,
+                  c.MA014,c.MA015,c.MA016,c.MA017,c.MA018,c.MA019,c.MA020,
+                  decode(c.ma020,'10','未审核','20','审核通过','30','审核未通过') MA020Name,
+                  c.MA021,c.MA022,c.MA023,c.MA024,c.HYMLID,c.HYDLID,c.HYZLID,c.HYXLID,
+                  (SELECT DISPLAY FROM C007 c7 WHERE  c7.id=c.hymlid) HYMLNAME,
+                  (SELECT DISPLAY FROM C007 c7 WHERE  c7.id=c.hydlid) HYDLNAME,
+                  (SELECT DISPLAY FROM C007 c7 WHERE  c7.id=c.hyzlid) HYZLNAME,
+                  (SELECT DISPLAY FROM C007 c7 WHERE  c7.id=c.hyxlid) HYXLNAME,
+                  b.ma051 as QYLX,b.ma053 as LSGX
+         FROM C006 c left join b001 b on c.ma003=b.ma003   WHERE c.MA001=#{value} 
+	</select>
+
+	<!-- 根据条件查询所有  -->
+	<select id="retrieveC006ByPO" resultType="com.hw.hwsafe.register.pojo.C006PO">
+		SELECT <include refid="columns"/> FROM C006 c 
+		<if test=" ma002 != null and ma002 != ''">
+			AND c.MA002 = #{ma002}
+		</if>
+		
+	</select>
+		
+		<!-- 根据条件:用户名和密码查询所有  -->
+	<select id="retrieveC006ByNamePassword" resultType="com.hw.hwsafe.register.pojo.C006PO">
+		SELECT  c.MA001,c.MA002,c.MA003,c.MA004,c.MA005,c.MA006,
+                  c.MA007,c.MA008,c.MA009,c.MA010,c.MA011,c.MA012,
+                  c.MA013,c.MA014,c.MA015,c.MA016,c.MA017,c.MA018,
+                  c.MA019,c.MA020,c.MA021,c.MA022,c.MA023,c.MA024,
+                  c.HYMLID,c.HYDLID,c.HYZLID,c.HYXLID
+         FROM C006 c  where 1=1
+		<if test=" ma010 != null and ma010 != ''">
+			AND c.MA010 = #{ma010}
+		</if>
+		<if test=" ma011 != null and ma011 != ''">
+			AND c.MA011 = #{ma011}
+		</if>
+		
+	</select>
+	
+	
+	<!-- 插入-->
+	<insert id="insertC006" parameterType="com.hw.hwsafe.register.pojo.C006PO">
+      INSERT INTO C006(MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,MA017,
+		       MA018,MA019,MA020,MA021,MA022,MA023,MA024,HYMLID,HYDLID,HYZLID,HYXLID) 
+      VALUES(
+         #{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=VARCHAR},#{ma004,jdbcType=VARCHAR},#{ma005,jdbcType=VARCHAR}, 
+         #{ma006,jdbcType=VARCHAR},#{ma007,jdbcType=VARCHAR},#{ma008,jdbcType=VARCHAR},#{ma009,jdbcType=VARCHAR},#{ma010,jdbcType=VARCHAR},
+         #{ma011,jdbcType=VARCHAR},#{ma012,jdbcType=VARCHAR},#{ma013,jdbcType=VARCHAR},#{ma014,jdbcType=VARCHAR},#{ma015,jdbcType=VARCHAR},
+		 #{ma016,jdbcType=TIMESTAMP},#{ma017,jdbcType=VARCHAR},#{ma018,jdbcType=VARCHAR},#{ma019,jdbcType=TIMESTAMP},#{ma020,jdbcType=VARCHAR},
+		 #{ma021,jdbcType=VARCHAR},#{ma022,jdbcType=VARCHAR},#{ma023,jdbcType=VARCHAR},#{ma024,jdbcType=VARCHAR},
+		 #{hymlID,jdbcType=VARCHAR},#{hydlID,jdbcType=VARCHAR},#{hyzlID,jdbcType=VARCHAR},#{hyxlID,jdbcType=VARCHAR}
+       )
+	</insert>
+	
+	
+	<!-- 更新-->
+	<update id="updateC006" parameterType="com.hw.hwsafe.register.pojo.C006PO">
+		UPDATE C006 
+		   SET 
+		       MA002 = #{ma002,jdbcType=VARCHAR},
+		       MA003 = #{ma003,jdbcType=VARCHAR},
+		       MA007 = #{ma007,jdbcType=VARCHAR},
+		       MA008 = #{ma008,jdbcType=VARCHAR},
+		       MA009 = #{ma009,jdbcType=VARCHAR},
+		       MA012 = #{ma012,jdbcType=VARCHAR},
+		       MA013 = #{ma013,jdbcType=VARCHAR},
+		       MA014 = #{ma014,jdbcType=VARCHAR},
+		       MA015 = #{ma015,jdbcType=VARCHAR},
+		       MA017 = #{ma017,jdbcType=VARCHAR},
+		       MA018 = #{ma018,jdbcType=VARCHAR},
+		       MA019 = #{ma019,jdbcType=TIMESTAMP},
+		       MA020 = #{ma020,jdbcType=VARCHAR},
+		       MA021 = #{ma021,jdbcType=VARCHAR},
+		       MA022 = #{ma022,jdbcType=VARCHAR},
+		       MA023 = #{ma023,jdbcType=VARCHAR},
+		       MA024 = #{ma024,jdbcType=VARCHAR},
+		       HYMLID = #{hymlID,jdbcType=VARCHAR},
+		       HYDLID = #{hydlID,jdbcType=VARCHAR},
+		       HYZLID = #{hyzlID,jdbcType=VARCHAR},
+		       HYXLID = #{hyxlID,jdbcType=VARCHAR}
+		      
+		WHERE MA001 = #{ma001}
+	</update>
+		<!-- 核查，政府端核查企业注册信息-->
+	<update id="updateHCC006" parameterType="com.hw.hwsafe.register.pojo.C006PO">
+		UPDATE C006 
+		   SET 
+		
+		       MA017 = #{ma017,jdbcType=VARCHAR},
+		       MA018 = #{ma018,jdbcType=VARCHAR},
+		       MA019 = #{ma019,jdbcType=TIMESTAMP},
+		       MA020 = #{ma020,jdbcType=VARCHAR},
+		       MA024 = #{ma024,jdbcType=VARCHAR}
+		      
+		WHERE MA001 = #{ma001}
+	</update>
+
+	<!-- 根据主键删除企业注册信息,只是把数据作废，不进行物理删除-->
+	<update id="deleteC006ByIds" parameterType="String">
+		update C006 set ma021='0' WHERE MA001 in #{ma001}
+	</update>
+
+	<!-- 根据条件查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		select d.* from(select <include refid="columns"/> 
+		  from C006 c
+		WHERE  c.MA021 = '1'	
+		<if test="po.ma002 != null and po.ma002 != ''">
+			AND c.MA002 like '%'||#{po.ma002}||'%'  
+		</if>		
+		<if test="po.ma003 != null and po.ma003 != ''">
+			AND c.MA003 like '%'||#{po.ma003}||'%'  
+		</if>		
+	) d order by d.ma016 desc		
+	</select>
+	
+	<!-- 依据企业名称统计记录数 -->
+	<select id="countC006ByMa002" parameterType="com.hw.hwsafe.register.pojo.C006PO" resultType="Integer">
+		select count(1) from c006 where ma002=#{ma002} and ma021='1' 
+		<if test="ma001!=null and ma001!=''">
+			and ma001!=#{ma001}
+		</if>
+	</select>
+	
+	<!-- 依据组织机构代码统计记录数 -->
+	<select id="countC006ByMa003" parameterType="com.hw.hwsafe.register.pojo.C006PO" resultType="Integer">
+		select count(1) from c006 where ma003=#{ma003} and ma021='1' 
+		<if test="ma001!=null and ma001!=''">
+			and ma001!=#{ma001}
+		</if>
+	</select>
+	
+	<!-- 依据负责人邮箱统计记录数 -->
+	<select id="countC006ByMa015" parameterType="com.hw.hwsafe.register.pojo.C006PO" resultType="Integer">
+		select count(1) from c006 where ma015=#{ma015} and ma021='1'
+		<if test="ma001!=null and ma001!=''">
+			and ma001!=#{ma001}
+		</if>
+	</select>
+	
+	<!-- 依据用户名统计记录数 -->
+	<select id="countC006ByMa010" parameterType="com.hw.hwsafe.register.pojo.C006PO" resultType="Integer">
+		select count(1) from c006 where ma010=#{ma010} and ma021='1'
+		<if test="ma001!=null and ma001!=''">
+			and ma001!=#{ma001}
+		</if>
+	</select>
+	<!-- 依据手机号码代码统计记录数 -->
+	<select id="countC006ByMa014" parameterType="com.hw.hwsafe.register.pojo.C006PO" resultType="Integer">
+		select count(1) from c006 where ma014=#{ma014} and ma021='1'
+		<if test="ma001!=null and ma001!=''">
+			and ma001!=#{ma001}
+		</if>
+	</select>
+
+	
+</mapper>

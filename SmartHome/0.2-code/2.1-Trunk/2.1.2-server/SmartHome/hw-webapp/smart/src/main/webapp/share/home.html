@@ -1,0 +1,65 @@
+<!DOCTYPE >
+<HTML>
+<HEAD>
+<TITLE>New Document</TITLE>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+<meta name="viewport"
+	content="width=device-width, minimum-scale=1, maximum-scale=1">
+
+<script src="jquery-1.9.1.js"></script>
+
+
+<script type="text/javascript">
+	$(function() {
+
+		$
+				.post(
+						'http://192.168.111.186:8080/smart/hwmobile/smart/weather!getWeatherContent?IP=218.206.237.114',
+						{
+
+						}, function(data) //回传函数
+						{
+							//alert(data.dataObject.weatherinfo.city);
+							$("#city").val(data.dataObject.weatherinfo.city);
+							$("#date_y").val(data.dataObject.weatherinfo.date_y);
+							$("#week").val(data.dataObject.weatherinfo.week);
+							$("#temp1").val(data.dataObject.weatherinfo.temp1);
+							$("#temp2").val(data.dataObject.weatherinfo.temp2);
+							$("#weather1").val(data.dataObject.weatherinfo.weather1);
+							$("#weather2").val(data.dataObject.weatherinfo.weather2);
+							$("#index_d").val(data.dataObject.weatherinfo.index_d);
+							//var myjson='';
+							// eval_r('myjson=' + data + ';');
+
+						});
+
+	});
+</script>
+</HEAD>
+
+<BODY>
+
+
+	<input type="button" class="btn" value="点击" />
+	<a id="keleyivisitorip" class="txt" id="txt"></a>
+	<script type="text/javascript"
+		src="http://tool.keleyi.com/ip/visitoriphost/"></script>
+
+
+	<form>
+		城市： <input type="text" name="city" id="city"/> <br /> 
+		日期： <input type="text" name="date_y" id="date_y"/><br />
+		week： <input type="text" name="week" id="week"/><br />
+		当天温度： <input type="text" name="temp1" id="temp1"/><br />
+		当天天气状况： <input type="text" name="weather1" id="weather1"/><br />
+		
+		明日温度： <input type="text" name="temp2" id="temp2"/><br />
+		明日天气状况： <input type="text" name="weather2" id="weather2"/><br />
+		着装建议： <input type="text" name="index_d" id="index_d" style="width:520px;"/><br />
+	</form>
+</BODY>
+</HTML>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwsensor.permission.dao.ISysRoleDao">
+
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+
+	<!-- 添加 -->
+	<insert id="insertSysRole" parameterType="com.hwsensor.permission.pojo.SysRolePO">
+		INSERT INTO S_ROLE
+		  (UUID, ROLE_NAME, ROLE_CODE, USER_TYPE, ORGAN_UUID, REMARK, CREATOR, CREATE_DATE)
+		VALUES
+			(#{UUID,jdbcType=VARCHAR}, #{ROLE_NAME,jdbcType=VARCHAR}, #{ROLE_CODE,jdbcType=VARCHAR},
+			 #{USER_TYPE,jdbcType=VARCHAR},#{ORGAN_UUID,jdbcType=VARCHAR},
+			#{REMARK,jdbcType=VARCHAR},#{CREATOR,jdbcType=VARCHAR},#{CREATE_DATE,jdbcType=TIMESTAMP})
+	</insert>
+	<!-- 修改 -->
+	<update id="updateSysRole" parameterType="com.hwsensor.permission.pojo.SysRolePO">
+		UPDATE S_ROLE
+		   SET UUID = #{UUID,jdbcType=VARCHAR},
+		       ROLE_NAME = #{ROLE_NAME,jdbcType=VARCHAR},
+		       ROLE_CODE = #{ROLE_CODE,jdbcType=VARCHAR},
+		       USER_TYPE = #{USER_TYPE,jdbcType=VARCHAR},
+		       ORGAN_UUID = #{ORGAN_UUID,jdbcType=VARCHAR},
+		       REMARK = #{REMARK,jdbcType=VARCHAR},
+		       CREATOR = #{CREATOR,jdbcType=VARCHAR},
+		       CREATE_DATE = #{CREATE_DATE,jdbcType=TIMESTAMP}
+		 WHERE UUID = #{UUID,jdbcType=VARCHAR}
+	</update>
+	<!-- 动态修改 -->
+	<update id="updateSysRoleByMap" parameterType="map">
+		UPDATE S_ROLE
+			<set>
+				<if test="UUID != null">
+			   	   UUID = #{UUID,jdbcType=VARCHAR},
+				</if>
+				<if test="ROLE_NAME != null">
+			       ROLE_NAME = #{ROLE_NAME,jdbcType=VARCHAR},
+				</if>
+				<if test="ROLE_CODE != null">
+			       ROLE_CODE = #{ROLE_CODE,jdbcType=VARCHAR},
+				</if>
+				<if test="USER_TYPE != null">
+			      USER_TYPE = #{USER_TYPE,jdbcType=VARCHAR},
+				</if>
+				<if test="ORGAN_UUID != null">
+			       ORGAN_UUID = #{ORGAN_UUID,jdbcType=VARCHAR},
+				</if>
+				<if test="REMARK != null">
+			       REMARK = #{REMARK,jdbcType=VARCHAR},
+				</if>
+				<if test="CREATOR != null">
+			       CREATOR = #{CREATOR,jdbcType=VARCHAR},
+				</if>
+				<if test="CREATE_DATE != null">
+			       CREATE_DATE = #{CREATE_DATE,jdbcType=TIMESTAMP}
+				</if>
+			</set>
+		 WHERE UUID = #{UUID,jdbcType=VARCHAR}
+	</update>
+	
+	<!-- 删除 -->
+	<delete id="deleteSysRole" parameterType="com.hwsensor.permission.pojo.SysRolePO">
+		DELETE S_ROLE WHERE UUID = #{UUID,JDBCTYPE=VARCHAR}
+	</delete>
+	<!-- 动态删除 -->
+	<delete id="deleteSysRoleByMap" parameterType="map">
+		DELETE S_ROLE WHERE 1=1
+			<include refid="queryCondition"/>
+	</delete>
+	<!-- 查询list -->
+	<select id="retrieveByCondition" resultType="com.hwsensor.permission.pojo.SysRolePO" parameterType="map">
+		SELECT UUID, ROLE_NAME, ROLE_CODE, USER_TYPE, ORGAN_UUID, REMARK, CREATOR, CREATE_DATE
+		 FROM S_ROLE WHERE 1=1
+		 	<include refid="queryCondition"/>
+	</select>
+	<!-- 查询po -->
+	<select id="retrieveSysRoleByMap" resultType="com.hwsensor.permission.pojo.SysRolePO" parameterType="map">
+		SELECT UUID, ROLE_NAME, ROLE_CODE, USER_TYPE, ORGAN_UUID, REMARK, CREATOR, CREATE_DATE
+		 FROM S_ROLE WHERE 1=1
+		 	<include refid="queryCondition"/>
+	</select>
+	<!-- 查询分页 -->
+	<select id="retrieveByPage" parameterType="map" resultType="map">
+		SELECT UUID, ROLE_NAME, ROLE_CODE, USER_TYPE, ORGAN_UUID, REMARK, CREATOR, CREATE_DATE
+ 		<trim prefix=",">
+			(SELECT DISPLAY FROM SYS_DICTIONARY WHERE KEY LIKE 'usertype%' AND VALUE=USER_TYPE) USER_TYPE_NAME,
+		   	   CASE USER_TYPE  WHEN 'ENT'  THEN  (SELECT MA002 FROM C001 WHERE MA001 = ORGAN_UUID) 
+	     				   WHEN 'GOV' THEN  (SELECT MA003 FROM C002 WHERE MA001 = ORGAN_UUID)
+	    				   ELSE '系统'
+		       END AS ORGNAME
+		</trim>
+		 FROM S_ROLE
+		 <where>
+			<if test="po.UUID != null and po.UUID != ''">
+	  		   UUID = #{po.UUID,jdbcType=VARCHAR}
+			</if>
+			<if test="po.ROLE_NAME != null and po.ROLE_NAME != ''">
+		       AND ROLE_NAME LIKE '%'||#{po.ROLE_NAME,jdbcType=VARCHAR}||'%'
+			</if>
+			<if test="po.ROLE_CODE != null and po.ROLE_CODE != ''">
+		       AND ROLE_CODE = #{po.ROLE_CODE,jdbcType=VARCHAR}
+			</if>
+			<if test="po.USER_TYPE != null and po.USER_TYPE != ''">
+		       AND USER_TYPE = #{po.USER_TYPE,jdbcType=VARCHAR}
+			</if>
+			<if test="po.ORGAN_UUID != null and po.ORGAN_UUID != ''">
+		       AND ORGAN_UUID = #{po.ORGAN_UUID,jdbcType=VARCHAR}
+			</if>
+			<if test="po.CREATOR != null and po.CREATOR != ''">
+		       AND CREATOR = #{po.CREATOR,jdbcType=VARCHAR}
+			</if>
+			<if test="po.CREATE_DATE != null and po.CREATE_DATE != ''">
+		       AND CREATE_DATE = #{po.CREATE_DATE,jdbcType=TIMESTAMP}
+			</if>
+		 </where>
+		 ORDER BY CREATE_DATE DESC
+	</select>
+	
+	<sql id="queryCondition">
+		<if test="UUID != null and UUID != ''">
+  		   AND UUID = #{UUID,jdbcType=VARCHAR}
+		</if>
+		<if test="ROLE_NAME != null and ROLE_NAME != ''">
+	       AND ROLE_NAME = #{ROLE_NAME,jdbcType=VARCHAR}
+		</if>
+		<if test="ROLE_CODE != null and ROLE_CODE != ''">
+	       AND ROLE_CODE = #{ROLE_CODE,jdbcType=VARCHAR}
+		</if>
+		<if test="USER_TYPE != null and USER_TYPE != ''">
+	       AND USER_TYPE = #{USER_TYPE,jdbcType=VARCHAR}
+		</if>
+		<if test="ORGAN_UUID != null and ORGAN_UUID != ''">
+	       AND ORGAN_UUID = #{ORGAN_UUID,jdbcType=VARCHAR}
+		</if>
+		<if test="REMARK != null and REMARK != ''">
+	       AND REMARK = #{REMARK,jdbcType=VARCHAR}
+		</if>
+		<if test="CREATOR != null and CREATOR != ''">
+	       AND CREATOR = #{CREATOR,jdbcType=VARCHAR}
+		</if>
+		<if test="CREATE_DATE != null and CREATE_DATE != ''">
+	       AND CREATE_DATE = #{CREATE_DATE,jdbcType=TIMESTAMP}
+		</if>
+	</sql>
+
+	<select id="retrieveCountByMap" parameterType="map" resultType="hashmap">
+		SELECT CASE
+		         WHEN (SELECT COUNT(*)
+		                 FROM S_DEPT_ROLE
+		                WHERE ROLE_UUID = #{UUID}) > 0 THEN
+		          '此角色有部门正在使用，不允许删除！'
+		         WHEN (SELECT COUNT(*)
+		                 FROM S_USER_ROLE
+		                WHERE ROLE_UUID = #{UUID}) > 0 THEN
+		          '此角色有用户正在使用，不允许删除！'
+		       END AS MSG
+		  FROM DUAL
+	</select>	
+	
+	<delete id="deleteRoleAndRelatedByMap" parameterType="map">
+		BEGIN
+		  DELETE FROM S_ROLE WHERE UUID IN <foreach collection="ids" open="(" close=")" item="id" separator=",">'${id}'</foreach>;
+		  DELETE FROM S_ROLE_PERM WHERE ROLE_UUID IN <foreach collection="ids" open="(" close=")" item="id"  separator=",">'${id}'</foreach>;
+		END;
+	</delete>
+</mapper>

@@ -1,0 +1,28 @@
+/*CSS defaultPageCss style pagination*/
+
+.defaultPageCss {
+    PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; MARGIN: 6px; PADDING-TOP: 3px; TEXT-ALIGN: center; font-size:12px;
+}
+.defaultPageCss A {
+    BORDER: #eee 1px solid; PADDING-RIGHT: 5px;  PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; MARGIN: 2px;  COLOR: #03B495; PADDING-TOP: 2px;  TEXT-DECORATION: none
+}
+.defaultPageCss A:hover {
+    BORDER: #4BCDB9 1px solid;COLOR: #00A386;
+}
+.defaultPageCss A:active {
+    BORDER: #999 1px solid; COLOR: #666; 
+}
+.defaultPageCss .current {
+    BORDER: #00997E 1px solid;
+    PADDING-RIGHT: 5px;
+    PADDING-LEFT: 5px;
+    FONT-WEIGHT: bold;
+    PADDING-BOTTOM: 2px;
+    MARGIN: 2px;
+    COLOR: #fff;
+    PADDING-TOP: 2px;
+    BACKGROUND-COLOR: #4BCDB9;
+}
+.defaultPageCss .disabled {
+    BORDER: #eee 1px solid; PADDING-RIGHT: 5px;  PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; MARGIN: 2px;  COLOR: #ddd; PADDING-TOP: 2px; 
+}

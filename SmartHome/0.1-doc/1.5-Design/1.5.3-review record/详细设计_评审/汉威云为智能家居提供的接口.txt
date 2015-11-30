@@ -1,0 +1,30 @@
+汉威云返回给业务系统的json串
+
+传感器报警信息 {"sensorId":"1111","alertStatus":"不正常","alertType":"温度","alertValue":"60","creatTime":"2014-06-25 13:45"}
+
+传感器明细信息 
+{"sensorList":[
+{"air":{"sensorId":"110","temperature":"34","humidity":"15","co2":"12","pm25":"155","createTime":"2014-06-25 13:45"},
+ "gas":{"sensorId":"199","switchStatus":"关","co":"14","ch4":"12","createTime":"2014-06-25 13:45"}},
+
+{"air":{"sensorId":"110","temperature":"34","humidity":"15","co2":"12","pm25":"155","createTime":"2014-06-25 13:45"},
+ "gas":{"sensorId":"199","switchStatus":"关","co":"14","ch4":"12","createTime":"2014-06-25 13:45"}}]
+}
+
+历史明细信息和历史操作信息
+{"sensorList":[
+{"air":{"sensorId":"110","temperature":"34","humidity":"15","co2":"12","pm25":"155","createTime":"2014-06-25 13:45"},
+"gas":{"sensorId":"199","switchStatus":"关","co":"14","ch4":"12","createTime":"2014-06-25 13:45"},
+"alert":{"sensorId":"1111","alertStatus":"不正常","alertType":"温度","alertValue":"60","creatTime":"2014-06-25 13:45"}},
+
+
+{"air":{"sensorId":"110","temperature":"34","humidity":"15","co2":"12","pm25":"155","createTime":"2014-06-25 13:45"},
+"gas":{"sensorId":"199","switchStatus":"关","co":"14","ch4":"12","createTime":"2014-06-25 13:45"},
+"alert":{"sensorId":"1111","alertStatus":"不正常","alertType":"温度","alertValue":"60","creatTime":"2014-06-25 13:45"}}
+]}
+
+历史报警信息 
+{"sensorList":[
+{"alert":{"sensorId":"1111","alertStatus":"不正常","alertType":"温度","alertValue":"60","creatTime":"2014-06-25 13:45"}},
+{"alert":{"sensorId":"1111","alertStatus":"不正常","alertType":"温度","alertValue":"60","creatTime":"2014-06-25 13:45"}}
+]}

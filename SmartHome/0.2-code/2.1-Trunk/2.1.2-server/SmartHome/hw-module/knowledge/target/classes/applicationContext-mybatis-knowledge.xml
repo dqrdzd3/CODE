@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- knowledge mapper package -->
+    <bean id="k001Dao" class="com.hw.hwsafe.knowledge.dao.impl.K001DaoImpl"/>
+    
+    
+    
+    <!-- 暂时不用 -->
+	<bean id="k003Dao" class="org.mybatis.spring.mapper.MapperFactoryBean">   
+	    <property name="mapperInterface" value="com.hw.hwsafe.knowledge.dao.IK003Dao" />  
+	</bean>
+	
+	<bean id="k004Dao" class="org.mybatis.spring.mapper.MapperFactoryBean">   
+	    <property name="mapperInterface" value="com.hw.hwsafe.knowledge.dao.IK004Dao" />  
+	</bean>
+	
+	<bean id="k006Dao" class="org.mybatis.spring.mapper.MapperFactoryBean">   
+	    <property name="mapperInterface" value="com.hw.hwsafe.knowledge.dao.IK006Dao" />  
+	</bean>
+	
+	<bean id="k007Dao" class="org.mybatis.spring.mapper.MapperFactoryBean">   
+	    <property name="mapperInterface" value="com.hw.hwsafe.knowledge.dao.IK007Dao" />  
+	</bean>
+	<bean id="k008Dao" class="org.mybatis.spring.mapper.MapperFactoryBean">   
+	    <property name="mapperInterface" value="com.hw.hwsafe.knowledge.dao.IK008Dao" />  
+	</bean>
+	<bean id="k00801Dao" class="org.mybatis.spring.mapper.MapperFactoryBean">   
+	    <property name="mapperInterface" value="com.hw.hwsafe.knowledge.dao.IK00801Dao" />  
+	</bean>
+	<bean id="k0080101Dao" class="org.mybatis.spring.mapper.MapperFactoryBean">   
+	    <property name="mapperInterface" value="com.hw.hwsafe.knowledge.dao.IK0080101Dao" />  
+	</bean>
+	
+	<bean id="taccidentcaseDao" class="org.mybatis.spring.mapper.MapperFactoryBean">   
+	    <property name="mapperInterface" value="com.hw.hwsafe.knowledge.dao.ITaccidentcaseDao" />  
+	</bean>
+	
+	<bean id="tcorpambDao" class="org.mybatis.spring.mapper.MapperFactoryBean">   
+	    <property name="mapperInterface" value="com.hw.hwsafe.knowledge.dao.ITcorpambDao" />  
+	</bean>
+	
+	<bean id="tmsdsDao" class="org.mybatis.spring.mapper.MapperFactoryBean">   
+	    <property name="mapperInterface" value="com.hw.hwsafe.knowledge.dao.ITmsdsDao" />  
+	</bean>
+	
+	<bean id="tregulationDao" class="org.mybatis.spring.mapper.MapperFactoryBean">   
+	    <property name="mapperInterface" value="com.hw.hwsafe.knowledge.dao.ITregulationDao" />  
+	</bean>
+	
+</beans>

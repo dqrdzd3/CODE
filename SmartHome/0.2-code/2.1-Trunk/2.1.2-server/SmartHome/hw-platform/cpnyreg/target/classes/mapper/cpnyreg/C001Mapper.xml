@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hw.hwsafe.cpnyreg.dao.IC001Dao">
+
+	<!-- 根据主键查询 -->
+	<select id="retrieveC001ByMA001" parameterType="String" resultType="com.hw.hwsafe.cpnyreg.pojo.C001PO">
+		SELECT * FROM C001 WHERE MA001=#{MA001} and MA017='1'
+	</select>
+	
+	<!-- 添加企业注册信息 -->
+	<insert id="insertC001" parameterType="com.hw.hwsafe.cpnyreg.pojo.C001PO">
+      INSERT INTO C001(MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA015,MA016,MA017
+	   ) 
+      VALUES(
+         #{MA001,jdbcType=VARCHAR},#{MA002,jdbcType=VARCHAR},#{MA003,jdbcType=VARCHAR},#{MA004,jdbcType=VARCHAR},#{MA005,jdbcType=VARCHAR},#{MA006,jdbcType=VARCHAR},
+         #{MA007,jdbcType=VARCHAR},#{MA008,jdbcType=VARCHAR},#{MA009,jdbcType=INTEGER},#{MA010,jdbcType=VARCHAR},#{MA011,jdbcType=VARCHAR},#{MA012,jdbcType=TIMESTAMP},
+         #{MA015,jdbcType=VARCHAR},#{MA016,jdbcType=VARCHAR},#{MA017,jdbcType=VARCHAR}
+       )
+	</insert>
+	
+	<!-- 更新企业注册信息 -->
+	<update id="updateC001" parameterType="com.hw.hwsafe.cpnyreg.pojo.C001PO">
+		UPDATE C001 
+		set	
+		 	MA002=#{MA002,jdbcType=VARCHAR},MA003=#{MA003,jdbcType=VARCHAR},MA004=#{MA004,jdbcType=VARCHAR},MA005=#{MA005,jdbcType=VARCHAR},
+		 	MA006=#{MA006,jdbcType=VARCHAR},MA007=#{MA007,jdbcType=VARCHAR},
+     		MA008=#{MA008,jdbcType=VARCHAR},MA009=#{MA009,jdbcType=INTEGER},MA010=#{MA010,jdbcType=VARCHAR},
+     		MA013=#{MA013,jdbcType=VARCHAR},MA014=#{MA014,jdbcType=TIMESTAMP},MA015=#{MA015,jdbcType=VARCHAR},MA016=#{MA016,jdbcType=VARCHAR}
+		WHERE MA001 = #{MA001} and ma017='1'
+	</update>
+
+	<!-- 根据主键删除企业注册信息-->
+	<update id="deleteC001ByIds" parameterType="java.util.Map">
+		update C001 set ma017='0' WHERE MA001 in 
+		<foreach collection="ids" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</update>
+	
+	<!-- 根据条件查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		SELECT * FROM C001 
+		<where>
+			MA017='1'
+			<if test="po.MA002 != null and po.MA002 != ''">
+				and MA002 like '%' || #{po.MA002} || '%'
+			</if>
+			<if test="po.MA003 != null and po.MA003 != ''">
+				AND MA003 like '%' || #{po.MA003} || '%'
+			</if>
+		</where>
+		order by MA012 desc
+	</select>
+	
+	<!-- 依据企业名称统计记录数 -->
+	<select id="countInstanceByMa002" parameterType="com.hw.hwsafe.cpnyreg.pojo.C001PO" resultType="Integer">
+		select count(1) from c001 where ma002=#{MA002} and MA017='1'
+		<if test="MA001!=null and MA001!=''">
+			and ma001!=#{MA001}
+		</if>
+	</select>
+	
+	<!-- 依据组织机构代码统计记录数 -->
+	<select id="countC001ByMa003" parameterType="com.hw.hwsafe.cpnyreg.pojo.C001PO" resultType="Integer">
+		select count(1) from c001 where ma003=#{MA003} and MA017='1'
+		<if test="MA001!=null and MA001!=''">
+			and ma001!=#{MA001}
+		</if>
+	</select>
+	
+	<!-- 依据邮箱统计记录数 -->
+	<select id="countC001ByMa007" parameterType="com.hw.hwsafe.cpnyreg.pojo.C001PO" resultType="Integer">
+		select count(1) from c001 where ma007=#{MA007} and MA017='1'
+		<if test="MA001!=null and MA001!=''">
+			and ma001!=#{MA001}
+		</if>
+	</select>
+	
+	<!-- 获取所有获取所有C001PO实例集合 -->
+	<select id="retrieveAll" resultType="com.hw.hwsafe.cpnyreg.pojo.C001PO">
+		SELECT * FROM C001 where MA017='1' order by MA012 desc
+	</select>
+	
+	<!-- 获取所有有效的C001PO实例集合 -->
+	<select id="retrieveAllValid" resultType="com.hw.hwsafe.cpnyreg.pojo.C001PO">
+		SELECT * FROM C001 where MA017='1' and MA008='10' order by MA012 desc
+	</select>
+	
+
+	<!-- 获取所有有效的C001PO实例集合 -->
+	<select id="retrieveOrgan" resultType="map">
+    	select c1. ma001 AS corpId, c1.ma002 AS corpName ,c1.ma004 AS govId,c2.ma003 AS govName ,c2.ma004 AS govPId  from c001 c1 left join c002 c2 on c1.Ma004 = c2.ma001
+    	where c1.MA017='1' and c1.MA008='10' order by c1.MA012 desc
+	</select>	
+	
+
+	<!-- 按条件查询企业列表 -->
+	<select id="retrieveByCondition" resultType="com.hw.hwsafe.cpnyreg.pojo.C001PO" parameterType="map">
+		<if test="endRow != null and endRow !=''">
+			SELECT B.* FROM (
+				SELECT A.*,ROWNUM ROWINDEX FROM (
+		</if>
+			
+				SELECT MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008, MA009,
+					MA010, MA011, MA012, MA013, MA014, MA015, MA016, MA017, MA018, MA019
+				FROM C001
+				WHERE MA017='1' AND MA008='10'
+					AND	
+					(
+					MA002 like #{key}||'%'
+					OR MA003 like #{key}||'%'
+					OR MA015 like #{key}||'%'
+					OR MA016 like #{key}||'%'
+					)
+			<if test="endRow != null and endRow !=''">
+					) A 
+				WHERE ROWNUM <![CDATA[<=]]> #{endRow}
+				
+				) B WHERE ROWINDEX <![CDATA[>=]]> #{startRow}
+			</if>
+			ORDER BY MA012
+	</select>
+	
+	<select id="retrieveCountByCondition" resultType="java.lang.Integer" parameterType="map">
+		SELECT COUNT(*)
+				FROM C001
+				WHERE MA017='1' AND MA008='10'
+					AND	
+					(
+					MA002 like #{key}||'%'
+					OR MA003 like #{key}||'%'
+					OR MA015 like #{key}||'%'
+					OR MA016 like #{key}||'%'
+					)
+	</select>
+	
+	<!-- 用组织机构代码查询企业登记信息 -->
+	<select id="queryC001POByMa003" parameterType="String" resultType="com.hw.hwsafe.cpnyreg.pojo.C001PO">
+		select ma001,ma002,ma003,ma004,ma005,ma006,ma007,ma008,ma009,ma010,ma015,ma016
+			from c001 where ma017='1'		
+				AND ma003 = #{value}
+	</select>
+	
+	<!-- 通过ID获取登录人数上限 -->
+	<select id="retrieveMa009ByMa001" parameterType="String" resultType="Integer">
+		select MA009 from C001 where MA001 = #{value}
+	</select>
+</mapper>

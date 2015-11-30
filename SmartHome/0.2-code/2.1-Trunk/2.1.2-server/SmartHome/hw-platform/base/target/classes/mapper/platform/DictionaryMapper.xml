@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hw.hwsafe.platform.dao.IDictionaryDao">
+
+	<!-- 根据主键查询 -->
+	<select id="retrieveDictionaryById" parameterType="String" resultType="com.hw.hwsafe.platform.pojo.DictionaryPO">
+		SELECT * FROM sys_dictionary WHERE del_flag='1' and id=#{id}
+	</select>
+	
+	<!-- 根据唯一性的key值找到一条数据项 -->
+	<select id="retrieveDictByKey" parameterType="String" resultType="com.hw.hwsafe.platform.pojo.DictionaryPO">
+		SELECT * FROM sys_dictionary WHERE del_flag='1' and key=#{value}
+	</select>
+	
+	<!-- 依据查询条件获取字典列表 -->
+	<select id="retrieveDictByPO" parameterType="com.hw.hwsafe.platform.pojo.DictionaryPO" resultType="com.hw.hwsafe.platform.pojo.DictionaryPO">
+		SELECT * FROM sys_dictionary 
+		<where> del_flag='1'
+			<if test="id != null and id != ''">
+				ID = #{id}
+			</if>
+			<if test="parentid != null and parentid != ''">
+				AND PARENTID = #{parentid}
+			</if>
+		</where>
+		order by ordernum asc
+	</select>
+	
+	<!-- 获取key下面的所有子项 -->
+	<select id="retrieveChildDictListByKey" parameterType="String" resultType="com.hw.hwsafe.platform.pojo.DictionaryPO">
+		select * from sys_dictionary where del_flag='1' 
+			and key like '' || #{key} || '%' and key != #{key} 
+			order by parentid desc,ordernum asc
+	</select>
+	
+	<!-- 依据代码统计字典数据条数 -->
+	<select id="countDictByKey" parameterType="com.hw.hwsafe.platform.pojo.DictionaryPO" resultType="Integer">
+		SELECT count(1) FROM sys_dictionary WHERE del_flag='1' and key=#{key}
+		<if test="id!=null and id !=''">
+			and id!=#{id}
+		</if>
+	</select>
+	
+	<!-- 统计父节点下value被使用的记录条数。指定id或没有父节点的不在统计范围  -->
+	<select id="countDictByValueUnderParentNode" parameterType="com.hw.hwsafe.platform.pojo.DictionaryPO" resultType="Integer">
+		SELECT count(1) FROM sys_dictionary WHERE del_flag='1' and value=#{value}
+		<if test="id!=null and id !=''">
+			and id!=#{id}
+		</if>
+		<if test="parentid!=null and parentid!=''">
+			and parentid=#{parentid}
+		</if>
+		<if test="parentid==null or parentid==''">
+			and 1=2
+		</if>
+	</select>
+	
+	<!-- 统计排序号被多少条字典项使用 -->
+	<select id="countDictByOrdernum" parameterType="java.util.Map" resultType="Integer">
+		SELECT count(1) FROM sys_dictionary where del_flag='1' and ordernum=#{ordernum,jdbcType=INTEGER} 
+			<if test="parentid != null and parentid != ''">
+				AND parentid = #{parentid,jdbcType=VARCHAR} and parentid!=id
+			</if>
+			<if test="parentid == null or parentid == ''">
+				AND parentid=id
+			</if>
+			<if test="id != null and id != ''">
+				AND id!=#{id,jdbcType=VARCHAR}
+			</if>
+	</select>
+	
+	<!-- 添加企业注册信息 -->
+	<insert id="insertDictionary" parameterType="com.hw.hwsafe.platform.pojo.DictionaryPO">
+      INSERT INTO sys_dictionary(id,key,value,display,describe,ordernum,parentid,levelnum,del_flag) 
+      VALUES(
+         #{id,jdbcType=VARCHAR},#{key,jdbcType=VARCHAR},#{value,jdbcType=VARCHAR},#{display,jdbcType=VARCHAR},#{describe,jdbcType=VARCHAR},
+         #{ordernum,jdbcType=INTEGER},#{parentid,jdbcType=VARCHAR},#{levelnum,jdbcType=VARCHAR},#{delFlag,jdbcType=VARCHAR}
+       )
+	</insert>
+	
+	<!-- 更新企业注册信息 -->
+	<update id="updateDictionary" parameterType="com.hw.hwsafe.platform.pojo.DictionaryPO">
+		UPDATE sys_dictionary 
+			set	
+		 	key=#{key,jdbcType=VARCHAR},value=#{value,jdbcType=VARCHAR},display=#{display,jdbcType=VARCHAR},describe=#{describe,jdbcType=VARCHAR},
+		 	ordernum=#{ordernum,jdbcType=INTEGER}
+		WHERE del_flag='1' and id = #{id}
+	</update>
+	
+	<!-- 排序自增 -->
+	<update id="updateOrdernumIncrease" parameterType="java.util.Map">
+		update sys_dictionary set ordernum=ordernum+1 where del_flag='1' and ordernum >= #{ordernum,jdbcType=INTEGER}
+			<if test="parentid != null and parentid != ''">
+				AND parentid = #{parentid,jdbcType=VARCHAR} and parentid!=id
+			</if>
+			<if test="parentid == null or parentid == ''">
+				AND parentid=id
+			</if>
+	</update>
+
+	<!-- 根据主键删除企业注册信息-->
+	<update id="deleteDictionaryByIds" parameterType="java.util.Map">
+		update sys_dictionary set del_flag='0' where id in 
+		<foreach collection="ids" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</update>
+	
+	<!-- 根据主键删除企业注册信息-->
+	<update id="deleteChildDictByKey" parameterType="String">
+		update sys_dictionary set del_flag='0' where key like '' || #{key} || '%' and key != #{key}
+	</update>
+	
+	<!-- 统计子节点数量 -->
+	<select id="countChildDictByIds" parameterType="String" resultType="Integer">
+		select count(1) from sys_dictionary where del_flag='1' and id!=parentid and parentid in #{value}
+	</select>
+	
+	<!-- 根据条件查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		SELECT * FROM sys_dictionary 
+		<where> del_flag='1'
+			<if test="po.parentid != null and po.parentid != ''">
+				AND parentid = #{po.parentid} and parentid!=id
+			</if>
+			<if test="po.parentid == null or po.parentid == ''">
+				and parentid=id
+			</if>
+			
+			<if test="po.key != null and po.key != ''">
+				and key like '%' || #{po.key} || '%'
+			</if>
+			<if test="po.display != null and po.display != ''">
+				and display like '%' || #{po.display} || '%'
+			</if>
+		</where>
+		order by ordernum desc
+	</select>
+</mapper>

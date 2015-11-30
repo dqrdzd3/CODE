@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res/com.hw.one.mobile.platform"
+    xmlns:fontawesometext="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ui_setting_bg"
+     >
+<LinearLayout
+        android:id="@+id/layout_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+         android:background="@android:color/white"
+        android:orientation="vertical" >
+<LinearLayout
+ android:paddingLeft="10.0dip"
+        android:paddingRight="10.0dip" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+         android:background="@android:color/white"
+        android:orientation="vertical" >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#2ea3fe" />
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/uiMainTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="7dp"
+                android:text="忘记密码"
+                android:textColor="#999999"
+                android:textSize="24sp" />
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#ebebeb" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10.0dip"
+        android:layout_marginTop="10.0dip"
+        android:gravity="center_vertical"
+        android:paddingLeft="4.0dip"
+        
+        android:text=""
+        android:textColor="@color/gray"
+        android:textSize="16.0sp" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         android:paddingLeft="10.0dip"
+        android:paddingRight="10.0dip" >
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_marginLeft="2.0dip"
+            android:layout_marginRight="2.0dip"
+            android:background="@color/white"
+            android:paddingBottom="16.0dip"
+            android:paddingTop="16.0dip" >
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="match_parent"
+                android:drawablePadding="10.0dip"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingLeft="17.0dip"
+                android:text="手机号"
+                android:textColor="@color/black"
+                android:textSize="16.0sp" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:inputType="phone"
+                android:hint="帐号"
+                android:textSize="16.0sp" >
+
+            </EditText>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_marginLeft="2.0dip"
+            android:layout_marginRight="2.0dip"
+            android:background="@color/white"
+            android:paddingBottom="16.0dip"
+            android:paddingTop="16.0dip" >
+
+            <TextView
+                android:layout_width="160dip"
+                android:layout_height="match_parent"
+                android:drawablePadding="10.0dip"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingLeft="17.0dip"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="16.0sp" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/uiSensorScan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="sendCode"
+                android:text="获取验证码"
+                bootstrapbutton:bb_roundedCorners="true"
+                bootstrapbutton:bb_size="default"
+                bootstrapbutton:bb_type="success" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_marginLeft="2.0dip"
+            android:layout_marginRight="2.0dip"
+            android:background="@color/white"
+            android:paddingBottom="16.0dip"
+            android:paddingTop="16.0dip" >
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="match_parent"
+                android:drawablePadding="10.0dip"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingLeft="17.0dip"
+                android:text="验证码"
+                android:textColor="@color/black"
+                android:textSize="16.0sp" />
+
+            <EditText
+                android:id="@+id/code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="输入短信验证码"
+                android:inputType="number"
+                android:textSize="16.0sp" >
+
+            </EditText>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_marginLeft="2.0dip"
+            android:layout_marginRight="2.0dip"
+            android:background="@color/white"
+            android:paddingBottom="16.0dip"
+            android:paddingTop="16.0dip" >
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="match_parent"
+                android:drawablePadding="10.0dip"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingLeft="17.0dip"
+                android:text="@string/pw_new"
+                android:textColor="@color/black"
+                android:textSize="16.0sp" />
+
+            <EditText
+                android:id="@+id/chgPwNew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="至少六位"
+                android:inputType="textPassword"
+                android:textSize="16.0sp" >
+            </EditText>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_marginLeft="2.0dip"
+            android:layout_marginRight="2.0dip"
+            android:background="@color/white"
+            android:paddingBottom="16.0dip"
+            android:paddingTop="16.0dip" >
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="match_parent"
+                android:drawablePadding="10.0dip"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingLeft="17.0dip"
+                android:text="@string/pw_new_repeat"
+                android:textColor="@color/black"
+                android:textSize="16.0sp" />
+
+            <EditText
+                android:id="@+id/pwNewRepeat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/pw_new_repeat_hint"
+                android:inputType="textPassword"
+                android:textSize="16.0sp" >
+            </EditText>
+        </TableRow>
+    </TableLayout>
+            </LinearLayout> 
+ <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dip" 
+            android:layout_below="@+id/layout_top"
+              android:padding="10.0dip"
+        android:paddingRight="10.0dip" >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/changepw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="提   交"
+                app:bb_text_gravity="center"
+                bootstrapbutton:bb_roundedCorners="true"
+                bootstrapbutton:bb_size="default"
+                bootstrapbutton:bb_type="info"
+                android:onClick="doChange"
+                />
+        </LinearLayout>
+
+
+</RelativeLayout>

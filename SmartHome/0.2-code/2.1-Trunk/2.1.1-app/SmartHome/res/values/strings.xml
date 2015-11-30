@@ -1,0 +1,572 @@
+﻿<resources>
+
+    <string name="app_name">空气电台</string>
+    <string name="accountId">zengfan1190@163.com</string>
+    <string name="mobile_no">13938578189</string>
+    <!-- 登录 开始 -->
+    <string name="login_regist"><a href="">用户注册</a></string>
+    <string name="login_regist_user">用户注册</string>
+    <string name="login_regist_nick">昵称</string>
+    <string name="login_reg_email">邮箱</string>
+    <string name="login_reg_emaila">邮箱地址</string>
+    <string name="login_reg_confirm">再次输入确认</string>
+    <string name="login_reg_passconfirm">密码确认</string>
+    <string name="login_reg_tel">填写手机号</string>
+    <string name="login_reg_agree">同意空气电台协议</string>
+    <string name="login_email_address">账号</string>
+    <string name="login_email_address_hint">用户注册邮箱</string>
+    <string name="login_changepw_update">修改</string>
+    <string name="login_forgetpw_get_chk_code">短信验证</string>
+    <string name="login_forgetpw_chk_code">验证码</string>
+    <string name="login_forgetpw_chk_code_hint">输入短信验证码</string>
+    <string name="login_forgetpw_title">忘记密码</string>
+    <string name="login_forgetpw_passwd_hint">至少六位                                                            </string>
+    <string name="login_forgetpw_passwd2_hint">新密码</string>
+    <string name="login_forgetpw_submit">提   交</string>
+    <string name="email">用户邮箱</string>
+    <string name="email_form">用户邮箱</string>
+    <string name="login_pw">密码</string>
+    <string name="login_save_pw">保存密码</string>
+    <string name="login">登录</string>
+    <string name="login_corp">北京威果智能科技有限公司</string>
+    <string name="login_city">郑州市</string>
+    <string name="login_country">中国</string>
+    <string name="login_loc">高新区金梭路169号</string>
+    <string name="login_new_user">新用户</string>
+    <string name="login_banquan">版权所有</string>
+    <string name="login_remember">记住密码</string>
+    <string name="login_tel">手机号</string>
+    <string name="login_forget_pw"><a href="">忘记密码</a></string>
+    <string name="login_reg_pass_max"><a href="">最长为16位</a></string>
+    <string name="login_reg_pass_min"><a href="">最短为6位</a></string>
+    <string name="login_forget_code"><a href="">验证码格式错误</a></string>
+    <string name="infor_null"><a href="">不能为空</a></string>
+    <string name="phone_wrong"><a href="">手机号不合法</a></string>
+    <string name="code"><a href="">验证码</a></string>
+    <string name="send_code"><a href="">请求验证码</a></string>
+    <string name="login_instruction">不了解智能家居？<a href="http://www.hanwei.cn">请点击</a></string>
+    <!-- 登录 结束 -->
+    <!-- 关于  开始 -->
+    <string name="abouttitle">关于</string>
+    <string name="about">汉威电子智能家居，可以监控各种传感器的信息</string>
+    <string name="version">版本 1.0</string>
+    <string name="aboutweb">wap.hanwei.cn</string>
+    <string name="contactsus">Copyright©Since 1998 汉威电子</string>
+    <string name="moreapp">更多来自汉威的应用</string>
+    <!-- 关于  结束 -->
+    <!-- 帮助  开始 -->
+    <string name="help_center">帮助中心</string>
+    <string name="commonProblem">常见问题</string>
+    <string name="onlineManual">在线说明书</string>
+    <string name="onlineVideo">在线视频</string>
+    <string name="feedback">意见反馈</string>
+    <!-- 帮助  结束 -->
+    <!-- 配置中心 开始 -->
+    <string name="account_info">我的信息</string>
+    <string name="setting_ques">调查问卷</string>
+    <string name="account_setting">账号管理</string>
+    <string name="push_setting">系统通知</string>
+    <string name="push_alerm">报警推送</string>
+    <string name="push_warn">预警推送</string>
+    <string name="push_ordinary">日常推送</string>
+    <string name="device_setting">配置向导</string>
+    <!-- 配置中心 结束 -->
+    <!-- 讨论区 开始 -->
+    <string name="ui_discuss_title">我要吐槽</string>
+    <string name="ui_discuss_detail_title">吐槽版面</string>
+    <!-- 讨论区 结束 -->
+    <!-- 账号管理 开始 -->
+    <string name="account_nickname">昵称</string>
+    <string name="account_name">账号</string>
+    <string name="account"><font color="#ff0000">*</font>账号</string>
+    <string name="account_pass"><font color="#ff0000">*</font>密码</string>
+    <string name="account_passa"><font color="#ff0000">*</font>密码确认</string>
+    <string name="account_hint">手机号</string>
+    <string name="mobile">手机号</string>
+    <string name="mobile_hint">报警短信通知</string>
+    <string name="chg_pw">修改密码</string>
+    <string name="pw">现密码</string>
+    <string name="pw_hint">登录用户密码</string>
+    <string name="pw_new">新密码</string>
+    <string name="pw_new_hint">至少六位</string>
+    <string name="pw_new_repeat">重复密码</string>
+    <string name="pw_new_repeat_hint">重复新密码</string>
+    <!-- 账号管理  结束 -->
+    <!-- 场景管理 开始 -->
+    <string name="scene_add_name_tip">在这里您可以设置场景的名称</string>
+    <string name="scene_add_type_tip">请选择场景的类型</string>
+    <string name="scene_add_res_success">添加场景成功</string>
+    <string name="scene_add_res_fail">添加场景失败</string>
+    <string name="scene_update_res_success">修改场景成功</string>
+    <string name="scene_update_res_fail">修改场景失败</string>
+    <string name="scene_delete_res_success">删除场景成功</string>
+    <string name="scene_delete_res_fail">删除场景失败</string>
+    <string name="scene_delete_server_err">网络连接异常,服务器没有返回有效数据</string>
+    <!-- 场景管理  结束 -->
+    <!-- home 开始 -->
+    <string name="home_scene_sensor_btn_setting">设备选项</string>
+    <string name="home_scene_sensor_btn_detail">进入设备</string>
+    <string name="home_scene_sensor_id">设备ID</string>
+    <string name="home_scene_delete">删除</string>
+    <string name="home_title_list">场景</string>
+    <string name="home_title_detail">设备</string>
+    <string name="home_all_nation_rank">全国用户排名</string>
+    <string name="home_last_7_days">过去七天</string>
+    <string name="home_sensor_realtime">室内指数</string>
+    <string name="home_sensor_type">历史数据</string>
+    <string name="home_sensor_solution">健康小贴士</string>
+    <string name="home_score">85分</string>
+    <string name="home_air_index">当前室内气体指数</string>
+    <string name="test_percentage">13%</string>
+    <string name="test_value">2.4</string>
+    <string name="test_value2">4000</string>
+    <string name="test_temperature">27°C</string>
+    <string name="feel_temperature">感觉温度</string>
+    <string name="temperature_info">6°C feels like 4°C</string>
+    <string name="home_temperature">温度</string>
+    <string name="home_humidity">湿度</string>
+    <string name="home_voc">VOC</string>
+    <string name="home_co">一氧化碳</string>
+    <string name="home_co2">CO₂</string>
+    <string name="home_ch4">天然气</string>
+    <string name="home_pm25">PM2.5</string>
+    <string name="home_history_tab_last24hours">过去24小时</string>
+    <string name="home_history_tab_last7Days">过去7天</string>
+    <string name="home_history_tab_last30Days">过去30天</string>
+    <string name="home_hint">今天家里也很热，该装空调了。</string>
+    <string name="home_equipment_status">设备运行正常</string>
+    <string name="home_history">历史记录</string>
+    <string name="home_good">适宜</string>
+    <string name="home_drying">干燥</string>
+    <string name="home_healthy">健康</string>
+    <string name="home_com_status">通讯状态</string>
+    <string name="home_bug_status">故障显示</string>
+    <string name="home_web_statusy">网络连接</string>
+    <string name="test_weather">小雨</string>
+    <string name="test_pa">1024hpa</string>
+    <string name="test_water">10mm</string>
+    <string name="water_info">小雨 0.00 mm</string>
+    <string name="windspeed">风速</string>
+    <string name="test_windspeed">11km/h</string>
+    <string name="test_NNW">NNW</string>
+    <string name="city_info">郑州市,CN</string>
+    <string name="test_solution">刷新中</string>
+    <!-- home 结束 -->
+
+
+    <!-- 用户信息 开始 -->
+    <string name="test_name">曾凡</string>
+    <string name="test_addr">火星</string>
+    <string name="profile">用户信息</string>
+    <string name="profile_name">住址</string>
+    <string name="profile_addr">业主名称</string>
+    <string name="profile_phone">固话</string>
+    <string name="profile_tel">联系方式</string>
+    <!-- 用户信息 结束 -->
+
+
+    <!-- 用户信息 开始 -->
+    <string name="test_nick">曾凡</string>
+    <string name="devlist">团队成员</string>
+    <string name="developer_name1">士大夫的愤怒/n项目鲸鲤、APP程序猿</string>
+    <string name="developer_name2">王贺喜/n后端程序猿</string>
+    <string name="developer_name3">闫威/nAPP程序猿</string>
+    <string name="developer_name4">李静/nAPP程序猿</string>
+    <string name="developer_name5">李羽皓/n后端程序猿</string>
+    <string name="developer_name6">李留品/n测试猿</string>
+    <string name="developer_name7">苌帅/n质量管控</string>
+    <string name="developer_name8">赵帅/n艺术总监</string>
+
+    <!-- 用户信息 结束 -->
+    <!-- 传感器 开始 -->
+    <string name="sensor_test_name">烟雾传感器</string>
+    <string name="sensor">手机绑定设备</string>
+    <string name="sensor_id">设备编号</string>
+    <string name="sensor_name">设备名称</string>
+    <string name="sensor_edit">设备列表</string>
+    <string name="sensor_reg_next">下一步对设备设备进行配网</string>
+    <string name="sensor_wifi_return">上一步绑定手机和设备设备</string>
+    <string name="sensor_onekey">一键配置</string>
+    <string name="sensor_2dbar">设备编号</string>
+    <string name="sensor_2dbar_not_null">二维码不能为空</string>
+    <string name="sensor_2dbar_form">二维码格式不正确</string>
+    <string name="sensor_2dbar_hint">扫描或输入设备二维码</string>
+    <string name="sensor_2dbar_scan">扫描</string>
+    <string name="sensor_wifi">SSID</string>
+    <string name="sensor_wifi_not_null">Wi-Fi SSID不能为空</string>
+    <string name="sensor_wifi_hint">当前连接Wi-Fi的SSID</string>
+    <string name="sensor_wifi_name">Wi-Fi名称</string>
+    <string name="sensor_wifi_guide">1) 点击<b>[扫一扫]</b>扫描设备背部或包装箱上的<b>[设备ID]</b>\n2) 点击<b>[绑定设备]</b>，成功后点击<b>[下一步]</b></string>
+    <string name="sensor_wifi_name_default">如果为空请连接手机到Wi-Fi</string>
+    <string name="sensor_wifi_pw">Wi-Fi密码</string>
+    <string name="sensor_wifi_pw_hint">请输入Wi-Fi密码</string>
+    <string name="sensor_wifi_regist">设备配网</string>
+    <string name="sensor_submit">绑定设备</string>
+    <string name="sensor_scan">扫一扫</string>
+    <string name="sensor_return">上一步</string>
+    <string name="sensor_next">下一步</string>
+    <string name="sensor_finish">完成</string>
+    <string name="sensor_succ">用户绑定设备成功</string>
+    <string name="sensor_fail">用户绑定设备失败</string>
+    <string name="sensor_true">开关</string>
+    <string name="sensor_online_status">在线状态</string>
+    <string name="sensor_online_status_on">在线</string>
+    <string name="sensor_online_status_off">不在线</string>
+    <string name="sensor_delete">删除</string>
+    <string name="sensor_reg_sccuess">注册成功</string>
+    <string name="sensor_delete_sccuess">删除成功</string>
+    <string name="sensor_delete_fail">删除失败</string>
+    <string name="sensor_changing">修改中...</string>
+    <string name="open_wifi_hint">请打开wifi</string>
+    <string name="sensor_change">修改设备名称</string>
+    <string name="pw_submit">更换密码</string>
+    <string name="sensor_change_sccuess">修改名称成功</string>
+    <string name="sensor_change_fail">修改名称失败</string>
+    <!-- 传感器 结束 -->
+
+
+    <!-- 个性化提示 开始 -->
+    <string name="hint_pm25_high">柯南：pm2.5可以直接伤害到孩子的肺，通过呼吸后的供氧，传到全身，影响孩子成长发育，所以我三十多岁了还在读小学。</string>
+    <!-- 个性化提示 结束 -->
+    <!-- 更新提示 开始 -->
+    <string name="soft_update_no">已经是最新版本</string>
+    <string name="soft_update_title">软件更新</string>
+    <string name="soft_update_info">检测到新版本，立即更新吗</string>
+    <string name="soft_update_updatebtn">更新</string>
+    <string name="soft_update_later">稍后更新</string>
+    <string name="soft_updating">正在更新</string>
+    <string name="soft_update_cancel">取消</string>
+    <!-- 个性化提示 结束 -->
+
+
+    <!-- 異常 -->
+    <string name="network_not_connected">处理过程发生错误，可能尚未开启网络!</string>
+    <string name="network_not_connected_view_local">网络连接失败,为您显示本地缓存数据，请检查网络设置</string>
+    <string name="xml_parser_failed">数据解析异常</string>
+    <string name="io_exception_error">文件流异常</string>
+    <string name="http_status_code_error">网络异常，错误码：%d</string>
+    <string name="http_exception_error">网络异常，请求超时</string>
+    <string name="socket_exception_error">网络异常，读取数据超时</string>
+    <string name="app_run_code_error">应用程序运行时异常</string>
+    <string name="sure">确定</string>
+    <string name="cancle">取消</string>
+    <string name="app_error">应用程序错误</string>
+    <string name="app_error_message">很抱歉，应用程序出现错误，即将退出。\n请提交错误报告，我们会尽快修复这个问题！</string>
+    <string name="submit_report">提交报告</string>
+    <string name="app_menu_surelogout">确定退出程序吗？</string>
+    <string name="app_menu_cancellation">确定注销程序吗？</string>
+    <string name="tip_ok">确定</string>
+    <string name="tip_cancel">取消</string>
+    <string name="tip_input">提示</string>
+    <string name="tip_quit">退出</string>
+    <string name="tip_task_finish">提交成功，任务完成！</string>
+    <string name="tip_notloginnull">用户名或密码不能为空</string>
+    <string name="tip_loginfail">登录失败，请输入正确用户名密码</string>
+    <string name="tip_loginerror">登录失败，请重新登录</string>
+    <string name="tip_isquit">是否退出</string>
+    <string name="tip_loaderror">加载失败，请重新加载</string>
+    <string name="tip_connectfail">處处理过程发生错误，可能尚未开启网络!</string>
+    <string name="tip_checkresult0">请选择检查结果</string>
+    <string name="tip_corrective0">请选择整改措施</string>
+    <string name="text_num_limit_left">还可输入%d个字</string>
+
+    <!-- listview组件 -->
+
+    <string name="pull_to_refresh_pull_label">下拉可以刷新</string>
+    <string name="pull_to_refresh_release_label">松开可以刷新</string>
+    <string name="pull_to_refresh_refreshing_label">加载中...</string>
+    <string name="pull_to_refresh_tap_label">下拉可以刷新</string>
+    <string name="pull_to_refresh_update">最近更新：</string>
+    <string name="load_more">更多</string>
+    <string name="load_ing">加载中···</string>
+    <string name="load_full">已加载全部</string>
+    <string name="load_empty">暂无数据</string>
+    <string name="load_error">加载数据出错</string>
+
+    <!-- 街景 bgn -->
+    <string name="cam_device_not_link">空气电台</string>
+    <string name="cam_no_cam">没有摄像头</string>
+    <string name="cam_init_date">加载中</string>
+    <string name="cam_init_time">加载中</string>
+    <string name="cam_init_state">加载省</string>
+    <string name="cam_init_city">城市</string>
+    <string name="cam_init_loc">加载地址</string>
+    <string name="cam_init_temp">加载</string>
+    <string name="cam_init_hum">加载</string>
+    <string name="cam_init_co2">加载</string>
+    <string name="cam_init_voc">加载</string>
+    <string name="cam_init_pm25">加载</string>
+    <string name="cam_talk">吐槽</string>
+    <string name="cam_talk_title">吐槽（最多10个字）</string>
+    <string name="cam_talk_confirm">确认</string>
+    <string name="cam_talk_cancel">取消</string>
+    <string name="cam_share">分享应用</string>
+    <!-- 街景 end -->
+
+
+    <!-- 设备联动 bgn -->
+    <string name="ctrl_title_back">返回</string>
+    <string name="ctrl_title_manual">手动</string>
+    <string name="ctrl_title_auto">智能</string>
+    <string name="ctrl_manual_switch">是否启动手动控制</string>
+    <string name="ctrl_auto_switch">是否启动智能托管</string>
+    <string name="ctrl_setting_table_sensor">传感器</string>
+    <string name="ctrl_setting_table_on">开阀值</string>
+    <string name="ctrl_setting_table_off">关阀值</string>
+    <string name="ctrl_setting_table_device">被控设备</string>
+    <string name="ctrl_sensor_name">传感器</string>
+    <string name="ctrl_sensor_value">值</string>
+    <string name="ctrl_add">添加</string>
+    <string name="ctrl_temperature">温度</string>
+    <string name="ctrl_humidity">湿度</string>
+    <string name="ctrl_voc">VOC</string>
+    <string name="ctrl_co">一氧化碳</string>
+    <string name="ctrl_co2">二氧化碳</string>
+    <string name="ctrl_ch4">天然气</string>
+    <string name="ctrl_pm25">PM2.5</string>
+    <string name="ctrl_item_title_sensor_name">传感器</string>
+    <string name="ctrl_item_title_open_name">开阀值</string>
+    <string name="ctrl_item_title_off_name">关阀值</string>
+    <string name="ctrl_item_title_ctrl_name">被控设备</string>
+    <string name="switcher_name">开关</string>
+    <!-- 设备联动 end -->
+
+
+    <!-- 新登录 -->
+    <string name="et_account_hint">手机号</string>
+    <string name="et_password_hint">密码</string>
+    <string name="register">新用户</string>
+    <string name="forget_password">忘记密码?</string>
+    <string name="tv_country">中国+86</string>
+    <string name="et_phoneNumber_hint">请输入你的手机号码</string>
+    <string name="title_phoneNumber">请填写手机号码</string>
+    <string name="btn_next">下一步</string>
+    <string name="tv_protocol">我已阅读并同意</string>
+    <string name="tv_protocol_url">使用条款和隐私政策</string>
+    <string name="back">返回</string>
+    <string name="tv_tips_password">密码由6-16位数字、字母或符号组成</string>
+    <string name="tv_tips_name">建议填写你的真实姓名,让你的朋友更容易人出你,此昵称以后可以随时修改</string>
+    <string name="et_name_hint">昵称</string>
+    <string name="register_complete">完成</string>
+    <string name="title_register_info">设置密码和昵称</string>
+    <string name="tv_qq">你已获得QQ号码</string>
+    <string name="tv_qq_number">525203053</string>
+    <string name="tv_register_result">启用通讯录查找更多好友,直接发起QQ聊天,我已阅读并同意</string>
+    <string name="tv_tiaokuan">服务声明</string>
+    <string name="tv_register_success">注册成功</string>
+    <string name="register_success">进入QQ</string>
+    <string name="tv_search">搜索</string>
+    <string name="news">消息</string>
+    <string name="user_name">开心一刻</string>
+    <string name="user_feel">好好学习,天天向上</string>
+    <string name="user_time">12:30</string>
+    <string name="tv_loading">正加载,请稍后...</string>
+    <string name="no_data">网络异常...</string>
+    <string name="str_null"></string>
+    <string name="pop_chat">多人聊天</string>
+    <string name="pop_sangzhao">分享</string>
+    <string name="pop_camera">水印相机</string>
+    <string name="pop_scan">扫一扫</string>
+    <string name="app_cancle">取消</string>
+    <string name="app_change_user">注销用户</string>
+    <string name="app_exit_user">退出</string>
+
+    <!-- Refresh -->
+    <string name="p2refresh_head_load_more">加载更多</string>
+    <string name="p2refresh_end_load_more">更    多</string>
+    <string name="p2refresh_end_click_load_more">点击加载</string>
+    <string name="p2refresh_release_refresh">松开立即刷新</string>
+    <string name="p2refresh_pull_to_refresh">下拉刷新</string>
+    <string name="p2refresh_doing_head_refresh">正在刷新&#8230;</string>
+    <string name="p2refresh_doing_end_refresh">加载中&#8230;</string>
+    <string name="p2refresh_refresh_lasttime">最近更新&#160;&#058;&#160;</string>
+
+    <!-- ercode -->
+    <string name="scan_tip">请将二维码置于取景框内扫描</string>
+    <string name="scan_retry">二维码扫描出错啦,请重新扫描</string>
+    <string name="scan_title">扫一扫</string>
+    <string name="sd_pic">相册</string>
+    <string name="sacn_dialog_title">是否打开链接?</string>
+    <string name="scan_url">http://www.baidu.com</string>
+    <string name="camera_water">水印相机</string>
+    <string name="camera_more">更多</string>
+    <string name="camera_day">2014-04-14</string>
+    <string name="camera_hour">21:01</string>
+    <string name="camera_day_hour">2014-04-14 21:01</string>
+    <string name="camera_address">珠海</string>
+    <string name="camera_tep">23℃多云</string>
+    <string name="camera_pm">PM2.5 32</string>
+    <string name="camera_txt">静静的享受独自一个人的午后</string>
+    <string name="camera_ni">虫虫</string>
+    <string name="tiaozheng">旋转</string>
+    <string name="control">管理</string>
+    <string name="group">分组</string>
+    <string name="all">全部</string>
+    <string name="cnews">消息</string>
+    <string name="call">通话</string>
+    <string name="tv_phone">通讯录</string>
+    <string name="tv_group">群组</string>
+    <string name="tv_discuss">讨论组</string>
+    <string name="tv_life">生活服务</string>
+    <string name="friend_group">好友分组</string>
+    <string name="device">我的设备</string>
+    <string name="group_count">1/2</string>
+    <string name="child_feel">[在线]好好学习天天向上</string>
+    <string name="tv_call1">你通话过的联系人都会在这里出现</string>
+    <string name="tv_call2">快和朋友开始语音通话吧</string>
+    <string name="btn_call">找人聊聊</string>
+    <string name="recentchat">最近聊天</string>
+    <string name="choose_constact">选择联系人</string>
+    <string name="search">请输入关键字</string>
+    <string name="dynamic">动态</string>
+    <string name="mime">我</string>
+    <string name="tv_newfriend">新朋友</string>
+    <string name="tv_tongxunlu">通讯录</string>
+    <string name="tv_friend">QQ好友</string>
+    <string name="wifi_state">WLAN 状态</string>
+    <string name="instruction_pre">启动服务，可以从电脑远程管理手机文件</string>
+    <string name="instruction">请在"我的电脑"地址栏输入:</string>
+    <string name="notif_server_starting">远程管理已开启</string>
+    <string name="notif_title">远程管理</string>
+    <string name="no_wifi_hint">没有WLAN网络，请检查WLAN设置</string>
+    <string name="start_server">开启服务</string>
+    <string name="stop_server">停止服务</string>
+    <string name="no_wifi">没有WLAN网络</string>
+    <string name="storage_warning">没有外部存储设备或SD卡不可用</string>
+    <string name="wifi">文件管理</string>
+
+    <!-- 场景 start -->
+    <string name="scene_name">场景名称</string>
+    <string name="scene_add">添加场景</string>
+    <string name="scene_change">设备选项</string>
+    <string name="scene_button_del">删除</string>
+    <string name="scene_device_button_del">删除设备</string>
+    <string name="scene_device_button_update_name">修改名称</string>
+    <string name="scene_device_updating">修改中</string>
+    <string name="scene_device_update_success">修改成功</string>
+    <string name="scene_button_add">添加</string>
+    <string name="scene_custom">自定义</string>
+    <string name="scene_bedroom">卧室</string>
+    <string name="scene_livingroom">客厅</string>
+    <string name="scene_kitchen">厨房</string>
+    <string name="scene_unsign">未分配</string>
+    <string name="scene_update_name_info">编辑设备名称后点击“修改名称”进行提交</string>
+    <string name="scene_update_scene_info">点击出现场景下拉框，可以将该设备加入选择场景</string>
+    <!-- 场景 end -->
+
+
+    <!-- 解决方案 start -->
+    <string name="ui_solution_chk_hint_1">温馨舒适 </string>
+    <string name="ui_solution_chk_hint_2">可以更好</string>
+    <string name="ui_solution_chk_hint_3">急需治理</string>
+    <string name="ui_solution_chk">检测评估</string>
+    <string name="ui_solution_solu">优化策略</string>
+    <string name="ui_solution_solu1">查看详情</string>
+    <string name="ui_solution_solu2">环境详情</string>
+    <string name="ui_solution_sum">综合结论</string>
+    <string name="ui_solution_shop">在线商城</string>
+    <string name="ui_solution_default">加载中</string>
+    <string name="ui_solution_default_value">0</string>
+    <string name="ui_solution_co2_1">清新\n≤800</string>
+    <string name="ui_solution_co2_2">沉闷\n801-1119</string>
+    <string name="ui_solution_co2_3">缺氧\n≥1200</string>
+    <string name="ui_solution_pm25_1">干净\n≤100</string>
+    <string name="ui_solution_pm25_2">污浊\n101-199</string>
+    <string name="ui_solution_pm25_3">报表\n≥200</string>
+    <string name="ui_solution_voc_1">清爽\n≤20</string>
+    <string name="ui_solution_voc_2">宜居\n21-39</string>
+    <string name="ui_solution_voc_3">有害\n≥40</string>
+    <string name="ui_solution_detail">详情</string>
+    <string name="ui_solution_detail_centent">加载中</string>
+    <string name="ui_solution">改善方案>></string>
+    <string name="ui_solution_title">评估检测</string>
+    <string name="ui_solution_cancel">取消</string>
+    <string name="ui_solution_submit">提交</string>
+    <string name="ui_solution_forward">上一步</string>
+    <string name="ui_solution_next">下一步</string>
+    <string name="ui_solution_value">检测值</string>
+    <string name="ui_solution_pm25">PM2.5</string>
+    <string name="ui_solution_pm25_hint">请输入检测到的PM2.5</string>
+    <string name="ui_solution_co2">二氧化碳</string>
+    <string name="ui_solution_co2_hint">请输入检测到的二氧化碳</string>
+    <string name="ui_solution_voc">VOC</string>
+    <string name="ui_solution_voc_hint">请输入检测到的VOC</string>
+    <string name="ui_solution_scene">场景</string>
+    <string name="ui_solution_scene_home">室内</string>
+    <string name="ui_solution_scene_car">车内</string>
+    <string name="ui_solution_scene_furnishing">新家居</string>
+    <string name="ui_solution_scene_out">户外</string>
+    <!-- 解决方案 end -->
+
+
+    <!-- 报警 start -->
+    <string name="ui_alarm_status_heat">预热</string>
+    <string name="ui_alarm_status_nomal">正常</string>
+    <string name="ui_alarm_status_abnomal">报警</string>
+    <string name="ui_alarm_status_abnomal_l">低报</string>
+    <string name="ui_alarm_status_abnomal_h">高报</string>
+    <string name="ui_alarm_status_breakdown">传感器故障</string>
+    <string name="ui_alarm_status_comm">通讯故障</string>
+    <string name="ui_alarm_status_sos">求救信号</string>
+    <string name="ui_alarm_type_co">一氧化碳</string>
+    <string name="ui_alarm_type_ch4">燃气</string>
+    <string name="ui_alarm_type_co2">二氧化碳</string>
+    <string name="ui_alarm_type_pm25">PM2.5</string>
+    <string name="ui_alarm_type_tem">温度</string>
+    <string name="ui_alarm_type_hum">湿度</string>
+    <string name="ui_alarm_type_voc">D9</string>
+    <string name="ui_alarm_type_ch2o">甲醛</string>
+    <string name="ui_alarm_type_c6h6">一氧化碳</string>
+    <!-- 报警 end -->
+
+
+    <!-- ui主页面 bgn -->
+    <string name="ui_pager_sensor_name">萌萌哒</string>
+    <string name="ui_pager_sensor_status_off">不在线</string>
+    <string name="ui_pager_sensor_status_on">在线</string>
+    <string name="ui_pager_update_time">更新时间  01/01 00:00:00</string>
+    <string name="ui_pager_submit">提交分析</string>
+    <string name="ui_pager_pm25_status_default">加载数据</string>
+    <string name="ui_pager_pm25_title">PM2.5</string>
+    <string name="ui_pager_values_default">加载</string>
+    <string name="ui_pager_A1">A1</string>
+    <string name="ui_pager_values"></string>
+    <string name="ui_pager_weather_city">定位</string>
+    <string name="ui_pager_weather_real">实况</string>
+    <string name="ui_pager_weather_update_time">更新时间:</string>
+    <string name="ui_pager_weather_update_time_default">时间加载中</string>
+    <string name="ui_pager_weather_aqi_title">AQI</string>
+    <string name="ui_pager_weather_aqi">0</string>
+    <string name="ui_pager_weather_aqi_status">加载中</string>
+    <string name="ui_pager_weather_major_title">主要污染</string>
+    <string name="ui_pager_weather_major">0</string>
+    <string name="ui_pager_weather_major_status">加载中</string>
+    <string name="ui_pager_weather_no_city">无法获取此城市气象信息</string>
+    <string name="ui_pager_weather_no_city_info">无数据</string>
+    <string name="ui_pager_weather_unit_o3">臭氧</string>
+    <string name="ui_pager_weather_unit_co">一氧化碳</string>
+    <string name="ui_pager_weather_unit_pm10">PM10</string>
+    <string name="ui_pager_weather_unit_so2">二氧化硫</string>
+    <string name="ui_pager_weather_unit_no2">二氧化氮</string>
+    <string name="ui_pager_weather_unit_pm25">PM2.5</string>
+    <string name="ui_pager_gas_no">无值</string>
+    <string name="ui_pager_gas_normal">正常</string>
+    <string name="ui_pager_gas_leak">泄漏</string>
+    <!-- ui主页面 end -->
+    <!-- 定位 bgn -->
+    <string name="ui_pager_weather_ip_query_failed">未找到此城市,请重新定位或选择…</string>
+    <string name="ui_pager_location_query_failed_title">定位失败</string>
+    <string name="ui_pager_location_query_failed">定位失败，是否手动选择城市?</string>
+    <string name="ui_pager_weather_ip_query_city">请先选择城市或定位！</string>
+    <string name="ui_pager_weather_ip_querying">正在定位…</string>
+    <string name="ui_pager_weather_confirm">确认</string>
+    <string name="ui_pager_weather_cancel">取消</string>
+    <string name="ui_pager_weather_search_city_hint">搜索全国城市(中文/拼音)</string>
+    <!-- 定位 end -->
+
+
+    <!-- 配网 start -->
+    <string name="wifi_succuess">设备成功连接Wi-Fi</string>
+    <!-- 配网 end -->
+
+</resources>

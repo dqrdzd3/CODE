@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="developer_name">
+        <item>曾凡</item>
+        <item>王贺喜</item>
+        <item>闫威</item>
+        <item>李静</item>
+        <item>李羽皓</item>
+        <item>苌帅</item>
+        <item>李留品</item>
+        <item>赵帅</item>
+    </string-array>
+    <string-array name="developer_email">
+        <item>zengfan@hanwei.cn</item>
+        <item>wanghx@hanwei.cn</item>
+        <item>yanwei@hanwei.cn</item>
+        <item>lijing@hanwei.cn</item>
+        <item>liyh01@hanwei.cn</item>
+        <item>changshuai@hanwei.cn</item>
+        <item>lilp@hanwei.cn</item>
+        <item>zhaoshuai@hanwei.cn</item>
+    </string-array>
+</resources>

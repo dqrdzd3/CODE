@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hw.hwsafe.knowledge.dao.ITaccidentcaseDao">
+	<!-- 根据OBJID查询 -->
+	<select id="retrieveTaccidentcaseByID" parameterType="String" resultType="com.hw.hwsafe.knowledge.pojo.TaccidentcasePO">
+		SELECT OBJID,NAME,CREATETIME，ADDRESS，TYPE，CASETRADE，MODULE，
+		      CAUSE，WAY，CASESW，CASEZS，CASEQS，CASEPROPERTY,REMARKS
+ 		FROM TACCIDENTCASE WHERE OBJID=#{objid}
+	</select>
+
+		<!-- 根据条件查询所有  -->
+	<select id="retrieveTaccidentcaseByPO" resultType="com.hw.hwsafe.knowledge.pojo.TaccidentcasePO">
+		SELECT OBJID,NAME,CREATETIME，ADDRESS，TYPE，CASETRADE，MODULE，
+		      CAUSE，WAY，CASESW，CASEZS，CASEQS，CASEPROPERTY,REMARKS
+ 		FROM TACCIDENTCASE t 	
+		WHERE 1=1
+		<if test="objid != null">
+			<if test="objid != ''">
+			AND	OBJID = #{objid}
+			</if>
+		</if> 
+		<if test="name != null">
+			<if test="name != ''">
+			AND	NAME  LIKE '%'||#{name}||'%' 
+			</if>
+		</if> 
+		
+	</select>
+	
+	<!-- 插入危险化学品知识 -->
+	<insert id="insertTaccidentcase" parameterType="com.hw.hwsafe.knowledge.pojo.TaccidentcasePO">
+      INSERT INTO TACCIDENTCASE(OBJID,NAME,CREATETIME,ADDRESS,TYPE,CASETRADE,MODULE,
+		      CAUSE,WAY,CASESW,CASEZS,CASEQS,CASEPROPERTY,REMARKS,creator,creatdate) 
+      VALUES(
+    	#{objid,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{createtime,jdbcType=TIMESTAMP},#{address,jdbcType=VARCHAR},
+    	#{type,jdbcType=VARCHAR},#{casetrade,jdbcType=VARCHAR},#{module,jdbcType=VARCHAR},#{cause,jdbcType=VARCHAR},
+    	#{way,jdbcType=VARCHAR},#{casesw,jdbcType=INTEGER},#{casezs,jdbcType=INTEGER},#{caseqs,jdbcType=INTEGER},
+    	#{caseproperty,jdbcType=NUMERIC},#{remarks,jdbcType=VARCHAR},#{creator,jdbcType=VARCHAR},#{creatdate,jdbcType=TIMESTAMP}
+   	 )
+	</insert>
+	<!-- 更新危险化学品知识 -->
+
+	<update id="updateTaccidentcase" parameterType="com.hw.hwsafe.knowledge.pojo.TaccidentcasePO">
+		UPDATE TACCIDENTCASE 
+		set	
+		 	NAME = #{name,jdbcType=VARCHAR}
+			,CREATETIME = #{createtime,jdbcType=TIMESTAMP}
+			,ADDRESS = #{address,jdbcType=VARCHAR}
+			,TYPE = #{type,jdbcType=VARCHAR}
+			,CASETRADE = #{casetrade,jdbcType=VARCHAR}
+			,MODULE = #{module,jdbcType=VARCHAR}
+			,CAUSE = #{cause,jdbcType=VARCHAR}
+			,WAY = #{way,jdbcType=VARCHAR}
+			,CASESW = #{casesw,jdbcType=INTEGER}
+			,CASEZS = #{casezs,jdbcType=INTEGER}
+			,CASEQS = #{caseqs,jdbcType=INTEGER}
+			,CASEPROPERTY = #{caseproperty,jdbcType=NUMERIC}
+			,REMARKS = #{remarks,jdbcType=VARCHAR}
+			
+		WHERE OBJID = #{objid}
+	</update>
+
+	<!-- 根据条件查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+      SELECT OBJID,NAME,TO_CHAR(CREATETIME, 'YYYY-MM-DD') CREATETIME，ADDRESS，TYPE，CASETRADE，MODULE，
+		      CAUSE，WAY，CASESW，CASEZS，CASEQS，CASEPROPERTY,REMARKS
+ 		FROM TACCIDENTCASE t 	
+		WHERE 1=1
+		<if test="po.name != null">
+			<if test="po.name != ''">
+			AND	NAME  LIKE '%'||#{po.name}||'%' 
+			</if>
+		</if> 	
+		order by creatdate desc
+	</select>
+</mapper>

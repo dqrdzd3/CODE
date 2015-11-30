@@ -1,0 +1,175 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.hwsensor.hwsafe</groupId>
+	<artifactId>hwsafe-parent</artifactId>
+	<packaging>pom</packaging>
+	<version>2.1-SNAPSHOT</version>
+	<name>hwsafe-parent</name>
+	<url>http://maven.apache.org</url>
+	
+	<modules>
+		<module>hw-platform</module>
+		<module>hw-module</module>
+		<module>hw-webapp</module>
+	</modules>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+		<!-- 第三方组件的版本 -->
+		<mybatis.version>3.1.0</mybatis.version>
+		<mybatis-spring.version>1.1.1</mybatis-spring.version>
+		<spring.version>3.0.5.RELEASE</spring.version>
+		<spring.security.version>3.1.2.RELEASE</spring.security.version>
+		<cas.version>3.2.1</cas.version>
+		<aopalliance.version>1.0</aopalliance.version>
+		<struts.version>2.3.1</struts.version>
+		<ojdbc6.version>11.2.0.3</ojdbc6.version>
+		<slf4j.version>1.5.2</slf4j.version>
+		<junit.version>4.8.2</junit.version>
+		<log4j.version>1.2.17</log4j.version>
+		<jstl.version>1.2</jstl.version>
+		<c3p0.version>0.9.1.2</c3p0.version>
+		<json.version>2.2.3</json.version>
+		<ezmorph.version>1.0.5</ezmorph.version>
+		<freemarker.version>2.3.19</freemarker.version>
+		<commons-collections.version>3.2</commons-collections.version>
+		<commons-lang.version>2.5</commons-lang.version>
+		<commons-logging.version>1.1.1</commons-logging.version>
+		<commons-io.version>2.3</commons-io.version>
+		<commons-fileupload.version>1.2.2</commons-fileupload.version>
+		<commons-beanutils.version>1.8.0</commons-beanutils.version>
+		<commons-digester.version>1.8.1</commons-digester.version>
+		<servlet-api.version>2.4</servlet-api.version>
+		<activation.version>1.1.1</activation.version>
+		<javassist.version>3.14.0-GA</javassist.version>
+		<aspectjtools.version>1.7.1</aspectjtools.version>
+		<aspectjrt.version>1.7.1</aspectjrt.version>
+		<aspectjlib.version>1.6.2</aspectjlib.version>
+		<cglib-nodep.version>2.2.2</cglib-nodep.version>
+		<activiti.version>5.9</activiti.version>
+		<iText.version>2.1.4</iText.version>
+		<iTextAsian.version>1.0</iTextAsian.version>
+		<jcom.version>1.0</jcom.version>
+		<ehcache-core.version>2.6.2</ehcache-core.version>
+		<ehcache-web.version>2.0.4</ehcache-web.version>
+		<mybatis-ehcache.version>1.0.0</mybatis-ehcache.version>
+		<mail.version>1.4.5</mail.version>
+		<quartz.version>1.8.5</quartz.version>
+		<smslib.version>3.3.0b2</smslib.version>
+		<sms.comm.version>1.0</sms.comm.version>
+		<fckeditor.java-core.version>2.4.1</fckeditor.java-core.version>
+		<jsp-api.version>2.1</jsp-api.version>
+		<kaptcha.version>2.3.2</kaptcha.version>
+		
+		<!-- plugins的版本 -->
+		<maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
+		<maven-jar-plugin.version>2.3.1</maven-jar-plugin.version>
+		<maven-install-plugin.version>2.3.1</maven-install-plugin.version>
+		<maven-war-plugin.version>2.1.1</maven-war-plugin.version>
+		<tomcat-maven-plugin.version>1.1</tomcat-maven-plugin.version>
+		<findbugs-maven-plugin.version>2.5.2</findbugs-maven-plugin.version>
+		
+		<!-- 项目中的包的版本 -->
+		<hw-module.version>2.1-SNAPSHOT</hw-module.version>
+		<hw-platform.version>2.1-SNAPSHOT</hw-platform.version>
+		<hw-webapp.version>2.1-SNAPSHOT</hw-webapp.version>
+		
+		<!-- 项目中platform的模块的版本 -->
+		<hw-activiti.version>2.1.0-SNAPSHOT</hw-activiti.version>
+		<hw-authen.version>2.1.0-SNAPSHOT</hw-authen.version>
+		<hw-attachment.version>2.1.0-SNAPSHOT</hw-attachment.version>
+		<hw-base.version>2.1.0-SNAPSHOT</hw-base.version>
+		<hw-cpnyreg.version>2.1.0-SNAPSHOT</hw-cpnyreg.version>
+		<hw-ehcache.version>2.1.0-SNAPSHOT</hw-ehcache.version>
+		<hw-framework.version>2.1.0-SNAPSHOT</hw-framework.version>
+		<hw-gov.version>2.1.0-SNAPSHOT</hw-gov.version>
+		<hw-javamail.version>2.1.0-SNAPSHOT</hw-javamail.version>
+		<hw-online.version>2.1.0-SNAPSHOT</hw-online.version>
+		<hw-permission.version>2.1.0-SNAPSHOT</hw-permission.version>
+		<hw-plot.version>2.1.0-SNAPSHOT</hw-plot.version>
+		<hw-pushlet.version>2.1.0-SNAPSHOT</hw-pushlet.version>
+		<hw-quartz.version>2.1.0-SNAPSHOT</hw-quartz.version>
+		<hw-remind.version>2.1.0-SNAPSHOT</hw-remind.version>
+		<hw-security.version>2.1.0-SNAPSHOT</hw-security.version>
+		<hw-sms.version>2.1.0-SNAPSHOT</hw-sms.version>
+		<hw-utils.version>2.1.0-SNAPSHOT</hw-utils.version>
+		<hw-webservice.version>1.0.0-SNAPSHOT</hw-webservice.version>
+		<hw-webservice-invoker.version>1.0.0-SNAPSHOT</hw-webservice-invoker.version>
+		<!-- module中模块 -->
+		<hw-knowledge.version>2.1.0-SNAPSHOT</hw-knowledge.version>
+		<hw-corpinfo.version>2.1.0-SNAPSHOT</hw-corpinfo.version>
+		<hw-register.version>2.1.0-SNAPSHOT</hw-register.version>
+		<hw-smart.version>0.0.1-SNAPSHOT</hw-smart.version>
+ 		<hw-webservice-publisher.version>1.0.0-SNAPSHOT</hw-webservice-publisher.version>
+<!-- 		<hw-drill.version>2.1.0-SNAPSHOT</hw-drill.version> -->
+<!-- 		<hw-gis.version>2.1.0-SNAPSHOT</hw-gis.version> -->
+<!-- 		<hw-mobile.version>2.1.0-SNAPSHOT</hw-mobile.version> -->
+<!-- 		<hw-alarm-receipt.version>2.1.0-SNAPSHOT</hw-alarm-receipt.version> -->
+<!-- 		<hw-corp-census.version>2.1.0-SNAPSHOT</hw-corp-census.version> -->
+	
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+		  <groupId>log4j</groupId>
+		  <artifactId>log4j</artifactId>
+		  <version>${log4j.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>  
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>utf8</encoding>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	
+ 	<distributionManagement>
+		<repository>
+			<id>hwsafe</id>
+			<url>http://192.168.88.13:8088/nexus/content/repositories/hwsafe-snapshot</url>
+			<uniqueVersion>true</uniqueVersion>
+		</repository>
+		<snapshotRepository>
+			<id>hwsafe</id>
+			<url>http://192.168.88.13:8088/nexus/content/repositories/hwsafe-snapshot</url>
+			<uniqueVersion>true</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
+</project>

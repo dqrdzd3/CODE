@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hw.hwsafe.knowledge.dao.ITmsdsDao">
+	<!-- 根据OBJID查询 -->
+	<select id="retrieveTmsdsByID" parameterType="String" resultType="com.hw.hwsafe.knowledge.pojo.TmsdsPO">
+		SELECT OBJID,CHNNAME,SUMING,ENGNAME,TINFO,COUNTRYTEL,TYPE,HXPNAME,INGREDIENT,CONTENT
+			,CASNUM,DANGERSORT,INVADE,HEALTHHARM,ENVIRONMENT,BLAST,SKINCONTACT,EYECONTACT,BREATHE,EAT
+			,DANGERCHA,DECOMPOSE,FIREOUTMETHOD,FIREOUTNOTICE,CONTINGENCYMETHOD,ELIMINATEMETHOD,OPERATENOTICE,SAVENOTICE
+			,MAXALLOWABLECONCENTRATION,MONITORINGMETHOD,PROCONTROL,BREATHEDEFEND,EYEDEFEND,SUIT,HANDDEFEND,OTHERDEFEND,ASPECT,PH
+			,MELPOINT,DENSITYW,BOIPOINT,DENSITYA,STREAMPRESS,BURNINGHEAT,CRITICIALTEM,CRITICIALPRE,WDATAVALUES,FLAPOINT,HIGHEXPLODE
+			,SELFIGNITETEM,LOWEXPLODE,RESOLVABLE,PURPOSE,PHYSICOCHEMICALPROPERTY,STABILITY,TABOO,AVERTCONTACT,POLYMERIZE,CLEAVAGEPRODUCT
+			,ACUTETOXICITY,SUBAC,THRILL,SENSITIZATION,MUTAGENICITY,TERATOGENICITY,CARCINOGENICITY,OTHERPATHOPOIESIA,ECOTOXICITY
+			,BIODEGRADABILITY,NATURALABIOTICDEGRADATION,BIOCONCENTRATION,OTHERHARMFUL,SCRAPCHARACTER,SCRAPMETHOD
+			,SCRAPNOTICE,WXHWNUM,UNNUM,PACKTITLE,PACKSORT,PACKMETHOD,TRAFFICNOTICE,LAW,REFERENCEDOCUMENTATION,INPUTDATE,INPUTDEPT,APPLYDEPT,MODIFYREMARK,OTHER
+			,CORPNAME,ADDRESS,POSTCODE,EMAIL,FAX,CORPTEL,AVAILABILITYDATE
+			 FROM TMSDS WHERE OBJID=#{objid}
+	</select>
+
+	<!-- 插入危险化学品知识 -->
+	<insert id="insertTmsds" parameterType="com.hw.hwsafe.knowledge.pojo.TmsdsPO">
+      INSERT INTO TMSDS(OBJID,CHNNAME,SUMING,ENGNAME,TINFO,COUNTRYTEL,TYPE,HXPNAME,INGREDIENT,CONTENT
+      ,CASNUM,DANGERSORT,INVADE,HEALTHHARM,ENVIRONMENT,BLAST,SKINCONTACT,EYECONTACT,BREATHE,EAT
+      ,DANGERCHA,DECOMPOSE,FIREOUTMETHOD,FIREOUTNOTICE,CONTINGENCYMETHOD,ELIMINATEMETHOD,OPERATENOTICE,SAVENOTICE
+      ,MAXALLOWABLECONCENTRATION,MONITORINGMETHOD,PROCONTROL,BREATHEDEFEND,EYEDEFEND,SUIT,HANDDEFEND,OTHERDEFEND,ASPECT,PH
+      ,MELPOINT,DENSITYW,BOIPOINT,DENSITYA,STREAMPRESS,BURNINGHEAT,CRITICIALTEM,CRITICIALPRE,WDATAVALUES,FLAPOINT,HIGHEXPLODE
+      ,SELFIGNITETEM,LOWEXPLODE,RESOLVABLE,PURPOSE,PHYSICOCHEMICALPROPERTY,STABILITY,TABOO,AVERTCONTACT,POLYMERIZE,CLEAVAGEPRODUCT
+      ,ACUTETOXICITY,SUBAC,THRILL,SENSITIZATION,MUTAGENICITY,TERATOGENICITY,CARCINOGENICITY,OTHERPATHOPOIESIA,ECOTOXICITY
+      ,BIODEGRADABILITY,NATURALABIOTICDEGRADATION,BIOCONCENTRATION,OTHERHARMFUL,SCRAPCHARACTER,SCRAPMETHOD
+      ,SCRAPNOTICE,WXHWNUM,UNNUM,PACKTITLE,PACKSORT,PACKMETHOD,TRAFFICNOTICE,LAW,REFERENCEDOCUMENTATION,INPUTDATE
+      ,INPUTDEPT,APPLYDEPT,MODIFYREMARK,OTHER
+      ,CORPNAME,ADDRESS,POSTCODE,EMAIL,FAX,CORPTEL,AVAILABILITYDATE,CREATOR) 
+      VALUES(
+    #{objid},#{chnname},#{suming},#{engname},#{tinfo},#{countrytel},#{type},#{hxpname},#{ingredient},#{content},
+    #{casnum},#{dangersort},#{invade},#{healthharm},#{environment},#{blast},#{skincontact},#{eyecontact},#{breathe},#{eat},
+    #{dangercha},#{decompose},#{fireoutmethod},#{fireoutnotice},#{contingencymethod},#{eliminatemethod},#{operatenotice},#{savenotice},
+	#{maxallowableconcentration},#{monitoringmethod},#{procontrol},#{breathedefend},#{eyedefend},#{suit},#{handdefend},#{otherdefend},#{aspect},#{ph},
+	#{melpoint},#{densityw},#{boipoint},#{densitya},#{streampress},#{burningheat},#{criticialtem},#{criticialpre},#{wdatavalues},#{flapoint},#{highexplode},
+	#{selfignitetem},#{lowexplode},#{resolvable},#{purpose},#{physicochemicalproperty},#{stability},#{taboo},#{avertcontact},#{polymerize},#{cleavageproduct},
+	#{acutetoxicity},#{subac},#{thrill},#{sensitization},#{mutagenicity},#{teratogenicity},#{carcinogenicity},#{otherpathopoiesia},#{ecotoxicity},
+	#{biodegradability},#{naturalabioticdegradation},#{bioconcentration},#{otherharmful},#{scrapcharacter},#{scrapmethod},
+	#{scrapnotice},#{wxhwnum},#{unnum},#{packtitle},#{packsort},#{packmethod},#{trafficnotice},#{law},#{referencedocumentation},
+	#{inputdate,jdbcType=TIMESTAMP},
+    #{inputdept},#{applydept},#{modifyremark},#{other},
+	#{corpname},#{address},#{postcode},#{email},#{fax},#{corptel},#{availabilitydate,jdbcType=TIMESTAMP},#{creator,jdbcType=VARCHAR}
+    )
+	</insert>
+	<!-- 更新危险化学品知识 -->
+
+	<update id="updateTmsds" parameterType="com.hw.hwsafe.knowledge.pojo.TmsdsPO">
+		UPDATE TMSDS 
+		set	
+		 	CHNNAME = #{chnname}
+			,SUMING = #{suming}
+			,ENGNAME = #{engname}
+			,TINFO = #{tinfo}
+			,COUNTRYTEL = #{countrytel}
+			,TYPE = #{type}
+			,HXPNAME = #{hxpname}
+			,INGREDIENT = #{ingredient}
+			,CONTENT = #{content}
+			,CASNUM = #{casnum}
+			,DANGERSORT = #{dangersort}
+			,INVADE = #{invade}
+			,HEALTHHARM = #{healthharm}
+			,ENVIRONMENT = #{environment}
+			,BLAST = #{blast}
+			,SKINCONTACT = #{skincontact}
+			,EYECONTACT = #{eyecontact}
+			,BREATHE = #{breathe}
+			,EAT = #{eat}
+			,DANGERCHA = #{dangercha}
+			,DECOMPOSE = #{decompose}
+			,FIREOUTMETHOD = #{fireoutmethod}
+			,FIREOUTNOTICE = #{fireoutnotice}
+			,CONTINGENCYMETHOD = #{contingencymethod}
+			,ELIMINATEMETHOD = #{eliminatemethod}
+			,OPERATENOTICE = #{operatenotice}
+			,SAVENOTICE = #{savenotice}
+			,MAXALLOWABLECONCENTRATION = #{maxallowableconcentration}
+			,MONITORINGMETHOD = #{monitoringmethod}
+			,PROCONTROL = #{procontrol}
+			,BREATHEDEFEND = #{breathedefend}
+			,EYEDEFEND = #{eyedefend}
+			,SUIT = #{suit}
+			,HANDDEFEND = #{handdefend}
+			,OTHERDEFEND = #{otherdefend}
+			,ASPECT = #{aspect}
+			,PH = #{ph}
+			,MELPOINT = #{melpoint}
+			,DENSITYW = #{densityw}
+			,BOIPOINT = #{boipoint}
+			,DENSITYA = #{densitya}
+			,STREAMPRESS = #{streampress}
+			,BURNINGHEAT = #{burningheat}
+			,CRITICIALTEM = #{criticialtem}
+			,CRITICIALPRE = #{criticialpre}
+			,WDATAVALUES = #{wdatavalues}
+			,FLAPOINT = #{flapoint}
+			,HIGHEXPLODE = #{highexplode}
+			,SELFIGNITETEM = #{selfignitetem}
+			,LOWEXPLODE = #{lowexplode}
+			,RESOLVABLE = #{resolvable}
+			,PURPOSE = #{purpose}
+			,PHYSICOCHEMICALPROPERTY = #{physicochemicalproperty}
+			,STABILITY = #{stability}
+			,TABOO = #{taboo}
+			,AVERTCONTACT = #{avertcontact}
+			,POLYMERIZE = #{polymerize}
+			,CLEAVAGEPRODUCT = #{cleavageproduct}
+			,ACUTETOXICITY = #{acutetoxicity}
+			,SUBAC = #{subac}
+			,THRILL = #{thrill}
+			,SENSITIZATION = #{sensitization}
+			,MUTAGENICITY = #{mutagenicity}
+			,TERATOGENICITY = #{teratogenicity}
+			,CARCINOGENICITY = #{carcinogenicity}
+			,OTHERPATHOPOIESIA = #{otherpathopoiesia}
+			,ECOTOXICITY = #{ecotoxicity}
+			,BIODEGRADABILITY = #{biodegradability}
+			,NATURALABIOTICDEGRADATION = #{naturalabioticdegradation}
+			,BIOCONCENTRATION = #{bioconcentration}
+			,OTHERHARMFUL = #{otherharmful}
+			,SCRAPCHARACTER = #{scrapcharacter}
+			,SCRAPMETHOD = #{scrapmethod}
+			,SCRAPNOTICE = #{scrapnotice}
+			,WXHWNUM = #{wxhwnum}
+			,UNNUM = #{unnum}
+			,PACKTITLE = #{packtitle}
+			,PACKSORT = #{packsort}
+			,PACKMETHOD = #{packmethod}
+			,TRAFFICNOTICE = #{trafficnotice}
+			,LAW = #{law}
+			,REFERENCEDOCUMENTATION = #{referencedocumentation}
+			,INPUTDATE = #{inputdate,jdbcType=TIMESTAMP}
+			,INPUTDEPT = #{inputdept}
+			,APPLYDEPT = #{applydept}
+			,MODIFYREMARK = #{modifyremark}
+			,OTHER = #{other}
+			,CORPNAME = #{corpname}
+			,ADDRESS = #{address}
+			,POSTCODE = #{postcode}
+			,EMAIL = #{email}
+			,FAX = #{fax}
+			,CORPTEL = #{corptel}
+			,AVAILABILITYDATE = #{availabilitydate,jdbcType=TIMESTAMP}	
+		WHERE OBJID = #{objid}
+	</update>
+<!-- 根据条件查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		SELECT OBJID,CHNNAME,SUMING,ENGNAME,TINFO,COUNTRYTEL,TYPE,HXPNAME,INGREDIENT,CONTENT
+			,CASNUM,DANGERSORT,INVADE,HEALTHHARM,ENVIRONMENT,BLAST,SKINCONTACT,EYECONTACT,BREATHE,EAT
+			,DANGERCHA,DECOMPOSE,FIREOUTMETHOD,FIREOUTNOTICE,CONTINGENCYMETHOD,ELIMINATEMETHOD,OPERATENOTICE,SAVENOTICE
+			,MAXALLOWABLECONCENTRATION,MONITORINGMETHOD,PROCONTROL,BREATHEDEFEND,EYEDEFEND,SUIT,HANDDEFEND,OTHERDEFEND,ASPECT,PH
+			,MELPOINT,DENSITYW,BOIPOINT,DENSITYA,STREAMPRESS,BURNINGHEAT,CRITICIALTEM,CRITICIALPRE,WDATAVALUES,FLAPOINT,HIGHEXPLODE
+			,SELFIGNITETEM,LOWEXPLODE,RESOLVABLE,PURPOSE,PHYSICOCHEMICALPROPERTY,STABILITY,TABOO,AVERTCONTACT,POLYMERIZE,CLEAVAGEPRODUCT
+			,ACUTETOXICITY,SUBAC,THRILL,SENSITIZATION,MUTAGENICITY,TERATOGENICITY,CARCINOGENICITY,OTHERPATHOPOIESIA,ECOTOXICITY
+			,BIODEGRADABILITY,NATURALABIOTICDEGRADATION,BIOCONCENTRATION,OTHERHARMFUL,SCRAPCHARACTER,SCRAPMETHOD
+			,SCRAPNOTICE,WXHWNUM,UNNUM,PACKTITLE,PACKSORT,PACKMETHOD,TRAFFICNOTICE,LAW,REFERENCEDOCUMENTATION,INPUTDATE,INPUTDEPT,APPLYDEPT,MODIFYREMARK,OTHER
+			,CORPNAME,ADDRESS,POSTCODE,EMAIL,FAX,CORPTEL,AVAILABILITYDATE
+		FROM TMSDS t 	
+		WHERE 1=1
+		<if test="po.chnname != null">
+			<if test="po.chnname != ''">
+			AND	t.CHNNAME  LIKE '%'||#{po.chnname}||'%' 
+			</if>
+		</if> 
+		<if test="po.casnum != null">
+			<if test="po.casnum != ''">
+			AND	CASNUM = #{po.casnum}
+			</if>
+		</if>	
+		<if test="po.inputdate != null">
+			<if test="po.inputdate != ''">
+			AND to_date(to_char(INPUTDATE,'yyyy-mm-dd'),'yyyy-mm-dd')&gt;to_date(to_char(#{po.inputdate,jdbcType=TIMESTAMP},'yyyy-mm-dd'),'yyyy-mm-dd')
+			</if>
+		</if>	
+		<if test="po.inputdateEnd != null">
+			<if test="po.inputdateEnd != ''">
+			AND to_date(to_char(INPUTDATE,'yyyy-mm-dd'),'yyyy-mm-dd')&lt;to_date(to_char(#{po.inputdateEnd,jdbcType=TIMESTAMP},'yyyy-mm-dd'),'yyyy-mm-dd')
+			</if>
+		</if>
+		
+		<if test="po.availabilitydate != null">
+			<if test="po.availabilitydate != ''">
+			AND to_date(to_char(AVAILABILITYDATE,'yyyy-mm-dd'),'yyyy-mm-dd')&gt;to_date(to_char(#{po.availabilitydate,jdbcType=TIMESTAMP},'yyyy-mm-dd'),'yyyy-mm-dd')
+			</if>
+		</if>	
+		<if test="po.availabilitydateEnd != null">
+			<if test="po.availabilitydateEnd != ''">
+			AND to_date(to_char(AVAILABILITYDATE,'yyyy-mm-dd'),'yyyy-mm-dd')&lt;to_date(to_char(#{po.availabilitydateEnd,jdbcType=TIMESTAMP},'yyyy-mm-dd'),'yyyy-mm-dd')
+			</if>
+		</if>	
+		ORDER by INPUTDATE desc			
+	</select>
+	
+	<!-- 通过名称查询实例数 -->
+	<select id="countByName" parameterType="String" resultType="Integer">
+		SELECT COUNT(1) 
+		  FROM TMSDS 
+		  WHERE CHNNAME = #{name}
+	</select>
+	<!-- 通过标识和名称查询实例数 -->
+	<select id="countByIdAndName" parameterType="com.hw.hwsafe.knowledge.pojo.TmsdsPO" resultType="Integer">
+		SELECT COUNT(1)
+		  FROM TMSDS
+		  WHERE OBJID != #{objid}
+		    AND CHNNAME = #{chnname}
+	</select>
+	
+		<!-- 根据危化品名称查询PO ，由于危化品名称唯一，是可以唯一确定一条记录的，李玉梅于2013年6月6日添加-->
+	<select id="retrieveTmsdsByChname" parameterType="String" resultType="com.hw.hwsafe.knowledge.pojo.TmsdsPO">
+		SELECT OBJID,CHNNAME,SUMING,ENGNAME,TINFO,COUNTRYTEL,TYPE,HXPNAME,INGREDIENT,CONTENT
+			,CASNUM,DANGERSORT,INVADE,HEALTHHARM,ENVIRONMENT,BLAST,SKINCONTACT,EYECONTACT,BREATHE,EAT
+			,DANGERCHA,DECOMPOSE,FIREOUTMETHOD,FIREOUTNOTICE,CONTINGENCYMETHOD,ELIMINATEMETHOD,OPERATENOTICE,SAVENOTICE
+			,MAXALLOWABLECONCENTRATION,MONITORINGMETHOD,PROCONTROL,BREATHEDEFEND,EYEDEFEND,SUIT,HANDDEFEND,OTHERDEFEND,ASPECT,PH
+			,MELPOINT,DENSITYW,BOIPOINT,DENSITYA,STREAMPRESS,BURNINGHEAT,CRITICIALTEM,CRITICIALPRE,WDATAVALUES,FLAPOINT,HIGHEXPLODE
+			,SELFIGNITETEM,LOWEXPLODE,RESOLVABLE,PURPOSE,PHYSICOCHEMICALPROPERTY,STABILITY,TABOO,AVERTCONTACT,POLYMERIZE,CLEAVAGEPRODUCT
+			,ACUTETOXICITY,SUBAC,THRILL,SENSITIZATION,MUTAGENICITY,TERATOGENICITY,CARCINOGENICITY,OTHERPATHOPOIESIA,ECOTOXICITY
+			,BIODEGRADABILITY,NATURALABIOTICDEGRADATION,BIOCONCENTRATION,OTHERHARMFUL,SCRAPCHARACTER,SCRAPMETHOD
+			,SCRAPNOTICE,WXHWNUM,UNNUM,PACKTITLE,PACKSORT,PACKMETHOD,TRAFFICNOTICE,LAW,REFERENCEDOCUMENTATION,INPUTDATE,INPUTDEPT,APPLYDEPT,MODIFYREMARK,OTHER
+			,CORPNAME,ADDRESS,POSTCODE,EMAIL,FAX,CORPTEL,AVAILABILITYDATE
+			 FROM TMSDS WHERE CHNNAME=#{value}
+	</select>
+</mapper>

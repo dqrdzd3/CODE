@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hw.hwsafe.corpinfo.dao.IB00301Dao">
+	<!-- 分页查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		SELECT 	MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012
+		 FROM B00301 T 
+		WHERE 1=1
+		<if test="po.MA002 != null">
+			<if test="po.MA002 != ''">
+			and MA002  =#{po.MA002}
+			</if>
+		</if>
+		ORDER BY T.MA010 DESC
+	</select>
+
+	<!-- 查询所有人员培训 -->
+	<select id="retrieveAllB00301" resultType="com.hw.hwsafe.corpinfo.pojo.B00301PO">
+		SELECT *
+		FROM B00301 t
+	</select>
+
+	<!-- 根据主键查询 -->
+	<select id="retrieveB00301ByID" parameterType="String"
+		resultType="com.hw.hwsafe.corpinfo.pojo.B00301PO">
+		SELECT 	MA001,MA002,MA003,MA004,MA005,MA006, TO_DATE(TO_CHAR(MA007,'YYYY-MM-DD'),'YYYY-MM-DD') MA007,MA008,MA009,MA010,MA011,MA012
+		FROM B00301 WHERE MA001=#{MA001}
+	</select>
+
+
+	<!-- 根据条件查询所有安全管理人员 -->
+	<select id="retrieveB00301ByPO" resultType="com.hw.hwsafe.corpinfo.pojo.B00301PO">
+		SELECT
+		MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012
+		FROM B00301 t
+		WHERE 1=1
+	</select>
+
+	<!-- 插入安全管理人员信息 -->
+	<insert id="insertB00301" parameterType="com.hw.hwsafe.corpinfo.pojo.B00301PO">
+		INSERT INTO
+		B00301(MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009)
+		VALUES(
+		#{MA001,jdbcType=VARCHAR},
+		#{MA002,jdbcType=VARCHAR},
+		#{MA003,jdbcType=VARCHAR},
+		#{MA004,jdbcType=VARCHAR},
+		#{MA005,jdbcType=VARCHAR},
+		#{MA006,jdbcType=VARCHAR},
+		#{MA007,jdbcType=TIMESTAMP},
+		#{MA008,jdbcType=VARCHAR},
+		#{MA009,jdbcType=VARCHAR}
+		)
+	</insert>
+	<!-- 更新安全管理人员信息 -->
+
+	<update id="updateB00301" parameterType="com.hw.hwsafe.corpinfo.pojo.B00301PO">
+		UPDATE B00301
+		set
+		MA003=#{MA003,jdbcType=VARCHAR},
+		MA004=#{MA004,jdbcType=VARCHAR},
+		MA005=#{MA005,jdbcType=VARCHAR},
+		MA006=#{MA006,jdbcType=VARCHAR},
+		MA007=#{MA007,jdbcType=TIMESTAMP},
+		MA008=#{MA008,jdbcType=VARCHAR},
+		MA011=SYSDATE
+		WHERE MA001 = #{MA001}
+	</update>
+
+	<!-- 根据主表主键删除人员培训信息 -->
+	<delete id="deleteB00301ByB003ID" parameterType="String">
+		DELETE FROM
+		B00301 WHERE MA002 = #{MA001}
+	</delete>
+	
+	<!--批量删除人员培训信息 -->
+	<delete id="delb00301" >
+		DELETE FROM
+		B00301 WHERE ma001 in
+		<foreach collection="ids" separator="," item="item" open="(" close=")" >#{item}</foreach>
+	</delete>
+</mapper>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Line Chart</title>
+<script src="src/Chart.min.js"></script>
+<script src="../../util/DateUtil.js"></script>
+
+<meta name="viewport" content="initial-scale = 1, user-scalable = no">
+<style>
+	canvas {
+		
+	}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+	<label id="name"></label><img src="ic_menu_share.png" align="right" width="30" height="30" onClick="getShareContent()"/>
+	<div align="center" id = "2ddiv">
+		<canvas id="canvas"></canvas>
+	</div>
+	<script>
+		document.getElementById('2ddiv').style.webkitTransform = 'translate() translateZ()';
+	
+		var values = new Array(7);
+		var width = "350";
+		var height = "160";
+		initDatas();
+		
+		function initDatas(){
+			var datas = window.action.initDatas();
+			// document.write("datas "+datas);
+	        var json = eval("("+datas+")");
+	        
+	        width = json.width; 
+	        //height = json.height;
+	        var name = json.name +'['+json.unit+']';
+	        document.getElementById("name").innerText = name;
+			values[0] = initValue(json.monday);
+			values[1] = initValue(json.tuesday);
+			values[2] = initValue(json.wednesday);
+			values[3] = initValue(json.thursday);
+			values[4] = initValue(json.friday);
+			values[5] = initValue(json.saturday);
+			values[6] = initValue(json.sunday);
+						
+		} 
+		
+
+		function getShareContent(){
+					var datas = window.action.initDatas();
+			// document.write("datas "+datas);
+	        var json = eval("("+datas+")");
+			     	var weeks = getLastWeek();
+	     	var shareContent=json.name+"过去7天当日最高值分别是：\n";
+			for (var i=0;i<7;i++)
+			{
+				shareContent = shareContent +weeks[i]+'['+values[i]+json.unit+']';
+				if(i<6){
+					shareContent = shareContent+',';
+				}
+			}
+			window.share.historyShare(shareContent);
+		}
+		function initValue(value){
+			return chkIsNull(value)? 0 : new Number(value);
+		}
+		/* 判断是否为空 */
+		function chkIsNull(exp){
+			if (typeof(exp) != "undefined") 
+			{
+				return false;
+			}
+			return true;
+		}
+		var barChartData = {
+			labels : getLastWeek(),
+			datasets : [
+				{
+					fillColor : "rgba(151,187,205,0.5)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					data : values
+				}
+			]
+			
+		}
+	var canvas = document.getElementById("canvas");
+	//document.write("width "+width);
+	//document.write("<br>height "+height);
+	var w = chkIsNull(width)? 0 : new Number(width);
+	var h = chkIsNull(height)? 0 : new Number(height);
+	canvas.width = w;
+	canvas.height = h;
+	
+	var ctx = canvas.getContext("2d");
+	ctx.clearRect(0, 0, w, h); 
+	var myLine = new Chart(ctx).Line(barChartData);
+	
+	</script>
+</body>
+</html>
+

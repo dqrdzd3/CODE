@@ -1,0 +1,34 @@
+/*打印报表*/
+.print table{
+	border-collapse: collapse;
+	border: solid 1px #4BCDB9;
+	font-size: 12px;
+	color: #565656;
+	padding: 0px;
+	margin: 0 auto;
+	table-layout:fixed; 
+	width:98%;
+}
+.print th{
+	background-color: #ECFFFF;
+	color:#108F7A;
+	text-align:center;
+	width:110px;
+	font-weight: normal;
+	border-left: 1px solid #4BCDB9;
+	border-bottom: 1px solid #4BCDB9;
+	font-size: 12px;
+	line-height:16px;
+}
+.print td{ 
+	border-left: 1px solid #4BCDB9;
+	border-bottom: 1px solid #4BCDB9;
+	padding-right:8px;
+}
+ 
+.print table caption{
+	font-size:18px;
+	font-family:"微软雅黑","黑体";
+	line-height: 40px;
+}
+.printtitle{ font-size:14px; text-align:center; line-height:30px; color:#108F7A;}

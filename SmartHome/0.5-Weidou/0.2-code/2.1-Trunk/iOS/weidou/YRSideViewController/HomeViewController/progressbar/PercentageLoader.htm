@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="jquery-1.9.1.min.js"></script>
+<script src="jquery.percentageloader-0.1.js"></script>
+<link rel="stylesheet" href="jquery.percentageloader-0.1.css">
+<script type="text/javascript">
+	
+     /* $(function() {    
+      	 _width = 210; 
+	  	 _height = 210;
+	     var curValue = 0.0;
+	     var maxValue = 5.0;
+	     createChart(curValue,maxValue);
+	     
+	     var unit = 'ppm';
+	     var status = "正常";
+     	updateChart(curValue,maxValue,unit,status);
+     }); */
+</script>
+</head>
+<body bgcolor="#F5FCEA">
+
+	<div id="container" align="center">
+		<div id="topLoader" align="center"></div>
+		<script type="text/javascript">
+			var _curValue = 0.0;
+			var _maxValue = 5.0;
+			var _unit = 'ppm';
+		    var _status = "正常";
+		    var _width = 210; 
+			var _height = 210;
+			var _topLoader = null;
+		    
+			function initDatas(datas){
+			        var json = eval("("+datas+")");
+
+					_curValue = initValue(json.curValue);
+					_maxValue = initValue(json.maxValue);
+					_unit = chkIsNull(json.unit)? "ppm" : json.unit;
+					_status = chkIsNull(json.status)? "正常" : json.status;
+					
+					_width = json.width; 
+			        _height = json.height;
+					
+					//document.write("createChart "+_curValue+"unit "+_unit+"status "+_status);
+			} 
+			function initValue(value){
+				return chkIsNull(value)? 0 : new Number(value);
+			}
+			/* 判断是否为空 */
+			function chkIsNull(exp){
+				if (typeof(exp) != "undefined") 
+				{
+					return false;
+				}
+				return true;
+			}
+		     
+		     function createChart(curValue,maxValue){
+		     	var curPerValue = null;
+		     	if(maxValue!=0){
+		     		curPerValue = curValue/maxValue;
+		     	}else{
+		     		curPerValue = 0;
+		     	}
+		      	_topLoader = $("#topLoader").percentageLoader
+		          ({width: _width, height: _height, progress : curPerValue});
+		     }     
+		     
+		     function updateChart(curValue,maxValue,unit,status){
+		     	// document.write("updateChart "+curValue+"unit "+unit+"status "+status);
+		     	var curPerValue = null;
+		     	if(maxValue!=0){
+		     		curPerValue = curValue/maxValue;
+		     	}else{
+		     		curPerValue = 0;
+		     	}
+		     	_topLoader.setProgress(curPerValue);
+				_topLoader.setValue(curValue.toString() + unit,status);
+		     }  
+			function create(datas){
+		        // document.write("create "+datas);
+		    	initDatas(datas);
+		    	createChart(_curValue,_maxValue);
+		    }
+		    
+		    function update(datas){
+		    	// document.write("update "+datas);
+		    	initDatas(datas);
+		    	updateChart(_curValue,_maxValue,_unit,_status);
+		    }
+		//create('{"maxValue":1.0,"height":210,"curValue":0.0,"width":210}') ;
+		//update('{"maxValue":1.0,"height":280,"curValue":0.0,"width":280,"unit":"","status":""}') ;
+		</script>
+	</div>
+
+</body>
+
+</html>

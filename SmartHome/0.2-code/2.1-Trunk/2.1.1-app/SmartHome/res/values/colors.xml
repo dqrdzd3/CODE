@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="trans">#E0000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#808080</color>
+    <color name="red">#FF0000</color>
+    <color name="gold">#FFD700</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="green">#008000</color>
+    <color name="blue">#499BF7</color>
+    <color name="purple">#800080</color>
+    <color name="pink">#FFC0CB</color>
+    <color name="orange">#FFA500</color>
+    <color name="lemonyellow">#FFFACD</color>
+    <color name="graywhite">#F5F5F5</color>
+    <color name="grayslate">#708090</color>
+    <color name="lightblue">#0083FF</color>
+    <color name="gridview_item_click">#d1e7e5</color>
+    <color name="ui_setting_bg">#FFEFEBE7</color>
+    <color name="ui_home_bg">#F7F2F1</color>
+    <color name="ui_home_icon_text">#A1CB75</color>
+    <color name="ui_home_text">#4E4E4E</color>
+    <color name="ui_home_hint_text">#808080</color>
+    <color name="ui_home_view">#705bc0de</color>
+    <color name="ui_home_view_name_bg">#163347</color>
+    <color name="ui_home_view_bg">#40001324</color>
+    <color name="ui_home_view_bg_click">#80001324</color>
+    <color name="text">#FCFCFC</color>
+    <color name="text_light">#999999</color>
+    <color name="text_inverted">#FFFFFF</color>
+    <color name="text_title">#DFDFDF</color>
+    <color name="pager_footer">#1fb6ed</color>
+    <color name="pager_selected_text">#FFFFFF</color>
+    <color name="pager_background">#F4F4F4</color>
+    <color name="pager_background_alternate">#E7E7E7</color>
+    <color name="black_translate">#90000000</color>
+    <color name="text_link">#1fb6ed</color>
+    <color name="table_text">#484848</color>
+    <color name="table_text_inverted">#FFFFFF</color>
+    <color name="table_text_light">#A6A6A6</color>
+    <color name="table_text_header">#636363</color>
+    <color name="header_background_start">#ECECEC</color>
+    <color name="header_background_end">#C3C3C3</color>
+    <color name="header_background_top">#F9F9F9</color>
+    <color name="header_background_bottom">#A7A7A7</color>
+    <color name="actionbar_background_start">#272727</color>
+    <color name="actionbar_background_end">#1A1A1A</color>
+    <color name="bootstrap_divider_top">#000000</color>
+    <color name="bootstrap_divider_bottom">#5A5A5A</color>
+    <color name="main_background_start">#2E2E2E</color>
+    <color name="main_background_end">#2C2C2C</color>
+    <color name="button_background_enabled_start">#1fb6ed</color>
+    <color name="button_background_enabled_end">#1c9ac8</color>
+    <color name="button_background_pressed_start">#f76500</color>
+    <color name="button_background_pressed_end">#fb812c</color>
+    <color name="edit_text_background_start">#EFF6FF</color>
+    <color name="edit_text_background_end">#FBFDFF</color>
+    <color name="button_background_disabled_start">#7b7b7b</color>
+    <color name="button_background_disabled_end">#646464</color>
+    <color name="text_shadow">#000000</color>
+    <color name="background_selected">#1fb6ed</color>
+    <color name="nav_button_text_light">#ffffff</color>
+    <color name="nav_button_pressed">#1fb6ed</color>
+    <color name="nav_button_disabled">#646464</color>
+    <color name="nav_button_text_disabled">#464646</color>
+    <color name="dark_grey">#1f1f1f</color>
+    <color name="navigation_drawer_item_separator">#c2c2c2</color>
+    <color name="full_transparent">#00000000</color>
+    <color name="half_transparent">#aa000000</color>
+    <color name="ui_home_pager_green">#C2F8E9</color>
+    <color name="ui_home_pager_blue">#CDE9FC</color>
+    <color name="ui_home_pager_light_blue">#D1E7E5</color>
+    <!-- 少云 -->
+    <color name="ui_home_wether_cloudless">#75C4BE</color>
+    <!-- 多云 -->
+    <color name="ui_home_wether_cloud">#748AA1</color>
+    <!-- 阴天 -->
+    <color name="ui_home_wether_cloudy">#86897E</color>
+    <color name="list_diver">#8D8A88</color>
+    <!-- 解决方案Layout背景色 -->
+    <color name="ui_home_pager_solution_layout">#40001324</color>
+    <!-- 街景 bgn -->
+    <color name="cam_bg">#F02A7BAF</color>
+    <color name="cam_font_color">#ffffff</color>
+    <color name="halff_transparent">#80000000</color>
+    <color name="halff_weather_transparent">#701F6E7F</color>
+    <!-- 街景 end -->
+    <!-- 联动 bgn -->
+    <color name="ctrl_bg">#FFEFEBE7</color>
+    <color name="ctrl_title_bg">#F02A7BAF</color>
+    <color name="ctrl_title_txt">#FFEFEBE7</color>
+    <color name="ctrl_device_list_font">#0080F6</color>
+    <color name="ctrl_item_title_txt">#FFEFEBE7</color>
+    <color name="ctrl_item_txt">#008FD7</color>
+    <!-- 联动 end -->
+    <!-- 控制 bgn -->
+    <color name="ctrl_page_sensor_txt">#13A5DD</color>
+    <color name="ctrl_page_up_bg">#DEF6FF</color>
+    <color name="ctrl_page_down_bg">#13A5DD</color>
+    <!-- 控制 end -->
+    <!-- 超级APP -->
+    <color name="devide_line">#CBCED2</color>
+    <color name="whites">#ffffff</color>
+    <color name="grays">#818181</color>
+    <color name="gray_font">#818181</color>
+    <color name="common_title">#F9F9F9</color>
+    <color name="pull_refresh_textview">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="refresh_head_bg">#2B2B2B</color>
+    <color name="backColor">#2000</color>
+    <color name="detail_bgColor">#f5f5f5</color>
+    <color name="defaultTextColor">#666</color>
+    <color name="viewfinder_frame">#2477ab</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="result_view">#b0000000</color>
+    <color name="deepcolor">#faaa5f</color>
+    <color name="shadowcolor">#333333</color>
+    <color name="naming">#ABABAB</color>
+    <color name="background">#272727</color>
+    <color name="orange_yellow">#9b9ba0</color>
+
+    <drawable name="semi_black">#80000000</drawable>
+
+    <color name="remote_connect_text">#FFe78018</color>
+    <color name="remote_disconnect_text">#FF901821</color>
+
+    <!-- ui bgn -->
+    <color name="ui_pager_weather_text">#ff2f2f2f</color>
+    <color name="ui_pager_value_progress_bg">#30FFFFFF</color>
+    <color name="ui_pager_value_progress_1">#8FC31F</color>
+    <color name="ui_pager_value_progress_2">#FFF100</color>
+    <color name="ui_pager_value_progress_3">#EB6100</color>
+    <!-- ui end -->
+    <!-- 解决方案 bgn -->
+    <color name="ui_solution_hint_1">#00A65A</color>
+    <color name="ui_solution_hint_2">#F39C12</color>
+    <color name="ui_solution_hint_3">#DD4B39</color>
+    <!-- 解决方案 end -->
+
+</resources>

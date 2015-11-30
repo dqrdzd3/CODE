@@ -1,0 +1,6 @@
+.ui-jqgrid .ui-jqgrid-titlebar { position: relative; border-left: 0px none;border-right: 0px none; border-top: 0px none;height:26px;/*{bgColorContent}*/ background:url(../../jquery-ui-1.8.2/themes/redmond/images/th.png)/*{bgImgUrlContent}*/ 50%/*{bgContentXPos}*/ 50%/*{bgContentYPos}*/ repeat-x/*{bgContentRepeat}*/;line-height:24px; }
+.ui-jqgrid .ui-jqgrid-title { float: left; margin: .1em 0 .2em;padding-left:10px; }
+.ui-jqgrid td.jqgrid-rownum { padding: 0 2px 0 2px; margin: 0px; border: 0px none;width:25px;text-align: center;table-layout:fixed;}
+.ui-jqgrid .ui-pg-selbox {font-size:.8em; line-height:18px; display:block; height:18px; margin: 0em;width:45px;}
+.ui-jqdialog .ui-jqdialog-title { margin: .1em 0 .2em; line-height: 24px;padding-left: 10px;} 
+.ui-jqdialog-content input.FormElement {padding:.3em;height: 14px;width: 210px;}

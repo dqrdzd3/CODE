@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="pushlet" namespace="/pushlet" extends="interceptor">
+		<action name="pushletMsg" class="com.hw.hwsafe.pushlet.action.PushletMsgAction">
+		</action>
+	</package>
+	
+	<package name="serverPush" namespace="/serverPush" extends="interceptor">
+		<action name="pushlet" class="com.hw.hwsafe.serverpush.action.PushletAction">
+			<result name="add">/WEB-INF/jsp/pushlet/add.jsp</result>
+		</action>
+	</package>
+</struts>

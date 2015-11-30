@@ -1,0 +1,40 @@
+# Set root logger level to error
+log4j.rootLogger=INFO, Console, File,A1
+
+###### Console appender definition #######
+
+# All outputs currently set to be a ConsoleAppender.
+log4j.appender.Console=org.apache.log4j.ConsoleAppender
+log4j.appender.Console.layout=org.apache.log4j.PatternLayout
+log4j.appender.Console.layout.ConversionPattern=%d{ABSOLUTE} %-5p [%c{3}] %m%n
+#log4j.appender.Console.layout.ConversionPattern=%d{ABSOLUTE} %-5p [%c] %m%n
+
+###### File appender definition #######
+log4j.appender.File=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.File.File=${smart.root}\\log4j\\hwsafe.log
+log4j.appender.File.Append=false
+log4j.appender.File.layout=org.apache.log4j.PatternLayout
+log4j.appender.File.DatePattern='.'yyyy-MM-dd-HH'.log'
+#log4j.appender.File.MaxFileSize = 10KB
+log4j.appender.File.layout.ConversionPattern=%d{ABSOLUTE} %-5p [%c] %m%n
+
+###
+
+log4j.appender.A1 = org.apache.log4j.DailyRollingFileAppender
+log4j.appender.A1.File=${smart.root}\\log4j\\smartLog.html
+log4j.appender.A1.Encoding=UTF-8
+log4j.appender.A1.Threshold=DEBUG
+log4j.appender.A1.DatePattern='.'yyyy-MM-dd-HH'.html'
+log4j.appender.A1.layout = org.apache.log4j.HTMLLayout
+
+
+#####MyBatis SQL debugging
+log4j.logger.java.sql = DEBUG
+log4j.logger.java.sql.Connection = DEBUG 
+log4j.logger.java.sql.Statement = DEBUG
+log4j.logger.java.sql.PreparedStatement = DEBUG
+log4j.logger.java.sql.ResultSet = DEBUG
+log4j.logger.com.ibatis = DEBUG
+log4j.logger.com.ibatis.common.jdbc.SimpleDataSource = DEBUG
+log4j.logger.com.ibatis.common.jdbc.ScriptRunner = DEBUG
+log4j.logger.com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate = DEBUG

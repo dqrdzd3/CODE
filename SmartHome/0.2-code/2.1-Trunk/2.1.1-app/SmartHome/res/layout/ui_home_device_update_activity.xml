@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res/com.hw.smarthome"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <com.zf.view.TitleBarView
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/login_register_phone_bg"
+        android:hint="@string/et_password_hint"
+        android:inputType="textPassword"
+        android:padding="5dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="@string/tv_tips_password"
+        android:textColor="@color/gray_font"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/login_register_phone_bg"
+        android:hint="@string/et_name_hint"
+        android:inputType="text"
+        android:padding="5dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="@string/tv_tips_name"
+        android:textColor="@color/gray_font"
+        android:textSize="16sp" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/register_complete"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:onClick="handleLogin"
+        android:text="@string/register_complete"
+        app:bb_text_gravity="center"
+        bootstrapbutton:bb_roundedCorners="true"
+        bootstrapbutton:bb_size="default"
+        bootstrapbutton:bb_type="info" />
+
+    <TextView
+        android:id="@+id/lat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/protocol"
+        android:paddingLeft="5dp"
+        android:text="@string/login_reg_agree"
+        android:textColor="#000000"
+        android:visibility="gone" />
+
+</LinearLayout>

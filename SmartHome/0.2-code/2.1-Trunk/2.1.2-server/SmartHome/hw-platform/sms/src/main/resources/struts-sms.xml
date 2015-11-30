@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 业务消息提醒 -->
+	<package name="sms" namespace="/sms" extends="interceptor">		
+	
+		<action name="sms" class="com.hw.hwsafe.sms.czd.action.SMSAction" >
+			
+		</action>
+		
+	</package>
+</struts>

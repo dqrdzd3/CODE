@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hw.hwsafe.corpinfo.dao.IB001Dao">
+
+	<!-- 查询所有企业 -->
+	<select id="retrieveAllB001" resultType="com.hw.hwsafe.corpinfo.pojo.B001PO">
+		SELECT
+		MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+		MA017,MA018,MA019,MA020,MA021,MA022,MA023,MA024,MA025,MA026,MA027,MA028,MA029,MA030,MA031,MA032,MA033,MA034,MA035,
+		MA036,MA037,MA038,MA039,MA040,MA041,MA042,MA043,MA044,MA045,MA046,
+		MA047, MA048, MA049, MA050, MA051, MA052, MA053, MA054, MA055, MA056,
+		MA057, MA058, MA059, MA060, MA061, MA062, MA063, MA064, MA065, MA066,
+		MA067, MA068, MA069, MA070,MA071
+		FROM B001 t
+	</select>
+
+	<!-- 根据主键查询 -->
+	<select id="retrieveB001ByID" parameterType="String" resultType="com.hw.hwsafe.corpinfo.pojo.B001PO">
+		SELECT
+		MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+		MA017,MA018,MA019,MA020,MA021,MA022,MA023,MA024,MA025,MA026,MA027,MA028,MA029,MA030,MA031,MA032,MA033,MA034,MA035,
+		MA036,MA037,MA038,MA039,MA040,MA041,MA042,MA043,MA044,MA045,MA046,
+		MA047, MA048, MA049, MA050, MA051, MA052, MA053, MA054, MA055, MA056,
+		MA057, MA058, MA059, MA060, MA061, MA062, MA063, MA064, MA065, MA066,
+		MA067, MA068, MA069, MA070,MA071,MA080
+		FROM B001 A
+		WHERE MA001=#{MA001}
+		
+	</select>
+
+	<!-- 根据拼音查询企业中文名字,输入框可以输入拼音字母(对应MA069)和汉字(对应ma004) -->
+	<select id="retrieveB001ByPinyin" parameterType="String" resultType="com.hw.hwsafe.corpinfo.pojo.B001PO">
+		SELECT
+		MA004
+		FROM B001 WHERE (MA069 LIKE '%'||#{MA069}||'%' or ma004 like '%'||#{MA069}||'%' )
+		
+		<!-- 用于政府端过滤企业类型,如危化品生产企业或者是危化品运输企业 -->
+		<if test="MA051 != null and MA051 != ''">
+			AND MA051 =#{MA051}
+		</if>
+	</select>
+	<!-- 根据企业id查询上级主管单位名称 -->
+	<select id="getGovName" resultType="String">
+    select c2.ma003 from c002 c2 ,c001 c1 where c1.ma004=c2.ma001 and c1.ma001 = #{id} 
+    </select>  
+    <!-- 查询企业危化品种类数量 -->
+	<select id="retrieveWhpTypeNum" resultType="java.lang.Integer">
+		select count(1) as num from (select ma003, ma008 from b012 group by ma008,ma003 ) t where t.ma003=#{corpid}
+	</select>
+	<!-- 根据企业ID查询企业的安全生产情况登记信息 -->
+	<select id="retrieveS099ByCorpid" resultType="com.hw.hwsafe.corpinfo.pojo.S099PO">
+	   select MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,
+	   (select case when (select count(1) num from b002 b2 where b2.ma003 =#{id}) = 0  then  '0' else '1' end from dual) MA013,
+         (select case when (select count(1) from tregulation t1 where t1.ma002 = #{id}) = 0 then
+		0
+		else
+		1
+		end
+		from dual) MA014,MA015,
+         (select case 	when (select count(1) from b00401 t1 	where t1.ma002 = #{id}) = 0 then
+		0
+		else
+		1
+		end
+		from dual) MA016,
+		MA017,MA018,MA019,MA020,MA021,MA022,MA023,MA024,MA025,
+		(select count(1) as num from (select ma003, ma008 from b012 group by ma008,ma003 ) t where t.ma003=#{corpid}) MA026,
+		 MA027,
+		 (select count(1) from b00401 b4 where  b4.ma002=#{corpid})MA028,
+		 (select count(1) from (select b1.ma001 aa,
+               max(b2.ma005) KEEP(dense_rank FIRST ORDER BY b2.ma005 desc) bb,
+               max(b2.ma006) KEEP(dense_rank FIRST ORDER BY b2.ma005 desc) cc
+          from b00401 b1, b00402 b2
+         where b2.ma002 = b1.ma001
+           and b1.ma002 = #{corpid}
+         group by b1.ma001) t
+        where t.cc = '1') MA029,
+		 MA030,
+		  (select count(1) from (select b1.ma001 aa,
+               max(b2.ma005) KEEP(dense_rank FIRST ORDER BY b2.ma005 desc) bb,
+               max(b2.ma006) KEEP(dense_rank FIRST ORDER BY b2.ma005 desc) cc
+          from b00401 b1, b00402 b2
+         where b2.ma002 = b1.ma001
+           and b1.ma002 = #{corpid}
+         group by b1.ma001) t
+        where t.cc = '0')MA031,
+		(select count(1) from b003 b3 where b3.ma006='3' and b3.ma003=#{id} ) MA032,
+		(select count(1) from b00302 b31 ,b003 b3  where b31.ma002=b3.ma001 and b3.ma006='3' and b3.ma003=#{id}) MA033,
+		 MA034,
+		MA035,
+		(select case when (select count(1) num from r015 r2 where r2.ma015 =#{id} and r2.ma018='10')  = 0  then  '0' else '1' end from dual) MA036,
+		MA037,MA038,MA039,MA040,MA041,MA042,MA043,MA044,MA045,MA046,MA047
+		 from s099 s where s.ma039=#{id} 
+	</select>
+	<!-- 修改企业安全生产登记信息 -->
+	<update id="updateS099" parameterType="com.hw.hwsafe.corpinfo.pojo.S099PO">
+	  update s099 set 
+		  ma003=#{ma003,jdbcType=VARCHAR},
+		  ma004=#{ma004,jdbcType=VARCHAR},
+		  ma006=#{ma006,jdbcType=VARCHAR},
+		  ma007=#{ma007,jdbcType=INTEGER},
+		  ma008=#{ma008,jdbcType=VARCHAR},
+		  ma009=#{ma009,jdbcType=VARCHAR},
+		  ma010=#{ma010,jdbcType=INTEGER},
+		  ma011=#{ma011,jdbcType=INTEGER},
+		  ma012=#{ma012,jdbcType=INTEGER},
+		  ma013=#{ma013,jdbcType=INTEGER},
+		  ma014=#{ma014,jdbcType=INTEGER},
+		  ma015=#{ma015,jdbcType=INTEGER},
+		  ma016=#{ma016,jdbcType=INTEGER},
+		  ma017=#{ma017,jdbcType=INTEGER},
+		  ma018=#{ma018,jdbcType=INTEGER},
+		  ma019=#{ma019,jdbcType=INTEGER},
+		  ma020=#{ma020,jdbcType=VARCHAR},
+		  ma021=#{ma021,jdbcType=VARCHAR},
+		  ma022=#{ma022,jdbcType=VARCHAR},
+		  ma023=#{ma023,jdbcType=VARCHAR},
+		  ma024=#{ma024,jdbcType=VARCHAR},
+		  ma025=#{ma025,jdbcType=VARCHAR},
+		  ma026=#{ma026,jdbcType=INTEGER},
+		  ma027=#{ma027,jdbcType=NUMERIC},
+		  ma028=#{ma028,jdbcType=INTEGER},
+		  ma029=#{ma029,jdbcType=INTEGER},
+		  ma030=#{ma030,jdbcType=INTEGER},
+		  ma031=#{ma031,jdbcType=INTEGER},
+		  ma032=#{ma032,jdbcType=INTEGER},
+		  ma033=#{ma033,jdbcType=INTEGER},
+		  ma034=#{ma034,jdbcType=INTEGER},
+		  ma035=#{ma035,jdbcType=INTEGER},
+		  ma036=#{ma036,jdbcType=INTEGER},
+		  ma037=#{ma037,jdbcType=VARCHAR},
+		  ma038=#{ma038,jdbcType=TIMESTAMP},
+		  ma040=#{ma040,jdbcType=VARCHAR},
+		  ma041=#{ma041,jdbcType=VARCHAR},
+		  ma042=#{ma042,jdbcType=VARCHAR},
+		  ma043=#{ma043,jdbcType=VARCHAR},
+		  ma044=#{ma044,jdbcType=INTEGER},
+		  ma045=#{ma045,jdbcType=VARCHAR},
+		  ma046=#{ma046,jdbcType=VARCHAR},
+		  ma047=#{ma047,jdbcType=VARCHAR}
+		  where ma001=#{ma001}
+	</update>
+	<!-- 根据企业名称查询是否重复 -->
+	<select id="retrieveB001ByName" resultType="java.lang.Integer">
+		SELECT COUNT(1) from b001 
+		where MA004=#{MA004} 
+		<if test="MA001 !=null and MA001 !=''" >
+		and ma001 !=#{MA001}
+		</if>
+	</select>
+
+	<!-- 查询省份信息 -->
+	<select id="getProvinceList" resultType="java.util.HashMap">
+		select t.OBJID as
+		"code",t.name as "desc"
+		from TZONE t where t.FLEVEL='1'
+	</select>
+
+	<!-- 查询地市信息 -->
+	<select id="getCityList" resultType="java.util.HashMap">
+		select t.OBJID as
+		"code",t.name as "desc"
+		from TZONE t where t.PARENTID=#{value}
+	</select>
+
+
+
+<!-- 根据政府ID查询所辖企业 -->
+	<select id="retrieveAllB001ByGovID" resultType="com.hw.hwsafe.corpinfo.pojo.B001PO">
+		select t1.ma001,t1.ma002,t1.ma003,t1.ma004,t1.ma011 from b001 t1 left join c001 t2 on t1.ma001= t2.ma001 where t2.ma004=#{id}
+	</select>
+
+
+	<!-- 查询区县信息 -->
+	<select id="getCountyList" resultType="java.util.HashMap">
+		select t.OBJID as
+		"code",t.name as "desc"
+		from TZONE t where t.PARENTID=#{value}
+	</select>
+
+	<!-- 修改企业信息时查询企业名称查询是否重复 -->
+	<select id="upretrieveB001ByName" resultType="java.lang.Integer">
+		SELECT COUNT(1)
+		FROM(SELECT MA004
+		FROM B001 t WHERE MA004 =#{MA004} and MA001
+		!=#{MA001})
+
+	</select>
+	<!-- 根据条件查询所有 -->
+	<select id="retrieveB001ByPO" resultType="com.hw.hwsafe.corpinfo.pojo.B001PO">
+		SELECT
+		MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+		MA017,MA018,MA019,MA020,MA021,MA022,MA023,MA024,MA025,MA026,MA027,MA028,MA029,MA030,MA031,MA032,MA033,MA034,MA035,
+		MA036,MA037,MA038,MA039,MA040,MA041,MA042,MA043,MA044,MA045,MA046,
+		MA047, MA048, MA049, MA050, MA051, MA052, MA053, MA054, MA055, MA056,
+		MA057, MA058, MA059, MA060, MA061, MA062, MA063, MA064, MA065, MA066,
+		MA067, MA068, MA069, MA070,MA071
+		FROM B001 t
+		WHERE 1=1
+		<if test="MA001 != null">
+			<if test="MA001 != ''">
+				AND MA001 = #{MA001}
+			</if>
+		</if>
+		<if test="MA004 != null">
+			<if test="MA004 != ''">
+				AND MA004 LIKE '%'||#{MA004}||'%'
+			</if>
+		</if>
+	</select>
+    <!--插入企业安全生产基本情况信息  -->
+    <insert id="insertS099" parameterType="com.hw.hwsafe.corpinfo.pojo.S099PO">
+       insert into S099 (MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+		MA017,MA018,MA019,MA020,MA021,MA022,MA023,MA024,MA025,MA026,MA027,MA028,MA029,MA030,MA031,MA032,MA033,MA034,MA035,
+		MA036,MA037,MA038,MA039,MA040,MA041,MA042,MA043,MA044,MA045,MA046,MA047)
+		values(
+		#{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=VARCHAR},#{ma004,jdbcType=VARCHAR},#{ma005,jdbcType=VARCHAR},#{ma006,jdbcType=VARCHAR},
+		#{ma007,jdbcType=INTEGER},#{ma008,jdbcType=VARCHAR},#{ma009,jdbcType=VARCHAR},#{ma010,jdbcType=INTEGER},#{ma011,jdbcType=INTEGER},#{ma012,jdbcType=INTEGER},
+		#{ma013,jdbcType=INTEGER},#{ma014,jdbcType=INTEGER},#{ma015,jdbcType=INTEGER},#{ma016,jdbcType=INTEGER},#{ma017,jdbcType=INTEGER},#{ma018,jdbcType=INTEGER},
+		#{ma019,jdbcType=INTEGER},#{ma020,jdbcType=VARCHAR},#{ma021,jdbcType=VARCHAR},#{ma022,jdbcType=VARCHAR},#{ma023,jdbcType=VARCHAR},#{ma024,jdbcType=VARCHAR},
+		#{ma025,jdbcType=VARCHAR},#{ma026,jdbcType=INTEGER},#{ma027,jdbcType=NUMERIC},#{ma028,jdbcType=INTEGER},#{ma029,jdbcType=INTEGER},
+		#{ma030,jdbcType=INTEGER},#{ma031,jdbcType=INTEGER},#{ma032,jdbcType=INTEGER},#{ma033,jdbcType=INTEGER},#{ma034,jdbcType=INTEGER},
+		#{ma035,jdbcType=INTEGER},#{ma036,jdbcType=INTEGER},#{ma037,jdbcType=VARCHAR},#{ma038,jdbcType=TIMESTAMP},#{ma039,jdbcType=VARCHAR},#{ma040,jdbcType=VARCHAR},
+		#{ma041,jdbcType=VARCHAR},#{ma042,jdbcType=VARCHAR},#{ma043,jdbcType=VARCHAR},#{ma044,jdbcType=INTEGER},#{ma045,jdbcType=VARCHAR},#{ma046,jdbcType=VARCHAR},#{ma047,jdbcType=VARCHAR}
+		)
+    
+    </insert>
+	<!-- 插入企业基本信息 -->
+	<insert id="insertB001" parameterType="com.hw.hwsafe.corpinfo.pojo.B001PO">
+		INSERT INTO
+		B001(MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+		MA017,MA018,MA019,MA020,MA021,MA022,MA023,MA024,MA025,MA026,MA027,MA028,MA029,MA030,MA031,MA032,MA033,MA034,MA035,
+		MA036,MA037,MA038,MA039,MA040,MA041,MA042,MA043,MA044,MA045,MA046,
+		MA047, MA048, MA049, MA050, MA051, MA052, MA053, MA054, MA055, MA056,
+		MA057, MA058, MA059, MA060, MA061, MA062, MA063, MA064, MA065, MA066,
+		MA067, MA068, MA069, MA070,MA071,MA080
+		)
+		VALUES(
+		#{MA001,jdbcType=VARCHAR},#{MA002,jdbcType=VARCHAR},#{MA003,jdbcType=VARCHAR},#{MA004,jdbcType=VARCHAR},#{MA005,jdbcType=VARCHAR},#{MA006,jdbcType=VARCHAR},
+		#{MA007,jdbcType=VARCHAR},#{MA008,jdbcType=VARCHAR},#{MA009,jdbcType=VARCHAR},#{MA010,jdbcType=VARCHAR},#{MA011,jdbcType=VARCHAR},#{MA012,jdbcType=TIMESTAMP},
+		#{MA013,jdbcType=VARCHAR},#{MA014,jdbcType=INTEGER},#{MA015,jdbcType=NUMERIC},#{MA016,jdbcType=NUMERIC},#{MA017,jdbcType=NUMERIC},#{MA018,jdbcType=VARCHAR},
+		#{MA019,jdbcType=INTEGER},#{MA020,jdbcType=VARCHAR},#{MA021,jdbcType=VARCHAR},#{MA022,jdbcType=VARCHAR},#{MA023,jdbcType=VARCHAR},#{MA024,jdbcType=VARCHAR},
+		#{MA025,jdbcType=NUMERIC},#{MA026,jdbcType=VARCHAR},#{MA027,jdbcType=VARCHAR},#{MA028,jdbcType=VARCHAR},#{MA029,jdbcType=VARCHAR},
+		#{MA030,jdbcType=VARCHAR},#{MA031,jdbcType=TIMESTAMP},#{MA032,jdbcType=TIMESTAMP},#{MA033,jdbcType=VARCHAR},#{MA034,jdbcType=VARCHAR},
+		#{MA035,jdbcType=VARCHAR},#{MA036,jdbcType=VARCHAR},#{MA037,jdbcType=TIMESTAMP},#{MA038,jdbcType=INTEGER},#{MA039,jdbcType=VARCHAR},#{MA040,jdbcType=VARCHAR},
+		#{MA041,jdbcType=TIMESTAMP},#{MA042,jdbcType=VARCHAR},#{MA043,jdbcType=INTEGER},#{MA044,jdbcType=VARCHAR},
+		#{MA045,jdbcType=VARCHAR},#{MA046,jdbcType=VARCHAR},#{MA047,jdbcType=VARCHAR},#{MA048,jdbcType=VARCHAR},
+		#{MA049,jdbcType=VARCHAR},#{MA050,jdbcType=VARCHAR},#{MA051,jdbcType=VARCHAR},#{MA052,jdbcType=VARCHAR},
+		#{MA053,jdbcType=VARCHAR},#{MA054,jdbcType=VARCHAR},#{MA055,jdbcType=VARCHAR},#{MA056,jdbcType=VARCHAR},
+		#{MA057,jdbcType=VARCHAR},#{MA058,jdbcType=VARCHAR},#{MA059,jdbcType=INTEGER},#{MA060,jdbcType=INTEGER},
+		#{MA061,jdbcType=INTEGER},#{MA062,jdbcType=INTEGER},#{MA063,jdbcType=INTEGER},#{MA064,jdbcType=VARCHAR},
+		#{MA065,jdbcType=VARCHAR},#{MA066,jdbcType=VARCHAR},#{MA067,jdbcType=VARCHAR},
+		#{MA068,jdbcType=VARCHAR},
+		#{MA069,jdbcType=VARCHAR},#{MA070,jdbcType=VARCHAR},#{MA071,jdbcType=NUMERIC},#{MA080,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<!-- 更新企业基本信息 -->
+
+	<update id="updateB001" parameterType="com.hw.hwsafe.corpinfo.pojo.B001PO">
+		UPDATE B001
+		set
+		MA002=#{MA002,jdbcType=VARCHAR},
+		MA003=#{MA003,jdbcType=VARCHAR},
+		MA004=#{MA004,jdbcType=VARCHAR},
+		MA007=#{MA007,jdbcType=VARCHAR},
+		MA008=#{MA008,jdbcType=VARCHAR},
+		MA009=#{MA009,jdbcType=VARCHAR},
+		MA010=#{MA010,jdbcType=VARCHAR},
+		MA011=#{MA011,jdbcType=VARCHAR},
+		MA012=#{MA012,jdbcType=TIMESTAMP},
+		MA013=#{MA013,jdbcType=VARCHAR},
+		MA014=#{MA014,jdbcType=INTEGER},
+		MA015=#{MA015,jdbcType=NUMERIC},
+		MA016=#{MA016,jdbcType=NUMERIC},
+		MA017=#{MA017,jdbcType=NUMERIC},
+		MA018=#{MA018,jdbcType=VARCHAR},
+		MA020=#{MA020,jdbcType=VARCHAR},
+		MA021=#{MA021,jdbcType=VARCHAR},
+		MA022=#{MA022,jdbcType=VARCHAR},
+		MA023=#{MA023,jdbcType=VARCHAR},
+		MA024=#{MA024,jdbcType=VARCHAR},
+		MA025=#{MA025,jdbcType=NUMERIC},
+		MA026=#{MA026,jdbcType=VARCHAR},
+		MA027=#{MA027,jdbcType=VARCHAR},
+		MA032=SYSDATE,
+		MA033=#{MA033,jdbcType=VARCHAR},
+		MA034=#{MA034,jdbcType=VARCHAR},
+		MA037=#{MA037,jdbcType=TIMESTAMP},
+		MA045=#{MA045,jdbcType=VARCHAR},
+		MA046=#{MA046,jdbcType=VARCHAR},
+		MA047=#{MA047,jdbcType=VARCHAR},
+		MA048=#{MA048,jdbcType=VARCHAR},
+		MA049=#{MA049,jdbcType=VARCHAR},
+		MA050=#{MA050,jdbcType=VARCHAR},
+		MA051=#{MA051,jdbcType=VARCHAR},
+		MA052=#{MA052,jdbcType=VARCHAR},
+		MA053=#{MA053,jdbcType=VARCHAR},
+		MA054=#{MA054,jdbcType=VARCHAR},
+		MA055=#{MA055,jdbcType=VARCHAR},
+		MA056=#{MA056,jdbcType=VARCHAR},
+		MA057=#{MA057,jdbcType=VARCHAR},
+		MA058=#{MA058,jdbcType=VARCHAR},
+		MA059=#{MA059,jdbcType=INTEGER},
+		MA060=#{MA060,jdbcType=INTEGER},
+		MA061=#{MA061,jdbcType=INTEGER},
+		MA062=#{MA062,jdbcType=INTEGER},
+		MA063=#{MA063,jdbcType=INTEGER},
+		MA064=#{MA064,jdbcType=VARCHAR},
+		MA065=#{MA065,jdbcType=VARCHAR},
+		MA066=#{MA066,jdbcType=VARCHAR},
+		MA067=#{MA067,jdbcType=VARCHAR},
+		MA068=#{MA068,jdbcType=VARCHAR},
+		MA070=#{MA070,jdbcType=VARCHAR},
+		MA071=#{MA071,jdbcType=NUMERIC},
+		MA080=#{MA080,jdbcType=VARCHAR}
+		WHERE MA001 = #{MA001}
+	</update>
+
+<!--企业上报给政府  -->
+	<update id="report2Gov" parameterType="String">
+	update b001 b 
+	set b.ma080='1'
+	where b.ma001 = #{id}
+	</update>
+<!-- 修改B001是否标注的状态 -->
+	<update id="updateB001XY">
+		UPDATE B001
+		set
+		MA071=#{MA071,jdbcType=INTEGER}
+		WHERE MA001 = #{MA001}
+	</update>
+
+	<!-- 根据主键删除企业基本信息 -->
+	<delete id="deleteB001ByID" parameterType="String">
+		DELETE FROM B001 WHERE
+		MA001 = #{MA001}
+	</delete>
+	<!-- 根据条件查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		SELECT distinct b.ma001,b.ma002,b.ma003,b.ma004
+		,b.ma005,b.ma006,b.ma007,b.ma008,b.ma009,b.ma010
+		,b.ma011,b.ma012,b.ma013
+		,b.ma014,b.ma015,b.ma016,b.ma017,b.ma018,b.ma019 ,b.ma020,
+		b.ma021,b.ma022,b.ma023,b.ma024
+		,b.ma025,b.ma026,b.ma027,b.ma028,b.ma029,b.ma030
+		,b.ma031,b.ma032,b.ma033
+		,b.ma034,b.ma035,b.ma036,b.ma037,b.ma038,b.ma039 ,b.ma040,
+		b.ma041,b.ma042,b.ma043,b.ma044 ,b.ma045,MA046,
+		MA047, MA048, MA049, MA050, MA051, MA052, MA053, MA054, MA055, MA056,
+		MA057, MA058, MA059, MA060, MA061, MA062, MA063, MA064, MA065, MA066,
+		MA067, MA068, MA069, MA070,MA071
+		FROM B001 b
+		left outer join gis001 g on b.ma001=g.ma002
+		<where >
+		<if test="po.MA004 != null and po.MA004 != ''">
+			b.MA004 like '%' || #{po.MA004} || '%'
+		</if>
+		<if test="po.MA069 != null and po.MA069 != ''">
+			b.MA069 like '%' || #{po.MA069} || '%'
+		</if>
+		<if test="po.MA026 != null and po.MA026 != ''">
+			AND b.MA026 like '%' || #{po.MA026} || '%'
+		</if>
+		<if test="po.MA031 != null and po.MA031 != ''">
+			AND b.MA031 &gt;=#{po.MA031}
+		</if>
+		<if test="po.MA032 != null and po.MA032 != ''">
+			AND b.MA031 &lt;=#{po.MA032}
+		</if>
+		<if test="po.MA051 != null and po.MA051 != ''">
+			AND b.MA051 =#{po.MA051}
+		</if>
+		<if test="po.MA011 != null and po.MA011 != ''">
+			AND b.MA011 =#{po.MA011}
+		</if>
+		</where>
+		order by b.ma031 desc
+	</select>
+	<!-- 县局统计查询用 -->
+	<select id="govStat" resultType="java.util.HashMap" >
+		select '' as CD, 0 as CV ,'' as corpType from dual where 1=2  <!-- corpType用于统计查看列表 -->
+		
+		<if test="type != null and type != '' and type == 'dq'">
+		  <if test="zgdwid != null and zgdwid != ''">
+				union all
+				select b.name as CD, a.c as CV,ma009 as corpType
+			 	 from (select t1.ma009, count(1) c from b001 t1 left join c001 t2 on t1.ma001=t2.ma001 where 
+			 	 <if test="cpnyType == 2"> t1.MA051 = '3' and </if> 
+			 	 <if test="cpnyType == 3">  (t1.MA051 = '1' or t1.ma051 = '2') and </if>
+			 	  t2.ma004 =#{zgdwid} 
+			 	   and (t1.ma080 = '1' or t1.ma080 = '2')
+			 	   and t2.ma008='10' group by t1.ma009) a, tzone b
+			 	where a.ma009 = b.objid
+		   </if>
+		</if>
+		
+		<if test="type != null and type != '' and type == 'qylx'">	
+		    <if test="zgdwid != null and zgdwid != ''">	
+				union all
+					select b.name as CD, a.c as CV,ma051 as corpType
+				 	 from (select ma051, count(1) c from b001 t1 left join c001 t2 on t1.ma001=t2.ma001 where 
+				 	  <if test="cpnyType == 2"> t1.MA051 = '3' and </if> 
+			 	      <if test="cpnyType == 3">  (t1.MA051 = '1' or t1.ma051 = '2') and </if>
+				 	  t2.ma004 =#{zgdwid}
+				 	    and (t1.ma080 = '1' or t1.ma080 = '2')
+				 	  and t2.ma008='10' group by ma051) a, tcodevalue b
+				 where a.ma051 = b.value
+				   and b.type = 'qylx'
+		   </if>
+		</if>
+		<if test="type != null and type != '' and type == 'jjlx'">	
+		    <if test="zgdwid != null and zgdwid != ''">	
+				union all
+				select b.display as CD, a.c as CV, a.ma010 as corpType
+                    from (select t1.ma010, count(1) c  from b001 t1  left join c001 t2   on t1.ma001 = t2.ma001   where
+                     <if test="cpnyType == 2"> t1.MA051 = '3' and </if> 
+			 	     <if test="cpnyType == 3">  (t1.MA051 = '1' or t1.ma051 = '2') and </if>
+                    t2.ma004 =#{zgdwid}
+                     and (t1.ma080 = '1' or t1.ma080 = '2')
+                     and t2.ma008='10'
+                    group by t1.ma010) a,  sys_dictionary b
+                    where a.ma010 = b.value
+                    and  b.key like '' || 'jjlx' || '%' and b.key != 'jjlx'
+		   </if>
+		</if>
+		<if test="type != null and type != '' and type == 'sshy'">
+			<if test="zgdwid != null and zgdwid != ''">	
+			union all	
+		select b.display as CD, a.c as CV, substr(a.ma011,0,1) as corpType
+                 from (select  count(1) c ,substr(t1.ma011,0,1) d, max(t1.ma011) ma011 from b001 t1   left join c001 t2   on t1.ma001 = t2.ma001 
+                  where 
+                   <if test="cpnyType == 2"> t1.MA051 = '3' and </if> 
+			 	   <if test="cpnyType == 3">  (t1.MA051 = '1' or t1.ma051 = '2') and </if>
+                   t2.ma004 =#{zgdwid}
+                     and (t1.ma080 = '1' or t1.ma080 = '2')
+                   and t2.ma008='10'  group by  substr(t1.ma011,0,1) ) a,  c007 b
+                    where a.d = b.value
+
+			</if>
+		</if>
+		<if test="type != null and type != '' and type == 'lsgx'">	
+		  <if test="zgdwid != null and zgdwid != ''">		
+				union all
+				select b.name as CD, a.c as CV,ma053 as corpType
+			 	 from (select ma053, count(1) c from b001 t1 left join c001 t2 on t1.ma001=t2.ma001 where 
+			 	  <if test="cpnyType == 2"> t1.MA051 = '3' and </if> 
+			 	  <if test="cpnyType == 3">  (t1.MA051 = '1' or t1.ma051 = '2') and </if>
+			 	  t2.ma004 =#{zgdwid}
+			 	    and (t1.ma080 = '1' or t1.ma080 = '2')
+			 	  and t2.ma008='10' group by ma053) a, tcodevalue b
+			   where a.ma053 = b.value
+			   and b.type = 'lsgx'
+		   </if>
+		</if>
+	</select>
+	
+	<!-- 市局统计查询企业用 -->
+	<select id="govStatsj" resultType="java.util.HashMap" >
+		select '' as CD, 0 as CV ,'' as corpType from dual where 1=2  <!-- corpType用于统计查看列表 -->
+		
+		<if test="type != null and type != '' and type == 'dq'">
+		  <if test="zgdwid != null and zgdwid != ''">
+				union all
+				select b.name as CD, a.c as CV,ma009 as corpType
+			 	 from (select t1.ma009, count(1) c from b001 t1 left join c001 t2 on t1.ma001=t2.ma001 where 
+			 	 t1.ma080 = (select case when t1.ma053 = '0' then  2 else   1 end from dual) and 
+			 	 <if test="cpnyType == 2"> t1.MA051 = '3' and </if> 
+			 	 <if test="cpnyType == 3">  (t1.MA051 = '1' or t1.ma051 = '2') and </if>
+			 	  t2.ma004 in(select ma001 from c002 
+                    start with ma001 = #{zgdwid} connect by NOCYCLE  prior ma001 = ma004) 
+			 	   
+			 	   and t2.ma008='10' group by t1.ma009) a, tzone b
+			 	where a.ma009 = b.objid
+		   </if>
+		</if>
+		
+		<if test="type != null and type != '' and type == 'qylx'">	
+		    <if test="zgdwid != null and zgdwid != ''">	
+				union all
+					select b.name as CD, a.c as CV,ma051 as corpType
+				 	 from (select ma051, count(1) c from b001 t1 left join c001 t2 on t1.ma001=t2.ma001 where 
+				 	  t1.ma080 = (select case when t1.ma053 = '0' then  2 else   1 end from dual) and
+				 	  <if test="cpnyType == 2"> t1.MA051 = '3' and </if> 
+			 	      <if test="cpnyType == 3">  (t1.MA051 = '1' or t1.ma051 = '2') and </if>
+				 	  t2.ma004 in(select ma001 from c002 
+                    start with ma001 = #{zgdwid} connect by NOCYCLE  prior ma001 = ma004)
+				 	  and t2.ma008='10' group by ma051) a, tcodevalue b
+				 where a.ma051 = b.value
+				   and b.type = 'qylx'
+		   </if>
+		</if>
+		<if test="type != null and type != '' and type == 'jjlx'">	
+		    <if test="zgdwid != null and zgdwid != ''">	
+				union all
+				select b.display as CD, a.c as CV, a.ma010 as corpType
+                    from (select t1.ma010, count(1) c  from b001 t1  left join c001 t2   on t1.ma001 = t2.ma001   where
+                     t1.ma080 = (select case when t1.ma053 = '0' then  2 else   1 end from dual) and
+                     <if test="cpnyType == 2"> t1.MA051 = '3' and </if> 
+			 	     <if test="cpnyType == 3">  (t1.MA051 = '1' or t1.ma051 = '2') and </if>
+                    t2.ma004 in(select ma001 from c002 
+                    start with ma001 = #{zgdwid} connect by NOCYCLE  prior ma001 = ma004)
+                     and t2.ma008='10'
+                    group by t1.ma010) a,  sys_dictionary b
+                    where a.ma010 = b.value
+                    and  b.key like '' || 'jjlx' || '%' and b.key != 'jjlx'
+		   </if>
+		</if>
+		<if test="type != null and type != '' and type == 'sshy'">
+			<if test="zgdwid != null and zgdwid != ''">	
+			union all	
+		select b.display as CD, a.c as CV, substr(a.ma011,0,1) as corpType
+                 from (select  count(1) c ,substr(t1.ma011,0,1) d, max(t1.ma011) ma011 from b001 t1   left join c001 t2   on t1.ma001 = t2.ma001 
+                  where 
+                   t1.ma080 = (select case when t1.ma053 = '0' then  2 else   1 end from dual) and
+                   <if test="cpnyType == 2"> t1.MA051 = '3' and </if> 
+			 	   <if test="cpnyType == 3">  (t1.MA051 = '1' or t1.ma051 = '2') and </if>
+                   t2.ma004 in(select ma001 from c002 
+                    start with ma001 = #{zgdwid} connect by NOCYCLE  prior ma001 = ma004)
+                   and t2.ma008='10'  group by  substr(t1.ma011,0,1) ) a,  c007 b
+                    where a.d = b.value
+
+			</if>
+		</if>
+		<if test="type != null and type != '' and type == 'lsgx'">	
+		  <if test="zgdwid != null and zgdwid != ''">		
+				union all
+				select b.name as CD, a.c as CV,ma053 as corpType
+			 	 from (select ma053, count(1) c from b001 t1 left join c001 t2 on t1.ma001=t2.ma001 where 
+			 	  t1.ma080 = (select case when t1.ma053 = '0' then  2 else   1 end from dual) and
+			 	  <if test="cpnyType == 2"> t1.MA051 = '3' and </if> 
+			 	  <if test="cpnyType == 3">  (t1.MA051 = '1' or t1.ma051 = '2') and </if>
+			 	  t2.ma004 in(select ma001 from c002 
+                    start with ma001 = #{zgdwid} connect by NOCYCLE  prior ma001 = ma004)
+			 	  and t2.ma008='10' group by ma053) a, tcodevalue b
+			   where a.ma053 = b.value
+			   and b.type = 'lsgx'
+		   </if>
+		</if>
+	</select>
+	
+	<!-- 企业端上报基础信息
+	<update id="updateB001XY">
+		UPDATE B001
+		set
+		MA038=2
+		WHERE MA001 = #{corpId}
+	</update>  -->
+	
+	<!-- 政府端审核企业基础信息
+	<update id="updateB001XY">
+		UPDATE B001
+		set
+		MA038=#{auditType}
+		WHERE MA001 = #{corpId}
+	</update>  -->
+	
+	
+   <update id="updateCorpSBSJ" parameterType="String">
+		UPDATE B001
+		set
+		MA080 = 0
+		WHERE  MA001=#{value}
+	</update> 
+   <update id="updateCorpSBSJ2" parameterType="map">
+		UPDATE B001
+		set
+		MA080=#{state} where MA001=#{corpID}
+		<if test="conditionState != null and conditionState != ''">
+		 and MA080 = #{conditionState}
+		</if>
+		
+	</update> 
+	
+	<select id="getAuditList" parameterType="String" resultType="hashmap">
+		SELECT
+		MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+		MA017,MA018,MA019,MA020,MA021,MA022,MA023,MA024,MA025,MA026,MA027,MA028,MA029,MA030,MA031,MA032,MA033,MA034,MA035,
+		MA036,MA037,MA038,MA039,MA040,MA041,MA042,MA043,MA044,MA045,MA046,
+		MA047, MA048, MA049, MA050, MA051, MA052, MA053, MA054, MA055, MA056,
+		MA057, MA058, MA059, MA060, MA061, MA062, MA063, MA064, MA065, MA066,
+		MA067, MA068, MA069, MA070,MA071
+		FROM B001 WHERE MA001=#{MA001}
+	</select>
+	
+	<select id="retrieveDangerByCorpId" parameterType="java.util.HashMap" resultType="java.util.HashMap" >
+	select v.dangerid,v.corpid,v.dname,v.typecode,v.typedesc,v.creatdate,
+            decode(v.state, '0','未通过','1','未审报',  '2','待审核','3','审核通过','4','待核销','5', '已核销') as state,
+                        b.ma001,b.ma003,b.ma004,b.ma007,b.ma008,b.ma009,b.ma011,b.ma012,b.ma013,
+                       (SELECT DISPLAY FROM SYS_DICTIONARY WHERE KEY LIKE 'jjlx%' AND VALUE=b.ma010) ma010,
+            (select name from tcodevalue where value = v.wlevel and type ='wxyjb') wlevel  
+     from v_danger v join b001 b on v.corpid = b.ma001 
+     <where>
+       		b.MA001 = #{corpid}
+     </where>
+         order by v.typecode asc
+	</select>	
+	<!-- gis系统用该方法 -->
+	<select id="retrieveDangerByCorpid" parameterType="String" resultType="java.util.HashMap" >
+	select v.dangerid,v.corpid,v.dname,v.typecode,v.typedesc,v.creatdate,
+            decode(v.state, '0','未通过','1','未审报',  '2','待审核','3','审核通过','4','待核销','5', '已核销') as state,
+                        b.ma001,b.ma003,b.ma004,b.ma007,b.ma008,b.ma009,b.ma011,b.ma012,b.ma013,
+                       (SELECT DISPLAY FROM SYS_DICTIONARY WHERE KEY LIKE 'jjlx%' AND VALUE=b.ma010) ma010,
+            (select name from tcodevalue where value = v.wlevel and type ='wxyjb') wlevel  
+     from v_danger v join b001 b on v.corpid = b.ma001 
+     <where>
+       		b.MA001 = #{corpid}
+     </where>
+	</select>
+	
+	
+    <select id="retrieveByPageHxwz" resultType="java.util.HashMap" >
+		select t.ID, t.KEY, t.VALUE, t.display,t.ordernum
+		  from sys_dictionary t
+		 where t.key like 'yzdhxp_%'
+		   and t.key != 'yzdhxp_del'
+		   and t.key != 'yzdhxp_dsl'
+		   and t.key != 'yzdhxp_dyl'
+		 <if test="hxwzvalue != null and hxwzvalue !=''">AND t.value LIKE '%'||#{hxwzvalue}||'%'</if>  
+		 <if test="hxwzdisplay != null and hxwzdisplay !=''">AND t.display LIKE '%'||#{hxwzdisplay}||'%'</if>  
+		 order by t.ordernum
+	</select>	
+</mapper>

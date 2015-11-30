@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwsensor.permission.dao.IUserDao">
+
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+	
+	<!-- 添加 -->
+	<insert id="insertSysUser" parameterType="com.hw.hwsafe.platform.pojo.UserPO">
+		INSERT INTO S_USER
+		  (UUID, LOGIN_NAME, PASSWORD, REAL_NAME, AGE, SEX, 
+		   MOBILE_NUMBER, EMAIL, ID_CARD, USER_TYPE, IS_ADMIN,
+		   DEPART_UUID, DEPART_CODE, GOV_UUID, USER_STATUS, 
+		   EMPLOYEE_NUM, LAST_ACCESS_IP, LAST_ACCESS_DATETIME, 
+		   CREATOR, CREATE_DATE, EDITOR, MODIFIED_DATE, ORGAN_UUID,
+		   MOBILE_DEVICE_ACCESS,OUTER_NET_ACCESS,EXT1,EXT2,EXT3
+		   )
+		VALUES
+			(#{UUID,jdbcType=VARCHAR}, #{LOGIN_NAME,jdbcType=VARCHAR}, 
+			#{PASSWORD,jdbcType=VARCHAR},#{REAL_NAME,jdbcType=VARCHAR},
+			#{AGE,jdbcType=INTEGER},#{SEX,jdbcType=VARCHAR},
+			#{MOBILE_NUMBER,jdbcType=VARCHAR},#{EMAIL,jdbcType=VARCHAR},
+			#{ID_CARD,jdbcType=VARCHAR},#{USER_TYPE,jdbcType=VARCHAR},
+			#{IS_ADMIN,jdbcType=VARCHAR},#{DEPART_UUID,jdbcType=VARCHAR},
+			#{DEPART_CODE,jdbcType=VARCHAR},#{GOV_UUID,jdbcType=VARCHAR},
+			#{USER_STATUS,jdbcType=VARCHAR},#{EMPLOYEE_NUM,jdbcType=VARCHAR},
+			#{LAST_ACCESS_IP,jdbcType=VARCHAR},#{LAST_ACCESS_DATETIME,jdbcType=TIMESTAMP},
+			#{CREATOR,jdbcType=VARCHAR},#{CREATE_DATE,jdbcType=TIMESTAMP},
+			#{EDITOR,jdbcType=VARCHAR},#{MODIFIED_DATE,jdbcType=TIMESTAMP},
+			#{ORGAN_UUID,jdbcType=VARCHAR},#{MOBILE_DEVICE_ACCESS,jdbcType=VARCHAR},
+			#{OUTER_NET_ACCESS,jdbcType=VARCHAR},#{EXT1,jdbcType=VARCHAR},
+			#{EXT2,jdbcType=VARCHAR},#{EXT3,jdbcType=VARCHAR}
+			)
+	</insert>
+	<!-- 修改 -->
+	<update id="updateSysUser" parameterType="com.hw.hwsafe.platform.pojo.UserPO">
+		UPDATE S_USER
+		   SET UUID = #{UUID,jdbcType=VARCHAR},
+		       LOGIN_NAME = #{LOGIN_NAME,jdbcType=VARCHAR}, 
+		       PASSWORD = #{PASSWORD,jdbcType=VARCHAR},
+		       REAL_NAME = #{REAL_NAME,jdbcType=VARCHAR},
+		       AGE = #{AGE,jdbcType=INTEGER},
+		       SEX = #{SEX,jdbcType=VARCHAR},
+		       MOBILE_NUMBER = #{MOBILE_NUMBER,jdbcType=VARCHAR},
+		       EMAIL = #{EMAIL,jdbcType=VARCHAR},
+		       ID_CARD = #{ID_CARD,jdbcType=VARCHAR},
+		       USER_TYPE = #{USER_TYPE,jdbcType=VARCHAR},
+		       IS_ADMIN = #{IS_ADMIN,jdbcType=VARCHAR},
+		       DEPART_UUID =#{DEPART_UUID,jdbcType=VARCHAR},
+		       DEPART_CODE = #{DEPART_CODE,jdbcType=VARCHAR},
+		       GOV_UUID = #{GOV_UUID,jdbcType=VARCHAR},
+		       USER_STATUS = #{USER_STATUS,jdbcType=VARCHAR},
+		       EMPLOYEE_NUM = #{EMPLOYEE_NUM,jdbcType=VARCHAR},
+		       LAST_ACCESS_IP = #{LAST_ACCESS_IP,jdbcType=VARCHAR},
+		       LAST_ACCESS_DATETIME = #{LAST_ACCESS_DATETIME,jdbcType=TIMESTAMP},
+		       CREATOR = #{CREATOR,jdbcType=VARCHAR},
+		       CREATE_DATE = #{CREATE_DATE,jdbcType=TIMESTAMP},
+		       EDITOR = #{EDITOR,jdbcType=VARCHAR},
+		       MODIFIED_DATE = #{MODIFIED_DATE,jdbcType=TIMESTAMP},
+		       ORGAN_UUID = #{ORGAN_UUID,jdbcType=VARCHAR},
+		       MOBILE_DEVICE_ACCESS = #{MOBILE_DEVICE_ACCESS,jdbcType=VARCHAR},
+		       OUTER_NET_ACCESS = #{OUTER_NET_ACCESS,jdbcType=VARCHAR},
+		       EXT1 = #{EXT1,jdbcType=VARCHAR},
+		       EXT2 = #{EXT2,jdbcType=VARCHAR},
+		       EXT3 = #{EXT3,jdbcType=VARCHAR}
+		 WHERE UUID = #{UUID,jdbcType=VARCHAR}
+	</update>
+	<!-- 动态修改 -->
+	<update id="updateSysUserByMap" parameterType="map">
+		UPDATE S_USER
+			<set>
+				<if test="LOGIN_NAME != null">
+			      LOGIN_NAME = #{LOGIN_NAME,jdbcType=VARCHAR}, 
+				</if>
+				<if test="PASSWORD != null">
+			      PASSWORD = #{PASSWORD,jdbcType=VARCHAR},
+				</if>
+				<if test="REAL_NAME != null">
+			      REAL_NAME = #{REAL_NAME,jdbcType=VARCHAR},
+				</if>
+				<if test="AGE != null">
+			       AGE = #{AGE,jdbcType=INTEGER},
+				</if>
+				<if test="SEX != null">
+			       SEX = #{SEX,jdbcType=VARCHAR},
+				</if>
+				<if test="MOBILE_NUMBER != null">
+			       MOBILE_NUMBER = #{MOBILE_NUMBER,jdbcType=VARCHAR},
+				</if>
+				<if test="EMAIL != null">
+			       EMAIL = #{EMAIL,jdbcType=VARCHAR},
+				</if>
+				<if test="ID_CARD != null">
+			       ID_CARD = #{ID_CARD,jdbcType=VARCHAR},
+				</if>
+				<if test="USER_TYPE != null">
+			       USER_TYPE = #{USER_TYPE,jdbcType=VARCHAR},
+				</if>
+				<if test="IS_ADMIN != null">
+			       IS_ADMIN = #{IS_ADMIN,jdbcType=VARCHAR},
+				</if>
+				<if test="DEPART_UUID != null">
+			       DEPART_UUID =#{DEPART_UUID,jdbcType=VARCHAR},
+				</if>
+				<if test="DEPART_CODE != null">
+			       DEPART_CODE = #{DEPART_CODE,jdbcType=VARCHAR},
+				</if>
+				<if test="GOV_UUID != null">
+			       GOV_UUID = #{GOV_UUID,jdbcType=VARCHAR},
+				</if>
+				<if test="USER_STATUS != null">
+			       USER_STATUS = #{USER_STATUS,jdbcType=VARCHAR},
+				</if>
+				<if test="EMPLOYEE_NUM != null">
+			       EMPLOYEE_NUM = #{EMPLOYEE_NUM,jdbcType=VARCHAR},
+				</if>
+				<if test="LAST_ACCESS_IP != null">
+			       LAST_ACCESS_IP = #{LAST_ACCESS_IP,jdbcType=VARCHAR},
+				</if>
+				<if test="LAST_ACCESS_DATETIME != null">
+			       LAST_ACCESS_DATETIME = #{LAST_ACCESS_DATETIME,jdbcType=TIMESTAMP},
+				</if>
+				<if test="CREATOR != null">
+			       CREATOR = #{CREATOR,jdbcType=VARCHAR},
+				</if>
+				<if test="CREATE_DATE != null">
+			       CREATE_DATE = #{CREATE_DATE,jdbcType=TIMESTAMP},
+				</if>
+				<if test="EDITOR != null">
+			       EDITOR = #{EDITOR,jdbcType=VARCHAR},
+				</if>
+				<if test="MODIFIED_DATE != null">
+			       MODIFIED_DATE = #{MODIFIED_DATE,jdbcType=TIMESTAMP},
+				</if>
+				<if test="ORGAN_UUID != null">
+			       ORGAN_UUID = #{ORGAN_UUID,jdbcType=VARCHAR},
+				</if>
+				<if test="MOBILE_DEVICE_ACCESS != null">
+			       MOBILE_DEVICE_ACCESS = #{MOBILE_DEVICE_ACCESS,jdbcType=VARCHAR},
+				</if>
+				<if test="OUTER_NET_ACCESS != null">
+			       OUTER_NET_ACCESS = #{OUTER_NET_ACCESS,jdbcType=VARCHAR},
+				</if>
+				<if test="EXT1 != null">
+			       EXT1 = #{EXT1,jdbcType=VARCHAR},
+				</if>
+				<if test="EXT2 != null">
+			       EXT2 = #{EXT2,jdbcType=VARCHAR},
+				</if>
+				<if test="EXT3 != null">
+			       EXT3 = #{EXT3,jdbcType=VARCHAR}
+				</if>
+			</set>
+			<where>
+				<if test="UUID != null and UUID !=''">
+			      UUID = #{UUID,jdbcType=VARCHAR}
+				</if>
+				<if test="LOGIN_NAME != null and LOGIN_NAME!=''">
+			      AND LOGIN_NAME = #{LOGIN_NAME,jdbcType=VARCHAR}
+				</if>
+			</where>
+	</update>
+	
+	<!-- 删除 -->
+	<delete id="deleteSysUser" parameterType="com.hw.hwsafe.platform.pojo.UserPO">
+		DELETE S_USER WHERE UUID = #{UUID,jdbcType=VARCHAR}
+	</delete>
+	<!-- 动态删除 -->
+	<delete id="deleteUserAndRelatedByMap" parameterType="map">
+		BEGIN
+		  DELETE FROM S_USER WHERE UUID IN <foreach collection="ids" open="(" close=")" item="id" separator=",">'${id}'</foreach>;
+		  DELETE FROM S_USER_ROLE WHERE USER_UUID IN <foreach collection="ids" open="(" close=")" item="id"  separator=",">'${id}'</foreach>;
+		END;
+	</delete>
+	<!-- 查询list -->
+	<select id="retrieveByCondition" resultType="com.hw.hwsafe.platform.pojo.UserPO" parameterType="map">
+		SELECT <include refid="columns"/>
+			<trim prefix=",">
+		   	   CASE USER_TYPE  WHEN 'ENT'  THEN  (SELECT MA002 FROM C001 WHERE MA001 = ORGAN_UUID) 
+		       				   WHEN 'GOV' THEN  (SELECT MA003 FROM C002 WHERE MA001 = ORGAN_UUID)
+		      				   ELSE '系统'
+		       END AS orgName,
+		       DECODE(USER_TYPE,'SYS','系统','ENT','企业','GOV','政府','') as userTypeName
+			</trim>
+      	 FROM S_USER WHERE 1=1
+		 	<include refid="queryCondition"/>
+	</select>
+	<!-- 查询po -->
+	<select id="retrieveSysUserByMap" resultType="com.hw.hwsafe.platform.pojo.UserPO" parameterType="map">
+		SELECT <include refid="columns"/>
+			<trim prefix=",">
+		   	   CASE USER_TYPE  WHEN 'ENT'  THEN  (SELECT MA002 FROM C001 WHERE MA001 = ORGAN_UUID) 
+		       				   WHEN 'GOV' THEN  (SELECT MA003 FROM C002 WHERE MA001 = ORGAN_UUID)
+		      				   ELSE '系统'
+		       END AS orgName,
+		       DECODE(USER_TYPE,'SYS','系统','ENT','企业','GOV','政府','') as userTypeName
+			</trim>
+		 FROM S_USER WHERE 1=1
+		 	<include refid="queryCondition"/>
+	</select>
+	<!-- 查询分页  系统，企业，政府列表查询时用-->
+	<select id="retrieveByPage" parameterType="map" resultType="map">
+		SELECT <include refid="columns"/>
+		<trim prefix=",">
+		   	   CASE USER_TYPE  WHEN 'ENT'  THEN  (SELECT MA002 FROM C001 WHERE MA001 = ORGAN_UUID) 
+		       				   WHEN 'GOV' THEN  (SELECT MA003 FROM C002 WHERE MA001 = ORGAN_UUID)
+		      				   ELSE '系统'
+		       END AS orgName,
+		       DECODE(USER_TYPE,'SYS','系统','ENT','企业','GOV','政府','') as userTypeName,
+		       DECODE(MOBILE_DEVICE_ACCESS,'0','否','1','是','否') as MEAccess
+		</trim>
+ 		<trim prefix=",">
+			(SELECT DISPLAY FROM SYS_DICTIONARY WHERE KEY LIKE 'userstatus%' AND VALUE=USER_STATUS) USER_STATUS_NAME
+		</trim>
+		 FROM S_USER
+		 <where>
+			<if test="po.UUID != null and po.UUID != ''">
+	  		   UUID != #{po.UUID,jdbcType=VARCHAR}
+			</if>
+			<if test="po.LOGIN_NAME != null and po.LOGIN_NAME != ''">
+		       AND LOGIN_NAME LIKE #{po.LOGIN_NAME,jdbcType=VARCHAR}||'%'
+			</if>
+			<if test="po.REAL_NAME != null and po.REAL_NAME != ''">
+		       AND REAL_NAME LIKE #{po.REAL_NAME,jdbcType=VARCHAR}||'%'
+			</if>
+			<if test="po.PASSWORD != null and po.PASSWORD != ''">
+		       AND PASSWORD = #{po.PASSWORD,jdbcType=VARCHAR}
+			</if>
+			<if test="po.USER_TYPE != null and po.USER_TYPE != ''">
+		       AND USER_TYPE = #{po.USER_TYPE,jdbcType=VARCHAR}
+			</if>
+			<if test="po.USER_STATUS != null and po.USER_STATUS != ''">
+		       AND USER_STATUS = #{po.USER_STATUS,jdbcType=VARCHAR}
+			</if>
+			<if test="po.DEPART_UUID != null and po.DEPART_UUID != ''">
+		       AND DEPART_UUID = #{po.DEPART_UUID,jdbcType=VARCHAR}
+			</if>
+			<if test="po.ORGAN_UUID != null and po.ORGAN_UUID != ''">
+		       AND ORGAN_UUID = #{po.ORGAN_UUID,jdbcType=VARCHAR}
+			</if>
+			<if test="po.EMPLOYEE_NUM != null and po.EMPLOYEE_NUM != ''">
+		       AND EMPLOYEE_NUM = #{po.EMPLOYEE_NUM,jdbcType=VARCHAR}
+			</if>
+			<if test="po.MOBILE_DEVICE_ACCESS != null and po.MOBILE_DEVICE_ACCESS != ''">
+		       AND MOBILE_DEVICE_ACCESS = #{po.MOBILE_DEVICE_ACCESS,jdbcType=VARCHAR}
+			</if>
+			<if test="po.OUTER_NET_ACCESS != null and po.OUTER_NET_ACCESS != ''">
+		       AND OUTER_NET_ACCESS = #{po.OUTER_NET_ACCESS,jdbcType=VARCHAR}
+			</if>
+			<if test="po.EXT1 != null and po.EXT1 != ''">
+		       AND EXT1 = #{po.EXT1,jdbcType=VARCHAR}
+			</if>
+			<if test="po.EXT2 == '112233'">
+		       AND (EXT1 <![CDATA[<>]]> 1 or ext1 is null)
+			</if>
+
+			<if test="po.EXT3 != null and po.EXT3 != ''">
+		       AND EXT3 = #{po.EXT3,jdbcType=VARCHAR}
+			</if>
+			<if test="po.IS_ADMIN != null and po.IS_ADMIN != ''">
+				<choose>
+					<when test="po.IS_ADMIN == 1">
+						AND ((USER_TYPE = 'SYS' AND IS_ADMIN＝'0')
+						OR (USER_TYPE != 'SYS' AND IS_ADMIN＝'1'))
+					</when>
+					<otherwise>
+				       AND IS_ADMIN = #{po.IS_ADMIN,jdbcType=VARCHAR}
+					</otherwise>
+				</choose>
+			</if>
+		 </where>
+		 ORDER BY CREATE_DATE DESC
+	</select>
+	
+	<!-- 查询分页   角色分配查询用户时使用 -->
+	<select id="queryUsersList" parameterType="map" resultType="map">
+		SELECT <include refid="columns"/>
+		<trim prefix=",">
+		   	   CASE USER_TYPE  WHEN 'ENT'  THEN  (SELECT MA002 FROM C001 WHERE MA001 = ORGAN_UUID) 
+		       				   WHEN 'GOV' THEN  (SELECT MA003 FROM C002 WHERE MA001 = ORGAN_UUID)
+		      				   ELSE '系统'
+		       END AS orgName,
+		       DECODE(USER_TYPE,'SYS','系统','ENT','企业','GOV','政府','') as userTypeName,
+		       DECODE(MOBILE_DEVICE_ACCESS,'0','否','1','是','') as MEAccess
+		       
+		</trim>
+		 FROM S_USER
+		 WHERE
+		 	USER_TYPE = #{USER_TYPE} 
+		 	AND  IS_ADMIN = #{IS_ADMIN} 
+		 	<if test="ORGAN_UUID != null and ORGAN_UUID != ''">
+				AND ORGAN_UUID = #{ORGID,jdbcType=VARCHAR}
+		 	</if>
+			<if test="LOGINNAME != null and LOGINNAME != ''">
+		       AND LOGIN_NAME LIKE '%'||#{LOGINNAME,jdbcType=VARCHAR}||'%'
+			</if>
+			<if test="REALNAME != null and REALNAME != ''">
+		       AND REAL_NAME LIKE '%'||#{REALNAME,jdbcType=VARCHAR}||'%'
+			</if>
+		    ORDER BY CREATE_DATE DESC
+	</select>
+	
+	<sql id="queryCondition">
+		<if test="UUID != null and UUID != ''">
+  		   AND UUID = #{UUID,jdbcType=VARCHAR}
+		</if>
+		<if test="uniqueId != null and uniqueId != ''">
+  		   AND UUID != #{uniqueId,jdbcType=VARCHAR}
+		</if>
+		<if test="LOGIN_NAME != null and LOGIN_NAME != ''">
+	       AND LOGIN_NAME = #{LOGIN_NAME,jdbcType=VARCHAR}
+		</if>
+		<if test="PASSWORD != null and PASSWORD != ''">
+	       AND PASSWORD = #{PASSWORD,jdbcType=VARCHAR}
+		</if>
+		<if test="REAL_NAME != null and REAL_NAME != ''">
+	       AND REAL_NAME = #{REAL_NAME,jdbcType=VARCHAR}
+		</if>
+		<if test="USER_TYPE != null and USER_TYPE != ''">
+	       AND USER_TYPE = #{USER_TYPE,jdbcType=VARCHAR}
+		</if>
+		<if test="USER_TYPE != null and USER_TYPE != ''">
+	       AND USER_TYPE = #{USER_TYPE,jdbcType=VARCHAR}
+		</if>
+		<if test="USER_STATUS != null and USER_STATUS != ''">
+	       AND USER_STATUS = #{USER_STATUS,jdbcType=VARCHAR}
+		</if>
+		<if test="IS_ADMIN != null and IS_ADMIN != ''">
+	       AND IS_ADMIN = #{IS_ADMIN,jdbcType=VARCHAR}
+		</if>
+		<if test="ORGAN_UUID != null and ORGAN_UUID != ''">
+	       AND ORGAN_UUID = #{ORGAN_UUID,jdbcType=VARCHAR}
+		</if>
+		<if test="EMPLOYEE_NUM != null and EMPLOYEE_NUM != ''">
+	       AND EMPLOYEE_NUM = #{EMPLOYEE_NUM,jdbcType=VARCHAR}
+		</if>
+		<if test="MOBILE_DEVICE_ACCESS != null and MOBILE_DEVICE_ACCESS != ''">
+	       AND MOBILE_DEVICE_ACCESS = #{MOBILE_DEVICE_ACCESS,jdbcType=VARCHAR}
+		</if>
+		<if test="OUTER_NET_ACCESS != null and OUTER_NET_ACCESS != ''">
+	       AND OUTER_NET_ACCESS = #{OUTER_NET_ACCESS,jdbcType=VARCHAR}
+		</if>
+		<if test="EXT1 != null and EXT1 != ''">
+	       AND EXT1 = #{EXT1,jdbcType=VARCHAR}
+		</if>
+		<if test="EXT2 != null and EXT2 != ''">
+	       AND EXT2 = #{EXT2,jdbcType=VARCHAR}
+		</if>
+		<if test="EXT3 != null and EXT3 != ''">
+	       AND EXT3 = #{EXT3,jdbcType=VARCHAR}
+		</if>
+		<if test="LOGINNAME != null and LOGINNAME != ''">
+	       AND LOGIN_NAME = #{LOGINNAME,jdbcType=VARCHAR}
+		</if>
+		<if test="EMAIL != null and EMAIL != ''">
+	       AND EMAIL = #{EMAIL,jdbcType=VARCHAR}
+		</if>
+		<if test="PHONE != null and PHONE != ''">
+	       AND MOBILE_NUMBER = #{PHONE,jdbcType=VARCHAR}
+		</if>
+	</sql>
+	<!-- 根据用户ID查询用户信息新用户表 -->
+	<select id="retrieveUserInfoByUserID" parameterType="String"
+		resultType="com.hw.hwsafe.platform.pojo.UserPO" >
+		SELECT  t.*
+		FROM S_USER t WHERE UUID=#{id}
+	</select>
+	<!-- 根据登录用户名和密码查询记录条数 -->
+	<select id="retrieveUserByUserInfoPO" parameterType="com.hw.hwsafe.platform.pojo.UserPO" resultType="java.lang.Integer" >
+	    select count(1) from s_user t 
+	    where t.LOGIN_NAME=#{LOGIN_NAME} and t.PASSWORD=#{PASSWORD}
+	</select>
+	<!-- 更新一条用户信息 新用户表s_user-->
+	<update id="updateUserInfo" parameterType="com.hwsensor.permission.pojo.UserInfoPO">
+		UPDATE S_USER
+		<set>
+			<if test="REAL_NAME != null">REAL_NAME=#{REAL_NAME},</if>
+			<if test="AGE != null">AGE=#{AGE},</if>
+			<if test="SEX != null">SEX=#{SEX},</if>
+			<if test="MOBILE_NUMBER != null">MOBILE_NUMBER=#{MOBILE_NUMBER},</if>
+			<if test="EMAIL != null">EMAIL=#{EMAIL},</if>
+			<if test="PASSWORD != null">PASSWORD=#{PASSWORD}</if>
+		</set>
+		WHERE
+		UUID = #{UUID}
+	</update>
+
+	
+	<!-- 重置密码 -->
+	<update id="updatePassWordBy">
+		UPDATE S_USER SET PASSWORD = #{PASSWORD,jdbcType=VARCHAR} where UUID IN
+		<foreach collection="idArr" open="(" close=")" item="item" separator=",">
+			#{item}
+		</foreach>
+	</update>
+	<!-- 根据用户账号查询用户信息 -->
+	<select id="retrieveUserByLoginName" parameterType="string" resultType="com.hw.hwsafe.platform.pojo.UserPO">
+		SELECT <include refid="columns"/>
+		<trim prefix=",">
+		   	   CASE USER_TYPE  WHEN 'ENT'  THEN  (SELECT MA002 FROM C001 WHERE MA001 = ORGAN_UUID) 
+		       				   WHEN 'GOV' THEN  (SELECT MA003 FROM C002 WHERE MA001 = ORGAN_UUID)
+		      				   ELSE '系统'
+		       END AS orgName,
+		       DECODE(USER_TYPE,'SYS','系统','ENT','企业','GOV','政府','') as userTypeName
+		</trim>
+		 FROM S_USER 
+		 WHERE LOGIN_NAME = #{LOGINNAME,jdbcType=VARCHAR}
+	</select>
+	<!-- 根据用户账号和密码查询用户信息 -->
+	<select id="retrieveUserByLoginNameAndPwd" parameterType="com.hw.hwsafe.platform.pojo.UserPO" resultType="com.hw.hwsafe.platform.pojo.UserPO">
+		SELECT <include refid="columns"/>
+		<trim prefix=",">
+		   	   CASE USER_TYPE  WHEN 'ENT'  THEN  (SELECT MA002 FROM C001 WHERE MA001 = ORGAN_UUID) 
+		       				   WHEN 'GOV' THEN  (SELECT MA003 FROM C002 WHERE MA001 = ORGAN_UUID)
+		      				   ELSE '系统'
+		       END AS orgName,
+		       DECODE(USER_TYPE,'SYS','系统','ENT','企业','GOV','政府','') as userTypeName
+		</trim>
+		 FROM S_USER 
+		 WHERE LOGIN_NAME = #{LOGIN_NAME,jdbcType=VARCHAR} AND PASSWORD = #{PASSWORD,jdbcType=VARCHAR}
+	</select>
+	<!-- 根据用主键查询用户信息 -->
+	<select id="retrieveSysUserByUserID" parameterType="string" resultType="com.hw.hwsafe.platform.pojo.UserPO">
+		SELECT <include refid="columns"/>
+		<trim prefix=",">
+		   	   CASE USER_TYPE  WHEN 'ENT'  THEN  (SELECT MA002 FROM C001 WHERE MA001 = ORGAN_UUID) 
+		       				   WHEN 'GOV' THEN  (SELECT MA003 FROM C002 WHERE MA001 = ORGAN_UUID)
+		      				   ELSE '系统'
+		       END AS orgName,
+		       DECODE(USER_TYPE,'SYS','系统','ENT','企业','GOV','政府','') as userTypeName
+		</trim>
+		 FROM S_USER 
+		 WHERE UUID = #{UUID,jdbcType=VARCHAR}
+	</select>
+	<!-- 查询所有用户信息 -->
+	<select id="retrieveAllSysUser" resultType="com.hw.hwsafe.platform.pojo.UserPO">
+		SELECT <include refid="columns"/>
+		<trim prefix=",">
+		   	   CASE USER_TYPE  WHEN 'ENT'  THEN  (SELECT MA002 FROM C001 WHERE MA001 = ORGAN_UUID) 
+		       				   WHEN 'GOV' THEN  (SELECT MA003 FROM C002 WHERE MA001 = ORGAN_UUID)
+		      				   ELSE '系统'
+		       END AS orgName,
+		       DECODE(USER_TYPE,'SYS','系统','ENT','企业','GOV','政府','') as userTypeName
+		</trim>
+		 FROM S_USER 
+	</select>
+		<!-- 获取系统管理员机构id -->
+	<select id="getSysAdminOrgId" resultType="string">
+		SELECT  ORGAN_UUID FROM S_USER 
+		WHERE USER_TYPE = 'SYS' 
+		AND IS_ADMIN='1' 
+		AND USER_STATUS = '20'  
+		AND ROWNUM = 1
+	</select>
+	
+	<sql id="columns">
+		UUID, LOGIN_NAME, PASSWORD, REAL_NAME, AGE, SEX, 
+		   MOBILE_NUMBER, EMAIL, ID_CARD, USER_TYPE, IS_ADMIN,
+		   DEPART_UUID, DEPART_CODE, GOV_UUID, USER_STATUS, 
+		   EMPLOYEE_NUM, LAST_ACCESS_IP, LAST_ACCESS_DATETIME, 
+		   CREATOR, CREATE_DATE, EDITOR, MODIFIED_DATE, ORGAN_UUID,
+		   NVL(MOBILE_DEVICE_ACCESS,0) MOBILE_DEVICE_ACCESS,OUTER_NET_ACCESS,EXT1,EXT2,EXT3
+	</sql>
+	
+	<!-- 插入邮件信息 -->
+	<insert id="insertMail" parameterType="map">
+		INSERT INTO P006
+       		(MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008, MA009, MA010, MA011, MA012)
+   	    VALUES
+      		(
+      		#{MA001,jdbcType=VARCHAR},#{MA002,jdbcType=VARCHAR},#{MA003,jdbcType=VARCHAR},
+      		#{MA004,jdbcType=VARCHAR},#{MA005,jdbcType=VARCHAR},#{MA006,jdbcType=CLOB},
+      		#{MA007,jdbcType=VARCHAR},#{MA008,jdbcType=VARCHAR},#{MA009,jdbcType=VARCHAR},
+      		#{MA010,jdbcType=VARCHAR},#{MA011,jdbcType=VARCHAR},#{MA012,jdbcType=TIMESTAMP}
+      		)
+	</insert>
+	<!-- 插入邮件主题和内容 -->
+	<insert id="insertFile" parameterType="map">
+	INSERT INTO P004
+	(MA001, MA002, MA003)
+	VALUES
+	(#{MA001,jdbcType=VARCHAR},#{MA002,jdbcType=VARCHAR},#{MA003,jdbcType=CLOB})
+	</insert>
+</mapper>

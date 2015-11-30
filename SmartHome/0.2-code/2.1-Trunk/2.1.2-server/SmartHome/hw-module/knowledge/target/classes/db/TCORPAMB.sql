@@ -1,0 +1,51 @@
+create table TCORPAMB
+(
+  objid                 VARCHAR2(36) not null,
+  corpid                VARCHAR2(50) not null,
+  name                  VARCHAR2(50) not null,
+  purpose               VARCHAR2(4000),
+  based                 VARCHAR2(4000),
+  range                 VARCHAR2(4000),
+  yansystem             VARCHAR2(4000),
+  principle             VARCHAR2(4000),
+  general               VARCHAR2(4000),
+  analysis              VARCHAR2(4000),
+  yjsystem              VARCHAR2(4000),
+  zhihuizhize           VARCHAR2(4000),
+  wxyjk                 VARCHAR2(4000),
+  yjaction              VARCHAR2(4000),
+  inforeport            VARCHAR2(4000),
+  responsefj            VARCHAR2(4000),
+  responseprogram       VARCHAR2(4000),
+  yjend                 VARCHAR2(4000),
+  inforelease           VARCHAR2(4000),
+  latedisposal          VARCHAR2(4000),
+  infosecurity          VARCHAR2(4000),
+  dwsecurity            VARCHAR2(4000),
+  zhbsecurity           VARCHAR2(4000),
+  jfsecurity            VARCHAR2(4000),
+  othersecurity         VARCHAR2(4000),
+  training              VARCHAR2(4000),
+  drill                 VARCHAR2(4000),
+  rewardsandpunishments VARCHAR2(4000),
+  define                VARCHAR2(4000),
+  record                VARCHAR2(4000),
+  updates               VARCHAR2(4000),
+  formulate             VARCHAR2(4000),
+  implement             VARCHAR2(4000),
+  updatedate            DATE,
+  isout                 INTEGER,
+  isaudit               INTEGER,
+  corporation_fk        VARCHAR2(36),
+  code                  VARCHAR2(50) not null,
+  corpname              VARCHAR2(100),
+  createtime            DATE default sysdate not null,
+  remarks               VARCHAR2(4000),
+  status                NUMBER(2),
+  creator               VARCHAR2(40) not null
+)
+;
+
+create index IX_TCORPAM_CTIME on TCORPAMB (CREATETIME);
+alter table TCORPAMB
+  add constraint PK_TCORPAM_OBJID primary key (OBJID);

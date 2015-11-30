@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="smart" namespace="/smart" extends="interceptor">
+	
+		<!-- 常见问题解决 -->
+		<action name="s001" class="com.hw.hwsafe.smart.action.S001Action"
+			method="doIndex">
+			<result name="success">/WEB-INF/jsp/smart/s001/S001_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/smart/s001/S001_add.jsp</result>
+			<result name="edit">/WEB-INF/jsp/smart/s001/S001_edit.jsp</result>
+			<result name="show">/WEB-INF/jsp/smart/s001/S001_view.jsp</result>
+			<result name="browse">/WEB-INF/jsp/smart/s001/S001_browse.jsp</result>
+		</action>
+		<!-- 气体状态解决 -->
+		<action name="s007" class="com.hw.hwsafe.smart.action.S007Action" method="doIndex">
+			<result name="success">/WEB-INF/jsp/smart/s007/S007_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/smart/s007/S007_add.jsp</result>
+			<result name="edit">/WEB-INF/jsp/smart/s007/S007_edit.jsp</result>
+			<result name="show">/WEB-INF/jsp/smart/s007/S007_view.jsp</result>
+		</action>
+		
+		<!-- 威果  to B -->
+		<action name="business" class="com.hw.hwsafe.smart.action.BusinessAction" method="doIndex">
+			<result name="success">/WEB-INF/jsp/smart/business/business_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/smart/business/business_add.jsp</result>
+			<result name="edit">/WEB-INF/jsp/smart/business/business_edit.jsp</result>
+			<result name="show">/WEB-INF/jsp/smart/business/business_view.jsp</result>
+		</action>
+	
+		
+		<!-- 帮助中心管理 -->
+		<action name="help" class="com.hw.hwsafe.smart.action.HelpAction" method="doIndex">
+			<result name="success">/WEB-INF/jsp/smart/help/help_list.jsp</result>
+		</action>	
+		<!-- 消息推送 按手机号推送 -->
+		<action name="s002" class="com.hw.hwsafe.smart.action.S002Action" method="doIndex">
+			<result name="success">/WEB-INF/jsp/smart/s002/S002_list.jsp</result>
+		</action>	
+		<!-- 消息推送 按地区推送 -->
+		<action name="s00201" class="com.hw.hwsafe.smart.action.S002Action" method="doPushByArea">
+			<result name="success">/WEB-INF/jsp/smart/s002/S00201_list.jsp</result>
+		</action>
+		
+		<!-- 推送记录 -->
+		<action name="s002record" class="com.hw.hwsafe.smart.action.S002Action" method="doViewPushRecord">
+			<result name="success">/WEB-INF/jsp/smart/s002/S002_view.jsp</result>
+			<result name="show">/WEB-INF/jsp/smart/s002/S002_view_detail.jsp</result>
+		</action>	
+		
+		<!-- 用户设备管理 -->
+		<action name="d002" class="com.hw.hwsafe.smart.action.D002Action">
+			<result>/WEB-INF/jsp/smart/d002/d002_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/smart/d002/d002_add.jsp</result>
+			<result name="edit">/WEB-INF/jsp/smart/d002/d002_edit.jsp</result>
+			<result name="show">/WEB-INF/jsp/smart/d002/d002_show.jsp</result>
+			<result name="gasinstant">/WEB-INF/jsp/smart/d002/d002_gasinstant.jsp</result>
+			<result name="airinstant">/WEB-INF/jsp/smart/d002/d002_airinstant.jsp</result>
+			<result name="showhis">/WEB-INF/jsp/smart/d002/d002_history.jsp</result>
+		</action>
+		
+		<action name="a001" class="com.hw.hwsafe.smart.action.A001Action">
+			<result>/WEB-INF/jsp/smart/a001/a001_list.jsp</result>
+		
+		</action>
+
+	
+		<!-- 讨论区 -->
+		<action name="s004" class="com.hw.hwsafe.smart.action.S004Action" method="doIndex">
+		  <result name="success">/WEB-INF/jsp/smart/s004/S004_list.jsp</result>
+		  <result name="add">/WEB-INF/jsp/smart/s004/S004_add.jsp</result>
+		</action>
+		<!-- 讨论回复-->
+		<action name="s005" class="com.hw.hwsafe.smart.action.S005Action" method="doIndex">
+		   <result name="success">/WEB-INF/jsp/smart/s005/S005_list.jsp</result>
+		</action>
+
+        <!-- 用户反馈 -->
+        <action name="s006" class="com.hw.hwsafe.smart.action.S006Action" method="doIndex">
+            <result name="success">/WEB-INF/jsp/smart/s006/S006_list.jsp</result>
+            <result name="show">/WEB-INF/jsp/smart/s006/S006_view.jsp</result>
+            <result name="showDetail">/WEB-INF/jsp/smart/s006/S006_view_detail.jsp</result>
+        </action>
+        
+        <!-- 异常日志管理 -->
+		<action name="d005" class="com.hw.hwsafe.smart.action.D005Action">
+			<result>/WEB-INF/jsp/smart/d005/d005_list.jsp</result>
+			<result name="group">/WEB-INF/jsp/smart/d005/d005_group.jsp</result>
+			<result name="show">/WEB-INF/jsp/smart/d005/d005_show.jsp</result>
+		</action>
+		 <!-- 登录日志管理 -->
+		<action name="d00501" class="com.hw.hwsafe.smart.action.D005Action">
+			<result>/WEB-INF/jsp/smart/d00501/d00501_list.jsp</result>
+			<result name="group1">/WEB-INF/jsp/smart/d00501/d00501_group.jsp</result>
+		</action>
+		<!-- 用户管理 -->
+        <action name="u001" class="com.hw.hwsafe.smart.action.U001Action">
+			<result name="down" type="stream"> 
+		        <!-- 指定下载文件的内容类型 -->
+		        <!-- application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/octet-stream,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,application/pdf,text/plain, -->
+		        <param name="contentType">image/jpeg,image/bmp,image/gif,mage/png,image/x-png,image/pjpeg</param>
+		        <!-- inputName默认值是inputStream，如果action中用于读取下载文件内容的属性名是inputStream，那么可以省略这个参数 -->
+		        <param name="inputName">inputStream</param>
+		        <!--动态获取文件名，从Action中的取得filename-->
+		        <param name="contentDisposition">
+		            attachment;filename="${ma001}"
+		        </param>
+		        <param name="bufferSize">2048</param>
+			</result>
+		</action>
+
+	</package>
+	<!-- 提供客户端接口 -->
+	<package name="hwmobile/smart" namespace="/hwmobile/smart" extends="interceptor">
+	    <!-- 常见问题解决 -->
+		<action name="s001" class="com.hw.hwsafe.smart.action.S001Action">
+		   <result name="success">/WEB-INF/jsp/smart/s001/S001_list.jsp</result>
+		</action>
+		<!-- 设备 -->
+		<action name="d002" class="com.hw.hwsafe.smart.action.D002Action"></action>
+		<!-- 用户 -->
+		<action name="u001" class="com.hw.hwsafe.smart.action.U001Action">
+			<result name="down" type="stream"> 
+		        <!-- 指定下载文件的内容类型 -->
+		        <!-- application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/octet-stream,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,application/pdf,text/plain, -->
+		        <param name="contentType">image/jpeg,image/bmp,image/gif,mage/png,image/x-png,image/pjpeg</param>
+		        <!-- inputName默认值是inputStream，如果action中用于读取下载文件内容的属性名是inputStream，那么可以省略这个参数 -->
+		        <param name="inputName">inputStream</param>
+		        <!--动态获取文件名，从Action中的取得filename-->
+		        <param name="contentDisposition">
+		            attachment;filename="${ma001}"
+		        </param>
+		        <param name="bufferSize">2048</param>
+			</result>
+		</action>
+		<!-- 讨论区 -->
+		<action name="s004" class="com.hw.hwsafe.smart.action.S004Action"></action>
+		<!-- 讨论区回复 -->
+		<action name="s005" class="com.hw.hwsafe.smart.action.S005Action"></action>
+		<!-- 留言板 -->
+		<action name="s006" class="com.hw.hwsafe.smart.action.S006Action"></action>
+	    <!-- 帮助中心管理 -->
+		<action name="help" class="com.hw.hwsafe.smart.action.HelpAction" method="doIndex">
+		   <result name="success">/WEB-INF/jsp/smart/help/help_list.jsp</result>
+		</action>	
+	    <!-- 报警 -->
+	    <action name="a001" class="com.hw.hwsafe.smart.action.A001Action"></action>
+	    
+	    <!-- app操作日志 -->
+	    <action name="d005" class="com.hw.hwsafe.smart.action.D005Action"></action>
+	    <!-- 排名 -->
+		<action name="rank" class="com.hw.hwsafe.smart.action.RankingAction"></action>
+		 <!-- 建议措施 -->
+		<action name="s007" class="com.hw.hwsafe.smart.action.S007Action">
+		<result name="solution">/WEB-INF/jsp/smart/s007/solution.jsp</result>
+		</action>
+	     <!-- 提供威豆 -->
+	    <action name="w001" class="com.hw.hwsafe.smart.action.W001Action"></action>
+	    <!-- 添加控制设备 -->
+		<action name="control" class="com.hw.hwsafe.smart.action.ControlDeviceAction"></action>
+		<!-- 添加场景 -->
+		<action name="scene" class="com.hw.hwsafe.smart.action.SceneAction"></action>
+				<!-- 云对云-->
+		<action name="cloud" class="com.hw.hwsafe.smart.action.P2BAction"></action>
+		<!-- 威果 to B-->
+		<action name="business_cloud" class="com.hw.hwsafe.smart.action.BusinessAction"></action>
+		
+			<!-- B -->
+		<action name="corpbusiness" class="com.hw.hwsafe.smart.action.CorpBusinessAction">
+			<result name="login">/WEB-INF/jsp/toB/login/login.jsp</result>		
+			<result name="edit">/WEB-INF/jsp/toB/login/user_update.jsp</result>	
+			<result name="test">/WEB-INF/jsp/toB/system/test.jsp</result>	
+			<result name="forget">/WEB-INF/jsp/toB/login/change_forget.jsp</result>	
+			<result name="change">/WEB-INF/jsp/toB/login/change_password.jsp</result>	
+			<result name="main">/WEB-INF/jsp/toB/system/prototype.jsp</result>			
+		</action>
+		<action name="corpmain" class="com.hw.hwsafe.smart.action.CorpMainAction">
+			<result name="main">/WEB-INF/jsp/toB/system/prototype.jsp</result>						
+			<result name="edit">/WEB-INF/jsp/toB/system/business/user_update.jsp</result>	
+			<result name="forget">/WEB-INF/jsp/toB/login/change_forget.jsp</result>	
+			<result name="change">/WEB-INF/jsp/toB/login/change_password.jsp</result>		
+		</action>
+		<action name="corpcrm" class="com.hw.hwsafe.smart.action.CorpCrmAction">
+			<result name="add">/WEB-INF/jsp/toB/system/crm/crm_device_add.jsp</result>		
+			<result name="edit">/WEB-INF/jsp/toB/system/crm/crm_device_update.jsp</result>	
+			<result name="view">/WEB-INF/jsp/toB/system/crm/crm_device_detail.jsp</result>	
+			<result name="list">/WEB-INF/jsp/toB/system/crm/crm_device.jsp</result>	
+			<result name="potentiallist">/WEB-INF/jsp/toB/system/crm/crm_potentialClient.jsp</result>	
+			<result name="excelcrm">/WEB-INF/jsp/toB/system/crm/crm_excel.jsp</result>	
+		</action>
+		<action name="corpmaterial" class="com.hw.hwsafe.smart.action.CorpMaterialAction">
+			<result name="add">/WEB-INF/jsp/toB/system/material/crm_device_add.jsp</result>		
+			<result name="edit">/WEB-INF/jsp/toB/system/material/crm_device_update.jsp</result>	
+			<result name="view">/WEB-INF/jsp/toB/system/material/crm_device_detail.jsp</result>	
+			<result name="list">/WEB-INF/jsp/toB/system/material/material.jsp</result>	
+			<result name="excelmaterial">/WEB-INF/jsp/toB/system/material/material_excel.jsp</result>	
+		</action>
+		<action name="corponline" class="com.hw.hwsafe.smart.action.CorpOnlineAction">
+			<result name="list">/WEB-INF/jsp/toB/system/online/online_users.jsp</result>	
+			<result name="excelonline">/WEB-INF/jsp/toB/system/online/online_excel.jsp</result>	
+		</action>
+			<!-- 获取天气预报 -->
+		<action name="weather" class="com.hw.hwsafe.smart.action.WeatherAction" method="doShow">
+			 <result name="success">/WEB-INF/jsp/smart/net/login.jsp</result>
+			  <result name="other">/WEB-INF/jsp/smart/net/login.jsp</result>
+	          <result name="bigscreen">/WEB-INF/jsp/smart/net/index-bigScreen.jsp</result>
+		</action>
+		
+		
+		
+		<!-- 超级APP -->
+		<action name="user" class="com.hw.hwsafe.smart.action.UserBaseAction"></action>
+		<action name="message" class="com.hw.hwsafe.smart.action.MessageAction"></action>
+		<action name="device" class="com.hw.hwsafe.smart.action.DeviceAction"></action>
+		<action name="data" class="com.hw.hwsafe.smart.action.DataAction"></action>
+	</package>
+</struts>

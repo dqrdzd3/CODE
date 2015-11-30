@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hw.hwsafe.corpinfo.dao.IB007Dao">
+
+	
+	<!-- 根据主键查询 -->
+	<select id="retrieveB007ByID" parameterType="String" resultType="com.hw.hwsafe.corpinfo.pojo.B007PO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+    		MA017,MA018
+			 FROM B007 WHERE MA001=#{ma001}
+	</select>
+
+		<!-- 根据条件查询所有  -->
+	<select id="retrieveB007ByPO" resultType="com.hw.hwsafe.corpinfo.pojo.B007PO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+    		MA017,MA018
+		FROM B007 t 	
+		WHERE 1=1
+		<if test="ma001 != null">
+			<if test="ma001 != ''">
+			AND	MA001 = #{ma001}
+			</if>
+		</if> 
+		
+	</select>
+	
+	<!-- 插入企业基本信息 -->
+	<insert id="insertB007" parameterType="com.hw.hwsafe.corpinfo.pojo.B007PO">
+      INSERT INTO B007(MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010
+            ,MA011,MA012,MA013,MA014,MA015,MA016,
+    		MA017,MA018,MA019,MA020
+	   ) 
+      VALUES(
+         #{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=VARCHAR},#{ma004,jdbcType=VARCHAR}
+         ,#{ma005,jdbcType=VARCHAR},#{ma006,jdbcType=NUMERIC},
+         #{ma007,jdbcType=NUMERIC},#{ma008,jdbcType=VARCHAR},#{ma009,jdbcType=NUMERIC},#{ma010,jdbcType=NUMERIC}
+         ,#{ma011,jdbcType=NUMERIC},#{ma012,jdbcType=NUMERIC},
+         #{ma013,jdbcType=NUMERIC},#{ma014,jdbcType=NUMERIC},#{ma015,jdbcType=NUMERIC},#{ma016,jdbcType=NUMERIC}
+         ,#{ma017,jdbcType=VARCHAR},#{ma018,jdbcType=VARCHAR},#{ma019,jdbcType=VARCHAR},#{ma020,jdbcType=TIMESTAMP}
+        
+       )
+	</insert>
+	<!-- 更新企业基本信息 -->
+
+	<update id="updateB007" parameterType="com.hw.hwsafe.corpinfo.pojo.B007PO">
+		UPDATE B007
+		set	
+		 MA002=#{ma002,jdbcType=VARCHAR},MA003=#{ma003,jdbcType=VARCHAR},
+		 MA005=#{ma005,jdbcType=VARCHAR},MA006=#{ma006,jdbcType=NUMERIC},
+         MA007=#{ma007,jdbcType=NUMERIC},MA008=#{ma008,jdbcType=VARCHAR},MA009=#{ma009,jdbcType=NUMERIC}
+         ,MA010=#{ma010,jdbcType=NUMERIC},MA011=#{ma011,jdbcType=NUMERIC},MA012=#{ma012,jdbcType=NUMERIC},
+         MA013=#{ma013,jdbcType=NUMERIC},MA014=#{ma014,jdbcType=NUMERIC},MA015=#{ma015,jdbcType=NUMERIC}
+         ,MA016=#{ma016,jdbcType=NUMERIC},MA017=#{ma017,jdbcType=VARCHAR},MA018=#{ma018,jdbcType=VARCHAR}
+        
+		WHERE MA001 = #{ma001}
+	</update>
+
+
+<!-- 根据条件查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+    		MA017,MA018
+    	FROM B007 
+       <where> 1=1
+			<if test="po.ma003 != null and po.ma003 != ''">
+			and	ma003 = #{po.ma003} 
+			</if>
+			<if test="ORGAN_UUID != null and ORGAN_UUID != ''">
+			and	ma002 = #{ORGAN_UUID} 
+			</if>
+			<if test="po.ma004 != null and po.ma004 != ''">
+			and	ma004  LIKE '%'||#{po.ma004}||'%' 
+			</if>
+		</where>
+		order by ma020 desc
+	</select>
+</mapper>

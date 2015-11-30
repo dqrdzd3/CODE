@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:focusable="false"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/listbackground"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/lblListHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingTop="7dp"
+        android:text="@string/scene_unsign"
+        android:textColor="@color/black"
+        android:textSize="22sp" />
+
+    <ToggleButton
+        android:clickable="false"
+        android:id="@+id/sceneColapse"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/togglearrow"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:paddingLeft="10dp"
+        android:textOff=""
+        android:textOn="" />
+
+    <Button
+        android:id="@+id/sceneDelete"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:background="@color/red"
+        android:text="@string/home_scene_delete"
+        android:textColor="@color/white"
+        android:visibility="gone" >
+    </Button>
+
+</FrameLayout>

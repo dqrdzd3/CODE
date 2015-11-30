@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res/com.hw.smarthome"
+    android:id="@+id/parentView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ui_login_background"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/imagetop"
+        android:layout_width="166dp"
+        android:layout_height="84dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/login_top" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imagetop" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="5dp" >
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5.0dip"
+                android:background="@drawable/cornerbg" >
+
+                <TableRow android:id="@+id/userRow" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:padding="16.0dip"
+                        android:src="@drawable/login_u"
+                        android:textSize="14.0sp" />
+
+                    <EditText
+                        android:id="@+id/account"
+                        android:layout_width="200dip"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="left"
+                        android:background="@null"
+                        android:hint="@string/login_tel"
+                        android:inputType="phone"
+                        android:padding="20.0dip"
+                        android:textColor="#444444"
+                        android:textSize="16.0sp" />
+                </TableRow>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1.0dip"
+                    android:layout_marginLeft="1.0dip"
+                    android:layout_marginRight="1.0dip"
+                    android:background="@drawable/list_divider_gary" />
+
+                <TableRow
+                    android:id="@+id/passRow"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:padding="16.0dip"
+                        android:src="@drawable/login_p"
+                        android:textSize="14.0sp" />
+
+                    <EditText
+                        android:id="@+id/et_password"
+                        android:layout_width="120dip"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="left"
+                        android:background="@null"
+                        android:hint="@string/login_forgetpw_passwd_hint"
+                        android:inputType="textPassword"
+                        android:padding="20.0dip"
+                        android:textColor="#444444"
+                        android:textSize="16.0sp" />
+                </TableRow>
+            </TableLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp" >
+
+                <CheckBox
+                    android:id="@+id/savePw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:background="@drawable/mcheckbox"
+                    android:button="@null"
+                    android:checked="true"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/savePw"
+                    android:paddingLeft="5dp"
+                    android:text="@string/login_remember"
+                    android:textColor="#000000" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dip"
+                android:layout_marginLeft="2.0dip"
+                android:layout_marginRight="2.0dip" >
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="handleLogin"
+                    android:text="@string/login"
+                    app:bb_text_gravity="center"
+                    bootstrapbutton:bb_roundedCorners="true"
+                    bootstrapbutton:bb_size="default"
+                    bootstrapbutton:bb_type="info" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/info1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/info2"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="@string/login_banquan"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/reg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/info2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/info1"
+        android:paddingBottom="25dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="15dp"
+        android:paddingTop="25dp"
+        android:text="@string/login_new_user"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/changepw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/info2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/info1"
+        android:paddingBottom="25dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="5dp"
+        android:paddingTop="25dp"
+        android:text="@string/login_forgetpw_title"
+        android:textColor="#000000"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/info2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:paddingBottom="20dp"
+        android:text="@string/login_corp"
+        android:visibility="gone" />
+
+</RelativeLayout>

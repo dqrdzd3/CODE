@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.smart.dao.ICorpBusinessDao">
+
+<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007,
+		MA008, MA009, MA011, MA012,MA013, MA014, MA015, MA016, MA017, MA018, MA019, MA020
+		from CORP_BUSINESS
+		
+	</select>
+
+<!-- 通过id获取实例 -->
+
+	<select id="doCorpLogin" parameterType="map"
+		resultType="com.hw.hwsafe.smart.pojo.BusinessPO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007,
+		MA008, MA009, MA011, MA012,MA013, MA014, MA015, MA016, MA017, MA018, MA019, MA020
+		from CORP_BUSINESS
+		where MA009 = #{ma009} and MA011 = #{ma011}
+	</select>
+
+	<!-- 修改实例 -->
+	<update id="doManageAcount" parameterType="com.hw.hwsafe.smart.pojo.BusinessPO">
+		update CORP_BUSINESS
+		<set>
+			<if test="ma002 != null">
+				MA002 = #{ma002,jdbcType=VARCHAR},
+			</if>
+			<if test="ma003 != null">
+				MA003 = #{ma003,jdbcType=VARCHAR},
+			</if>
+			<if test="ma004 != null">
+				MA004 = #{ma004,jdbcType=VARCHAR},
+			</if>
+			<if test="ma005 != null">
+				MA005 = #{ma005,jdbcType=VARCHAR},
+			</if>
+			<if test="ma006 != null">
+				MA006 = #{ma006,jdbcType=VARCHAR},
+			</if>
+			<if test="ma007 != null">
+				MA007 = #{ma007,jdbcType=VARCHAR},
+			</if>
+			<if test="ma008 != null">
+				MA008 = #{ma008,jdbcType=BLOB},
+			</if>
+			<if test="ma009 != null">
+				MA009 = #{ma009,jdbcType=VARCHAR},
+			</if>
+			<if test="ma010 != null">
+				MA010 = #{ma010,jdbcType=VARCHAR},
+			</if>
+			<if test="ma011 != null">
+				MA011 = #{ma011,jdbcType=VARCHAR},
+			</if>
+			<if test="ma012 != null">
+				MA012 = #{ma012,jdbcType=BLOB},
+			</if>
+			<if test="ma013 != null">
+				MA013 = #{ma013,jdbcType=BLOB},
+			</if>
+			<if test="ma014 != null">
+				MA014 = #{ma014,jdbcType=VARCHAR},
+			</if>
+		
+			<if test="ma015 != null">
+				MA015 = #{ma015,jdbcType=TIMESTAMP},
+			</if>
+			<if test="ma016 != null">
+				MA016 = #{ma016,jdbcType=VARCHAR},
+			</if>
+					
+			<if test="ma017 != null">
+				MA017 = #{ma017,jdbcType=VARCHAR},
+			</if>
+		
+			<if test="ma018 != null">
+				MA018 = #{ma018,jdbcType=VARCHAR},
+			</if>
+		
+			<if test="ma019 != null">
+				MA019 = #{ma019,jdbcType=VARCHAR},
+			</if>
+			
+			<if test="ma020 != null">
+				MA020 = #{ma020,jdbcType=VARCHAR}
+			</if>
+
+		</set>
+
+		where MA001 = #{ma001} 
+
+		
+	</update>
+
+	<!-- 重设密码 -->
+	<update id="resetPWD" parameterType="com.hw.hwsafe.smart.pojo.BusinessPO">
+		update CORP_BUSINESS
+		<set>
+			
+			<if test="ma010 != null">
+				MA010 = #{ma010,jdbcType=VARCHAR},
+			</if>
+			<if test="ma011 != null">
+				MA011 = #{ma011,jdbcType=VARCHAR},
+			</if>
+			
+			
+
+		</set>
+
+		where MA009 = #{ma009} and MA017 = #{ma017}
+
+		
+	</update>
+	<!-- 发送验证码 -->
+	<update id="sendYZM" parameterType="hashmap">
+	    update CORP_BUSINESS set MA017 = #{yzm,jdbcType=VARCHAR} where MA006= #{phone,jdbcType=VARCHAR}
+	</update>
+	<!-- 清除验证码 -->
+	<update id="updateYZM" parameterType="String">
+	    update CORP_BUSINESS set MA017 = '' where MA001= #{ma001,jdbcType=VARCHAR}
+	</update>
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:p="http://www.springframework.org/schema/p"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="k001Service" class="com.hw.hwsafe.knowledge.service.impl.K001ServiceImpl" />
+
+    <!--   暂时不用 -->  
+    <bean id="taccidentcaseService" class="com.hw.hwsafe.knowledge.service.impl.TaccidentcaseServiceImpl" />
+    <bean id="tmsdsService" class="com.hw.hwsafe.knowledge.service.impl.TmsdsServiceImpl" />
+    <bean id="tcorpambService" class="com.hw.hwsafe.knowledge.service.impl.TcorpambServiceImpl" />
+    <bean id="tregulationService" class="com.hw.hwsafe.knowledge.service.impl.TregulationServiceImpl" />
+    <bean id="k007Service" class="com.hw.hwsafe.knowledge.service.impl.K007ServiceImpl" />
+    <bean id="k006Service" class="com.hw.hwsafe.knowledge.service.impl.K006ServiceImpl" />
+    <bean id="k003Service" class="com.hw.hwsafe.knowledge.service.impl.K003ServiceImpl" />
+    <bean id="k004Service" class="com.hw.hwsafe.knowledge.service.impl.K004ServiceImpl" />
+    <bean id="k008Service" class="com.hw.hwsafe.knowledge.service.impl.K008ServiceImpl" />
+    <bean id="k00801Service" class="com.hw.hwsafe.knowledge.service.impl.K00801ServiceImpl" />
+    <bean id="k0080101Service" class="com.hw.hwsafe.knowledge.service.impl.K0080101ServiceImpl" />
+</beans>

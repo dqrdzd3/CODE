@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.javamail.dao.IMailDao">
+	<!-- 新的邮件系统 -->
+	
+	<!-- 发送外部邮件，发送方保存 -->
+	<insert id="insertOuterMailSend" parameterType="com.hw.hwsafe.javamail.po.MailPO">
+		INSERT INTO M118 (MA001,MA002,MA003,MA004,MA005,MA006,MA007) 
+			VALUES (
+				#{id,jdbcType=VARCHAR},#{ip,jdbcType=VARCHAR},#{port,jdbcType=VARCHAR},#{sendTime,jdbcType=TIMESTAMP},
+	        	#{title,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{sendMail,jdbcType=VARCHAR}
+            )
+	</insert>
+	
+	
+	<!-- 发送外部邮件，接收方保存 -->
+	<insert id="insertOuterMailReceive" parameterType="com.hw.hwsafe.javamail.po.MailPO">
+		INSERT INTO M11801 (MA001,MA002,MA003,MA004,MA005) 
+			VALUES (
+				#{id,jdbcType=VARCHAR},#{sendId,jdbcType=VARCHAR},#{receive,jdbcType=VARCHAR},#{sendTime,jdbcType=TIMESTAMP},
+	        	#{sendTag,jdbcType=VARCHAR}
+            )
+	</insert>
+	
+	<!-- 分页查询外部邮件发送记录 -->
+	<select id="getOuterListByPage" parameterType="com.hw.hwsafe.javamail.po.MailPO" resultType="com.hw.hwsafe.javamail.po.MailPO">
+		SELECT * FROM (SELECT MA001 id,MA002 ip,MA003 port,MA004 sendTime,MA005 title,MA006 content,
+			MA007 sendMail,MA008,MA009,M118FUNC(MA001) receiveStr  
+			FROM M118 where 1=1) T WHERE ROWNUM 
+			<![CDATA[>=]]> #{beginNum} AND ROWNUM <![CDATA[<=]]> #{endNum}
+	</select>
+	
+	
+	<!-- **************************内部邮件************************ -->
+	
+	<!-- 发送内部邮件，发送方保存 -->
+	<insert id="insertInnerMailSend" parameterType="com.hw.hwsafe.javamail.po.MailPO">
+		INSERT INTO M117 (MA001,MA002,MA003,MA004,MA005,MA006,MA007) 
+			VALUES (
+				#{id,jdbcType=VARCHAR},#{sendId,jdbcType=VARCHAR},#{sendTime,jdbcType=TIMESTAMP},
+	        	#{content,jdbcType=VARCHAR},#{corpId,jdbcType=VARCHAR},#{deleteTag,jdbcType=VARCHAR}
+	        	,#{title,jdbcType=VARCHAR}
+            )
+	</insert>
+	
+	<!-- 发送内部邮件，接收方保存 -->
+	<insert id="insertInnerMailReceive" parameterType="com.hw.hwsafe.javamail.po.MailPO">
+		INSERT INTO M11701 (MA001,MA002,MA003,MA004,MA005,MA006) 
+			VALUES (
+				#{id,jdbcType=VARCHAR},#{sendId,jdbcType=VARCHAR},#{receive,jdbcType=VARCHAR},
+	        	#{sendTime,jdbcType=TIMESTAMP},#{readTag,jdbcType=VARCHAR},#{deleteTag,jdbcType=VARCHAR}
+            )
+	</insert>
+	<!-- 更改发送删除标记 -->
+	<update id="updateSendDelete" parameterType="String">
+		update M117 t set t.MA006 = '1' where ma001 = '${value}'
+	</update>
+	<!-- 更改接收删除标记 -->
+	<update id="updateReceiveDelete" parameterType="String">
+		update M11701 t set t.MA006 = '1' where ma001 = '${value}'
+	</update>
+	<!-- 更改接收已读标记 -->
+	<update id="updateReceiveRead" parameterType="String">
+		update M11701 t set t.MA005 = '1' where ma001 = '${value}'
+	</update>
+	<!-- 发送方查询邮件信息 -->
+	<select id="getMailInfoSend" parameterType="String" resultType="com.hw.hwsafe.javamail.po.MailPO">
+		SELECT MA001 id,MA002 sendId,MA003 sendTime,MA007 title,MA004 content,
+			MA006 deleteTag FROM M117 WHERE MA001 = '${value}'
+	</select>
+	<!-- 接收方查询邮件信息 -->
+	<select id="getMailInfoReceive" parameterType="String" resultType="com.hw.hwsafe.javamail.po.MailPO">
+		select t.MA001 id, m.MA001 ip,t.MA004 sendTime,t.MA005 readTag,t.MA006 deleteTag,m.ma004 content,m.ma007 title FROM m11701 t ,m117 m WHERE t.ma002 = m.ma001 AND t.ma001 = '${value}'
+	</select>
+	
+	<!-- 分页查询邮件列表 -->
+	<select id="getInnerListByPageReceive" parameterType="com.hw.hwsafe.javamail.po.MailPO" resultType="com.hw.hwsafe.javamail.po.MailPO">
+		SELECT * FROM (select t.MA004 sendTime,t.MA003 receive,t.MA005 deleteTag,t.MA006 readTag,m.ma004 title,m.ma007 content 
+			FROM m11701 t ,m117 m WHERE t.ma002 = m.ma001 AND t.ma003 = #{receive}) T 
+			WHERE ROWNUM <![CDATA[>=]]> #{beginNum} AND ROWNUM <![CDATA[<=]]> #{endNum}
+	</select>
+	
+	<!-- 分页查询邮件列表 -->
+	<select id="getInnerListByPageSend" parameterType="com.hw.hwsafe.javamail.po.MailPO" resultType="com.hw.hwsafe.javamail.po.MailPO">
+		SELECT * FROM (SELECT MA001 id,MA002 sendId,MA003 sendTime,MA007 title,MA004 content,
+			MA006 deleteTag FROM M117 WHERE MA002 = #{sendId}) T 
+			WHERE ROWNUM <![CDATA[>=]]> #{beginNum} AND ROWNUM <![CDATA[<=]]> #{endNum}
+	</select>
+</mapper>

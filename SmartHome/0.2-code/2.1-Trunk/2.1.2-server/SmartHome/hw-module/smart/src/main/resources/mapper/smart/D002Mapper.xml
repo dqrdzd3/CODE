@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.smart.dao.ID002Dao">
+
+	<!-- 获取分页信息 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		select d.MA001, d.MA002, d.MA003,decode(d.MA003,'1','可燃气体传感器','2','空气传感器') MA003d,
+		 d.MA004, d.MA005,to_char(d.MA005,'yyyy-MM-dd HH24:mi:ss')MA005d, d.MA006, d.MA007,d.MA008,u.MA008 AS USERNAME
+      		from D002 d left join U001 u on d.MA002 = u.MA001
+			<where>
+				1 = 1
+				<if test="po.ma002 != null and po.ma002 != ''">
+					and d.MA002 = #{po.ma002}
+				</if>
+				<if test="po.ma003 != null and po.ma003 != ''">
+					and d.MA003 = #{po.ma003}
+				</if>
+				<if test="po.ma004 != null and po.ma004 != ''">
+					and d.MA004 LIKE '%'||#{po.ma004}||'%'
+				</if>
+				<if test="po.ma008 != null and po.ma008 != ''">
+					and d.MA008 LIKE '%'||#{po.ma008}||'%'
+				</if>
+			</where>
+	</select>
+
+	<!-- 通过id获取实例 -->
+	<select id="retrieveInstanceById" parameterType="String" resultType="com.hw.hwsafe.smart.pojo.D002PO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007,MA008
+			from D002
+			where MA001 = #{ma001}
+	</select>
+	
+	<!-- 通过设备id获取实例 -->
+	<select id="retrieveInstanceByDevId" parameterType="String" resultType="com.hw.hwsafe.smart.pojo.D002PO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007,MA008
+			from D002
+			where MA004 = #{ma004}
+	</select>
+	<!-- 通过PO获取实例 -->
+	<select id="retrieveInstanceByPO" parameterType="com.hw.hwsafe.smart.pojo.D002PO" resultType="com.hw.hwsafe.smart.pojo.D002PO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007,MA008
+			from D002
+			<where>
+				1 = 1
+				<if test="ma002 != null and ma002 != ''">
+					and MA002 = #{ma002}
+				</if>
+				<if test="ma003 != null and ma003 != ''">
+					and MA003 = #{ma003}
+				</if>
+				<if test="ma004 != null and ma004 != ''">
+					and MA004 = #{ma004}
+				</if>
+				
+			</where>
+	</select>
+	
+		<!-- 通过PO来判断该设备是否已经注册过 -->
+	<select id="retrieveDuplicateInstanceByPO" parameterType="com.hw.hwsafe.smart.pojo.D002PO" resultType="com.hw.hwsafe.smart.pojo.D002PO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007,MA008
+			from D002
+			<where>
+				1 = 1
+				<if test="ma002 != null and ma002 != ''">
+					and MA002 = #{ma002}
+				</if>
+				<if test="ma004 != null and ma004 != ''">
+					and MA004 = #{ma004}
+				</if>
+			</where>
+	</select>
+
+	<!-- 添加实例 -->
+	<insert id="insertInstance" parameterType="com.hw.hwsafe.smart.pojo.D002PO">
+		insert into D002(MA001, MA002, MA003, MA004, MA005, MA006, MA007,MA008)
+			values(
+				#{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=VARCHAR},
+				#{ma004,jdbcType=VARCHAR},#{ma005,jdbcType=TIMESTAMP},#{ma006,jdbcType=VARCHAR},
+				#{ma007,jdbcType=VARCHAR},#{ma008,jdbcType=VARCHAR}
+			)
+	</insert>
+<!-- 添加实例 P001-->
+	<insert id="insertInstanceP" parameterType="com.hw.hwsafe.smart.pojo.D002PO">
+		insert into P001(MA001, MA002, MA003, MA004, MA005, MA006)
+			values(
+				#{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=VARCHAR},
+				#{ma004,jdbcType=VARCHAR},#{ma005,jdbcType=TIMESTAMP},#{ma006,jdbcType=TIMESTAMP}
+			)
+	</insert>
+	<!-- 修改实例 -->
+	<update id="updateInstance" parameterType="com.hw.hwsafe.smart.pojo.D002PO">
+		update D002
+			set
+				 MA003 = #{ma003,jdbcType=VARCHAR}, MA004 = #{ma004,jdbcType=VARCHAR}, 
+				 MA006 = #{ma006,jdbcType=VARCHAR}, MA007 = #{ma007,jdbcType=VARCHAR},
+				MA008 = #{ma008,jdbcType=VARCHAR}
+			where MA002 = #{ma002} and MA004 = #{ma004}
+	</update>
+
+	<!-- 通过id删除实例 -->
+	<delete id="deleteInstanceById" parameterType="com.hw.hwsafe.smart.pojo.D002PO">
+		delete from D002 where MA002 = #{ma002} AND MA004 = #{ma004}
+	</delete>
+	
+		<!-- 通过id批量删除实例 -->
+	<delete id="delBatchD002" parameterType="map" >
+		DELETE FROM D002 WHERE MA001 IN
+		<foreach collection="idArray" item="id" open="(" separator="," close=")">#{id}</foreach>
+	</delete>
+	<select id="retrieveDeviceFromP001" parameterType="map" resultType="Integer">
+		select count(*) from p001 
+		<where>
+		   MA002 LIKE '%'||#{ma002}||'%'
+		   <if test="ma004 != null and ma004 != ''">
+					and MA004 = #{ma004}
+			</if>
+		</where>
+	</select>
+</mapper>

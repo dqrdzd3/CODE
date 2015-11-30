@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res/com.hw.smarthome"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <com.zf.view.TitleBarView
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="15dp"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@drawable/login_register_phone_bg"
+                android:hint="@string/et_account_hint"
+                android:inputType="phone" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/fpSendcode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="sendCode"
+                android:text="@string/login_forgetpw_get_chk_code"
+                bootstrapbutton:bb_roundedCorners="true"
+                bootstrapbutton:bb_size="default"
+                bootstrapbutton:bb_type="success" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/code"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/login_register_phone_bg"
+            android:hint="@string/login_forgetpw_chk_code_hint"
+            android:inputType="number"
+            android:padding="5dp" />
+
+        <EditText
+            android:id="@+id/chgPwNew"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/login_register_phone_bg"
+            android:ems="10"
+            android:hint="@string/login_forgetpw_passwd2_hint"
+            android:inputType="textPassword"
+            android:padding="5dp" >
+        </EditText>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/tv_tips_password"
+            android:textColor="@color/gray_font"
+            android:textSize="16sp" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/changepw"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:onClick="doChange"
+            android:text="@string/register_complete"
+            app:bb_text_gravity="center"
+            bootstrapbutton:bb_roundedCorners="true"
+            bootstrapbutton:bb_size="default"
+            bootstrapbutton:bb_type="info" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,249 @@
+.reset{
+	background: url(../images/resetbutton.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+}
+.reset a{ 
+	text-decoration:none;
+	display:block;
+	width:103px;
+	height:31px; 
+}
+
+.reset a:hover{ display:block; background: url(../images/resetbuttonover.png) left top no-repeat; width:103px; height:31px; }
+
+.submit{
+	background: url(../images/okbutton.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+}
+.submit a{ 
+	text-decoration:none;
+	display:block;
+	width:103px;
+	height:31px; 
+}
+.submit a:hover{ display:block; background: url(../images/okbuttonover.png) left top no-repeat; width:103px; height:31px; }
+.back{
+	background: url(../images/backabutton.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+}
+.printreport{
+	background: url(../images/printreport.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+}
+.back a{ 
+	text-decoration:none;
+	display:block;
+	width:103px;
+	height:31px; 
+}
+.back a:hover{ display:block; background: url(../images/backabuttonover.png) left top no-repeat; width:103px; height:31px; }
+
+
+.shtg{
+	background: url(../images/shtg.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+}
+
+.shbh{
+	background: url(../images/shbh.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+}
+
+/*msds*/
+.Wdate{ 
+	background: url(../images/dateicon.png) #fff no-repeat right 50%;
+	width:100%;
+	border: #93c1db  solid 1px !important;
+	height:18px;
+}
+
+.wcjh{
+	background: url(../images/wcjhbutton.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+}
+.save{
+	background: url(../images/savebutton.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+}
+.save a{ 
+	display:block; 
+	text-decoration:none;
+	width:103px;
+	height:31px;
+}
+.save a:hover{ display:block; background: url(../images/savebuttonover.png) left top no-repeat; width:103px; height:31px; }
+.cancel{
+	background: url(../images/cancelbutton.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+}
+.cancel a{ 
+	display:block; 
+	text-decoration:none;
+	width:103px;
+	height:31px;
+}
+.cancel a:hover{ display:block; background: url(../images/cancelbuttonover.png) left top no-repeat; width:103px; height:31px; }
+.addbutton{
+	background: url(../images/addbutton.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+}
+
+
+.yy{
+	background: url(../images/yy.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+}
+.qxyy{
+	background: url(../images/qxyy.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+}
+.tjsj a{
+	background: url(../images/tjsj.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+	text-decoration:none;
+}
+.tcks a{
+	background: url(../images/tcks.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+	text-decoration:none;
+}
+.jsxx a{
+	background: url(../images/jsxx.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+	text-decoration:none;
+}
+.send{
+	background: url(../images/send.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+	text-decoration:none;
+}
+
+.buttonbg{ background: url(../images/buttonbg.png) left top no-repeat; text-align:center; color:#FFF; width:84px; height:25px; line-height:20px;border-style:none;font-size:12px !important;}
+
+
+.zzaj_del{
+	background: url(../images/zzdanger/shanchu.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+}
+.zzaj_close{
+	background: url(../images/zzdanger/guanbi.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+}
+.zzaj_save{
+	background: url(../images/zzdanger/baocun.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+}
+.zzaj_add{
+	background: url(../images/zzdanger/tianjia.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+}
+.zzaj_update{
+	background: url(../images/zzdanger/gengxin.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+}
+.zzaj_bazl{
+	background: url(../images/zzdanger/beianziliao.png) left top no-repeat;
+	width:129px;
+	height:33px;
+	border: none;
+	display:block;
+}
+.zzaj_zbhj{
+	background: url(../images/zzdanger/zhoubianhuanjing.png) left top no-repeat;
+	width:103px;
+	height:31px;
+	border: none;
+	display:block;
+}
+.zzaj_tjkf{
+	background: url(../images/zzdanger/tianjiakufang.png) left top no-repeat;
+	width:82px;
+	height:23px;
+	border: none;
+	display:block;
+}
+.zzaj_wuzhi{
+	background: url(../images/zzdanger/xuanzewuzhi.png) left top no-repeat;
+	width:82px;
+	height:23px;
+	border: none;
+	display:block;
+}
+.zzaj_kufangwupin{
+	background: url(../images/zzdanger/kufangwupin.png) left top no-repeat;
+	width:106px;
+	height:23px;
+	border: none;
+	display:block;
+}
+.zzaj_zhuguan{
+	background: url(../images/zzdanger/zhuguan.png) left top no-repeat;
+	width:82px;
+	height:23px;
+	border: none;
+	display:block;
+}
+

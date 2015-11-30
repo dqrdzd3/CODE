@@ -1,0 +1,142 @@
+/*文书word*/
+.wordtitle{
+	font-family:"微软雅黑","黑体","宋体";
+	font-size:24px;
+	line-height:32px;
+	clear:both;
+	text-align:center;
+	color: #089381;
+	margin:0 auto;
+	padding-bottom:6px;
+	padding-top:16px;
+	border-bottom: double 3px #69DCCC;
+}
+.wordtitle2{
+	font-family:"微软雅黑","黑体","宋体";
+	font-size:22px;
+	line-height:32px;
+	clear:both;
+	text-align:center;
+	color: #089381;
+	margin:0 auto;
+	padding-bottom:6px;
+}
+.wordbianhao{
+	font-size:14px;
+	line-height:22px;
+	clear:both;
+	text-align:center;
+	margin:0 auto;
+	padding-bottom:6px;
+}
+.wordtable1{ width:98%;}
+.wordtable1 td,th{font-size:14px; height:32px; }
+.wordtable1 th{font-size:14px; font-weight:normal; text-align:right; }
+.wordtable input{
+	border-style:none;
+	border-bottom: solid 1px #69DCCC;
+	font-size:14px; 
+	color:#333;
+}
+.wordtable {font-size:14px;}
+
+.wordtable textarea{
+	border: solid 1px #69DCCC;
+	width: 98%;
+	font-size:14px;
+	color:#333;
+	height:60px;
+	resize:none;
+}
+.wordtable input{width:expression((this.type=="text")?"100%":"16px");border-color:expression((this.type=="text")?"#69DCCC":"#FFF");}
+.wordtable input[type="radio"]{border:none; width:auto; height:auto;border-bottom: solid 0px #69DCCC;}
+.wordtable input[type="text"]{
+	border-style:none;
+	border-bottom: solid 1px #69DCCC; 
+	width:100%;
+}
+.wordborder{border: solid 1px #69DCCC;}
+.wordmargin{ margin-top:10px;}
+
+.wordtable2 td,th{font-size:14px; height:32px;}
+.wordtable2{
+	border-collapse:collapse;
+	border: solid 1px #5BDECA;
+	font-size:12px;
+	color:#565656;
+	line-height: 18px;
+	width:98%;
+}
+.wordtable2 th{
+	border: 1px solid #5BDECA;
+	border-bottom: 1px solid #4BCDB9;
+	text-align:left;
+	height:20px;
+	font-weight: normal; 
+	padding:8px;
+}
+
+.wordtable3 td{
+	font-size:14px;
+	border: 1px solid #5BDECA;
+	height: 32px; 
+	line-height:20px;
+}
+.wordtable3{
+	border-collapse:collapse;
+	border: solid 1px #5BDECA;
+	font-size:12px;
+	color:#565656;
+	line-height: 18px;
+	width:98%;
+}
+.wordtable3 th{
+	border: 1px solid #5BDECA;
+	border-bottom: 1px solid #4BCDB9;
+	border-right: 1px solid #4BCDB9;
+	text-align:center;
+	background-color:#ECFFFF;
+	font-weight: normal;
+	color: #108F7A;
+	font-size:14px; 
+	line-height:32px;
+}
+.wordtable3 input{
+	border-style:none;
+	border-bottom: solid 0px #69DCCC !important;
+	width: 96%;
+	font-size:14px; 
+	color:#333; 
+	height:30px;
+}
+.wordtable3 textarea{
+	border:solid 1px #69DCCC;
+	width: 99%;
+	font-size:14px; 
+	color:#333; 
+	height:40px; 
+	resize:none;
+}
+.wordtable4 td{ border-style:none !important;}
+.wordtable4{
+	border-style:none !important;
+}
+.wordtable4 input{
+	border-style:none;
+	border-bottom: solid 1px #69DCCC !important;
+	width: 96%;
+	font-size:14px; 
+	color:#333; 
+	height:20px !important; 
+	line-height:20px;
+}
+
+.word{ clear:both;height:30px;line-height:30px; }
+.word li{
+	float:left;
+	margin-right:10px; 
+	background:url(../images/dox.png) left no-repeat; 
+	padding-left:20px; 
+	color:#10917A; 
+}
+.word span{ float:left;}

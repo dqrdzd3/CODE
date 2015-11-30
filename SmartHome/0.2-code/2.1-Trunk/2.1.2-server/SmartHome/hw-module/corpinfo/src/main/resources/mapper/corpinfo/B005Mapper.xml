@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hw.hwsafe.corpinfo.dao.IB005Dao">
+
+	
+	<!-- 根据主键查询 企业资质证书-->
+	<select id="retrieveB005ByID" parameterType="String" resultType="com.hw.hwsafe.corpinfo.pojo.B005PO">
+		SELECT MA001,MA002,MA003,MA004,MA005,TO_CHAR(MA006,'YYYY-MM-DD hh:mm:ss') MA006,TO_CHAR(MA007,'YYYY-MM-DD hh:mm:ss') MA007,MA008,MA009,MA010,MA011,MA012
+	FROM B005 WHERE MA001=#{MA001}
+	</select>
+
+		<!-- 根据条件查询所有企业资质证书  -->
+	<select id="retrieveB005ByPO" resultType="com.hw.hwsafe.corpinfo.pojo.B005PO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012
+		FROM B005 t 	
+		WHERE 1=1
+		<if test="MA001 != null">
+			<if test="MA001 != ''">
+			AND	MA001 = #{MA001}
+			</if>
+		</if> 
+		<if test="MA004 != null">
+			<if test="MA004 != ''">
+			AND	MA004  LIKE '%'||#{MA004}||'%' 
+			</if>
+		</if> 
+		<if test="ORGAN_UUID != null">
+			<if test="ORGAN_UUID != ''">
+			AND	MA003 =#{ORGAN_UUID}
+			</if>
+		</if> 
+	</select>
+	
+	<!-- 根据企业ID和证书编号查询是否重复  -->
+	<select id="retrieveB005ByName" resultType="java.lang.Integer">
+		SELECT count(1)
+		FROM B005 t WHERE MA002 =#{MA002} AND MA003=#{MA003}
+		<if test="MA001 != null">
+			<if test="MA001 != ''">
+			AND	MA001 != #{MA001}
+			</if>
+		</if> 
+	</select>
+	
+	<!-- 修改企业证书信息时时查询证书编号是否重复  -->
+	<select id="upretrieveB005ByName"  resultType="java.lang.Integer">
+		SELECT COUNT(1)  FROM(SELECT MA002
+		FROM B005 t WHERE MA002 =#{MA002} and MA001 !=#{MA001})
+		
+	</select>
+	<!-- 插入企业资质证书 -->
+	<insert id="insertB005" parameterType="com.hw.hwsafe.corpinfo.pojo.B005PO">
+      INSERT INTO B005(MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014
+	   ) 
+      VALUES(
+         #{MA001,jdbcType=VARCHAR},#{MA002,jdbcType=VARCHAR},#{MA003,jdbcType=VARCHAR},#{MA004,jdbcType=VARCHAR},#{MA005,jdbcType=VARCHAR},#{MA006,jdbcType=TIMESTAMP},
+         #{MA007,jdbcType=TIMESTAMP},#{MA008,jdbcType=INTEGER},#{MA009,jdbcType=VARCHAR},'0',#{MA011,jdbcType=VARCHAR},#{MA012,jdbcType=VARCHAR},
+         #{MA013,jdbcType=VARCHAR},SYSDATE
+       )
+	</insert>
+	<!-- 更新企业资质证书 -->
+
+	<update id="updateB005" parameterType="com.hw.hwsafe.corpinfo.pojo.B005PO">
+		UPDATE B005 
+		set	
+		 MA002=#{MA002,jdbcType=VARCHAR},MA003=#{MA003,jdbcType=VARCHAR},MA004=#{MA004,jdbcType=VARCHAR},MA005=#{MA005,jdbcType=VARCHAR},MA006=#{MA006,jdbcType=TIMESTAMP},
+         MA007=#{MA007,jdbcType=TIMESTAMP},MA008=#{MA008,jdbcType=INTEGER},MA009=#{MA009,jdbcType=VARCHAR},MA010=#{MA010,jdbcType=INTEGER},MA011=#{MA011,jdbcType=VARCHAR},MA012=#{MA012,jdbcType=VARCHAR}
+		WHERE MA001 = #{MA001}
+	</update>
+	
+			<!-- 修改业务表的标注状态：是否上报 -->
+	<update id="updateCorpSBSJ" parameterType="String">
+		UPDATE B005 
+		   SET 	MA010 = 0 where MA003 = #{value}
+	</update>
+	<update id="updateCorpSBSJ2" parameterType="map">
+		UPDATE B005 
+		   SET 	MA010 = #{state} where MA003 = #{corpID}
+		    <if test="conditionState != null and conditionState != ''">
+		 		and MA010 = #{conditionState}
+			</if>
+	</update>
+	
+	<update id="updateB005SBSJ" >
+		UPDATE B005 
+		   SET 	MA010 = 1
+		WHERE MA001 in
+		<foreach collection="ids" separator="," item="item" open="(" close=")" >#{item}</foreach>
+	</update>
+	
+
+<!--根据企业ID查询信息  -->
+    <select id="retrieveB005BycorpID" resultType="com.hw.hwsafe.corpinfo.pojo.B005PO">  
+    select * from b005 where ma003=#{id}
+    
+    </select>   
+    <select id="retrieveB005ByCorp" parameterType="map" resultType="com.hw.hwsafe.corpinfo.pojo.B005PO">  
+    select * from b005 where ma003=#{corpID}
+    	<if test="govType != null and govType != ''">
+    		<if test="govType == 0">
+    			and (MA010=1 or MA010=2)
+    		</if>
+    		<if test="govType == 1">
+    			and MA010=2
+    		</if>
+    	</if>
+    
+    </select>   
+<!-- 根据条件查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,TO_CHAR(MA007, 'YYYY-MM-DD') MA007,MA008,MA009,MA010,MA011,MA012,
+		decode(MA010,1,'企业上报',0,'未上报',2,'县区上报') MA010D
+    FROM B005
+		<where>
+			<if test="po.MA004 != null and po.MA004 != ''">
+				MA004 like '%' || #{po.MA004} || '%'
+			</if>
+			<if test="po.MA005 != null and po.MA005 != ''">
+				AND MA005 like '%' || #{po.MA005} || '%'
+			</if>
+			<if test="po.MA003 != null and po.MA003 != ''">
+				AND MA003 =#{po.MA003}
+			</if>
+			<if test="govType != null and govType != ''">
+	    		<if test="govType == 0">
+	    			and (MA010=1 or MA010=2)
+	    		</if>
+	    		<if test="govType == 1">
+	    			and MA010=2
+	    		</if>
+	    	</if>
+		</where>
+		order by ma014 desc
+	</select>
+</mapper>

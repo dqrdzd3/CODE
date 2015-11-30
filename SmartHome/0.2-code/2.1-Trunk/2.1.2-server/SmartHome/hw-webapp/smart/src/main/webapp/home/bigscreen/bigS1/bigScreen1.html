@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>大屏</title>
+
+    <style>
+        #background{
+            position: absolute;
+            width:100%;
+            height: 100% ;
+            FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#2BB1F0,endColorStr=#0043D0); /*IE 6 7 8*/
+
+            background: -ms-linear-gradient(top, #2BB1F0,  #0043D0);        /* IE 10 */
+
+
+
+            background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#2BB1F0), to(#0043D0));/*谷歌*/
+
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2BB1F0), to(#0043D0));      /* Safari 4-5, Chrome 1-9*/
+
+            background: -webkit-linear-gradient(top, #2BB1F0, #0043D0);   /*Safari5.1 Chrome 10+*/
+
+            background: -o-linear-gradient(top, #2BB1F0, #0043D0);  /*Opera 11.10+*/
+
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2BB1F0), to(#0043D0));      /* Safari 4-5, Chrome 1-9*/
+
+
+        }
+        #right{
+            position: absolute;
+            left:70%;
+            width: 28%;
+            height: 92%;
+            top: 4%;
+            background-color: #000;
+            filter: alpha(opacity:10);
+            opacity: 0.1;
+            margin: 5px;
+            -moz-border-radius: 20px;      /* Gecko browsers */
+            -webkit-border-radius: 20px;   /* Webkit browsers */
+            border-radius:20px;            /* W3C syntax */
+        }
+        #leftTop{
+            position: absolute;
+            left:1.5%;
+            width: 67.3%;
+            height: 50%;
+            top: 4%;
+            background-color: #000;
+            filter: alpha(opacity:10);
+            opacity: 0.1;
+            margin: 5px;
+            -moz-border-radius: 20px;      /* Gecko browsers */
+            -webkit-border-radius: 20px;   /* Webkit browsers */
+            border-radius:20px;            /* W3C syntax */
+        }
+        #leftBottomLeft{
+            position: absolute;
+            left:1.5%;
+            width: 38%;
+            height: 40%;
+            top: 56%;
+            background-color: #000;
+            filter: alpha(opacity:10);
+            opacity: 0.1;
+            margin: 5px;
+            -moz-border-radius: 20px;      /* Gecko browsers */
+            -webkit-border-radius: 20px;   /* Webkit browsers */
+            border-radius:20px;            /* W3C syntax */
+        }
+        #leftBottomRight{
+            position: absolute;
+            left:40.7%;
+            width: 28%;
+            height: 40%;
+            top: 56%;
+            background-color: #000;
+            filter: alpha(opacity:10);
+            opacity: 0.1;
+            margin: 5px;
+            -moz-border-radius: 20px;      /* Gecko browsers */
+            -webkit-border-radius: 20px;   /* Webkit browsers */
+            border-radius:20px;            /* W3C syntax */
+        }
+        #gongao{
+            width:95%;
+            height:0px;overflow:hidden;line-height:30px;font-size:28px;
+            font-family:'宋体';background:#000;
+            color:#fff;font-weight:bold;}
+        #gongao #scroll_begin, #gongao #scroll_end{
+
+
+            display:inline
+        }
+		
+
+    </style>
+    <script type="text/javascript" src="js/zzr/jquery-1.9.1.min.js"></script>
+    <script src="http://img.jb51.net/jslib/jquery/jquery14.js"></script>
+    <script type="text/javascript" src="js/zzr/jQuery.fontFlex.js"></script>
+    <script type="text/javascript" src="js/zzr/jquery.flot.js"></script>
+    <script type="text/javascript" src="js/zzr/jquery.flot.resize.js"></script>
+    <script type="text/javascript" src="js/zzr/modernizr.custom.79639.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=HIVMFTwEqVzoGQSNXa1ZmLET"></script>
+    <!-- Morris.js charts -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script type="text/javascript" src="js/zzr/morris.js"></script>
+</head>
+<body style="overflow:hidden;margin: 0px;padding: 0px">
+
+<div id = "background">
+
+    <!--right-->
+    <div style="position: absolute;left: 70%;top: 10%;width: 28%;height:16%;text-align: center">
+        <h1 id="corp" style = "color: white;margin: 2% 2% 5% 2%;">XXX公司</h1>
+        <hr style="margin:  0% 8% 0% 8%">
+    </div>
+
+    <div style="position: absolute;left: 70%;top: 26%;width: 28%;height:40%;text-align: left">
+
+
+
+        <h2 style = "color: white;margin: 0% 8% 0% 8%">PM2.5</h2>
+        <h3 style = "color: white;margin: 0% 0% 3% 38%;"><span id="numB" >0</span>μg/m³</h3>
+        <h2 style = "color: white;margin: 4% 8% 3% 8%;">室外温度<span id = "outTemp" style="margin-left: 10%">0</span><span>℃</span></h2>
+        <h3 id = "outTime" style = "color: white;margin: 4% 8% 3% 8%;">07-20 13：00发布</h3>
+        <hr style="margin:  3% 8% 3% 8%">
+    </div>
+
+    <div style="position: absolute;left: 70%;bottom: 18%;width: 28%;height:16%;text-align: center">
+
+        <img id="ad_img" src="img/120-120.png" style="width: 40%"/>
+
+
+        <h3 id="ad_title" style = "color: white;margin: 2% 8% 3% 8%">服务热线 XXX-XXXX-XXXX</h3>
+
+    </div>
+
+    <!--left top-->
+
+    <div style="position: absolute;left: 1.5%;top: 4%;width: 67.3%;height:50%;text-align: left">
+        <div id="gongao">
+            <div style="position:fixed;top:6%;left:25%;width:40%;height:34px;z-index: 1001;margin:0 auto;white-space: nowrap;overflow:hidden;" id="scroll_div" class="scroll_div">
+                <div id="scroll_begin" style="color: white">
+                   
+                    
+                </div>
+                <div id="scroll_end"></div>
+            </div>
+        </div>
+        </div>
+        <h3 id = "inTime" style = "color: white;margin: 4% 0% 0% 4%">07-20 14:04 发布</h3>
+        <h3 style = "color: white;margin: 3% 0% 0% 15%">
+            <span id="numA" style="color: greenyellow">0</span>
+            <span>μg/m³</span>
+            <span id="numCO2" style="color: greenyellow;margin: 3% 0% 0% 22%">0</span>
+            <span  style="color: white;margin-left: 0%">CO2</span>
+        </h3>
+        <h3 style = "color: white;margin: 1% 0% 0% 10%">
+            <span  id="pmLable" style="color: white;margin-left: 2%">PM2.5</span>
+            <span  id="hum" style="color: white;margin: 3% 0% 0%  13%">0</span><span>%</span>
+           <span  id="temp" style="color: white;margin: 3% 0% 0% 13%">0</span><span>℃</span>
+        </h3>
+        <h3 style = "color: white;position:absolute;top: 46%;left: 4.5%">空气电台室内空气状况</h3>
+     </div>
+
+    <!--left bottom left-->
+
+    <div style="position: absolute;left: 1.5%;top: 56%;width: 38%;height:40%;text-align: center">
+        <h2 style = "color: white;margin: 3% 8% 0% 8%"><span style="color:#D6AED4">PM2.5</span> <span style="color:#8AF6DB">CO2</span> 实时图</h2>
+        <div id="line-chart" style="height:78%;margin: 1%;"></div>
+    </div>
+
+    <!--left bottom right-->
+    <div style="position: absolute;left: 40.7%;top: 56%;width: 28%;height:40%;text-align: left">
+        <h2 style = "color: white;margin: 3% 0% 0% 3%">PM2.5实时对比</h2>
+
+
+        <h3 style = "color: white;margin: 1% 0% 0% 3%"> 室内
+            <canvas id="can1" width="300px" height="40px" style = "margin: 5% 0% 0% 3%;"></canvas>
+
+        </h3>
+
+            <h3 style = "color: white;margin: 1% 0% 0% 3%;"> 室外
+            <canvas id="can2" width="300px" height="40px" style = "margin: 0% 0% 0% 3%;"></canvas>
+
+            </h3>
+
+
+
+
+
+
+        <h3 style = "color: white;margin: 1% 0% 0% 3%;"><center>室内比室外<span style="font-size:40px;" id="contrast">低79%</span></center>    </h3>
+
+    </div>
+</div>
+
+<div id = "right"></div>
+
+<div id = "leftTop"></div>
+
+<div id = "leftBottomLeft"></div>
+
+<div id = "leftBottomRight"></div>
+
+</body>
+
+<script language="javascript" type="text/javascript">
+//var _cityISO ;//= "%E9%83%91%E5%B7%9E";
+//var  _cityname; //= "郑州";//remote_ip_info.city;
+	
+
+	var map = new BMap.Map("allmap");
+	//var point = new BMap.Point(116.331398,39.897445);
+	//map.centerAndZoom(point,12);
+
+	function myFun(result){
+		var cityName = result.name;
+		//map.setCenter(cityName);
+		var newstr=cityName.substring(0,cityName.length-1);
+		var cityISO = encodeURI(newstr);
+		
+		//setScrollContent(cityISO);
+		window.setInterval(function(){
+			setScrollContent.apply(this,cityISO);
+	     },1000*60*15);
+		ScrollImgLeft();
+		
+	}
+	
+	 var myCity = new BMap.LocalCity();
+	 myCity.get(myFun);
+	//ScrollImgLeft();
+	//alert(_cityISO);
+	
+</script>
+
+
+<script type="text/javascript">
+var isFullScreen = false;
+//进入全屏
+function requestFullScreen() {
+    var de = document.documentElement;
+    if (de.requestFullscreen) {
+        de.requestFullscreen();
+    } else if (de.mozRequestFullScreen) {
+        de.mozRequestFullScreen();
+    } else if (de.webkitRequestFullScreen) {
+        de.webkitRequestFullScreen();
+    }
+    isFullScreen = true;
+}
+//退出全屏
+function exitFullScreen() {
+    var de = document;
+    if (de.exitFullscreen) {
+        de.exitFullscreen();
+    } else if (de.mozCancelFullScreen) {
+        de.mozCancelFullScreen();
+    } else if (de.webkitCancelFullScreen) {
+        de.webkitCancelFullScreen();
+    }
+    isFullScreen = false;
+}
+
+document.body.addEventListener('click',function(){
+    /* requestFullScreen();
+    //5秒钟自动退出全屏
+    setTimeout(function(){
+        exitFullscreen();
+    },5000); */
+    if (isFullScreen){
+    	exitFullScreen();
+    }else{
+    	requestFullScreen();
+    }
+    	
+},false);
+
+
+/* 设置室外数据 */
+function setRightData() {
+
+	$.post(
+				basePath+'hwmobile/smart/weather!doContentDetail',
+						{
+							SESSIONID : _sessionId,//'2F37FE55ECB0E3D27607A01E5312EE86',
+							USERID : _userid,//'f3d46750-e022-4bf6-88d0-2893caed8b24',
+						},
+						function(data) {
+							if(data.dataObject){
+							//alert(data.dataObject[0].sensorList[0].air.temperature);
+						 	//alert(data);
+								  for (var i = 0; i < data.dataObject[0].sensorList.length ; i++) {
+										if (_currentSensorId2 != null && data.dataObject[0].sensorList[i].sensorId==_currentSensorId2){
+											if (data.dataObject[0].sensorList[i].air != null){
+												
+												/* 室外温度 赋值 */
+												$('#outTemp').html(data.dataObject[0].sensorList[i].air.temperature);
+												/* ./温度赋值  */
+												
+												//$('#airradio_hum').html(data.dataObject[0].sensorList[i].air.humidity);
+				
+												
+												  //$('#airradio_co2').html(data.dataObject[0].sensorList[i].air.co2);
+												  
+												  
+												  /* PM2.5 赋值 */
+												if(data.dataObject[0].sensorList[i].air.pm25<=50){
+													  $('#numB').css({ color: "#10E600"});
+													  }
+													  if(data.dataObject[0].sensorList[i].air.pm25>50 && data.dataObject[0].sensorList[i].air.pm25<=100){
+														  $('#numB').css({ color: "#CDE00E"});
+														  }
+													  if(data.dataObject[0].sensorList[i].air.pm25>100 && data.dataObject[0].sensorList[i].air.pm25<=200){
+														  $('#numB').css({ color: "#E66013"});
+														  }
+													  if(data.dataObject[0].sensorList[i].air.pm25>200){
+														  $('#numB').css({ color: "#FF0100"});
+														  }
+												  $('#numB').html(data.dataObject[0].sensorList[i].air.pm25);
+												  /* ./PM2.5 */
+												  
+												  /* 室外发布时间赋值 */
+													var createTime = data.dataObject[0].sensorList[i].air.createTime;
+												  $('#outTime').html(createTime.substring(5,createTime.length-3)+" 发布");
+												  /* ./室外发布时间赋值 */
+												  
+				
+												//$('#airradio_voc').html(data.dataObject[0].sensorList[i].air.voc);
+												
+												//set_air_quilty(data.dataObject[0].sensorList[i].air.pm25);
+											}
+											
+										}
+										
+								  }
+							}
+
+								});
+	size = window.innerWidth;
+    sizeN = size*0.2;
+    x=sizeN;
+    //alert(x);
+    var canvas=document.getElementById("can1");
+    canvas.width=sizeN;
+    var canvas2=document.getElementById("can2");
+    canvas2.width=sizeN;
+    draw25("can1",$("#numA").html());
+    draw25("can2",$("#numB").html());
+    calcuPercent($("#numA").html(),$("#numB").html());
+				setTimeout("setRightData()",15*1000);
+						
+			}
+			
+			
+			
+/* 设置室内数据 */
+function setLeftData() {
+
+	$.post(
+				basePath+'hwmobile/smart/weather!doContentDetail',
+						{
+							SESSIONID : _sessionId,//'2F37FE55ECB0E3D27607A01E5312EE86',
+							USERID : _userid,//'f3d46750-e022-4bf6-88d0-2893caed8b24',
+						},
+						function(data) {
+							
+							if(data.dataObject){
+							//alert(data.dataObject[0].sensorList[0].air.temperature);
+						 	//alert(data);
+								  for (var i = 0; i < data.dataObject[0].sensorList.length ; i++) {
+										if (_currentSensorId1 != null && data.dataObject[0].sensorList[i].sensorId==_currentSensorId1){
+											if (data.dataObject[0].sensorList[i].air != null){
+												
+												/* 室内温度 赋值 */
+												$('#temp').html(data.dataObject[0].sensorList[i].air.temperature);
+												
+												
+												/* 室内湿度 赋值  */
+												$('#hum').html(data.dataObject[0].sensorList[i].air.humidity);
+				
+												/* 室内二氧化碳 赋值 */
+													if(data.dataObject[0].sensorList[i].air.co2<=800){
+													  $('#numCO2').css({ color: "#10E600"});
+													  }
+													  if(data.dataObject[0].sensorList[i].air.co2>800 && data.dataObject[0].sensorList[i].air.co2<=1200){
+														  $('#numCO2').css({ color: "#CDE00E"});
+														  }
+													  if(data.dataObject[0].sensorList[i].air.co2>1200 && data.dataObject[0].sensorList[i].air.co2<=2000){
+														  $('#numCO2').css({ color: "#E66013"});
+														  }
+													  if(data.dataObject[0].sensorList[i].air.co2>2000){
+														  $('#numCO2').css({ color: "#FF0100"});
+														  }
+												  $('#numCO2').html(data.dataObject[0].sensorList[i].air.co2);
+												  
+												  
+												  /* PM2.5 赋值 */
+												  if(data.dataObject[0].sensorList[i].air.pm25<=50){
+												  $('#numA').css({ color: "#10E600"});
+												  }
+												  if(data.dataObject[0].sensorList[i].air.pm25>50 && data.dataObject[0].sensorList[i].air.pm25<=100){
+													  $('#numA').css({ color: "#CDE00E"});
+													  }
+												  if(data.dataObject[0].sensorList[i].air.pm25>100 && data.dataObject[0].sensorList[i].air.pm25<=200){
+													  $('#numA').css({ color: "#E66013"});
+													  }
+												  if(data.dataObject[0].sensorList[i].air.pm25>200){
+													  $('#numA').css({ color: "#FF0100"});
+													  }
+												  $('#numA').html(data.dataObject[0].sensorList[i].air.pm25);
+												  /* ./PM2.5 */
+												  
+												  /* 室外发布时间赋值 */
+												  var createTime = data.dataObject[0].sensorList[i].air.createTime;
+												  $('#inTime').html(createTime.substring(5,createTime.length - 3)+" 发布");
+												  /* ./室外发布时间赋值 */
+												  
+				
+												//$('#airradio_voc').html(data.dataObject[0].sensorList[i].air.voc);
+												
+												//set_air_quilty(data.dataObject[0].sensorList[i].air.pm25);
+											}
+											
+										}
+										
+								  }
+							}
+
+								});
+	size = window.innerWidth;
+    sizeN = size*0.2;
+    x=sizeN;
+    //alert(x);
+    var canvas=document.getElementById("can1");
+    canvas.width=sizeN;
+    var canvas2=document.getElementById("can2");
+    canvas2.width=sizeN;
+    draw25("can1",$("#numA").html());
+    draw25("can2",$("#numB").html());
+    calcuPercent($("#numA").html(),$("#numB").html());
+	setTimeout("setLeftData()",15*1000);
+						
+			}
+</script>
+<script type="text/javascript">
+var x;
+var _currentSensorId1;
+var _currentSensorId2;
+var _ad
+var basePath;
+var size;
+var sizeN;
+var dataP_6 = [];
+var dataC_6 = [];
+var line;
+var _sessionId = GetQueryString("SESSIONID");
+var _userid = GetQueryString("USERID");
+
+function GetQueryString(name) 
+{ 
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); 
+     var r = window.location.search.substr(1).match(reg); 
+     if(r!=null)return  unescape(r[2]); return null; 
+} 
+
+
+
+_currentSensorId1 = GetQueryString("IN");
+_currentSensorId2 = GetQueryString("OUT");
+_ad = GetQueryString("AD");
+
+    $(function() {
+    	
+    	
+    	var url = document.location.href;
+		//alert(url);
+		url = url.substring(7, url.length - 1);
+		//alert(url);
+		url = url.split("/");
+		url = url[0] + "/" + url[1] + "/";
+
+		basePath = url;
+		//alert(url);
+    	
+    	
+    	
+    	//$("#corp").html(localStorage.getItem('username',''));
+    	 
+  
+    
+    	
+    	size = window.innerWidth;
+        sizeN = size*0.2;
+        x=sizeN;
+        
+    	
+    	
+    	
+      	//getNotification();
+    	
+    	setLeftData();
+    	setRightData();
+    	getAd();
+    	getHisData();
+        $(window).resize(function() {
+
+            size = window.innerWidth;
+            sizeN = size*0.2;
+            x=sizeN;
+            //alert(x);
+            var canvas=document.getElementById("can1");
+            canvas.width=sizeN;
+            var canvas2=document.getElementById("can2");
+            canvas2.width=sizeN;
+            draw25("can1",$("#numA").html());
+            draw25("can2",$("#numB").html());
+			calcuPercent($("#numA").html(),$("#numB").html());
+        });
+// All elements
+        $('body').fontFlex(14, 20, 70);
+
+        // H1 only
+        $('h2').fontFlex(20, 60, 40);
+        $('#numB').fontFlex(40, 60, 40);
+        $('#numA').fontFlex(60, 80, 70);
+        $('#numCO2').fontFlex(60, 80, 70);
+        $('#hum').fontFlex(50, 65, 60);
+        $('#temp').fontFlex(50, 65, 60);
+        $('#pmLable').fontFlex(40, 60, 45);
+
+        $('#city').fontFlex(60, 100, 90);
+        // $('#aqi').fontFlex(48, 60, 50);
+        //$('#fengli').fontFlex(80, 80, 80);
+
+
+		
+        
+
+    });
+
+//获得广告
+function getAd(){
+	$.post(	 basePath+'hwmobile/smart/weather!getOneAdvertise',
+			{
+				SESSIONID : _sessionId,//'2F37FE55ECB0E3D27607A01E5312EE86',
+				USERID : _userid,//'f3d46750-e022-4bf6-88d0-2893caed8b24',
+				MA001 : _ad,
+			
+
+			}, function(data) {
+
+			 	if(data.code == 1){
+	    	 		
+	    			var obj = data.dataObject;
+	    			 $("#ad_img").attr("src","data:image/png;base64,"+obj.ma008);  
+		    		
+		    		$("#ad_title").html(obj.ma004);
+	    	 	}			
+ 					
+						
+
+			}); 
+
+	
+}
+
+
+/*  图表  */
+
+ function setChart(){
+	
+	 $("#line-chart").html("");
+	line = Morris.Line({
+    element: 'line-chart',
+    resize: true,
+    data: [
+        {y: getTimeDif(6), item1: dataP_6[0]},
+        {y: getTimeDif(5), item1: dataP_6[1]},
+        {y: getTimeDif(4), item1: dataP_6[2]},
+        {y: getTimeDif(3), item1: dataP_6[3]},
+        {y: getTimeDif(2), item1: dataP_6[4]},
+        {y: getTimeDif(1), item1: dataP_6[5]},
+        {y: getTimeDif(0), },
+        {y: getTimeDif(6), item2: dataC_6[0]},
+        {y: getTimeDif(5), item2: dataC_6[1]},
+        {y: getTimeDif(4), item2: dataC_6[2]},
+        {y: getTimeDif(3), item2: dataC_6[3]},
+        {y: getTimeDif(2), item2: dataC_6[4]},
+        {y: getTimeDif(1), item2: dataC_6[5]},
+        {y: getTimeDif(0), },
+    ],
+
+    xkey: 'y',
+    ykeys: ['item1','item2'],
+    labels: ['Item 1'],
+    lineColors: ['#D6AED4','#8AF6DB'],
+    lineWidth: 2,
+    hideHover: 'auto',
+    gridTextColor: "#fff",
+    gridStrokeWidth: 0.4,
+    pointSize: 4,
+    pointStrokeColors: ["#efefef"],
+    gridLineColor: "#efefef",
+    gridTextFamily: "Open Sans",
+    gridTextSize: 10
+});
+}
+
+/* 异步请求数据 */
+function getHisData(){
+	 $.post(	 basePath+'hwmobile/smart/weather!doListDetailHistory',
+				{
+					SESSIONID : _sessionId,//'2F37FE55ECB0E3D27607A01E5312EE86',
+					USERID : _userid,//'f3d46750-e022-4bf6-88d0-2893caed8b24',
+					SENSORID : _currentSensorId1,// 室内A1  设备编号
+					TYPE: 1,
+					LASTPAR: 6,
+
+				}, function(data) {
+					
+					if(data.dataObject){
+
+						if (data.dataObject[0].sensorList.length>0){
+									if(data.dataObject[0].sensorList[0].air.temperature != undefined){
+										for (var i = 0; i < data.dataObject[0].sensorList.length; i++)
+											{									
+												dataP_6[i]=(parseInt(data.dataObject[0].sensorList[i].air.pm25));
+												dataC_6[i]=(parseInt(data.dataObject[0].sensorList[i].air.co2));							
+											}																	
+											dataP_6.length = 6;
+											dataC_6.length = 6;
+																				
+								    }										
+									setChart();
+							}									
+	 					
+					}
+
+				}); 
+	 setTimeout("getHisData()",60*1000);
+				
+}
+
+/* 获取小时 */
+ function getTimeDif(t){
+	 var date = new Date ();
+	    var yy=date.getFullYear();
+		var mon=date.getMonth()+1;  //因为1月这个方法返回为0，所以加1
+		var dd=date.getDate();
+		
+	    var tim = date.getHours () - t;
+	    
+	    return yy+"-"+mon+"-"+dd+" "+tim+":00";
+	}
+
+
+    function draw25(id,val) {
+        var canvas = document.getElementById(id);
+
+
+
+        if (canvas == null)
+            return false;
+        var context = canvas.getContext('2d');
+       
+		var value = ((x + 20 ) * val) / 300;
+
+		if (value > 300)
+		{
+			value = 300;
+		}
+
+        var g1 = context.createLinearGradient(0, 0, x, 0);
+
+        g1.addColorStop(0, 'rgb(0,255,0)'); //红
+        g1.addColorStop(0.4, 'rgb(255,248,18)');//绿
+        g1.addColorStop(0.8, 'rgb(255,11,24)'); //蓝
+        g1.addColorStop(1, 'rgb(255,0,0)'); //粉
+
+        //可以把lg对象理解成GDI中线性brush
+        //这个渐进色可以当做fillstyle的一种颜色来处理，进行对画刷的属性设置
+        context.fillStyle = g1;
+        //再用这个brush来画正方形
+        context.fillRect(0, 20, x, 15);
+
+	//	context.strokeStyle = "black";
+		context.beginPath();
+		context.fillStyle = "white";
+		context.moveTo(value-2,40);
+		context.lineTo(value,0);
+		context.lineTo(value+2,40);
+		context.closePath();
+		context.fill();
+
+		context.font = "20px Georgia";
+		context.fillStyle = "white";
+		if (val > 200){
+			context.fillText(getPmState(val),value-45,16);    //45 为 字体20px × 2 -5
+		}else{
+			context.fillText(getPmState(val),value+5,16);
+		}
+		
+		
+    }
+
+    function calcuPercent(dataIn,dataOut){
+    	
+    	if(dataOut){
+    		if(dataIn){
+    			var result = (dataIn - dataOut) / dataOut;
+    			//alert(result);
+    			if (result > 0)
+    			{
+    				$("#contrast").html("高"+Math.abs(Math.round(result*100))+"%");
+    				$("#contrast").css("color","#ff0000");
+    			}else if( result <0 ){
+    				$("#contrast").html("低"+Math.abs(Math.round(result*100))+"%");
+    				$("#contrast").css("color","#00ff00");
+    			}else{
+    				$("#contrast").html("相等");
+    				$("#contrast").css("color","#ff0000");
+    			}
+    		}if(dataIn == 0){
+    			$("#contrast").html("低"+"100%");
+				$("#contrast").css("color","#00ff00");
+    		}
+    	if(dataOut == 0){
+    		if(dataIn){
+    			$("#contrast").html("高"+"100%");
+				$("#contrast").css("color","#ff0000");
+    		}
+    		if(dataIn == 0)
+    			$("#contrast").html("低"+"0%");
+				$("#contrast").css("color","#00ff00");
+    	}
+    	}
+    	
+
+    	
+    	
+    	}
+    	
+
+
+
+function ScrollImgLeft(){
+    var speed=50;
+    var scroll_begin = document.getElementById("scroll_begin");
+    var scroll_end = document.getElementById("scroll_end");
+    var scroll_div = document.getElementById("scroll_div");
+    scroll_end.innerHTML=scroll_begin.innerHTML;
+    function Marquee(){
+        if(scroll_end.offsetWidth-scroll_div.scrollLeft<=0)
+            scroll_div.scrollLeft-=scroll_begin.offsetWidth;
+        else
+            scroll_div.scrollLeft++;
+    }
+    var MyMar=setInterval(Marquee,speed);
+    scroll_div.onmouseover=function() {clearInterval(MyMar);}
+    scroll_div.onmouseout=function() {MyMar=setInterval(Marquee,speed);}
+}
+
+   function getPmState(val){
+	if (val < 50)
+	{
+		return "优";
+	}
+	if (val >= 50 && val <100)
+	{
+		return "良";
+	}
+	if (val >= 100 && val <200)
+	{
+		return "轻度";
+	}
+   if (val >= 200 )
+	{
+		return "重度";
+	}
+   }
+//查找通知信息
+
+  function getNotification(){
+      
+	  $.post(basePath+'hwmobile/smart/weather!getBSMessage',
+				{
+					SESSIONID : _sessionId,//'2F37FE55ECB0E3D27607A01E5312EE86',
+					USERID : _userid,//'f3d46750-e022-4bf6-88d0-2893caed8b24',
+					haveDate : "yes"
+				
+
+				}, function(data,status) {
+					alert(data.code);
+				 	if(data.code == 1){
+		    	 		if (data.count > 0){
+			    			var obj = data.dataObject;
+							$("#scroll_begin").html(obj.ma002);
+							ScrollImgLeft();
+							return;
+		    	 		}
+		    	 	}			
+	 					
+				 	myCity.get(myFun);		
+
+				}); 
+
+}
+	function setScrollContent(id){
+		$.ajax({
+            url:'http://wthrcdn.etouch.cn/WeatherApi?city='+id,
+            type:'post',
+            dataType:'xml',
+            success:function(xml){
+                
+						//alert(xml);
+							
+						$(xml).find("resp").each(function(i)
+								{
+									//var oid = $(this).attr("id");
+									
+									var city = $(this).children("ctiy").text();
+									var fengxiang = $(this).children("fengxiang").text();
+									var fengli = $(this).children("fengli").text();
+									
+									var pm25 = $(this).children("environment").children("pm25").text();
+									var aqi = $(this).children("environment").children("aqi").text();
+									var suggest = $(this).children("environment").children("suggest").text();
+
+									var quality = $(this).children("environment").children("quality").text();
+									
+									var temp = $(this).children("wendu").text();
+									var humidty = $(this).children("shidu").text();
+									var high = $(this).children("forecast").children("weather").children("high").eq(0).text();
+									var low = $(this).children("forecast").children("weather").children("low").eq(0).text();
+									var date = $(this).children("forecast").children("weather").children("date").eq(0).text();
+									var type= $(this).children("forecast").children("weather").children("day").eq(0).children("type").text();
+									//alert(cityname);
+
+									
+
+
+									var string = city+" "+date+" "+"   天气状况： "+type+" "+high+" "+low+" "+"   风向情况： "+fengxiang+fengli+" "+"   当前温度： "+temp+"℃"+"   当前湿度： "+humidty+"   空气质量AQI： "+aqi+"   空气质量状况： "+quality+"   PM2.5： "+pm25+"μg/m3 "+"    今日出行建议： "+suggest;
+									//alert(string);
+									$("#scroll_begin").html(string);
+									ScrollImgLeft();
+									
+						
+				});
+
+            }
+             
+        })
+	}
+</script>
+<script type="text/javascript">ScrollImgLeft();</script>
+</html>

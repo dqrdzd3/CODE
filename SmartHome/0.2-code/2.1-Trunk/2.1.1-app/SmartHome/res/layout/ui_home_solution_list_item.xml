@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 解决方案 bgn -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/ui_home_pager_solution_layout"
+    android:baselineAligned="false"
+    android:orientation="horizontal" >
+
+    <!-- 左侧文字 bgn -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/uiHomeSolutionName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:background="@null"
+                android:text="@string/home_temperature"
+                android:textColor="@color/white"
+                android:textSize="22.0dp" />
+
+            <TextView
+                android:id="@+id/uiHomeSolutionStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:background="@null"
+                android:text="@string/home_good"
+                android:textColor="@color/white"
+                android:textSize="22.0dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/uiHomeSolutionContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:background="@null"
+            android:text="@string/test_solution"
+            android:textColor="@color/white"
+            android:textSize="15.0dp" />
+    </LinearLayout>
+    <!-- 左侧文字 end -->
+    <!-- 右侧购物车 bgn -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/uiHomeShopping"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="···"
+            android:textSize="50dp"
+            android:typeface="serif" />
+        <!--
+        <ImageView
+            android:id="@+id/uiHomeShopping"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:clickable="true"
+            android:src="@drawable/go_shop_big" />
+        -->
+    </LinearLayout>
+    <!-- 右侧购物车 bgn -->
+
+</LinearLayout> <!-- 解决方案 end -->

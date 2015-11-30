@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #left{
+            position:absolute;
+            left: 0%;
+            top: 0%;
+            width: 50%;
+            height: 100%;
+            margin: 0px;           
+            filter:alpha(opacity=20); /* ie 透明度20% */
+            -moz-opacity:0.8; /* Moz + ff 透明度20%*/
+            opacity: 0.8; /* 支持CSS3的浏览器（ff 1.5也支持）透明度20%*/
+			z-index: -1;
+			color:white;
+        }
+		#left2{
+            position:absolute;
+            left: 0%;
+            top: 0%;
+            width: 50%;
+            height: 100%;
+            margin: 0px;
+            background: url("img/green6.jpg") no-repeat;
+			
+			
+			filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+		 
+
+			-webkit-filter: blur(10px); /* Chrome, Opera */
+
+			   -moz-filter: blur(10px);
+
+				-ms-filter: blur(10px);   
+				filter: blur(10px);
+
+			filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+
+            filter:alpha(opacity=20); /* ie 透明度20% */
+            -moz-opacity:0.8; /* Moz + ff 透明度20%*/
+            opacity: 0.8; /* 支持CSS3的浏览器（ff 1.5也支持）透明度20%*/
+			z-index: -1;
+        }
+        #right{
+            position:absolute;
+            left: 50%;
+            top: 0%;
+            width: 50%;
+            height: 100%;
+            margin: 0px;
+          
+            filter:alpha(opacity=20); /* ie 透明度20% */
+            -moz-opacity:0.8; /* Moz + ff 透明度20%*/
+            opacity: 0.8; /* 支持CSS3的浏览器（ff 1.5也支持）透明度20%*/
+        }
+		 #right2{
+            position:absolute;
+            left: 50%;
+            top: 0%;
+            width: 50%;
+            height: 100%;
+            margin: 0px;
+            background: url("img/green4.jpg") no-repeat;
+			filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+		 
+
+			-webkit-filter: blur(10px); /* Chrome, Opera */
+
+			   -moz-filter: blur(10px);
+
+				-ms-filter: blur(10px);   
+				filter: blur(10px);
+
+			filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+            filter:alpha(opacity=20); /* ie 透明度20% */
+            -moz-opacity:0.8; /* Moz + ff 透明度20%*/
+            opacity: 0.8; /* 支持CSS3的浏览器（ff 1.5也支持）透明度20%*/
+        }
+        #state{
+            margin: 0px;
+            background: url("img/a_1.gif") no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        #state2{
+            margin: 0px;
+            background: url("img/a_1.gif") no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+		.dd{
+		filter:alpha(Opacity=60);-moz-opacity:0.6;opacity: 0.6 
+		}
+
+		.blur {
+
+			filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+		 
+
+			-webkit-filter: blur(10px); /* Chrome, Opera */
+
+			   -moz-filter: blur(10px);
+
+				-ms-filter: blur(10px);   
+				filter: blur(10px);
+
+			filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+
+		}
+
+    </style>
+
+
+    <script type="text/javascript" src="js/zzr/jquery-1.9.1.min.js"></script>
+    <script src="http://img.jb51.net/jslib/jquery/jquery14.js"></script>
+    <script type="text/javascript" src="js/zzr/jQuery.fontFlex.js"></script>
+    <script type="text/javascript" src="js/zzr/jquery.flot.js"></script>
+    <script type="text/javascript" src="js/zzr/jquery.flot.resize.js"></script>
+    <script type="text/javascript" src="js/zzr/modernizr.custom.79639.js"></script>
+
+
+
+    <script>
+        $(function() {
+
+            $(window).resize(function () {
+
+
+            });
+// All elements
+            $('body').fontFlex(55, 70, 60);
+
+            // H1 only
+            $('h2').fontFlex(20, 60, 40);
+            $('#content1').fontFlex(20, 60, 40);
+            $('#content2').fontFlex(20, 60, 40);
+            $('#content3').fontFlex(18, 55, 37);
+            $('#type1').fontFlex(15,25,20);
+            $('#type2').fontFlex(15,25,20);
+            $('h3').fontFlex(20, 30, 28);
+            $('.numPM').fontFlex(20, 50, 30);
+            $('.unit').fontFlex(20, 60, 40);
+           // $('#num').fontFlex(90, 120, 120);
+           // $('#numA').fontFlex(100, 120, 120);
+
+        });
+    </script>
+</head>
+<body style="overflow: hidden;margin: 0px;padding: 0px">
+
+<!--left-->
+<div id = "left2"></div>
+<div id = "left">
+
+    <div style="position: absolute;left: 0%;top: 4%;width: 100%;height:100%;text-align: center;" >
+        <p style="padding: 0px;margin: 3px;">
+            <span id = "type1" style = "color: white;margin: 4% 0% 0% 4%;padding:1.5%;background: #0043D0;width: inherit;height: inherit; -moz-border-radius: 30px;-webkit-border-radius: 30px;border-radius:30px;">室外轻度污染</span>
+         </p>
+        <div style="text-align: left;margin-top: 3%">
+
+            <h2 id="state" style="float: left;margin-left: 32%;padding: 0px"> </h2>
+            <span id = "temp1" style = "color: #FFFFFF;margin: 4% 0% 0% 0%;padding:1.5%;width: inherit;height: inherit;">34℃</span>
+
+
+        </div>
+
+
+
+        <div style="position: absolute;left: 0%;top: 25%;width: 100%;height:45%;text-align: left">
+            <h2 id="content1" style = "color: white;margin: 0% 0% 0% 43%;padding-left:0%;">空气指标</h2>
+            <hr>
+
+            <!--row-->
+            <div style="width: 43%;margin-left:3%;border-bottom: 5px solid red;color: #FCE2FF;float: left">
+                <h3 style="padding-left: 4%;margin: -10px">PM2.5</h3>
+
+                <div style="float: left">
+                    <span class="unit" style="margin-left: 0%">μg/m3</span>
+                </div>
+                <div style="float: right">
+                <span class="numPM" id= "pm25Out" style="margin-right: 1%">152</span>
+                 </div>
+            </div>
+            <div style="width: 43%;margin-right:3%;border-bottom: 5px solid #8BC232;color: #FCE2FF;float: right">
+                <h3 style="padding-left: 4%;margin: -10px">VOC</h3>
+                <div style="float: left">
+                    <span class="unit" style="margin-left: 0%">ppm</span>
+                </div>
+                <div style="float: right">
+                    <span class="numPM" id = "vocOut" style="margin-right: 1%">0</span>
+                </div>
+            </div>
+
+              <!--row-->
+            <div style="width: 43%;margin-top:3%;margin-left:3%;border-bottom: 5px solid #349FBD;color: #FCE2FF;float: left">
+                <h3 style="padding-left: 4%;margin: -10px">CO2</h3>
+
+                <div style="float: left">
+                    <span class="unit" style="margin-left: 0%">μg/m3</span>
+                </div>
+                <div style="float: right">
+                    <span class="numPM" id = "co2Out" style="margin-right: 1%">486</span>
+                </div>
+            </div>
+            <div style="width: 43%;margin-top:3%;margin-right:3%;border-bottom: 5px solid #8BC232;color: #FCE2FF;float: right">
+                <h3 style="padding-left: 4%;margin: -10px">噪声</h3>
+                <div style="float: left">
+                    <span class="unit" style="margin-left: 0%">dB</span>
+                </div>
+                <div style="float: right">
+                    <span class="numPM" id = "dBOut" style="margin-right: 1%">43</span>
+                </div>
+            </div>
+
+            <!--row-->
+
+            <div style="width: 43%;margin-top:3%;margin-left:3%;border-bottom: 5px solid #349FBD;color: #FCE2FF;float: left">
+                <h3 style="padding-left: 4%;margin: -10px">温度</h3>
+
+                <div style="float: left">
+                    <span class="unit" style="margin-left: 0%">℃</span>
+                </div>
+                <div style="float: right">
+                    <span class="numPM" id = "tempOut" style="margin-right: 1%">15</span>
+                </div>
+            </div>
+            <div style="width: 43%;margin-top:3%;margin-right:3%;border-bottom: 5px solid red;color: #FCE2FF;float: right">
+                <h3 style="padding-left: 4%;margin: -10px">湿度</h3>
+                <div style="float: left">
+                    <span class="unit" style="margin-left: 0%">%</span>
+                </div>
+                <div style="float: right">
+                    <span class="numPM" id = "humOut" style="margin-right: 1%">69</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="position: absolute;left: 0%;top: 75%;width: 100%;height:25%;text-align: left">
+            <img src="img/food.jpg" style="width: 100%">
+        </div>
+
+
+    </div>
+</div>
+
+<!--right-->
+<div id = "right2"></div>
+<div id = "right">
+    <div style="position: absolute;left: 0%;top: 4%;width: 100%;height:100%;text-align: center">
+        <p style="padding: 0px;margin: 3px;">
+             <span id = "type2" style = "color: white;margin: 4% 0% 0% 4%;padding:1.5%;background: #2BB1F0;width: inherit;height: inherit; -moz-border-radius: 30px;-webkit-border-radius: 30px;border-radius:30px;">室内空气质量优</span>
+        </p>
+
+        <div style="text-align: left;margin-top: 3%">
+
+            <h2 id="state2" style="float: left;margin-left: 32%;padding: 0px"> </h2>
+            <span id = "temp2" style = "color: white;margin: 4% 0% 0% 0%;padding:1.5%;width: inherit;height: inherit;;">25℃</span>
+
+
+        </div>
+
+
+
+        <div style="position: absolute;left: 0%;top: 25%;width: 100%;height:50%;text-align: left">
+            <h2 id="content2" style = "color: white;margin: 0% 0% 0% 43%;padding-left:0%;">空气指标</h2>
+            <hr>
+
+            <!--row-->
+            <div style="width: 43%;margin-left:3%;border-bottom: 5px solid red;color: #FCE2FF;float: left">
+                <h3 style="padding-left: 4%;margin: -10px">PM2.5</h3>
+
+                <div style="float: left">
+                    <span class="unit" style="margin-left: 0%">μg/m3</span>
+                </div>
+                <div style="float: right">
+                    <span class="numPM" id = "pm25In" style="margin-right: 1%">22</span>
+                </div>
+            </div>
+            <div style="width: 43%;margin-right:3%;border-bottom: 5px solid #8BC232;color: #FCE2FF;float: right">
+                <h3 style="padding-left: 4%;margin: -10px">VOC</h3>
+                <div style="float: left">
+                    <span class="unit" style="margin-left: 0%">ppm</span>
+                </div>
+                <div style="float: right">
+                    <span class="numPM" id = "vocIn" style="margin-right: 1%">2</span>
+                </div>
+            </div>
+
+            <!--row-->
+            <div style="width: 43%;margin-top:3%;margin-left:3%;border-bottom: 5px solid #349FBD;color: #FCE2FF;float: left">
+                <h3 style="padding-left: 4%;margin: -10px">CO2</h3>
+
+                <div style="float: left">
+                    <span class="unit" style="margin-left: 0%">μg/m3</span>
+                </div>
+                <div style="float: right">
+                    <span class="numPM" id = "co2In" style="margin-right: 1%">300</span>
+                </div>
+            </div>
+            <div style="width: 43%;margin-top:3%;margin-right:3%;border-bottom: 5px solid #8BC232;color: #FCE2FF;float: right">
+                <h3 style="padding-left: 4%;margin: -10px">噪声</h3>
+                <div style="float: left">
+                    <span class="unit"  style="margin-left: 0%">dB</span>
+                </div>
+                <div style="float: right">
+                    <span class="numPM" id = "dBIn" style="margin-right: 1%">28</span>
+                </div>
+            </div>
+
+            <!--row-->
+
+            <div style="width: 43%;margin-top:3%;margin-left:3%;border-bottom: 5px solid #349FBD;color: #FCE2FF;float: left">
+                <h3 style="padding-left: 4%;margin: -10px">温度</h3>
+
+                <div style="float: left">
+                    <span class="unit" style="margin-left: 0%">℃</span>
+                </div>
+                <div style="float: right">
+                    <span class="numPM" id = "tempIn" style="margin-right: 1%">20</span>
+                </div>
+            </div>
+            <div style="width: 43%;margin-top:3%;margin-right:3%;border-bottom: 5px solid red;color: #FCE2FF;float: right">
+                <h3 style="padding-left: 4%;margin: -10px">湿度</h3>
+                <div style="float: left">
+                    <span class="unit" style="margin-left: 0%">%</span>
+                </div>
+                <div style="float: right">
+                    <span class="numPM" id = "humIn" style="margin-right: 1%">80</span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div style="position: absolute;left: 0%;top: 78%;width: 100%;height:25%;text-align: left">
+            <h2 id="content3" style = "color: white;margin: 0% 0% 0% 43%;padding-left:0%;">健康建议</h2>
+            <hr>
+
+            <div style="width: 90%;margin-top:0%;margin-left:3%;margin-right: 3%;color: #FCE2FF;float: left">
+                <h3 style="padding-left: 4%;margin: -10px">注意防晒 减少外出</h3>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+var _currentSensorId1;
+var _currentSensorId2;
+var _ad
+var basePath;
+
+
+function GetQueryString(name) 
+{ 
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); 
+     var r = window.location.search.substr(1).match(reg); 
+     if(r!=null)return  unescape(r[2]); return null; 
+} 
+
+
+
+_currentSensorId1 = GetQueryString("IN");
+_currentSensorId2 = GetQueryString("OUT");
+_ad = GetQueryString("AD");
+
+    $(function() {
+    	
+		basePath = localStorage.getItem('basePath','');
+    	
+    	setLeftData();
+    	setRightData();
+    });
+    	
+    	
+</script>
+
+
+<script type="text/javascript">
+/* 设置室内数据 */
+function setRightData() {
+
+	$.post(
+				basePath+'hwmobile/smart/weather!doContentDetail',
+						{
+							SESSIONID : localStorage.getItem('SESSIONID',''),//'2F37FE55ECB0E3D27607A01E5312EE86',
+							USERID : localStorage.getItem('USERID',''),//'f3d46750-e022-4bf6-88d0-2893caed8b24',
+						},
+						function(data) {
+							if(data.dataObject){
+							//alert(data.dataObject[0].sensorList[0].air.temperature);
+						 	//alert(data);
+								  for (var i = 0; i < data.dataObject[0].sensorList.length ; i++) {
+										if (_currentSensorId1 != null && data.dataObject[0].sensorList[i].sensorId==_currentSensorId1){
+											if (data.dataObject[0].sensorList[i].air != null){
+												
+												/* 室内温度 赋值 */
+												$('#temp2').html(data.dataObject[0].sensorList[i].air.temperature);
+												/* ./温度赋值  */
+												
+												/* 室内湿度 赋值  */
+												//$('#hum').html(data.dataObject[0].sensorList[i].air.humidity);
+				
+												/* 室内二氧化碳 赋值 */
+													if(data.dataObject[0].sensorList[i].air.co2<=800){
+													  $('#co2In').css({"border-color": "#10E600"});
+													  }
+													  if(data.dataObject[0].sensorList[i].air.co2>800 && data.dataObject[0].sensorList[i].air.co2<=1200){
+														  $('#co2In').css({"border-color": "#CDE00E"});
+														  }
+													  if(data.dataObject[0].sensorList[i].air.co2>1200 && data.dataObject[0].sensorList[i].air.co2<=2000){
+														  $('#co2In').css({"border-color": "#E66013"});
+														  }
+													  if(data.dataObject[0].sensorList[i].air.co2>2000){
+														  $('#co2In').css({"border-color": "#FF0100"});
+														  }
+												  $('#co2In').html(data.dataObject[0].sensorList[i].air.co2);
+												  
+												  
+												  /* PM2.5 赋值 */
+												  if(data.dataObject[0].sensorList[i].air.pm25<=50){
+												  $('#pm25In').css({"border-color": "#10E600"});
+												  }
+												  if(data.dataObject[0].sensorList[i].air.pm25>50 && data.dataObject[0].sensorList[i].air.pm25<=100){
+													  $('#pm25In').css({"border-color": "#CDE00E"});
+													  }
+												  if(data.dataObject[0].sensorList[i].air.pm25>100 && data.dataObject[0].sensorList[i].air.pm25<=200){
+													  $('#pm25In').css({"border-color": "#E66013"});
+													  }
+												  if(data.dataObject[0].sensorList[i].air.pm25>200){
+													  $('#pm25In').css({"border-color": "#FF0100"});
+													  }
+												  $('#pm25In').html(data.dataObject[0].sensorList[i].air.pm25);
+												  /* ./PM2.5 */
+												  
+												  
+												  /* voc 赋值 */
+												  if(data.dataObject[0].sensorList[i].air.voc<=10){
+												  $('#vocIn').css({"border-color": "#10E600"});
+												  }
+												  if(data.dataObject[0].sensorList[i].air.voc>10 && data.dataObject[0].sensorList[i].air.voc<=20){
+													  $('#vocIn').css({"border-color": "#CDE00E"});
+													  }
+												  if(data.dataObject[0].sensorList[i].air.voc>20 && data.dataObject[0].sensorList[i].air.voc<=40){
+													  $('#vocIn').css({"border-color": "#E66013"});
+													  }
+												  if(data.dataObject[0].sensorList[i].air.voc>40){
+													  $('#vocIn').css({"border-color": "#FF0100"});
+													  }
+												  $('#vocIn').html(data.dataObject[0].sensorList[i].air.voc);
+												  /* ./voc */
+												  
+												  
+												  /* 湿度 赋值 */
+												  if(data.dataObject[0].sensorList[i].air.humidity<=35){
+												  $('#humIn').css({"border-color": "#E7E632"});
+												  }
+												  if(data.dataObject[0].sensorList[i].air.humidity>35 && data.dataObject[0].sensorList[i].air.humidity<=65){
+													  $('#humIn').css({"border-color": "#04E500"});
+													  }
+												  
+												  if(data.dataObject[0].sensorList[i].air.humidity>65){
+													  $('#humIn').css({"border-color": "#3AF4FF"});
+													  }
+												  $('#humIn').html(data.dataObject[0].sensorList[i].air.humidity);
+												  /* ./湿度 */
+												  
+												  
+												  /* 温度 赋值 */
+												  if(data.dataObject[0].sensorList[i].air.temperature<=10){
+												  $('#tempIn').css({"border-color": "#09098F"});
+												  }
+												  if(data.dataObject[0].sensorList[i].air.temperature>10 && data.dataObject[0].sensorList[i].air.temperature<=15){
+													  $('#tempIn').css({"border-color": "#3030FF"});
+													  }
+												  if(data.dataObject[0].sensorList[i].air.temperature>15 && data.dataObject[0].sensorList[i].air.temperature<=22){
+													  $('#tempIn').css({"border-color": "#25FED3"});
+													  }
+												  if(data.dataObject[0].sensorList[i].air.temperature>22 && data.dataObject[0].sensorList[i].air.temperature<=28){
+													  $('#tempIn').css({"border-color": "#06E500"});
+													  }
+												  if(data.dataObject[0].sensorList[i].air.temperature>28 && data.dataObject[0].sensorList[i].air.temperature<=32){
+													  $('#tempIn').css({"border-color": "#E65D13"});
+													  }
+												  
+												  if(data.dataObject[0].sensorList[i].air.temperature>32){
+													  $('#tempIn').css({"border-color": "#E60000"});
+													  }
+												  $('#tempIn').html(data.dataObject[0].sensorList[i].air.temperature);
+												  /* ./温度 */
+												  
+												  
+												  
+				
+												//$('#airradio_voc').html(data.dataObject[0].sensorList[i].air.voc);
+												
+												//set_air_quilty(data.dataObject[0].sensorList[i].air.pm25);
+											}
+											
+										}
+										
+								  }
+							}
+
+								});
+	
+  
+				setTimeout("setRightData()",15*1000);
+			}
+			
+			
+			
+/* 设置室外数据 */
+function setLeftData() {
+
+	$.post(
+				basePath+'hwmobile/smart/weather!doContentDetail',
+						{
+							SESSIONID : localStorage.getItem('SESSIONID',''),//'2F37FE55ECB0E3D27607A01E5312EE86',
+							USERID : localStorage.getItem('USERID',''),//'f3d46750-e022-4bf6-88d0-2893caed8b24',
+						},
+						function(data) {
+							
+							if(data.dataObject){
+							//alert(data.dataObject[0].sensorList[0].air.temperature);
+						 	//alert(data);
+								  for (var i = 0; i < data.dataObject[0].sensorList.length ; i++) {
+										if (_currentSensorId2 != null && data.dataObject[0].sensorList[i].sensorId==_currentSensorId2){
+											if (data.dataObject[0].sensorList[i].air != null){
+												
+												/* 室外温度 赋值 */
+												$('#temp1').html(data.dataObject[0].sensorList[i].air.temperature);
+												/* ./温度赋值  */
+												
+												/* 室外湿度 赋值  */
+												//$('#hum').html(data.dataObject[0].sensorList[i].air.humidity);
+				
+												/* 室外二氧化碳 赋值 */
+													if(data.dataObject[0].sensorList[i].air.co2<=800){
+													  $('#co2Out').css({"border-color": "#10E600"});
+													  }
+													  if(data.dataObject[0].sensorList[i].air.co2>800 && data.dataObject[0].sensorList[i].air.co2<=1200){
+														  $('#co2Out').css({"border-color": "#CDE00E"});
+														  }
+													  if(data.dataObject[0].sensorList[i].air.co2>1200 && data.dataObject[0].sensorList[i].air.co2<=2000){
+														  $('#co2Out').css({"border-color": "#E66013"});
+														  }
+													  if(data.dataObject[0].sensorList[i].air.co2>2000){
+														  $('#co2Out').css({"border-color": "#FF0100"});
+														  }
+												  $('#co2Out').html(data.dataObject[0].sensorList[i].air.co2);
+												  
+												  
+												  /* PM2.5 赋值 */
+												  if(data.dataObject[0].sensorList[i].air.pm25<=50){
+												  $('#pm25Out').css({"border-color": "#10E600"});
+												  }
+												  if(data.dataObject[0].sensorList[i].air.pm25>50 && data.dataObject[0].sensorList[i].air.pm25<=100){
+													  $('#pm25Out').css({"border-color": "#CDE00E"});
+													  }
+												  if(data.dataObject[0].sensorList[i].air.pm25>100 && data.dataObject[0].sensorList[i].air.pm25<=200){
+													  $('#pm25Out').css({"border-color": "#E66013"});
+													  }
+												  if(data.dataObject[0].sensorList[i].air.pm25>200){
+													  $('#pm25Out').css({"border-color": "#FF0100"});
+													  }
+												  $('#pm25Out').html(data.dataObject[0].sensorList[i].air.pm25);
+												  /* ./PM2.5 */
+												  
+												  
+												  /* voc 赋值 */
+												  if(data.dataObject[0].sensorList[i].air.voc<=10){
+												  $('#vocOut').css({"border-color": "#10E600"});
+												  }
+												  if(data.dataObject[0].sensorList[i].air.voc>10 && data.dataObject[0].sensorList[i].air.voc<=20){
+													  $('#vocOut').css({"border-color": "#CDE00E"});
+													  }
+												  if(data.dataObject[0].sensorList[i].air.voc>20 && data.dataObject[0].sensorList[i].air.voc<=40){
+													  $('#vocOut').css({"border-color": "#E66013"});
+													  }
+												  if(data.dataObject[0].sensorList[i].air.voc>40){
+													  $('#vocOut').css({"border-color": "#FF0100"});
+													  }
+												  $('#vocOut').html(data.dataObject[0].sensorList[i].air.voc);
+												  /* ./voc */
+												  
+												  
+												  /* 湿度 赋值 */
+												  if(data.dataObject[0].sensorList[i].air.humidity<=35){
+												  $('#humOut').css({"border-color": "#E7E632"});
+												  }
+												  if(data.dataObject[0].sensorList[i].air.humidity>35 && data.dataObject[0].sensorList[i].air.humidity<=65){
+													  $('#humOut').css({"border-color": "#04E500"});
+													  }
+												  
+												  if(data.dataObject[0].sensorList[i].air.humidity>65){
+													  $('#humOut').css({"border-color": "#3AF4FF"});
+													  }
+												  $('#humOut').html(data.dataObject[0].sensorList[i].air.humidity);
+												  /* ./湿度 */
+												  
+												  
+												  /* 温度 赋值 */
+												  if(data.dataObject[0].sensorList[i].air.temperature<=10){
+												  $('#tempOut').css({"border-color": "#09098F"});
+												  }
+												  if(data.dataObject[0].sensorList[i].air.temperature>10 && data.dataObject[0].sensorList[i].air.temperature<=15){
+													  $('#tempOut').css({"border-color": "#3030FF"});
+													  }
+												  if(data.dataObject[0].sensorList[i].air.temperature>15 && data.dataObject[0].sensorList[i].air.temperature<=22){
+													  $('#tempOut').css({"border-color": "#25FED3"});
+													  }
+												  if(data.dataObject[0].sensorList[i].air.temperature>22 && data.dataObject[0].sensorList[i].air.temperature<=28){
+													  $('#tempOut').css({"border-color": "#06E500"});
+													  }
+												  if(data.dataObject[0].sensorList[i].air.temperature>28 && data.dataObject[0].sensorList[i].air.temperature<=32){
+													  $('#tempOut').css({"border-color": "#E65D13"});
+													  }
+												  
+												  if(data.dataObject[0].sensorList[i].air.temperature>32){
+													  $('#tempOut').css({"border-color": "#E60000"});
+													  }
+												  $('#tempOut').html(data.dataObject[0].sensorList[i].air.temperature);
+												  /* ./温度 */
+												  
+												  
+				
+												//$('#airradio_voc').html(data.dataObject[0].sensorList[i].air.voc);
+												
+												//set_air_quilty(data.dataObject[0].sensorList[i].air.pm25);
+											}
+											
+										}
+										
+								  }
+							}
+
+								});
+	
+	setTimeout("setLeftData()",15*1000);
+	
+			}
+</script>
+
+
+</body>
+</html>

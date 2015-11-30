@@ -1,0 +1,35 @@
+/* 上传图片缩略形式 */
+.v_show {
+	width:608px;
+	margin:0px;
+}
+.v_caption { height:35px; overflow:hidden; background:url(../images/btn_cartoon.gif) no-repeat 0 0; }
+.v_caption h2 { float:left; width:84px; height:35px; overflow:hidden;font-size:14px; font-weight:bold; color:#10917A; line-height:15px; padding-left:12px;  }
+.v_caption .cartoon { background-position: 0 -100px; }
+.v_caption .variety { background-position:-100px -100px; }
+
+.v_caption em { display:inline; float:right; margin:10px 12px 0 0; font-family:simsun; }
+.v_content {
+	position:relative;
+	width:606px;
+	height:160px;
+	overflow:hidden;
+	border-right:1px solid #B4EBE8;
+	border-bottom:1px solid #B4EBE8;
+	border-left:1px solid #B4EBE8;
+}
+.v_content_list { position:absolute; width:2500px;top:0px; left:0px; }
+.v_content ul {float:left;}
+.v_content ul li {
+	display:inline;
+	float:left;
+	margin:10px 2px 0;
+	padding:11px;
+	background:url(../images/v_bg.gif) no-repeat;
+}
+.v_content ul li a { display:block; width:128px; height:80px; overflow:hidden; }
+.v_content ul li img {  width:128px; height:96px; }
+.v_content ul li h4 { width:128px; height:18px; overflow:hidden; margin-top:12px; font-weight:normal; }
+.v_content ul li h4 a { display:inline !important; height:auto !important; }
+.v_content ul li span { color:#666; }
+.v_content ul li em { color:#888; font-family:Verdana; font-size:0.9em; }

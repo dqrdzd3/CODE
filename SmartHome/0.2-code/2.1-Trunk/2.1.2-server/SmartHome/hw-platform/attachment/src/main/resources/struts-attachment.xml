@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 文件上传下载 -->
+		<package name="upload" namespace="/upload" extends="interceptor">
+			<action name="fileupload" class="com.hw.hwsafe.attachment.action.FileUpLoadAction">
+				<result name="jsonData" type="json">
+					<param name="ignoreHierarchy">false</param>
+					<param name="root">jsonData</param>
+				</result>
+				<result name="down" type="stream"> 
+			        <!-- 指定下载文件的内容类型 -->
+			        <param name="contentType">application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/octet-stream,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,application/pdf,text/plain,image/jpeg,image/bmp,image/gif,mage/png,image/x-png,image/pjpeg</param>
+			        <!-- inputName默认值是inputStream，如果action中用于读取下载文件内容的属性名是inputStream，那么可以省略这个参数 -->
+			        <param name="inputName">inputStream</param>
+			        <!--动态获取文件名，从Action中的取得filename-->
+			        <param name="contentDisposition">
+			            attachment;filename="${downloadFileName}"
+			        </param>
+			        <param name="bufferSize">2048</param>
+
+				</result>
+			</action>
+			<!-- 初始化文件上传页面 -->
+			<action name="initfileupload" class="com.hw.hwsafe.attachment.action.FileUpLoadAction" method="initfileupload">
+				<result name="success">/WEB-INF/jsp/upload/upload.jsp</result>
+			</action>
+			
+			
+			
+			<!-- 初始化文件上传页面top -->
+			<action name="initTop" class="com.hw.hwsafe.attachment.action.FileUpLoadAction" method="initTop">
+				<result name="success">/WEB-INF/jsp/upload/top.jsp</result>
+			</action>
+			
+			<!-- 初始化文件上传页面bottom -->
+			<action name="initBottom" class="com.hw.hwsafe.attachment.action.FileUpLoadAction" method="initBottom">
+				<result name="success">/WEB-INF/jsp/upload/bottom.jsp</result>
+			</action>
+			<!-- 图片上传  -->
+			<action name="uploadFile" class="com.hw.hwsafe.attachment.action.FileUpLoadAction" method="uploadFile">
+				<result name="success">/WEB-INF/jsp/upload/top.jsp</result>
+			</action>
+			
+			<!-- 文件上传  -->
+			<action name="upload" class="com.hw.hwsafe.attachment.action.FileUpLoadAction" method="upload">
+				
+			</action>
+			
+			<!-- 危险源备案资料管理文件上传，直接保存到C004表  -->
+			<action name="uploadWXY" class="com.hw.hwsafe.attachment.action.FileUpLoadAction" method="uploadWXY">
+				
+			</action>
+			
+			<!-- 文件预览  -->
+			<action name="doView" class="com.hw.hwsafe.attachment.action.FileUpLoadAction" method="doView">
+				<result name="success">/WEB-INF/jsp/upload/do_view.jsp</result>
+			</action>
+			
+			<!-- 文件预览,非swf格式的图片  -->
+			<action name="doViewPic" class="com.hw.hwsafe.attachment.action.FileUpLoadAction" method="doViewPic">
+				<result name="success">/WEB-INF/jsp/upload/do_view_pic.jsp</result>
+			</action>
+			
+			<!-- 文件删除  -->
+			<action name="doDelete" class="com.hw.hwsafe.attachment.action.FileUpLoadAction" method="doDelete">
+				<result name="success">/WEB-INF/jsp/upload/top.jsp</result>
+			</action>
+			
+			<!-- 文件下载  -->
+			<action name="download" class="com.hw.hwsafe.attachment.action.FileUpLoadAction" method="download">
+				<result name="msg">/WEB-INF/jsp/upload/file/msg.jsp</result>
+			</action>
+			
+			<!-- 文件上传 -->
+			<action name="fileupload" class="com.hw.hwsafe.attachment.action.FileUpLoadAction">
+				<result name="index">/WEB-INF/jsp/upload/file/index.jsp</result>
+			</action>
+			
+			<!-- 新的文件上传，嵌入页面式，iframe -->
+			<action name="initfileuploadnew" class="com.hw.hwsafe.attachment.action.FileUpLoadAction" method="initfileuploadnew">
+				<result name="success">/WEB-INF/jsp/upload/new_upload.jsp</result>
+			</action>
+			
+			<action name="uploadnew" class="com.hw.hwsafe.attachment.action.FileUpLoadAction" method="uploadnew">
+				<result name="success">/WEB-INF/jsp/upload/new_upload.jsp</result>
+			</action>
+			
+			<action name="doViewNew" class="com.hw.hwsafe.attachment.action.FileUpLoadAction" method="doViewNew">
+				<result name="success">/WEB-INF/jsp/upload/new_do_view.jsp</result>
+			</action>
+		</package>
+</struts>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hw.hwsafe.knowledge.dao.ITregulationDao">
+	<!-- 查询所有规章制度库 -->
+	<select id="retrieveAllTregulation" resultType="com.hw.hwsafe.knowledge.pojo.TregulationPO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,
+		      MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016
+ 		FROM TREGULATION t
+	</select>
+	
+	<!-- 根据企业id查询规章制度 -->
+	
+	<select id="retrieveTregulationBycorpID" resultType="com.hw.hwsafe.knowledge.pojo.TregulationPO">
+	    select * from tregulation where ma002=#{id} and rownum &lt;= 5
+	</select>
+	<select id="retrieveTregulationBycorp" parameterType="map" resultType="com.hw.hwsafe.knowledge.pojo.TregulationPO">
+	    select * from tregulation where ma002=#{corpID}
+		    <if test="govType != null and govType != ''">
+	    		<if test="govType == 0">
+	    			and (MA013=1 or MA013=2)
+	    		</if>
+	    		<if test="govType == 1">
+	    			and MA013=2
+	    		</if>
+	    	</if>
+	    	 and rownum &lt;= 5
+	</select>
+	<!-- 根据MA001查询 -->
+	<select id="retrieveTregulationByID" parameterType="String" resultType="com.hw.hwsafe.knowledge.pojo.TregulationPO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,
+		      MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016
+ 		FROM TREGULATION WHERE MA001=#{MA001}
+	</select>
+
+		<!-- 根据条件查询所有  -->
+	<select id="retrieveTregulationByPO" resultType="com.hw.hwsafe.knowledge.pojo.TregulationPO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,
+		      MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016
+ 		FROM TREGULATION t 	
+		WHERE 1=1
+		<if test="MA001 != null">
+			<if test="MA001 != ''">
+			AND	MA001 = #{MA001}
+			</if>
+		</if> 
+		<if test="MA004 != null">
+			<if test="MA004 != ''">
+			AND	MA004  LIKE '%'||#{MA004}||'%' 
+			</if>
+		</if> 
+		
+	</select>
+	
+	<!-- 插入规章制度 -->
+	<insert id="insertTregulation" parameterType="com.hw.hwsafe.knowledge.pojo.TregulationPO">
+      INSERT INTO TREGULATION(MA001,MA002,MA003,MA004,MA005,MA006,MA007,
+		      MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,MA017) 
+      VALUES(
+    	#{MA001,jdbcType=VARCHAR},#{MA002,jdbcType=VARCHAR},#{MA003,jdbcType=VARCHAR},#{MA004,jdbcType=VARCHAR},#{MA005,jdbcType=VARCHAR},#{MA006,jdbcType=VARCHAR},#{MA007,jdbcType=VARCHAR},
+    	#{MA008,jdbcType=TIMESTAMP},#{MA009,jdbcType=VARCHAR},#{MA010,jdbcType=TIMESTAMP},
+    	#{MA011,jdbcType=VARCHAR},#{MA012,jdbcType=VARCHAR},#{MA013,jdbcType=INTEGER},#{MA014,jdbcType=TIMESTAMP},#{MA015,jdbcType=TIMESTAMP},#{MA016,jdbcType=VARCHAR},#{MA017,jdbcType=VARCHAR}
+   	 )
+	</insert>
+	<!-- 更新规章制度 -->
+
+	<update id="updateTregulation" parameterType="com.hw.hwsafe.knowledge.pojo.TregulationPO">
+		UPDATE TREGULATION 
+		set	
+		 	MA002 = #{MA002,jdbcType=VARCHAR}
+			,MA003 = #{MA003,jdbcType=VARCHAR}		
+			,MA004 = #{MA004,jdbcType=VARCHAR}
+			,MA005 = #{MA005,jdbcType=VARCHAR}
+			,MA006 = #{MA006,jdbcType=VARCHAR}
+			,MA007 = #{MA007,jdbcType=VARCHAR}
+			,MA008 = #{MA008,jdbcType=TIMESTAMP}
+			,MA009 = #{MA009,jdbcType=VARCHAR}
+			,MA010 = #{MA010,jdbcType=TIMESTAMP}
+			,MA011 = #{MA011,jdbcType=VARCHAR}
+			,MA012 = #{MA012,jdbcType=VARCHAR}
+			,MA013 = #{MA013,jdbcType=INTEGER}
+			,MA015 = #{MA015,jdbcType=TIMESTAMP}
+			,MA016 = #{MA016,jdbcType=VARCHAR}
+		WHERE MA001 = #{MA001}
+	</update>
+	
+	
+	<!-- 修改业务表的标注状态：是否上报 -->
+	<update id="updateTregulationSBSJ" >
+		UPDATE TREGULATION 
+		   SET 	MA013 = 1
+		WHERE MA001 in
+		<foreach collection="ids" separator="," item="item" open="(" close=")" >#{item}</foreach>
+	</update>
+	
+	<update id="updateCorpSBSJ"  parameterType="String">
+		UPDATE TREGULATION 
+		   SET 	MA013 = 0 WHERE MA002 = #{value}
+	</update>
+	<update id="updateCorpSBSJ2" parameterType="map">
+		UPDATE TREGULATION 
+		   SET 	MA013 = #{state} where MA002 = #{corpID}
+		   <if test="conditionState != null and conditionState != ''">
+		 		and MA013 = #{conditionState}
+			</if>
+	</update>
+
+	<!-- 根据MA001规章制度-->
+	<delete id="deleteTregulationByID" parameterType="String">
+		DELETE FROM TREGULATION WHERE MA001 = #{MA001}
+	</delete>
+	<!-- 根据条件查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,
+		      MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,decode(MA013,1,'企业上报',0,'未上报',2,'县区上报') MA013D
+	    FROM TREGULATION 
+		<where>
+		1=1
+			<if test="po.MA004 != null and po.MA004 != ''">
+				and MA004 like '%' || #{po.MA004} || '%'
+			</if>
+			<if test="po.MA006 != null and po.MA006 != ''">
+				AND MA006 like '%' || #{po.MA006} || '%'
+			</if>
+			<if test="po.MA007 != null and po.MA007 != ''">
+				AND MA007=#{po.MA007}
+			</if>
+			<if test="ORGAN_UUID != null and ORGAN_UUID != ''">
+				and	ma002 = #{ORGAN_UUID} 
+			</if>
+			<if test="govType != null and govType != ''">
+	    		<if test="govType == 0">
+	    			and (MA013=1 or MA013=2)
+	    		</if>
+	    		<if test="govType == 1">
+	    			and MA013=2
+	    		</if>
+	    	</if>
+		</where>
+		order by ma014 desc
+	</select>
+</mapper>

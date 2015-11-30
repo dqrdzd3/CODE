@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>大屏</title>
+
+    <style>
+        #background{
+            position: absolute;
+            width:100%;
+            height: 100% ;
+            FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#2BB1F0,endColorStr=#0043D0); /*IE 6 7 8*/
+
+            background: -ms-linear-gradient(top, #2BB1F0,  #0043D0);        /* IE 10 */
+
+
+
+            background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#2BB1F0), to(#0043D0));/*谷歌*/
+
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2BB1F0), to(#0043D0));      /* Safari 4-5, Chrome 1-9*/
+
+            background: -webkit-linear-gradient(top, #2BB1F0, #0043D0);   /*Safari5.1 Chrome 10+*/
+
+            background: -o-linear-gradient(top, #2BB1F0, #0043D0);  /*Opera 11.10+*/
+
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2BB1F0), to(#0043D0));      /* Safari 4-5, Chrome 1-9*/
+        }
+        #right{
+            position: absolute;
+            left:70%;
+            width: 28%;
+            height: 92%;
+            top: 4%;
+            background-color: #000;
+            filter: alpha(opacity:10);
+            opacity: 0.1;
+            margin: 5px;
+            -moz-border-radius: 20px;      /* Gecko browsers */
+            -webkit-border-radius: 20px;   /* Webkit browsers */
+            border-radius:20px;            /* W3C syntax */
+        }
+        #leftTop{
+            position: absolute;
+            left:1.5%;
+            width: 67.3%;
+            height: 50%;
+            top: 4%;
+            background-color: #000;
+            filter: alpha(opacity:10);
+            opacity: 0.1;
+            margin: 5px;
+            -moz-border-radius: 20px;      /* Gecko browsers */
+            -webkit-border-radius: 20px;   /* Webkit browsers */
+            border-radius:20px;            /* W3C syntax */
+        }
+        #leftBottomLeft{
+            position: absolute;
+            left:1.5%;
+            width: 38%;
+            height: 40%;
+            top: 56%;
+            background-color: #000;
+            filter: alpha(opacity:10);
+            opacity: 0.1;
+            margin: 5px;
+            -moz-border-radius: 20px;      /* Gecko browsers */
+            -webkit-border-radius: 20px;   /* Webkit browsers */
+            border-radius:20px;            /* W3C syntax */
+        }
+        #leftBottomRight{
+            position: absolute;
+            left:40.7%;
+            width: 28%;
+            height: 40%;
+            top: 56%;
+            background-color: #000;
+            filter: alpha(opacity:10);
+            opacity: 0.1;
+            margin: 5px;
+            -moz-border-radius: 20px;      /* Gecko browsers */
+            -webkit-border-radius: 20px;   /* Webkit browsers */
+            border-radius:20px;            /* W3C syntax */
+        }
+    </style>
+    <script type="text/javascript" src="js/zzr/jquery-1.9.1.min.js"></script>
+    <script src="http://img.jb51.net/jslib/jquery/jquery14.js"></script>
+    <script type="text/javascript" src="js/zzr/jQuery.fontFlex.js"></script>
+    <script type="text/javascript" src="js/zzr/jquery.flot.js"></script>
+    <script type="text/javascript" src="js/zzr/jquery.flot.resize.js"></script>
+    <script type="text/javascript" src="js/zzr/modernizr.custom.79639.js"></script>
+    <!-- Morris.js charts -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script type="text/javascript" src="js/zzr/morris.js"></script>
+</head>
+<body style="overflow: hidden;margin: 0px;padding: 0px">
+
+<div id = "background">
+
+    <!--right-->
+    <div style="position: absolute;left: 70%;top: 10%;width: 28%;height:16%;text-align: center">
+        <h1 id="city" style = "color: white;margin: 2% 2% 5% 2%;">郑州</h1>
+        <hr style="margin:  0% 8% 0% 8%">
+    </div>
+
+    <div style="position: absolute;left: 70%;top: 26%;width: 28%;height:40%;text-align: left">
+
+
+
+        <h2 style = "color: white;margin: 0% 8% 0% 8%">PM2.5</h2>
+        <h3 style = "color: white;margin: 0% 0% 3% 36%;"><span id="num" style="color: red">77</span>μg/m3</h3>
+        <h2 style = "color: white;margin: 4% 8% 3% 8%;">室外温度<span style="margin-left: 10%">25</span><span>℃</span></h2>
+        <h3 style = "color: white;margin: 4% 8% 3% 8%;">07-20 13：00发布</h3>
+        <hr style="margin:  3% 8% 3% 8%">
+    </div>
+
+    <div style="position: absolute;left: 70%;bottom: 18%;width: 28%;height:16%;text-align: center">
+
+        <img src="img/120-120.png" style="width: 40%"/>
+
+
+        <h3 style = "color: white;margin: 2% 8% 3% 8%">服务热线 XXX-XXXX-XXXX</h3>
+
+    </div>
+
+    <!--left top-->
+
+    <div style="position: absolute;left: 1.5%;top: 4%;width: 67.3%;height:50%;text-align: left">
+        <h3 style = "color: white;margin: 3% 0% 0% 77%">07-20 14:04 发布</h3>
+        <h3 style = "color: white;margin: 3% 0% 0% 15%">
+            <span id="numA" style="color: greenyellow">16</span>
+            <span>μg/m3</span>
+            <span id="numCO2" style="color: greenyellow;margin: 3% 0% 0% 30%">508</span>
+            <span  style="color: white;margin-left: 0%">CO2</span>
+        </h3>
+        <h3 style = "color: white;margin: 3% 0% 0% 15%">
+            <span  id="pmLable" style="color: white;margin-left: 2%">PM2.5</span>
+            <span  id="hum" style="color: white;margin: 3% 0% 0% 43%">40</span><span>%</span>
+            <span  id="temp" style="color: white;margin: 3% 0% 0% 15%">27</span><span>℃</span>
+        </h3>
+        <h3 style = "color: white;margin: 3% 0% 0% 10%">空气电台郑州XXXXX室内外空气状况</h3>
+     </div>
+
+    <!--left bottom left-->
+
+    <div style="position: absolute;left: 1.5%;top: 56%;width: 38%;height:40%;text-align: center">
+        <h2 style = "color: white;margin: 3% 8% 0% 8%">PM2.5 CO2 实时图</h2>
+        <div id="line-chart" style="height:78%;margin: 1%;"></div>
+    </div>
+
+    <!--left bottom right-->
+    <div style="position: absolute;left: 40.7%;top: 56%;width: 28%;height:40%;text-align: left">
+        <h2 style = "color: white;margin: 3% 0% 0% 6%">室内外PM2.5实时对比</h2>
+
+
+        <h3 style = "color: white;margin: 12% 0% 0% 3%">室内
+            <canvas id="can1" width="300px" height="20px" style = "margin: 5% 0% 0% 3%;"></canvas>
+
+        </h3>
+
+            <h3 style = "color: white;margin: 6% 0% 0% 3%;">室外
+            <canvas id="can2" width="300px" height="20px" style = "margin: 0% 0% 0% 3%;"></canvas>
+
+            </h3>
+
+
+
+
+
+
+        <h3 style = "color: white;margin: 12% 0% 0% 3%">室内比室外低79%    </h3>
+
+    </div>
+</div>
+
+<div id = "right"></div>
+
+<div id = "leftTop"></div>
+
+<div id = "leftBottomLeft"></div>
+
+<div id = "leftBottomRight"></div>
+
+</body>
+<script type="text/javascript">
+var x;
+    $(function() {
+
+        $(window).resize(function() {
+
+            var size = window.innerWidth;
+            var sizeN = size*0.2;
+            x=sizeN;
+            //alert(x);
+            var canvas=document.getElementById("can1");
+            canvas.width=sizeN;
+            var canvas2=document.getElementById("can2");
+            canvas2.width=sizeN;
+            draw25("can1");
+            draw25("can2");
+        });
+// All elements
+        $('body').fontFlex(14, 20, 70);
+
+        // H1 only
+        $('h2').fontFlex(20, 60, 40);
+        $('#num').fontFlex(90, 120, 120);
+        $('#numA').fontFlex(100, 120, 120);
+        $('#numCO2').fontFlex(95, 120, 120);
+        $('#hum').fontFlex(60, 80, 70);
+        $('#temp').fontFlex(60, 80, 70);
+        $('#pmLable').fontFlex(50, 80, 60);
+
+        $('#city').fontFlex(60, 100, 90);
+        // $('#aqi').fontFlex(48, 60, 50);
+        //$('#fengli').fontFlex(80, 80, 80);
+
+
+
+        /*  图表  */
+        var line = new Morris.Line({
+            element: 'line-chart',
+            resize: true,
+            data: [
+                {y: '2012-02-24 11:00', item1: 2666},
+                {y: '2012-02-24 12:00', item1: 2778},
+                {y: '2012-02-24 13:00', item1: 4912},
+                {y: '2012-02-24 14:00', item1: 3767},
+                {y: '2012-02-24 15:00', item1: 8432},
+                {y: '2012-02-24 11:00', item2: 1111},
+                {y: '2012-02-24 12:00', item2: 2222},
+                {y: '2012-02-24 13:00', item2: 3333},
+                {y: '2012-02-24 14:00', item2: 1474},
+                {y: '2012-02-24 15:00', item2: 4444}
+            ],
+
+            xkey: 'y',
+            ykeys: ['item1','item2'],
+            labels: ['Item 1'],
+            lineColors: ['#D6AED4','#8AF6DB'],
+            lineWidth: 2,
+            hideHover: 'auto',
+            gridTextColor: "#fff",
+            gridStrokeWidth: 0.4,
+            pointSize: 4,
+            pointStrokeColors: ["#efefef"],
+            gridLineColor: "#efefef",
+            gridTextFamily: "Open Sans",
+            gridTextSize: 10
+        });
+
+    });
+
+
+
+        function draw25(id) {
+        var canvas = document.getElementById(id);
+        if (canvas == null)
+            return false;
+        var context = canvas.getContext('2d');
+        var g1 = context.createLinearGradient(0, 0, x, 0);
+
+        g1.addColorStop(0, 'rgb(0,255,0)'); //红
+        g1.addColorStop(0.4, 'rgb(255,248,18)');//绿
+        g1.addColorStop(0.8, 'rgb(255,11,24)'); //蓝
+        g1.addColorStop(1, 'rgb(255,0,0)'); //粉
+
+        //可以把lg对象理解成GDI中线性brush
+        //这个渐进色可以当做fillstyle的一种颜色来处理，进行对画刷的属性设置
+        context.fillStyle = g1;
+        //再用这个brush来画正方形
+        context.fillRect(0, 0, x, 20);
+    }
+    </script>
+</html>

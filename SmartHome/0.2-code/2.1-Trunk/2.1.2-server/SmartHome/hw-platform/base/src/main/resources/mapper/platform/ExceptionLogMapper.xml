@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.platform.dao.IExceptionLogDao">
+	
+	<select id="retrieveByPage" parameterType="map" resultType="map">
+		select ID, CODE, OPERATOR_ID, OPERATOR_NAME, RECORDING_TIME, MSG, IP
+		from SYS_EXCEPTION_LOG
+		where 1 = 1
+		<include refid="queryCondition"/>
+		order by CODE
+	</select>
+	
+	<select id="retrieveInstanceById" parameterType="string" 
+				resultType="com.hw.hwsafe.platform.pojo.ExceptionLogPO" resultMap="exceptionLogResultMap">
+		select ID, OPERATOR_ID, CODE, OPERATOR_NAME, RECORDING_TIME, MSG, CONTENT, IP
+		from SYS_EXCEPTION_LOG
+		where ID = #{id,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="retrieveMaxCode" resultType="string">
+		select max(CODE)
+		from SYS_EXCEPTION_LOG
+	</select>
+	
+	<insert id="insertExceptionLog" parameterType="com.hw.hwsafe.platform.pojo.ExceptionLogPO">
+		insert into SYS_EXCEPTION_LOG(ID, CODE, OPERATOR_ID, OPERATOR_NAME, RECORDING_TIME, MSG, CONTENT, IP)
+			values(
+				#{id,jdbcType=VARCHAR},#{code,jdbcType=VARCHAR},#{operatorId,jdbcType=VARCHAR},
+				#{operatorName,jdbcType=VARCHAR},#{recordingTime,jdbcType=TIMESTAMP},
+				#{msg,jdbcType=VARCHAR},#{content,jdbcType=CLOB},#{ip,jdbcType=VARCHAR}
+			)
+	</insert>
+	
+	<sql id="queryCondition">
+		<if test="po.code != null and po.code != ''">
+			and CODE = #{po.code,jdbcType=VARCHAR}
+		</if>
+		<if test="po.queryStartDate != null">
+			and RECORDING_TIME &gt;= #{po.queryStartDate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="po.queryEndDate != null">
+			and RECORDING_TIME &lt;= #{po.queryEndDate,jdbcType=TIMESTAMP}
+		</if>
+	</sql>
+	
+	<resultMap type="com.hw.hwsafe.platform.pojo.ExceptionLogPO" id="exceptionLogResultMap">
+		<result property="operatorId" column="OPERATOR_ID"/>
+		<result property="operatorName" column="OPERATOR_NAME"/>
+		<result property="recordingTime" column="RECORDING_TIME"/>
+	</resultMap>
+	
+</mapper>

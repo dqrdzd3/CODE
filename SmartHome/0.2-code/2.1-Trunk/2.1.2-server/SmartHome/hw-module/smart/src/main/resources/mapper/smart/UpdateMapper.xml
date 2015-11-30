@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.smart.dao.IUpdateDao">
+
+
+	<!-- 通过id获取实例 -->
+	<select id="retrieveUpdateByUserId" parameterType="String"
+		resultType="com.hw.hwsafe.smart.pojo.UpdatePO">
+		select ID,APP_BASE_ID,CURRENT_VERSION,LAST_VERSION,TO_CHAR(UPDATE_TIME,'yyyy-MM-dd HH24:mi:ss') UPDATE_TIME
+		from AR_UPDATE
+		where APP_BASE_ID = #{value}
+	</select>
+	
+	<!-- 添加实例 -->
+	<insert id="insertUpdateInfo" parameterType="com.hw.hwsafe.smart.pojo.UpdatePO">
+		insert into
+		AR_UPDATE(ID,APP_BASE_ID,CURRENT_VERSION,LAST_VERSION,UPDATE_TIME)
+		values(
+		#{ID,jdbcType=VARCHAR},#{APP_BASE_ID,jdbcType=VARCHAR},#{CURRENT_VERSION,jdbcType=VARCHAR},
+		#{LAST_VERSION,jdbcType=VARCHAR},#{UPDATE_TIME,jdbcType=TIMESTAMP}
+		)
+	</insert>
+	
+</mapper>

@@ -1,0 +1,64 @@
+/* CSS Document */
+body,html{
+	margin: 0px; padding:0px; background:#E9E9E9; font-size:12px;font-family:Verdana, Geneva, sans-serif;
+}
+img{ border:none;}
+label.error {
+  color: #FF0000; font-size:12px; padding-left:8px;
+}
+span.error {
+  color: #FF0000; font-size:12px; padding-left:8px;
+}
+#top{ height:69px; background:#027B62;}
+
+#topmain{ margin:0 auto; padding:0px; position:relative;height:69px; background: url(../../images/pwd/wjmmtopbanner.jpg) center top no-repeat;}
+#topcontent{
+	width:450px;
+	margin:0 auto;
+	text-align:right;
+	color:#05D3BA;
+	line-height:22px;
+	padding-left: 553px;
+}
+#wjmmmaincontent{ background: url(../../images/pwd/wjmmmaincontentbg.jpg) left top repeat-x #EAEAEA;}
+#wjmmmain{
+	width:1003px;
+	margin:0 auto;
+	padding:0px;
+	position:relative;
+	height:567px;
+	background: url(../../images/pwd/wjmmbg.jpg) center top no-repeat;
+	padding-top: 30px;font-size:14px;color:#565656;
+}
+#wjmmmain th{
+	width:110px;
+	
+	font-weight:normal;
+	
+	text-align: right;
+	height: 40px;
+	line-height: 40px;
+}
+#wjmmmain  span{ color:#F00;}
+#wjmmmain td input{ border:#CDCDCD solid 1px; border-right-color:#E8E8E8;border-bottom-color:#E8E8E8;  height:19px; width:200px; padding-left:6px; font-size:12px; color:#666;}
+.input_y{ border:#CDCDCD solid 1px; border-right-color:#E8E8E8;border-bottom-color:#E8E8E8; width:100px; height:19px; padding-left:6px; font-size:12px; color:#666;}
+#wjmmmain td textarea{ border:#CDCDCD solid 1px; border-right-color:#E8E8E8;border-bottom-color:#E8E8E8; width:220px; height:100px; padding-left:6px; font-size:12px; color:#666;}
+#wjmmmain td span{ font-size:12px; color: #666666;}
+#wjmmmain td a{ color:#FF9900; font-size:12px;text-decoration:underline;}
+#wjmmmain td a:hover{ color:#CC6600; text-decoration:underline;font-size:12px;}
+#wjmmmainbutton{ position:absolute; width:124px; height:42px; top:321px; right:56px;}
+.find{ background:url(../../images/pwd/find.png) no-repeat; width:550px; height:60px; margin-left:220px; border-bottom: dashed 1px #999999; }
+.findmenu{ background:url(../../images/pwd/findway.png) no-repeat; width:480px; height:60px; margin-left:270px; margin-top:15px;}
+.findmenuchongzhi{ background:url(../../images/pwd/findchongzhi.png) no-repeat; width:480px; height:60px; margin-left:270px; margin-top:15px;}
+.findmenuwancheng{ background:url(../../images/pwd/findwanch.png) no-repeat; width:480px; height:60px; margin-left:270px; margin-top:15px;}
+.findway{  width:480px;  margin-left:270px; margin-bottom:1px; height:135px;}
+.findway img{ padding:25px 25px 25px 25px; margin:1px;}
+.yzm{ background:url(../../images/pwd/yzmbg.png) no-repeat center;}
+.emailfs{ background:url(../../images/pwd/emailfs.png) no-repeat; width:525px; height:116px; margin-left:270px; }
+.emailfsfont{padding-top:70px; padding-left:110px; position:absolute; width:380px; line-height:24px;}
+.czcg{background:url(../../images/pwd/czcg.png) no-repeat; width:525px; height:116px; margin-left:270px;}
+.czcgfont{padding-top:70px; padding-left:125px; position:absolute; width:380px; line-height:24px;}
+.emailfsfont a{color:#FF9900; font-size:12px;text-decoration:none;font-weight:bold;}
+.emailfsfont a:hover{color:#CC6600; text-decoration:underline;font-size:12px;font-weight:bold;}
+.emailljsx{ background: url(../../images/pwd/emailljsx.png) no-repeat; width:525px; height:116px; margin-left:270px; }
+.emailsfyzcw{ background: url(../../images/pwd/emailsfyzcw.png) no-repeat; width:525px; height:116px; margin-left:270px; }

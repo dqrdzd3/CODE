@@ -1,0 +1,20 @@
+/* 四大模块图标  */
+#modulesIcon {height:100%; background-color:#0A927C;}
+#modulesIcon li a {cursor:pointer}
+#modulesIcon li a.daily {display:block;width:49px;height:81px;background:url(../images/daily.jpg) no-repeat;}
+#modulesIcon li a.daily_sel {display:block;width:49px;height:81px;background:url(../images/dailyover.jpg) no-repeat;}
+#modulesIcon li a.daily_disabled {cursor:default; display:block;width:49px;height:81px;background:url(../images/daily_disabled.jpg) no-repeat;}
+#modulesIcon li a.daily:hover {background-image:url(../images/dailyover.jpg)}
+#modulesIcon li a.administrative {display:block;width:49px;height:81px;background:url(../images/administrative.jpg) no-repeat;}
+#modulesIcon li a.administrative_sel {display:block;width:49px;height:81px;background:url(../images/administrativeover.jpg) no-repeat;}
+#modulesIcon li a.administrative_disabled {cursor:default; display:block;width:49px;height:81px;background:url(../images/administrative_disabled.jpg) no-repeat;}
+#modulesIcon li a.administrative:hover {background-image:url(../images/administrativeover.jpg)}
+#modulesIcon li a.monitor {display:block;width:49px;height:81px;background:url(../images/monitor.jpg) no-repeat;}
+#modulesIcon li a.monitor_sel {display:block;width:49px;height:81px;background:url(../images/monitorover.jpg) no-repeat;}
+#modulesIcon li a.monitor_disabled {cursor:default; display:block;width:49px;height:81px;background:url(../images/monitor_disabled.jpg) no-repeat;}
+#modulesIcon li a.monitor:hover {background-image:url(../images/monitorover.jpg)}
+#modulesIcon li a.rescue {display:block;width:51px;height:81px;background:url(../images/rescue.jpg) no-repeat;}
+#modulesIcon li a.rescue_sel {display:block;width:51px;height:81px;background:url(../images/rescueover.jpg) no-repeat;}
+#modulesIcon li a.rescue_disabled {cursor:default; display:block;width:51px;height:81px;background:url(../images/rescue_disabled.jpg) no-repeat;}
+#modulesIcon li a.rescue:hover {background-image:url(../images/rescueover.jpg)}
+

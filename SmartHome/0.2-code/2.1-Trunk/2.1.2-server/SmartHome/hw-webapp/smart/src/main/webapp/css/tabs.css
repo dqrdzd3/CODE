@@ -1,0 +1,96 @@
+/******* tabs标签页  ******/
+.tabs-container {
+	overflow:hidden;
+	background:#fff;
+} /* 标签容器  */
+
+/* header */
+.tabs-container .tabs-header {
+	height:22px;
+	background:url(../images/tabheaderbg.jpg) repeat-x;
+	position:relative;
+	overflow:hidden;
+	padding:0px;
+	padding-top:2px;
+	overflow:hidden;
+} 
+.tabs-header .tabs-scroller-left {
+	position: absolute;
+	left: 0px;
+	width: 18px;
+	height: 24px!important;
+	height: 24px;
+	display: none;
+	cursor: pointer;
+	border-bottom:1px solid #89DAD5;
+	background:url(../images/tabs_leftarrow.png) no-repeat 1px 5px;
+} /* 标签多时出现的左滚动箭头  */
+.tabs-header .tabs-scroller-right {
+    position: absolute;
+	right: 0;
+	width: 18px;
+	height: 24px!important;
+	height: 24px;
+	display: none;
+	cursor: pointer;
+	background:  url(../images/tabs_rightarrow.png) no-repeat 2px 5px;
+	border-bottom:1px solid #89DAD5;
+} /* 右滚动箭头 */
+.tabs-header .tabs-wrap {}
+.tabs-header .tabs-wrap ul.tabs {float:left; border-bottom:1px solid #89DAD5; height:21px;} 
+.tabs-header .tabs-wrap ul.tabs li {
+	float:left;
+	height:20px;
+	display:inline-block;
+	margin-right:4px;
+	margin-bottom:-1px;
+	padding:0;line-height:18px;
+	border-bottom:1px solid #89DAD5;
+	position:relative;
+	border:1px solid #89DAD5;
+} /* 未选中标签  */
+.tabs-header .tabs-wrap ul.tabs li.tabs-selected {font-weight: bold;border-bottom:1px solid #FFF;} /* 选中的标签  */
+.tabs-header .tabs-wrap ul.tabs li .tabs-inner {
+	height:20px; 
+	background:url(../images/tabs_enabled.jpg) repeat-x;
+	color: #1c7a98;
+	line-height: 20px;
+} /* 标签背景 */
+.tabs-header .tabs-wrap ul.tabs li .tabs-inner:hover {} /* 鼠标悬停时标签背景 */
+.tabs-header .tabs-wrap ul.tabs li.tabs-selected .tabs-inner {background:url(../images/tabs_active.jpg) repeat-x;} /* 选中的标签背景 */
+.tabs-header .tabs-wrap ul.tabs li .tabs-inner .tabs-icon {} /* 标签内部左侧图标  */
+.tabs-header .tabs-wrap ul.tabs li .tabs-inner .easyui-icon-homepage {background:url(../images/icon-homepage.png) no-repeat;} /* 首页标签内部左侧图标 */
+.tabs-header .tabs-wrap ul.tabs li .tabs-inner .tabs-title{} /* 标签内字体  */
+.tabs-p-tool {
+	position: absolute;
+	right: 10px;
+	top: 0px;
+	display: block;
+}
+.tabs-header .tabs-wrap ul.tabs li a.icon-mini-refresh {
+	background:url(../images/mini_refresh.png) no-repeat;
+	position: absolute;
+	display: block;
+	padding: 0px;
+	width: 9px;
+	height: 9px;
+	top: 2px;
+	right: 4px;
+} /* 迷你刷新按钮 */
+.tabs-header .tabs-wrap ul.tabs li a:hover.icon-mini-refresh {background:url(../images/mini_refreshover.png) no-repeat;} /* 迷你刷新按钮鼠标悬停 */
+.tabs-header .tabs-wrap ul.tabs li a.tabs-close {
+	background:url(../images/tabs_close.png) no-repeat;
+	position: absolute;
+	display: block;
+	padding: 0px;
+	width: 9px;
+	height: 9px;
+	top: 3px;
+	right:2px;
+} /* 迷你关闭按钮  */
+.tabs-header .tabs-wrap ul.tabs li a:hover.tabs-close {background:url(../images/tabs_closeover.png) no-repeat;} /* 迷你关闭按钮鼠标悬停  */
+/* panel */
+.tabs-container .tabs-panels {height:100% !important;}
+.tabs-panels .panel {}
+.tabs-panels .panel .panel-body {}
+

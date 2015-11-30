@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/currentSensorLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/ui_home_current_bg_color2"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <!-- 累计时间和电池电量 bgn -->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:orientation="horizontal"
+            android:visibility="invisible" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dip"
+                android:text="@string/ui_home_usage"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/currentUsage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/currentPowerLevel"
+            android:layout_width="28dip"
+            android:layout_height="20dip"
+            android:layout_gravity="right|center_vertical"
+            android:gravity="right"
+            android:paddingRight="10dip"
+            android:src="@drawable/ui_home_power_4" />
+    </FrameLayout>
+    <!-- 累计时间和电池电量 end -->
+    <!-- 主页信息内容 bgn -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.3"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical" >
+
+        <WebView
+            android:id="@+id/currentData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/currentMeans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/ui_home_current_currentMeans"
+            android:textColor="@color/black" />
+    </LinearLayout>
+    <!-- 主页信息内容 end -->
+    <!-- 全国排名，最高值，平均值 bgn -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <!-- 全国排名 end -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/currentValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ui_home_current_value_default"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ui_home_current_value"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+        </LinearLayout>
+        <!-- 全国排名 end -->
+        <!-- 最高值 end -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/currentDataHigh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ui_home_current_data_high_default"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ui_home_current_data_high"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+        </LinearLayout>
+        <!-- 最高值 end -->
+        <!-- 平均值 end -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/currentAvg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ui_home_current_avg_default"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ui_home_current_avg"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+        </LinearLayout>
+        <!-- 平均值 end -->
+    </LinearLayout>
+    <!-- 全国排名，最高值，平均值 end -->
+
+</LinearLayout>

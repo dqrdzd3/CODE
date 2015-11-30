@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:p="http://www.springframework.org/schema/p"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+   <!-- 企业信息库对象 -->  
+    <bean id="b001Service" class="com.hw.hwsafe.corpinfo.service.impl.B001ServiceImpl" />
+    <bean id="b002Service" class="com.hw.hwsafe.corpinfo.service.impl.B002ServiceImpl" />
+    <bean id="b003Service" class="com.hw.hwsafe.corpinfo.service.impl.B003ServiceImpl" />
+    <bean id="b00301Service" class="com.hw.hwsafe.corpinfo.service.impl.B00301ServiceImpl" />
+    <bean id="b00302Service" class="com.hw.hwsafe.corpinfo.service.impl.B00302ServiceImpl" />
+    <bean id="b00401Service" class="com.hw.hwsafe.corpinfo.service.impl.B00401ServiceImpl" />
+    <bean id="b00402Service" class="com.hw.hwsafe.corpinfo.service.impl.B00402ServiceImpl" />
+    <bean id="b005Service" class="com.hw.hwsafe.corpinfo.service.impl.B005ServiceImpl" />
+    <bean id="b006Service" class="com.hw.hwsafe.corpinfo.service.impl.B006ServiceImpl" />
+    <bean id="b007Service" class="com.hw.hwsafe.corpinfo.service.impl.B007ServiceImpl" />
+    <bean id="b008Service" class="com.hw.hwsafe.corpinfo.service.impl.B008ServiceImpl" />
+    <bean id="b012Service" class="com.hw.hwsafe.corpinfo.service.impl.B012ServiceImpl" />
+    <bean id="b018Service" class="com.hw.hwsafe.corpinfo.service.impl.B018ServiceImpl" />
+    <bean id="b009Service" class="com.hw.hwsafe.corpinfo.service.impl.B009ServiceImpl" />
+    <bean id="b00901Service" class="com.hw.hwsafe.corpinfo.service.impl.B00901ServiceImpl"/>
+    <bean id="b00902Service" class="com.hw.hwsafe.corpinfo.service.impl.B00902ServiceImpl"/>
+    <bean id="b00903Service" class="com.hw.hwsafe.corpinfo.service.impl.B00903ServiceImpl" />
+    <bean id="b00904Service" class="com.hw.hwsafe.corpinfo.service.impl.B00904ServiceImpl" />
+    <bean id="b00905Service" class="com.hw.hwsafe.corpinfo.service.impl.B00905ServiceImpl" />
+    <bean id="b00906Service" class="com.hw.hwsafe.corpinfo.service.impl.B00906ServiceImpl" />   
+    <bean id="b00907Service" class="com.hw.hwsafe.corpinfo.service.impl.B00907ServiceImpl" />
+    <bean id="c007Service" class="com.hw.hwsafe.corpinfo.service.impl.C007ServiceImpl" />
+    <bean id="b103Service" class="com.hw.hwsafe.corpinfo.service.impl.B103ServiceImpl" />
+    <bean id="b00103Service" class="com.hw.hwsafe.corpinfo.service.impl.B00103ServiceImpl" />
+    <bean id="b104Service" class="com.hw.hwsafe.corpinfo.service.impl.B104ServiceImpl" />
+</beans>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:layout_marginBottom="2dp"
+    android:baselineAligned="false"
+    android:orientation="horizontal" >
+
+    <!-- A1传感器值 bgn -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="1.2"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/ctrlSensorName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/ctrl_sensor_name"
+            android:textColor="@color/ctrl_item_txt"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/ctrlSensorValue"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/ctrl_sensor_value"
+            android:textColor="@color/ctrl_item_txt"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <!-- A1传感器值 end -->
+
+
+    <!-- A1控制阀值 bgn -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <antistatic.spinnerwheel.WheelVerticalView
+            android:id="@+id/ctrlWheel9999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <antistatic.spinnerwheel.WheelVerticalView
+            android:id="@+id/ctrlWhee99"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <!-- A1控制阀值 end -->
+
+
+    <!-- A1联动设备 bgn 组多只能添加三个设备 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/ctrlDeviceId1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/ctrlDeviceImg1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="left|center_vertical"
+                android:gravity="left|center_vertical"
+                android:src="@drawable/ctrl_add" />
+
+            <TextView
+                android:id="@+id/ctrlDeviceTxt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:gravity="left|center_vertical"
+                android:text="@string/ctrl_add"
+                android:textColor="@color/ctrl_device_list_font" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/ctrlDeviceId2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/ctrlDeviceImg2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="left|center_vertical"
+                android:gravity="left|center_vertical"
+                android:src="@drawable/ctrl_add" />
+
+            <TextView
+                android:id="@+id/ctrlDeviceTxt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:gravity="left|center_vertical"
+                android:text="@string/ctrl_add"
+                android:textColor="@color/ctrl_device_list_font" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/ctrlDeviceId3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/ctrlDeviceImg3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="left|center_vertical"
+                android:gravity="left|center_vertical"
+                android:src="@drawable/ctrl_add" />
+
+            <TextView
+                android:id="@+id/ctrlDeviceTxt3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:gravity="left|center_vertical"
+                android:text="@string/ctrl_add"
+                android:textColor="@color/ctrl_device_list_font" />
+        </LinearLayout>
+    </LinearLayout>
+    <!-- A1联动设备end -->
+
+</LinearLayout>

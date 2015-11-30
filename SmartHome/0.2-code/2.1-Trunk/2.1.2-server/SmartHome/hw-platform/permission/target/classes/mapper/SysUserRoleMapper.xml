@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwsensor.permission.dao.ISysUserRoleDao">
+
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+	
+	<!-- 添加 -->
+	<insert id="insertSysUserRole" parameterType="com.hwsensor.permission.pojo.SysUserRolePO">
+		INSERT INTO S_USER_ROLE
+		  (UUID, USER_UUID, ROLE_UUID, CREATOR, CREATE_DATE)
+		VALUES
+			(#{UUID,jdbcType=VARCHAR}, #{USER_UUID,jdbcType=VARCHAR}, 
+			 #{ROLE_UUID,jdbcType=VARCHAR}, #{CREATOR,jdbcType=VARCHAR},
+			 #{CREATE_DATE,jdbcType=TIMESTAMP})
+	</insert>
+	<!-- 修改 -->
+	<update id="updateSysUserRole" parameterType="com.hwsensor.permission.pojo.SysUserRolePO">
+		UPDATE S_USER_ROLE
+		   SET UUID = #{UUID,jdbcType=VARCHAR},
+		       USER_UUID = #{USER_UUID,jdbcType=VARCHAR}, 
+		       ROLE_UUID = #{ROLE_UUID,jdbcType=VARCHAR},
+		       CREATOR = #{CREATOR,jdbcType=VARCHAR},
+		       CREATE_DATE = #{CREATE_DATE,jdbcType=TIMESTAMP}
+		 WHERE UUID = #{UUID,jdbcType=VARCHAR}
+	</update>
+	<!-- 动态修改 -->
+	<update id="updateSysUserRoleByMap" parameterType="map">
+		UPDATE S_USER_ROLE
+			<set>
+				<if test="UUID != null">
+			   	  UUID = #{UUID,jdbcType=VARCHAR},
+				</if>
+				<if test="USER_UUID != null">
+			      USER_UUID = #{USER_UUID,jdbcType=VARCHAR}, 
+				</if>
+				<if test="ROLE_UUID != null">
+			      ROLE_UUID = #{ROLE_UUID,jdbcType=VARCHAR},
+				</if>
+				<if test="CREATOR != null">
+			      CREATOR = #{CREATOR,jdbcType=VARCHAR},
+				</if>
+				<if test="CREATE_DATE != null">
+			      CREATE_DATE = #{CREATE_DATE,jdbcType=TIMESTAMP}
+				</if>
+			</set>
+		 WHERE UUID = #{UUID,jdbcType=VARCHAR}
+	</update>
+	
+	<!-- 删除 -->
+	<delete id="deleteSysUserRole" parameterType="com.hwsensor.permission.pojo.SysUserRolePO">
+		DELETE S_USER_ROLE WHERE UUID = #{UUID,jdbcType=VARCHAR}
+	</delete>
+	<!-- 动态删除 -->
+	<delete id="deleteSysUserRoleByMap" parameterType="map">
+		DELETE S_USER_ROLE WHERE 1=1
+			<include refid="queryCondition"/>
+	</delete>
+	<!-- 查询list -->
+	<select id="retrieveByCondition" resultType="com.hwsensor.permission.pojo.SysUserRolePO" parameterType="map">
+		SELECT UUID, USER_UUID, ROLE_UUID, CREATOR, CREATE_DATE
+		 FROM S_USER_ROLE WHERE 1=1
+		 	<include refid="queryCondition"/>
+	</select>
+	<!-- 查询用户拥有的角色以及经过部门授权的角色 -->
+	<!--  用union 取并集，去掉重复字段 -->
+	<select id="retrieveRolesByMap" resultType="map" parameterType="map">
+		SELECT sur.ROLE_UUID,'0' as isDeptRole
+		FROM S_USER_ROLE sur
+		WHERE sur.USER_UUID = #{USER_UUID}
+		UNION
+		SELECT sdr.ROLE_UUID,'1' as isDeptRole
+		FROM
+		S_DEPT_ROLE sdr
+		, S_USER su
+		WHERE
+		sdr.DEPART_UUID = su.DEPART_UUID
+		AND su.UUID = #{USER_UUID}
+	</select>
+	<!-- 查询po -->
+	<select id="retrieveSysUserRoleByMap" resultType="com.hwsensor.permission.pojo.SysUserRolePO" parameterType="map">
+		SELECT UUID, USER_UUID, ROLE_UUID, CREATOR, CREATE_DATE
+		 FROM S_USER_ROLE WHERE 1=1
+		 	<include refid="queryCondition"/>
+	</select>
+	<!-- 查询分页 -->
+	<select id="retrieveByPage" parameterType="map" resultType="map">
+		SELECT UUID, USER_UUID, ROLE_UUID, CREATOR, CREATE_DATE
+		 FROM S_USER_ROLE
+		 <where>
+			<if test="po.UUID != null and po.UUID != ''">
+	  		   UUID = #{po.UUID,jdbcType=VARCHAR}
+			</if>
+			<if test="po.USER_UUID != null and po.USER_UUID != ''">
+		       AND USER_UUID = #{po.USER_UUID,jdbcType=VARCHAR}
+			</if>
+			<if test="po.ROLE_UUID != null and po.ROLE_UUID != ''">
+		       AND ROLE_UUID = #{po.ROLE_UUID,jdbcType=VARCHAR}
+			</if>
+		 </where>
+		 ORDER BY CREATE_DATE DESC
+	</select>
+	
+	<sql id="queryCondition">
+		<if test="UUID != null and UUID != ''">
+  		   AND UUID = #{UUID,jdbcType=VARCHAR}
+		</if>
+		<if test="USER_UUID != null and USER_UUID != ''">
+	       AND USER_UUID = #{USER_UUID,jdbcType=VARCHAR}
+		</if>
+		<if test="ROLE_UUID != null and ROLE_UUID != ''">
+	       AND ROLE_UUID = #{ROLE_UUID,jdbcType=VARCHAR}
+		</if>
+	</sql>
+</mapper>

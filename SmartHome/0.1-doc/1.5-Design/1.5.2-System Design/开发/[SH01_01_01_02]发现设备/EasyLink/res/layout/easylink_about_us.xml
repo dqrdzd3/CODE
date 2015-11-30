@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_background"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/easylink_about_header_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/easylink_headerlayout" />
+
+    <TextView
+        android:id="@+id/about_us_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/easylink_about_header_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/about_title_label_top_margin"
+        android:text="@string/about_us_label"
+        android:textColor="@color/grey_text_color"
+        android:textSize="@dimen/extra_large_text_size"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/min_divider_height"
+        android:layout_below="@+id/about_us_textview"
+        android:layout_marginLeft="@dimen/about_title_label_side_margin"
+        android:layout_marginRight="@dimen/about_title_label_side_margin"
+        android:background="@drawable/about_page_divline" />
+
+    <WebView
+        android:id="@+id/about_us_desc_webview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view1"
+        android:layout_marginLeft="@dimen/about_title_label_side_margin"
+        android:layout_marginRight="@dimen/about_title_label_side_margin"
+        android:layout_marginTop="@dimen/min_margin_cutoff" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/about_us_desc_webview" >
+
+        <TextView
+            android:id="@+id/about_screen_contact_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/about_us_desc_webview"
+            android:layout_centerHorizontal="true"
+            android:text="@string/contact_label"
+            android:textColor="@color/grey_text_color"
+            android:textSize="25dip"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/divider_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/min_divider_height"
+            android:layout_below="@+id/about_screen_contact_label"
+            android:layout_marginLeft="@dimen/about_title_label_side_margin"
+            android:layout_marginRight="@dimen/about_title_label_side_margin"
+            android:background="@drawable/about_page_divline" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

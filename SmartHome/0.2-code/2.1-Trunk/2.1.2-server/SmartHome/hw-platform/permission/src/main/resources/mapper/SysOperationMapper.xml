@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwsensor.permission.dao.ISysOperationDao">
+
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+	
+	<!-- 添加 -->
+	<insert id="insertSysOperation" parameterType="com.hwsensor.permission.pojo.SysOperationPO">
+		INSERT INTO S_BUSI_OPERATION
+		  (UUID, ACTION_NAME, ACTION_CODE, STYLE_NAME, URL, IS_VALID,
+		   REMARK, CREATOR, CREATE_DATE, MENU_UUID, BIND_FUNC,ORDERNUM)
+		VALUES
+			(#{UUID,jdbcType=VARCHAR}, #{ACTION_NAME,jdbcType=VARCHAR}, #{ACTION_CODE,jdbcType=VARCHAR}, 
+			#{STYLE_NAME,jdbcType=VARCHAR}, NVL(#{URL,jdbcType=VARCHAR},'#'), #{IS_VALID,jdbcType=VARCHAR},
+			#{REMARK,jdbcType=VARCHAR},#{CREATOR,jdbcType=VARCHAR},#{CREATE_DATE,jdbcType=TIMESTAMP},
+			 #{MENU_UUID,jdbcType=VARCHAR}, #{BIND_FUNC,jdbcType=VARCHAR},#{ORDERNUM,jdbcType=INTEGER})
+	</insert>
+	<!-- 修改 -->
+	<update id="updateSysOperation" parameterType="com.hwsensor.permission.pojo.SysOperationPO">
+		UPDATE S_BUSI_OPERATION
+		   SET UUID = #{UUID,jdbcType=VARCHAR},
+		       ACTION_NAME = #{ACTION_NAME,jdbcType=VARCHAR},
+		       ACTION_CODE = #{ACTION_CODE,jdbcType=VARCHAR},
+		       STYLE_NAME = #{STYLE_NAME,jdbcType=VARCHAR},
+		       URL = NVL(#{URL,jdbcType=VARCHAR},'#'),
+		       IS_VALID = #{IS_VALID,jdbcType=VARCHAR},
+		       REMARK = #{REMARK,jdbcType=VARCHAR},
+		       CREATOR = #{CREATOR,jdbcType=VARCHAR},
+		       CREATE_DATE = #{CREATE_DATE,jdbcType=TIMESTAMP},
+		       MENU_UUID = #{MENU_UUID,jdbcType=VARCHAR},
+		       BIND_FUNC = #{BIND_FUNC,jdbcType=VARCHAR},
+		       ORDERNUM = #{ORDERNUM,jdbcType=INTEGER}
+		 WHERE UUID = #{UUID,jdbcType=VARCHAR}
+	</update>
+	<!-- 动态修改 -->
+	<update id="updateSysOperationByMap" parameterType="map">
+		UPDATE S_BUSI_OPERATION
+			<set>
+				<if test="UUID != null">
+			   	   UUID = #{UUID,jdbcType=VARCHAR},
+				</if>
+				<if test="ACTION_NAME != null">
+			       ACTION_NAME = #{ACTION_NAME,jdbcType=VARCHAR},
+				</if>
+				<if test="ACTION_CODE != null">
+			       ACTION_CODE = #{ACTION_CODE,jdbcType=VARCHAR},
+				</if>
+				<if test="STYLE_NAME != null">
+			       STYLE_NAME = #{STYLE_NAME,jdbcType=VARCHAR},
+				</if>
+				<if test="URL != null">
+			       URL = NVL(#{URL,jdbcType=VARCHAR},'#'),
+				</if>
+				<if test="IS_VALID != null">
+			       IS_VALID = #{IS_VALID,jdbcType=VARCHAR},
+				</if>
+				<if test="REMARK != null">
+			       REMARK = #{REMARK,jdbcType=VARCHAR},
+				</if>
+				<if test="CREATOR != null">
+			       CREATOR = #{CREATOR,jdbcType=VARCHAR},
+				</if>
+				<if test="CREATE_DATE != null">
+			       CREATE_DATE = #{CREATE_DATE,jdbcType=TIMESTAMP},
+				</if>
+				<if test="MENU_UUID != null">
+			       MENU_UUID = #{MENU_UUID,jdbcType=VARCHAR},
+				</if>
+				<if test="BIND_FUNC != null">
+			       BIND_FUNC = #{BIND_FUNC,jdbcType=VARCHAR},
+				</if>
+				<if test="ORDERNUM != null">
+			       ORDERNUM = #{ORDERNUM,jdbcType=INTEGER}
+				</if>
+			</set>
+		 WHERE UUID = #{UUID,jdbcType=VARCHAR}
+	</update>
+	
+	<!-- 删除 -->
+	<delete id="deleteSysOperation" parameterType="com.hwsensor.permission.pojo.SysOperationPO">
+		DELETE S_BUSI_OPERATION WHERE UUID = #{UUID,jdbcType=VARCHAR}
+	</delete>
+	<!-- 动态删除 -->
+	<delete id="deleteSysOperationByMap" parameterType="map">
+		DELETE S_BUSI_OPERATION WHERE 1=1
+			<include refid="queryCondition"/>
+	</delete>
+	<!-- 查询list -->
+	<select id="retrieveByCondition" resultType="com.hwsensor.permission.pojo.SysOperationPO" parameterType="map">
+		SELECT UUID, ACTION_NAME, ACTION_CODE, STYLE_NAME, URL, IS_VALID, REMARK, CREATOR,
+		 CREATE_DATE, MENU_UUID, BIND_FUNC,ORDERNUM  FROM S_BUSI_OPERATION WHERE 1=1
+		 	<include refid="queryCondition"/>
+		 	ORDER BY  ORDERNUM, IS_VALID DESC,CREATE_DATE DESC
+	</select>
+	<!-- 查询po -->
+	<select id="retrieveSysOperationByMap" resultType="com.hwsensor.permission.pojo.SysOperationPO" parameterType="map">
+		SELECT UUID, ACTION_NAME, ACTION_CODE, STYLE_NAME, URL, IS_VALID, REMARK, CREATOR,
+		 CREATE_DATE, MENU_UUID, BIND_FUNC,ORDERNUM FROM S_BUSI_OPERATION WHERE 1=1
+		 	<include refid="queryCondition"/>
+	</select>
+	<!-- 查询分页 -->
+	<select id="retrieveByPage" parameterType="map" resultType="map">
+		SELECT UUID, ACTION_NAME, ACTION_CODE, STYLE_NAME, URL, IS_VALID, REMARK, CREATOR,
+		 CREATE_DATE, MENU_UUID, BIND_FUNC,ORDERNUM FROM S_BUSI_OPERATION
+		 <where>
+			<if test="po.UUID != null and po.UUID != ''">
+	  		   UUID = #{po.UUID,jdbcType=VARCHAR}
+			</if>
+			<if test="po.ACTION_NAME != null and po.ACTION_NAME != ''">
+		       AND ACTION_NAME LIKE '%'||#{po.ACTION_NAME,jdbcType=VARCHAR}||'%'
+			</if>
+			<if test="po.ACTION_CODE != null and po.ACTION_CODE != ''">
+		       AND ACTION_CODE = #{po.ACTION_CODE,jdbcType=VARCHAR}
+			</if>
+			<if test="po.STYLE_NAME != null and po.STYLE_NAME != ''">
+		       AND STYLE_NAME = #{po.STYLE_NAME,jdbcType=VARCHAR}
+			</if>
+			<if test="po.URL != null and po.URL != ''">
+		       AND URL = #{po.URL,jdbcType=VARCHAR}
+			</if>
+			<if test="po.IS_VALID != null and po.IS_VALID != ''">
+		       AND IS_VALID = #{po.IS_VALID,jdbcType=VARCHAR}
+			</if>
+			<if test="po.REMARK != null and po.REMARK != ''">
+		       AND REMARK = #{po.REMARK,jdbcType=VARCHAR}
+			</if>
+			<if test="po.ORDERNUM != null and po.ORDERNUM != ''">
+		       AND ORDERNUM = #{po.ORDERNUM,jdbcType=INTEGER}
+			</if>
+			<if test="po.CREATOR != null and po.CREATOR != ''">
+		       AND CREATOR = #{po.CREATOR,jdbcType=VARCHAR}
+			</if>
+			<if test="po.CREATE_DATE != null and po.CREATE_DATE != ''">
+		       AND CREATE_DATE = #{po.CREATE_DATE,jdbcType=TIMESTAMP}
+			</if>
+			<if test="po.MENU_UUID != null and po.MENU_UUID != ''">
+		       AND MENU_UUID = #{po.MENU_UUID,jdbcType=VARCHAR}
+			</if>
+			<if test="po.BIND_FUNC != null and po.BIND_FUNC != ''">
+		       AND BIND_FUNC = #{po.BIND_FUNC,jdbcType=VARCHAR}
+			</if>
+			<if test="po.ORDERNUM != null and po.ORDERNUM != ''">
+		       AND ORDERNUM = #{po.ORDERNUM,jdbcType=INTEGER}
+			</if>
+		 </where>
+		ORDER BY  ORDERNUM, IS_VALID DESC,CREATE_DATE DESC
+	</select>
+	
+	<sql id="queryCondition">
+		<if test="DISABLED != null">
+  		   AND UUID NOT IN 
+  		   	<foreach collection="DISABLED" open="(" close=")" index="index" item="item" separator=",">
+		       	 '${item}'
+		    </foreach>
+		</if>
+		<if test="UUID != null and UUID != ''">
+  		   AND UUID = #{UUID,jdbcType=VARCHAR}
+		</if>
+		<if test="ACTION_NAME != null and ACTION_NAME != ''">
+	       AND ACTION_NAME = #{ACTION_NAME,jdbcType=VARCHAR}
+		</if>
+		<if test="ACTION_CODE != null and ACTION_CODE != ''">
+	       AND ACTION_CODE = #{ACTION_CODE,jdbcType=VARCHAR}
+		</if>
+		<if test="STYLE_NAME != null and STYLE_NAME != ''">
+	       AND STYLE_NAME = #{STYLE_NAME,jdbcType=VARCHAR}
+		</if>
+		<if test="URL != null and URL != ''">
+	       AND URL = #{URL,jdbcType=VARCHAR}
+		</if>
+		<if test="IS_VALID != null and IS_VALID != ''">
+	       AND IS_VALID = #{IS_VALID,jdbcType=VARCHAR}
+		</if>
+		<if test="REMARK != null and REMARK != ''">
+	       AND REMARK = #{REMARK,jdbcType=VARCHAR}
+		</if>
+		<if test="ORDERNUM != null and ORDERNUM != ''">
+	       AND ORDERNUM = #{ORDERNUM,jdbcType=INTEGER}
+		</if>
+		<if test="CREATOR != null and CREATOR != ''">
+	       AND CREATOR = #{CREATOR,jdbcType=VARCHAR}
+		</if>
+		<if test="CREATE_DATE != null and CREATE_DATE != ''">
+	       AND CREATE_DATE = #{CREATE_DATE,jdbcType=TIMESTAMP}
+		</if>
+		<if test="MENU_UUID != null and MENU_UUID != ''">
+	       AND MENU_UUID = #{MENU_UUID,jdbcType=VARCHAR}
+		</if>
+		<if test="BIND_FUNC != null and BIND_FUNC != ''">
+	       AND BIND_FUNC = #{BIND_FUNC,jdbcType=VARCHAR}
+		</if>
+		<if test="ORDERNUM != null and ORDERNUM != ''">
+	       AND ORDERNUM = #{ORDERNUM,jdbcType=INTEGER}
+		</if>
+	</sql>
+	
+	<!--  查询所有的操作 -->
+	<select id="retrieveAllOperations" resultType="com.hwsensor.permission.pojo.SysOperationPO">
+		SELECT <include refid="columns"/>
+		 FROM S_BUSI_OPERATION sbo
+<!-- 		 WHERE IS_VALID = 10 -->
+		 ORDER BY sbo.ORDERNUM ,sbo.CREATE_DATE DESC
+	</select>
+	<!--  查询系统非管理员和企业政府管理员角色拥有的操作-->
+	<select id="retrieveAllOperationsByMap" parameterType="map" resultType="com.hwsensor.permission.pojo.SysOperationPO">
+		SELECT <include refid="columns"/>
+		FROM S_USER_ROLE sur,S_ROLE_PERM srp , S_BUSI_OPERATION sbo
+		WHERE sur.ROLE_UUID = srp.ROLE_UUID
+		AND srp.OPERA_UUID = sbo.UUID
+		AND sur.USER_UUID = #{USER_UUID}
+		AND sbo.IS_VALID = #{IS_VALID}
+		AND srp.ORGAN_UUID = #{ORGAN_UUID}
+		ORDER BY sbo.ORDERNUM ,sbo.CREATE_DATE DESC
+	</select>
+	<!--  查询企业政府管非理员角色拥有的操作-->
+	<select id="retrieveOperationsByMap" parameterType="map" resultType="com.hwsensor.permission.pojo.SysOperationPO">
+		SELECT A.UUID, A.ACTION_NAME, A.ACTION_CODE, A.STYLE_NAME, A.URL, A.IS_VALID,
+		 A.REMARK, A.CREATOR, A.CREATE_DATE, A.MENU_UUID, A.BIND_FUNC,A.ORDERNUM
+		  FROM ( 
+	
+			SELECT <include refid="columns"/>
+			FROM S_USER_ROLE sur,S_ROLE_PERM srp , S_BUSI_OPERATION sbo
+			WHERE sur.ROLE_UUID = srp.ROLE_UUID
+			AND srp.OPERA_UUID = sbo.UUID
+			AND sur.USER_UUID = #{USER_UUID}
+			AND sbo.IS_VALID = #{IS_VALID}
+			<if test="ORGAN_UUID != null and ORGAN_UUID != ''">
+				AND srp.ORGAN_UUID = #{ORGAN_UUID}
+			</if>
+			
+			<choose>
+				<when test="DEPART_UUID != null and DEPART_UUID !=''">
+					UNION
+					
+					SELECT <include refid="columns"/>
+					FROM S_DEPT_ROLE sdr,S_ROLE_PERM srp , S_BUSI_OPERATION sbo
+					WHERE sdr.ROLE_UUID = srp.ROLE_UUID
+					AND srp.OPERA_UUID = sbo.UUID
+					AND sbo.IS_VALID = #{IS_VALID}
+					AND sdr.DEPART_UUID = #{DEPART_UUID}
+					<if test="ORGAN_UUID != null and ORGAN_UUID != ''">
+						AND srp.ORGAN_UUID = #{ORGAN_UUID}
+					</if>
+				
+				</when>
+			</choose>
+		
+		) A
+		ORDER BY  A.ORDERNUM,A.CREATE_DATE DESC, A.IS_VALID DESC
+	</select>
+	
+	
+	
+	<sql id="columns">
+		sbo.UUID, sbo.ACTION_NAME, sbo.ACTION_CODE, sbo.STYLE_NAME, sbo.URL, sbo.IS_VALID,
+		 sbo.REMARK, sbo.CREATOR, sbo.CREATE_DATE, sbo.MENU_UUID, sbo.BIND_FUNC,sbo.ORDERNUM
+	</sql>
+</mapper>

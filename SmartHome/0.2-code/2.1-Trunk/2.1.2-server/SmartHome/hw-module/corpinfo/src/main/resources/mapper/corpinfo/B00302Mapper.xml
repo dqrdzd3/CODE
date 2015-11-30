@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hw.hwsafe.corpinfo.dao.IB00302Dao">
+	<!-- 分页查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		SELECT * FROM B00302 T
+		WHERE 1=1
+		<if test="po.MA002 != null">
+			<if test="po.MA002 != ''">
+			and MA002  =#{po.MA002}
+			</if>
+		</if>
+		
+		 ORDER BY MA009 DESC
+	</select>
+	
+	<!-- 查询所有人员证书 -->
+	<select id="retrieveAllB00302" resultType="com.hw.hwsafe.corpinfo.pojo.B00302PO">
+    SELECT  *
+    FROM B00302 t
+	</select>
+	
+	
+	<!-- 根据主键查询 -->
+	<select id="retrieveB00302ByID" parameterType="String"
+		resultType="com.hw.hwsafe.corpinfo.pojo.B00302PO">
+		SELECT 	MA001,MA002,MA003,MA004,MA005,TO_DATE(TO_CHAR(MA006,'YYYY-MM-DD'),'YYYY-MM-DD') MA006, TO_DATE(TO_CHAR(MA007,'YYYY-MM-DD'),'YYYY-MM-DD') MA007,MA008,MA009,MA010,MA011
+		FROM B00302 WHERE MA001=#{MA001}
+	</select>
+	
+	<!-- 插入人员证书信息 -->
+	<insert id="insertB00302" parameterType="com.hw.hwsafe.corpinfo.pojo.B00302PO">
+      INSERT INTO B00302(MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA011) 
+      VALUES(
+         #{MA001,jdbcType=VARCHAR},#{MA002,jdbcType=VARCHAR},
+         #{MA003,jdbcType=VARCHAR},#{MA004,jdbcType=VARCHAR},
+         #{MA005,jdbcType=VARCHAR},#{MA006,jdbcType=TIMESTAMP},
+         #{MA007,jdbcType=TIMESTAMP},#{MA008,jdbcType=VARCHAR},
+         '0'
+       )
+	</insert>
+	
+	<!-- 更新人员证书信息 -->
+	<update id="updateB00302" parameterType="com.hw.hwsafe.corpinfo.pojo.B00302PO">
+		UPDATE B00302
+		set	
+		 MA003=#{MA003,jdbcType=VARCHAR},
+         MA004=#{MA004,jdbcType=INTEGER},
+         MA005=#{MA005,jdbcType=INTEGER},
+         MA006=#{MA006,jdbcType=TIMESTAMP},
+         MA007=#{MA007,jdbcType=TIMESTAMP},
+         MA010=SYSDATE
+		WHERE MA001 = #{MA001}
+	</update>
+
+	<!-- 根据主键删除安全管理人员信息-->
+	<delete id="deleteB00302ByB003ID" parameterType="String">
+		DELETE FROM B00302 WHERE MA002 = #{MA001}
+	</delete>
+   <!--批量删除人员证书信息 -->
+	<delete id="delb00302" >
+		DELETE FROM
+		B00302 WHERE ma001 in
+		<foreach collection="ids" separator="," item="item" open="(" close=")" >#{item}</foreach>
+	</delete>
+</mapper>

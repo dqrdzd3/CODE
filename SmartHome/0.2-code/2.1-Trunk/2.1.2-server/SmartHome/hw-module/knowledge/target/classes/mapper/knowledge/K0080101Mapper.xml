@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.knowledge.dao.IK0080101Dao">
+
+	<!-- 获取分页信息 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008, MA009, MA010, MA011, MA012
+			from K0080101
+			<where>
+				1 = 1
+				<if test="po.ma001 != null and po.ma001 != ''">
+					and MA001 = #{ma001}
+				</if>
+				<if test="po.ma002 != null and po.ma002 != ''">
+					and MA002 = #{ma002}
+				</if>
+				<if test="po.ma003 != null and po.ma003 != ''">
+					and MA003 = #{ma003}
+				</if>
+				<if test="po.ma004 != null and po.ma004 != ''">
+					and MA004 = #{ma004}
+				</if>
+				<if test="po.ma005 != null and po.ma005 != ''">
+					and MA005 = #{ma005}
+				</if>
+				<if test="po.ma006 != null and po.ma006 != ''">
+					and MA006 = #{ma006}
+				</if>
+				<if test="po.ma007 != null and po.ma007 != ''">
+					and MA007 = #{ma007}
+				</if>
+				<if test="po.ma008 != null and po.ma008 != ''">
+					and MA008 = #{ma008}
+				</if>
+				<if test="po.ma009 != null and po.ma009 != ''">
+					and MA009 = #{ma009}
+				</if>
+				<if test="po.ma010 != null and po.ma010 != ''">
+					and MA010 = #{ma010}
+				</if>
+				<if test="po.ma011 != null and po.ma011 != ''">
+					and MA011 = #{ma011}
+				</if>
+				<if test="po.ma012 != null and po.ma012 != ''">
+					and MA012 = #{ma012}
+				</if>
+			</where>
+	</select>
+
+	<!-- 通过id获取实例 -->
+	<select id="retrieveInstanceById" parameterType="String" resultType="com.hw.hwsafe.knowledge.pojo.K0080101PO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008, MA009, MA010, MA011, MA012
+			from K0080101
+			where MA001 = #{ma001}
+	</select>
+	
+		<!-- 通过id获取实例 -->
+	<select id="retrieveByPId"  resultType="com.hw.hwsafe.knowledge.pojo.K0080101PO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008, MA009
+			from K0080101
+			where  MA002 = #{ma002} AND MA003 = #{ma003}  order by MA004
+	</select>
+
+	<!-- 添加实例 -->
+	<insert id="insertInstance" parameterType="com.hw.hwsafe.knowledge.pojo.K0080101PO">
+		insert into K0080101(MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008, MA009, MA010, MA011, MA012)
+			values(
+				#{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=VARCHAR},
+				#{ma004,jdbcType=INTEGER},#{ma005,jdbcType=VARCHAR},#{ma006,jdbcType=CLOB},
+				#{ma007,jdbcType=VARCHAR},#{ma008,jdbcType=VARCHAR},#{ma009,jdbcType=TIMESTAMP},
+				#{ma010,jdbcType=VARCHAR},#{ma011,jdbcType=VARCHAR},#{ma012,jdbcType=VARCHAR}
+			)
+	</insert>
+
+	<!-- 修改实例 -->
+	<update id="updateInstance" parameterType="com.hw.hwsafe.knowledge.pojo.K0080101PO">
+		update K0080101
+			set
+				MA002 = #{ma002,jdbcType=VARCHAR}, MA003 = #{ma003,jdbcType=VARCHAR}, MA004 = #{ma004,jdbcType=INTEGER}, 
+				MA005 = #{ma005,jdbcType=VARCHAR}, MA006 = #{ma006,jdbcType=CLOB}, MA007 = #{ma007,jdbcType=VARCHAR}, 
+				MA008 = #{ma008,jdbcType=VARCHAR}, MA009 = #{ma009,jdbcType=TIMESTAMP}, MA010 = #{ma010,jdbcType=VARCHAR}, 
+				MA011 = #{ma011,jdbcType=VARCHAR}, MA012 = #{ma012,jdbcType=VARCHAR}
+			where MA001 = #{ma001}
+	</update>
+
+	<!-- 通过id删除实例 -->
+	<delete id="deleteInstanceById" parameterType="String">
+		delete from K0080101 where MA001 = #{ma001}
+	</delete>
+	
+	<!-- 通过id删除实例 -->
+	<delete id="deleteByPId" parameterType="String">
+		delete from K0080101 where MA003 = #{value}
+	</delete>
+
+</mapper>

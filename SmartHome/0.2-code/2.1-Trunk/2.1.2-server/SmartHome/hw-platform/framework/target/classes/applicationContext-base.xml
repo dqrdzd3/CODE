@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:p="http://www.springframework.org/schema/p"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop 
+			http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx 
+			http://www.springframework.org/schema/tx/spring-tx-2.5.xsd 
+			http://www.springframework.org/schema/context 
+			http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- Properties文件读取配置，base的properties -->
+	<bean class="com.hwsensor.framework.dbresource.DbResourcePropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:application.config.properties</value>
+			</list>
+		</property>
+		<property name="ignoreUnresolvablePlaceholders" value="true" /> 
+		<property name="keyLocation">
+			<value>classpath:key</value>
+		</property>
+	</bean>
+	
+	<!-- JNDI获取数据源(使用c3p0连接池) -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+  		<property name="driverClass" value="${jdbc.driverClassName}" />
+  		<property name="jdbcUrl" value="${jdbc.url}" />
+   		<property name="user" value="${jdbc.username}" />
+   		<property name="password" value="${jdbc.password}" />
+   		
+   		<property name="minPoolSize" value="0" />
+		<property name="maxPoolSize" value="15" />
+		<property name="maxIdleTime" value="1800" />
+		<!-- 当连接池耗尽时候，一次获得连接数-->
+		<property name="acquireIncrement" value="5" />
+		<property name="maxStatements" value="0" />
+		<!-- 当连接池连接耗尽时，客户端getConnection(),所等待的时间-->
+		<property name="idleConnectionTestPeriod" value="120" />
+		<!-- 当连接失效时，获得连接的次数，0为无穷次（重连）-->
+		<property name="acquireRetryAttempts" value="604800" />
+   	</bean>
+	 
+	<!-- (Annotation方式配置services)enable component scanning (beware that this does not enable mapper scanning!) -->    
+    <context:component-scan base-package="com.hwsensor.framework.service" />
+	<!-- enable autowire -->
+	<context:annotation-config />
+	<!-- enable transaction demarcation with annotations -->
+    <tx:annotation-driven />
+    
+    <!-- define the SqlSessionFactory, notice that configLocation is not needed when you use MapperFactoryBean -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="classpath:mybatis-config.xml" />
+        <property name="mapperLocations" value="classpath*:mapper/**/*Mapper.xml"></property>
+    </bean>
+    
+	<!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
+   	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+   		<property name="dataSource" ref="dataSource" />
+   	</bean>  
+		
+  	<bean id="transactionAttribute"
+		class="org.springframework.transaction.interceptor.DefaultTransactionAttribute">
+		<property name="propagationBehaviorName">
+			<value>PROPAGATION_REQUIRES_NEW</value>
+		</property>
+		<property name="isolationLevelName">
+			<value>ISOLATION_REPEATABLE_READ</value>
+		</property>
+		<property name="readOnly">
+			<value>false</value>
+		</property>
+		<property name="timeout">
+			<value>5</value>
+		</property>
+	</bean>    
+	<bean id="attributeSource"
+		class="org.springframework.transaction.interceptor.MatchAlwaysTransactionAttributeSource">
+		<property name="transactionAttribute">
+			<ref bean="transactionAttribute" />
+		</property>
+	</bean> 
+	
+    <!-- 事物切面 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="insert*" propagation="REQUIRED" rollback-for="Exception"/>
+			<tx:method name="del*" propagation="REQUIRED" rollback-for="Exception"/>
+			<tx:method name="modify*" propagation="REQUIRED" rollback-for="Exception"/>
+			<tx:method name="edit*" propagation="REQUIRED" rollback-for="Exception"/>			
+			<tx:method name="update*" propagation="REQUIRED" rollback-for="Exception"/>	
+			<tx:method name="save*" propagation="REQUIRED" rollback-for="Exception"/>		
+			<tx:method name="*" read-only="true"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 配置默认类的哪些方法参与事务 -->	 
+	<aop:config>
+		<aop:pointcut id="allManagerMethod" expression="execution(public  * *..service.*.*(..))"/>
+		<aop:advisor pointcut-ref="allManagerMethod" advice-ref="txAdvice"/>
+	</aop:config>	
+	
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	
+	<bean id="LogAdvice" class="com.hwsensor.framework.advice.LogAdvice"/> 
+	
+</beans>

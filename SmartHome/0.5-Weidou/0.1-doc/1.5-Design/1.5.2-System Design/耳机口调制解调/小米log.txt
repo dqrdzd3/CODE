@@ -1,0 +1,8 @@
+10-10 18:02:49.764: E/MP-Decision(354): UP Nw:2.700000 Tw:180 rq:3.419355 seq:186.000000
+10-10 18:02:49.834: E/ThermalDaemon(355): Maximum CPU[1] frequency 1512000 KHz
+10-10 18:02:50.114: W/Parcel(611): Attempt to read object from Parcel 0x486fbdc8 at offset 200 that is not in the object list
+10-10 18:02:50.124: E/MP-Decision(354): DOWN Ns:2.100000 Ts:270 rq:1.756303 seq:288.000000
+10-10 18:02:51.164: E/MP-Decision(354): UP Nw:2.700000 Tw:180 rq:3.300000 seq:193.000000
+10-10 18:02:51.214: E/ThermalDaemon(355): Maximum CPU[1] frequency 1512000 KHz
+10-10 18:02:51.544: E/MP-Decision(354): DOWN Ns:2.100000 Ts:270 rq:2.000000 seq:328.000000
+10-10 18:02:52.144: W/Parcel(611): Attempt to read object from Parcel 0x46ff4dc8 at offset 200 that is not in the object list

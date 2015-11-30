@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" >
+
+    <solid android:color="#00FFFFFF" />
+
+    <stroke
+        android:width="1dip"
+        android:color="@color/ctrl_page_sensor_txt" />
+
+    <corners android:radius="50dip" />
+
+</shape>

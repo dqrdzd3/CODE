@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.smart.dao.IS002Dao">
+
+	<!-- 获取分页信息 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		select MA001, MA002, MA003, TO_CHAR(MA004,'yyyy-MM-dd HH24:mi:ss')
+		MA004, MA005, MA006,MA007
+		from S002
+		<where>
+		 1 = 1
+			<if test="po.queryStartDate != null">
+				and MA004 &gt;= #{po.queryStartDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="po.queryEndDate != null">
+				and MA004 &lt;= #{po.queryEndDate,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+		order by MA004 DESC
+	</select>
+
+	<!-- 获取所有的要推送的人 -->
+	<select id="retrieveInstance" parameterType="String"
+		resultType="com.hw.hwsafe.smart.pojo.U001PO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007,
+		MA008, MA009, MA010, MA011, MA012,MA019
+		from U001 order by ma002 DESC,ma003 DESC,ma004 DESC
+	</select>
+	
+	<!-- 获取所有省份 -->
+	<select id="retrieveProvinceList" resultType="com.hw.hwsafe.smart.pojo.U001PO">
+		select distinct  MA002
+		from U001 where ma002 is not null order by ma002 DESC
+	</select>
+	<!-- 获取所有市 -->
+	<select id="retrieveCityList" resultType="com.hw.hwsafe.smart.pojo.U001PO">
+		select distinct  MA003
+		from U001 where ma003 is not null order by ma003 DESC
+	</select>
+	<!-- 获取所有区 -->
+	<select id="retrieveAreaList" resultType="com.hw.hwsafe.smart.pojo.U001PO">
+		select distinct  MA004
+		from U001 where ma004 is not null order by ma004 DESC
+	</select>
+	
+	
+	<!-- 通过姓名搜索推送人 -->
+	<select id="retrieveInstanceByName" parameterType="String"
+		resultType="com.hw.hwsafe.smart.pojo.U001PO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007,
+		MA008, MA009, MA010, MA011, MA012,MA013,MA014,MA015,MA016,MA017,MA018,MA019
+		from U001
+		where MA008 LIKE '%'||#{ma008}||'%'
+	</select>
+	<!-- 将值插入到推送记录表 -->
+	<insert id="insertInstance" parameterType="com.hw.hwsafe.smart.pojo.S002PO">
+		insert into
+		S002(MA001, MA002, MA003, MA004, MA005, MA006,MA007)
+		values(
+		#{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=VARCHAR},
+		sysdate,#{ma005,jdbcType=VARCHAR},#{ma006,jdbcType=VARCHAR},#{ma007,jdbcType=VARCHAR}
+		)
+	</insert>
+	<!-- 通过id批量删除推送记录 -->
+	<delete id="delBatchS002" parameterType="map">
+		DELETE FROM S002 WHERE MA001 IN
+		<foreach collection="idArray" item="id" open="(" separator=","
+			close=")">#{id}</foreach>
+	</delete>
+	<!-- 通过id获取一条推送记录 -->
+	<select id="retrieveInstanceById" parameterType="String"
+		resultType="com.hw.hwsafe.smart.pojo.S002PO">
+		select MA001, MA002, MA003, TO_CHAR(MA004,'YYYY-MM-DD
+		HH24:mi:ss') MA004, MA005, MA006,MA007
+		from S002
+		where MA001 = #{ma001}
+	</select>
+</mapper>

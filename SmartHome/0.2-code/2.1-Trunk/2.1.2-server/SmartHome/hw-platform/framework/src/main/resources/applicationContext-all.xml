@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd 
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<import resource="classpath*:applicationContext-base.xml" />
+	<import resource="classpath*:applicationContext-mail.xml" />
+	<import resource="classpath*:applicationContext-security.xml" />
+
+	<!-- 分界线 -->
+
+	<!-- service -->
+	<import resource="classpath*:applicationContext-service-activiti.xml"/>
+	<import resource="classpath*:applicationContext-service-attachment.xml"/>
+	<import resource="classpath*:applicationContext-service-corpinfo.xml" />
+	<import resource="classpath*:applicationContext-service-cpnyreg.xml" />
+	<import resource="classpath*:applicationContext-service-gis.xml" />
+	<import resource="classpath*:applicationContext-service-gov.xml" />
+	<import resource="classpath*:applicationContext-service-javamail.xml" />
+	<import resource="classpath*:applicationContext-service-knowledge.xml" />
+	<import resource="classpath*:applicationContext-service-permission.xml" />
+	<import resource="classpath*:applicationContext-service-platform.xml" />
+	<import resource="classpath*:applicationContext-service-pushlet.xml" />
+	<import resource="classpath*:applicationContext-service-quartz.xml" />
+	<import resource="classpath*:applicationContext-service-register.xml" />
+	<import resource="classpath*:applicationContext-service-remind.xml" />
+	<import resource="classpath*:applicationContext-service-sms.xml" />
+	<import resource="classpath*:applicationContext-service-smart.xml" />
+	
+	<!-- mybatis -->
+	<import resource="classpath*:applicationContext-mybatis-attachment.xml"/>
+	<import resource="classpath*:applicationContext-mybatis-corpinfo.xml"/>
+	<import resource="classpath*:applicationContext-mybatis-cpnyreg.xml"/>
+	<import resource="classpath*:applicationContext-mybatis-gov.xml"/>
+	<import resource="classpath*:applicationContext-mybatis-javamail.xml"/>
+	<import resource="classpath*:applicationContext-mybatis-knowledge.xml"/>
+	<import resource="classpath*:applicationContext-mybatis-permission.xml"/>
+	<import resource="classpath*:applicationContext-mybatis-platform.xml"/>
+	<import resource="classpath*:applicationContext-mybatis-pushlet.xml"/>
+	<import resource="classpath*:applicationContext-mybatis-register.xml"/>
+	<import resource="classpath*:applicationContext-mybatis-remind.xml"/>
+	<import resource="classpath*:applicationContext-mybatis-sms.xml"/>
+	<import resource="classpath*:applicationContext-mybatis-smart.xml"/>
+	
+		<!-- webservice -->
+	<import resource="classpath*:applicationContext-webservice-publisher.xml"/>
+</beans>

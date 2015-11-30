@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hw.hwsafe.corpinfo.dao.IB103Dao">
+
+	
+	<!-- 根据主键查询 -->
+	<select id="retrieveB103ByID" parameterType="String" resultType="com.hw.hwsafe.corpinfo.pojo.B103PO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,MA017,MA018,MA019,MA020,MA021,MA023
+		FROM B103 WHERE MA001=#{MA001}
+	</select>
+	
+	
+	<!--  -->
+	<update id="updateB002AqryNum" parameterType="String">
+	   update b002 b set b.ma018 = (b.ma018 + 1) where b.ma001 = #{id}
+	</update>
+	<!-- 删除人员信息 -->
+	<delete id="delb103" parameterType="hashmap">
+	  delete b103 b where b.ma001 in 
+	  	<foreach collection="ids" separator="," item="item" open="(" close=")" >#{item}</foreach>
+	</delete>
+	<!-- 删除人员信息后修改组织机构表的安全管理人员数量 -->
+	<update id="updateB002AqryNumtj" parameterType="hashmap">
+        update b002 b set b.ma018 = b.ma018 - #{len} where b.ma001 = (select b2.ma005 from b103 b2 where b2.ma001 = #{ryid}  )
+	</update>
+	<!-- 根据人员id查询组织机构的上报状态 -->
+	<select id="getB002Stat" resultType="java.lang.Integer">
+	   select b.ma021 from b002 b where  b.ma001 = (select b2.ma005 from b103 b2 where b2.ma001 = #{ryid}  )
+	</select>
+	
+<!-- 根据安全人员编号查询是否重复  -->
+<!-- 	<select id="retrieveB001ByName" resultType="java.lang.Integer"> -->
+<!-- 	SELECT count(1) FROM B003 t WHERE t.MA002 =#{MA002} and -->
+<!-- 	t.ma003=#{MA003} -->
+<!-- 	<if test="MA001 != null"> -->
+<!-- 		<if test="MA001 != ''"> -->
+<!-- 			AND MA001 != #{MA001} -->
+<!-- 		</if> -->
+<!-- 	</if> -->
+<!--     </select> -->
+		<!-- 根据条件查询所有安全管理人员  -->
+	<select id="retrieveB103ByPO" resultType="com.hw.hwsafe.corpinfo.pojo.B103PO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,MA017,MA018,MA019,MA020
+		FROM B103 t 	
+		WHERE 1=1
+		<if test="MA001 != null">
+			<if test="MA001 != ''">
+			AND	MA001 = #{MA001}
+			</if>
+		</if> 
+		<if test="MA003 != null">
+			<if test="MA003 != ''">
+			AND	MA003 = #{MA003}
+			</if>
+		</if> 
+		<if test="MA004 != null">
+			<if test="MA004 != ''">
+			AND	MA004  LIKE '%'||#{MA004}||'%' 
+			</if>
+		</if> 
+		<if test="MA006 != null and MA006 != ''">
+			AND MA006 = #{MA006}
+		</if>
+		<if test="MA002 != null and MA002 != ''">
+			AND MA002 = #{MA002}
+		</if>
+	</select>
+	<!--根据员工姓名和企业ID查询员工详情  -->
+<!-- 	<select id="getInfoByname"  resultType="com.hw.hwsafe.corpinfo.pojo.B003PO"> -->
+<!-- 	SELECT t.MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,MA017,MA018,MA019,MA020 -->
+<!-- 	FROM B103 t where t.ma003= #{MA003} and t.ma004 = #{MA004} order by ma013 asc -->
+	
+<!-- 	</select> -->
+	<!-- 插入安全管理人员信息 -->
+	<insert id="insertB103" parameterType="com.hw.hwsafe.corpinfo.pojo.B103PO">
+      INSERT INTO B103(MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,MA017,MA018,MA019,MA020,MA021,MA022,MA023
+	   ) 
+      VALUES(
+         #{MA001,jdbcType=VARCHAR},#{MA002,jdbcType=VARCHAR},#{MA003,jdbcType=VARCHAR},#{MA004,jdbcType=VARCHAR},#{MA005,jdbcType=VARCHAR},#{MA006,jdbcType=VARCHAR},
+         #{MA007,jdbcType=INTEGER},#{MA008,jdbcType=INTEGER},#{MA009,jdbcType=VARCHAR},#{MA010,jdbcType=VARCHAR},#{MA011,jdbcType=INTEGER},'0',
+         SYSDATE,SYSDATE,#{MA015,jdbcType=VARCHAR},#{MA016,jdbcType=INTEGER},#{MA017,jdbcType=INTEGER},#{MA018,jdbcType=TIMESTAMP},#{MA019,jdbcType=INTEGER},
+         #{MA020,jdbcType=INTEGER},#{MA021,jdbcType=VARCHAR},#{MA022,jdbcType=VARCHAR},#{MA023,jdbcType=VARCHAR}
+       )
+	</insert>
+	<!-- 更新安全管理人员信息 -->
+
+	<update id="updateB103" parameterType="com.hw.hwsafe.corpinfo.pojo.B103PO">
+		UPDATE B103 
+		set	
+		 MA002=#{MA002,jdbcType=VARCHAR},
+		 MA004=#{MA004,jdbcType=VARCHAR},MA005=#{MA005,jdbcType=VARCHAR},MA006=#{MA006,jdbcType=VARCHAR},
+         MA007=#{MA007,jdbcType=INTEGER},MA008=#{MA008,jdbcType=INTEGER},MA009=#{MA009,jdbcType=VARCHAR},
+         MA010=#{MA010,jdbcType=VARCHAR},
+         MA011=#{MA011,jdbcType=INTEGER},MA014=SYSDATE,
+         MA015=#{MA015,jdbcType=VARCHAR},MA016=#{MA016,jdbcType=INTEGER},MA017=#{MA017,jdbcType=INTEGER},
+         MA018=#{MA018,jdbcType=TIMESTAMP},MA019=#{MA019,jdbcType=INTEGER},
+         MA020=#{MA020,jdbcType=INTEGER},MA021=#{MA021,jdbcType=VARCHAR},MA023=#{MA023,jdbcType=VARCHAR}
+		WHERE MA001 = #{MA001}
+	</update>
+
+<!-- 根据条件查询 --> <!-- 王贺喜 改于 2012-10-16 主要新增了 decode(MA016, 1, '男', 0, '女') as MA0161  -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		SELECT MA001,MA002, MA003,MA004,ma005,decode(MA006,'1','安全生产责任人','2','安全生产管理人员','3','特种作业人员','4','其他人员')MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,decode(MA016, 1, '男', 0, '女') as MA0161,MA017,MA018 ,MA019 ,MA020 ,MA021 FROM B103
+		<where>
+			<if test="po.MA004 != null and po.MA004 != ''">
+				MA004 like '%' || #{po.MA004} || '%'
+			</if>
+			<if test="po.MA002 != null and po.MA002 != ''">
+				AND MA002 = #{po.MA002}
+			</if>
+			<if test="po.MA005 != null and po.MA005 != ''">
+				AND MA005 = #{po.MA005}
+			</if>
+			<if test="po.MA006 != null and po.MA006 != ''">
+				AND MA006 = #{po.MA006}
+			</if>
+			<if test="po.MA003 != null and po.MA003 != ''">
+				AND MA003 = #{po.MA003}
+			</if>
+			<if test="po.MA003 == null and po.MA003 == ''">
+				<if test="ORGAN_UUID != null and ORGAN_UUID != ''">
+					AND MA003 = #{ORGAN_UUID}
+				</if>
+			</if>
+		</where>
+		order by ma013 desc
+	</select>
+</mapper>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.smart.dao.ICorpRankDao">
+
+<!-- 获取分页信息 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		select c.MA001 AS ID,c.MA012 AS REG_DATE,c.MA005 AS TEL,c.MA002 AS DEV_ID,c.MA004 AS LXR,c.MA011 AS FOCUSOR ,d.MA004 AS DATAVALUE 
+			<if test="dateType == null or dateType == 'day'">
+			from CORP_CRM c,corp_daily_cache d
+				</if>
+			<if test="dateType != null and dateType == 'month'">
+					from CORP_CRM c,corp_month_cache d
+			</if>
+		<where>
+			c.ma002 = d.ma002
+		
+			<if test="sensor != null and sensor != ''">
+				and d.MA003 = #{sensor}
+			</if> 
+			
+			and c.MA003 =#{corpid}
+			
+		</where>
+		order by d.MA004 desc
+	</select>
+	
+	<select id="retrieveRankByWeek" parameterType="map" resultType="com.hw.hwsafe.smart.pojo.CorpRankPO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008,MA009,MA010,MA011
+		from CORP_WEEK_RANK
+
+		<where>
+			1 = 1
+			<if test="sensor != null and sensor != ''">
+				and MA002 = #{sensor}
+			</if>
+			<if test="type != null and type != ''">
+				and MA005 = #{type}
+			</if>
+			<if test="name != null and name != ''">
+				and MA006 LIKE '%'||#{name}||'%'
+			</if>
+			and MA007 =#{corpid}
+			
+		</where>
+	</select>
+	<select id="retrieveRankByMonth" parameterType="map" resultType="com.hw.hwsafe.smart.pojo.CorpRankPO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008,MA009,MA010,MA011
+		from CORP_MONTH_RANK
+		<where>
+			1 = 1
+			<if test="sensor != null and sensor != ''">
+				and MA002 = #{sensor}
+			</if>
+			<if test="type != null and type != ''">
+				and MA005 = #{type}
+			</if>
+			<if test="name != null and name != ''">
+				and MA006 LIKE '%'||#{name}||'%'
+			</if>
+			and MA007 =#{corpid}
+			
+		</where>
+		
+	</select>
+	
+	<select id="rankOnCondition" parameterType="map" resultType="hashmap">
+		select MA001, MA002, MA003, MA004, MA005, MA006
+		<if test="dateType != null and dateType == 'week'">
+				from CORP_WEEK_RANK
+			</if>
+		<if test="dateType != null and dateType == 'month'">
+				from CORP_MONTH_RANK
+			</if>	
+	
+		<where>
+			1 = 1
+			<if test="geotype != null and geotype == 'province'">
+				and MA004 = 1
+			</if>
+			<if test="geotype != null and geotype == 'city'">
+				and MA004 = 2
+			</if>
+			<if test="sensor != null and sensor != ''">
+				and MA002 = #{sensor}
+			</if> 
+			
+			and MA007 =#{corpid}
+			
+		</where>
+		order by MA006 desc
+	</select>
+	<select id="rankByUser" parameterType="map" resultType="hashmap">
+			select c.MA001 AS ID,c.MA012 AS REG_DATE,c.MA005 AS TEL,c.MA002 AS DEV_ID,c.MA004 AS LXR,c.MA011 AS FOCUSOR ,d.MA004 AS DATAVALUE 
+			<if test="dateType == null or dateType == 'day'">
+			from CORP_CRM c,corp_daily_cache d
+				</if>
+			<if test="dateType != null and dateType == 'month'">
+					from CORP_CRM c,corp_month_cache d
+			</if>
+		<where>
+			c.ma002 = d.ma002
+		
+			<if test="sensor != null and sensor != ''">
+				and d.MA003 = #{sensor}
+			</if> 
+			
+			and c.MA003 =#{corpid}
+			
+		</where>
+		order by d.MA004 desc
+	</select>
+	
+	<select id="retrieveCityInRank" parameterType="map" resultType="hashmap">
+			select MA005 AS CITY FROM CORP_WEEK_RANK
+			
+		<where>
+		   MA004 = 2 and
+		   MA005 is not null and
+			MA007 =#{corpid}
+			
+		</where>
+		GROUP BY MA005
+	</select>
+</mapper>

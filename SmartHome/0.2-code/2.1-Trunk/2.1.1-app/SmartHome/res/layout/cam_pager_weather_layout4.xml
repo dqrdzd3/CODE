@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:onClick="camTalkListener">
+
+    <!-- android:background="@color/black" -->
+    <!-- 下边部分 bgn -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="80dp"
+        android:paddingRight="80dp" >
+
+        <!-- 城市天气 bgn -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <!-- 城市 bgn -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/camCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/cam_init_city"
+                    android:textColor="@color/cam_font_color"
+                    android:textSize="@dimen/cam_weather_city_font_size" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/ui_pager_weather_real"
+                    android:textColor="@color/cam_font_color"
+                    android:textSize="@dimen/cam_weather_font_size" />
+            </LinearLayout>
+            <!-- 城市 end -->
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="40sp"
+                android:layout_margin="5sp"
+                android:background="@color/white" />
+            <!-- 右侧天气信息 bgn -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <!-- PM2.5 bgn -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="@string/home_pm25"
+                        android:textColor="@color/cam_font_color"
+                        android:textSize="@dimen/cam_weather_font_size" />
+
+                    <TextView
+                        android:id="@+id/camWeatherPM25"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="@string/cam_init_pm25"
+                        android:textColor="@color/cam_font_color"
+                        android:textSize="@dimen/cam_weather_font_size" />
+                </LinearLayout>
+                <!-- PM2.5 end -->
+                <!-- 温度 bgn -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="@string/home_temperature"
+                        android:textColor="@color/cam_font_color"
+                        android:textSize="@dimen/cam_weather_font_size" />
+
+                    <TextView
+                        android:id="@+id/camWeatherTem"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="@string/cam_init_temp"
+                        android:textColor="@color/cam_font_color"
+                        android:textSize="@dimen/cam_weather_font_size" />
+                </LinearLayout>
+                <!-- 温度 end -->
+            </LinearLayout>
+            <!-- 右侧天气信息end -->
+        </LinearLayout>
+        <!-- 城市天气 end -->
+
+
+        <!-- 冗余数据 bgn -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/camDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cam_init_date"
+                android:textColor="@color/cam_font_color"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/camTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/cam_init_time"
+                android:textColor="@color/cam_font_color"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <!-- 冗余数据 end -->
+
+        <TextView
+            android:id="@+id/camLoc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:gravity="center_horizontal"
+            android:text="@string/cam_init_loc"
+            android:textColor="@color/cam_font_color"
+            android:textSize="@dimen/cam_weather_font_size" />
+
+        <TextView
+            android:id="@+id/camState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cam_init_loc"
+            android:visibility="gone" />
+    </LinearLayout>
+    <!-- 下边部分 end -->
+    <!-- 室内天气start -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="150sp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@color/halff_transparent"
+        android:orientation="horizontal" >
+
+        <!-- 室内天气左横线bgn -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.3"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/camSensorName"
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@string/ui_pager_A1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/cam_weather_city_font_size" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@string/ui_pager_weather_real"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/cam_weather_font_size" />
+            </LinearLayout>
+        </LinearLayout>
+        <!-- 室内天气左横线end -->
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="40sp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:background="@color/white"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingBottom="5sp"
+            android:paddingTop="5sp" />
+        <!-- 室内天气内容 bgn -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5sp"
+            android:layout_weight="0.4"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7sp"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/home_temperature"
+                        android:textColor="@color/cam_font_color"
+                        android:textSize="@dimen/cam_weather_font_size" />
+
+                    <TextView
+                        android:id="@+id/camTmp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cam_init_temp"
+                        android:textColor="@color/cam_font_color"
+                        android:textSize="@dimen/cam_weather_font_size"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/home_humidity"
+                        android:textColor="@color/cam_font_color"
+                        android:textSize="@dimen/cam_weather_font_size" />
+
+                    <TextView
+                        android:id="@+id/camHum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cam_init_hum"
+                        android:textColor="@color/cam_font_color"
+                        android:textSize="@dimen/cam_weather_font_size"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/home_co2"
+                        android:textColor="@color/cam_font_color"
+                        android:textSize="@dimen/cam_weather_font_size" />
+
+                    <TextView
+                        android:id="@+id/camCo2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cam_init_co2"
+                        android:textColor="@color/cam_font_color"
+                        android:textSize="@dimen/cam_weather_font_size"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/home_pm25"
+                        android:textColor="@color/cam_font_color"
+                        android:textSize="@dimen/cam_weather_font_size" />
+
+                    <TextView
+                        android:id="@+id/camPm25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cam_init_pm25"
+                        android:textColor="@color/cam_font_color"
+                        android:textSize="@dimen/cam_weather_font_size"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/home_voc"
+                        android:textColor="@color/cam_font_color"
+                        android:textSize="@dimen/cam_weather_font_size" />
+
+                    <TextView
+                        android:id="@+id/camVoc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cam_init_voc"
+                        android:textColor="@color/cam_font_color"
+                        android:textSize="@dimen/cam_weather_font_size"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/camSysTime"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/cam_init_date"
+                android:textColor="@color/cam_font_color"
+                android:textSize="@dimen/cam_weather_font_size" />
+        </LinearLayout>
+        <!-- 室内天气内容end -->
+    </LinearLayout>
+    <!-- 室内天气end -->
+
+</RelativeLayout>

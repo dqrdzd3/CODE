@@ -1,0 +1,743 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+<title>空气电台</title>
+<SCRIPT type=text/javascript src="jquery-1.9.1.js"></SCRIPT>
+<STYLE type=text/css>
+BODY {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+DIV {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+DL {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+DT {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+DD {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+UL {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+OL {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+LI {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+H1 {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+H2 {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+H3 {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+H4 {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+H5 {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+H6 {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+PRE {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+CODE {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+FORM {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+FIELDSET {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+LEGEND {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+INPUT {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+TEXTAREA {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+P {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+BLOCKQUOTE {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+TH {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+TD {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+BODY {
+	MIN-WIDTH: 400px
+}
+
+HTML {
+	MIN-WIDTH: 400px
+}
+
+.tc {
+	TEXT-ALIGN: center
+}
+
+P {
+	FONT-SIZE: 14px
+}
+
+.content {
+	MARGIN: 0px auto;
+	WIDTH: 400px;
+	OVERFLOW: hidden
+}
+
+A {
+	BORDER-BOTTOM: medium none;
+	BORDER-LEFT: medium none;
+	OUTLINE-STYLE: none;
+	OUTLINE-COLOR: invert;
+	OUTLINE-WIDTH: medium;
+	BORDER-TOP: medium none;
+	BORDER-RIGHT: medium none;
+	TEXT-DECORATION: none
+}
+
+.blank10 {
+	HEIGHT: 10px
+}
+
+.blank20 {
+	HEIGHT: 20px
+}
+
+.title {
+	MARGIN-TOP: 20px;
+	COLOR: #717171;
+	FONT-SIZE: 22px
+}
+
+.value {
+	WHITE-SPACE: nowrap;
+	COLOR: #71d939;
+	FONT-SIZE: 30px
+}
+
+.bfState {
+	PADDING-BOTTOM: 4px;
+	BACKGROUND-COLOR: #71d939;
+	PADDING-LEFT: 4px;
+	PADDING-RIGHT: 4px;
+	COLOR: #fff;
+	FONT-SIZE: 14px;
+	PADDING-TOP: 4px;
+	border-radius: 10px
+}
+
+.waterState {
+	PADDING-BOTTOM: 4px;
+	BACKGROUND-COLOR: #71d939;
+	PADDING-LEFT: 4px;
+	PADDING-RIGHT: 4px;
+	COLOR: #fff;
+	FONT-SIZE: 14px;
+	PADDING-TOP: 4px;
+	border-radius: 10px
+}
+
+.muscleState {
+	PADDING-BOTTOM: 4px;
+	BACKGROUND-COLOR: #71d939;
+	PADDING-LEFT: 4px;
+	PADDING-RIGHT: 4px;
+	COLOR: #fff;
+	FONT-SIZE: 14px;
+	PADDING-TOP: 4px;
+	border-radius: 10px
+}
+
+.boneState {
+	PADDING-BOTTOM: 4px;
+	BACKGROUND-COLOR: #71d939;
+	PADDING-LEFT: 4px;
+	PADDING-RIGHT: 4px;
+	COLOR: #fff;
+	FONT-SIZE: 14px;
+	PADDING-TOP: 4px;
+	border-radius: 10px
+}
+
+.sfatState {
+	PADDING-BOTTOM: 4px;
+	BACKGROUND-COLOR: #71d939;
+	PADDING-LEFT: 4px;
+	PADDING-RIGHT: 4px;
+	COLOR: #fff;
+	FONT-SIZE: 14px;
+	PADDING-TOP: 4px;
+	border-radius: 10px
+}
+
+.infatState {
+	PADDING-BOTTOM: 4px;
+	BACKGROUND-COLOR: #71d939;
+	PADDING-LEFT: 4px;
+	PADDING-RIGHT: 4px;
+	COLOR: #fff;
+	FONT-SIZE: 14px;
+	PADDING-TOP: 4px;
+	border-radius: 10px
+}
+
+.bmrState {
+	PADDING-BOTTOM: 4px;
+	BACKGROUND-COLOR: #71d939;
+	PADDING-LEFT: 4px;
+	PADDING-RIGHT: 4px;
+	COLOR: #fff;
+	FONT-SIZE: 14px;
+	PADDING-TOP: 4px;
+	border-radius: 10px
+}
+
+.bodyAgeState {
+	PADDING-BOTTOM: 4px;
+	BACKGROUND-COLOR: #71d939;
+	PADDING-LEFT: 4px;
+	PADDING-RIGHT: 4px;
+	COLOR: #fff;
+	FONT-SIZE: 14px;
+	PADDING-TOP: 4px;
+	border-radius: 10px
+}
+
+.value {
+	WHITE-SPACE: nowrap;
+	COLOR: #71d939;
+	FONT-SIZE: 30px
+}
+
+.bf {
+	WHITE-SPACE: nowrap;
+	COLOR: #71d939;
+	FONT-SIZE: 30px
+}
+
+.water {
+	WHITE-SPACE: nowrap;
+	COLOR: #71d939;
+	FONT-SIZE: 30px
+}
+
+.muscle {
+	WHITE-SPACE: nowrap;
+	COLOR: #71d939;
+	FONT-SIZE: 30px
+}
+
+.bone {
+	WHITE-SPACE: nowrap;
+	COLOR: #71d939;
+	FONT-SIZE: 30px
+}
+
+.sfat {
+	WHITE-SPACE: nowrap;
+	COLOR: #71d939;
+	FONT-SIZE: 30px
+}
+
+.infat {
+	WHITE-SPACE: nowrap;
+	COLOR: #71d939;
+	FONT-SIZE: 30px
+}
+
+.bmr {
+	WHITE-SPACE: nowrap;
+	COLOR: #71d939;
+	FONT-SIZE: 30px
+}
+
+.bodyAge {
+	WHITE-SPACE: nowrap;
+	COLOR: #71d939;
+	FONT-SIZE: 30px
+}
+
+.unit {
+	COLOR: #807f7f;
+	FONT-SIZE: 16px
+}
+</STYLE>
+</head>
+<body>
+	<DIV class="blank10"></DIV>
+	<DIV style="color: #707070" class="content">
+		<!--  -->
+		<DIV style="MARGIN: 0px auto; WIDTH: 400px">
+			<SPAN style="FONT-SIZE: 14px">数据来自<FONT style="COLOR: #88c539">空气电台</FONT>
+			</SPAN><SPAN style="FLOAT: right; COLOR: #959595"><IMG
+				style="WIDTH: 12px" alt="" src="clock.png"> <SPAN
+				id=recordDate>7-25</SPAN>&nbsp; <SPAN id=recordTime>13:40</SPAN> </SPAN>
+		</DIV>
+		<!-- co2 -->
+		<DIV
+			style="BORDER-BOTTOM: #dadadb 1px solid; HEIGHT: 340px; BORDER-TOP: #dadadb 1px solid">
+			<DIV style="MARGIN: 0px auto; WIDTH: 400px">
+				<DIV style="PADDING-LEFT: 30px; WIDTH: 160px; FLOAT: left" id="wd">
+					<DIV class=title>温度</DIV>
+					<SPAN id=bf class=bf>30.0</SPAN>
+					<SPAN class=unit>℃</SPAN>
+					<SPAN id=bfState class=bfState>标准</SPAN>
+				</DIV>
+				<DIV style="PADDING-LEFT: 30px; WIDTH: 160px; FLOAT: left" id="sd">
+					<DIV class=title>湿度</DIV>
+					<SPAN id=bmi class=value>21.0</SPAN>
+					<SPAN class=unit>RH%</SPAN>
+					<SPAN id=bmiState class=bmiState>标准</SPAN>
+				</DIV>
+			</DIV>
+			<!-- temperature -->
+			<DIV style="MARGIN: 0px auto; WIDTH: 400px">
+				<DIV style="PADDING-LEFT: 30px; WIDTH: 160px; FLOAT: left" id="eyht">
+					<DIV class=title>二氧化碳</DIV>
+					<SPAN id=weight class=value>70</SPAN>
+					<SPAN class=unit>ppm</SPAN>
+					<SPAN id=weightState class=weightState>标准</SPAN>
+				</DIV>
+				<DIV style="PADDING-LEFT: 30px; WIDTH: 160px; FLOAT: left" id="pm25">
+					<DIV class=title>PM2.5</DIV>
+					<SPAN id=water class=water>50.0</SPAN>
+					<SPAN class=unit>ug/m3</SPAN>
+					<SPAN id=waterState class=waterState>标准</SPAN>
+				</DIV>
+			</DIV>
+			<!-- co -->
+			<DIV style="MARGIN: 0px auto; WIDTH: 400px">
+
+				<DIV style="MARGIN: 0px auto; WIDTH: 400px">
+					<DIV style="PADDING-LEFT: 30px; WIDTH: 160px; FLOAT: left" id="yyht">
+						<DIV class=title>一氧化碳</DIV>
+						<SPAN id=sfat class=sfat>30.0</SPAN>
+						<SPAN class=unit>ppm</SPAN>
+						<SPAN id=sfatState class=sfatState>标准</SPAN>
+					</DIV>
+					<DIV style="PADDING-LEFT: 30px; WIDTH: 160px; FLOAT: left" id="trq">
+						<DIV class=title>天然气</DIV>
+						<SPAN id=infat class=infat>1.0</SPAN>
+						<SPAN class=unit>LEL</SPAN>
+				
+						<SPAN id=infatState class=infatState>标准</SPAN>
+					</DIV>
+				</DIV>
+</DIV>
+				<DIV style="MARGIN: 0px auto; WIDTH: 400px" id="mnbvcxz">
+					<DIV
+						style="TEXT-ALIGN: center; MARGIN-TOP: 20px; WIDTH: 400px; FLOAT: left">
+						<SPAN
+							style="PADDING-BOTTOM: 8px; BACKGROUND-COLOR: #71d939; MARGIN-TOP: 20px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; LETTER-SPACING: 2px; COLOR: #fff; FONT-SIZE: 24px; PADDING-TOP: 8px; border-radius: 10px"
+							id=comment></SPAN>
+					</DIV>
+				</DIV>
+			
+		</DIV>
+		
+		
+		<!-- bottom -->
+		<div class="content" style="width: 320px;">
+		<div class="yjk">
+			<p
+				style="color:#94cd26;font-size:20px; margin-bottom:10px;line-height: 50px;text-align:center;white-space:nowrap;">免费下载APP，提升人生新境界！</p>
+			<p style="margin-bottom:10px;" class="tc">
+				<a
+					href="http://121.40.94.44/smart/apksplace/SmartHome.apk"
+					class="tc"> <img
+					src="app_icon.png" width="193"
+					alt="" style="border: none"> </a>
+			</p>
+			<p
+				style="color:#8b8a8a;font-size:14px; margin-bottom: 10px;clear: both;text-align: center;">
+				<a href="http://m.hanwei.cn/">汉威电子</a> <a
+			href="http://stockpage.10jqka.com.cn/300007/"><br>股票代码[300007]</a> <a
+			href="http://weibo.com/u/5239083669"><br>微博账号[5239083669]</a>
+			</p>
+		</div>
+	</div>
+	<div class="blank10"></div>
+	<!--  
+	<div style="width: 300px;margin: 0 auto;">
+		<div style="">
+			<a style="display:inline-block; width:100%;" href="http://wd.koudai.com/s/194819429?wfr=qfriend">
+				<span style="font-size:14px;float:left;color:#000000;">
+				<span style="color:red;text-decoration:underline;">开云健康测量套装及VIP服务特惠抢购中</span> 
+				</span>  </a>
+		</div>
+	</div>
+	-->
+</body>
+
+<SCRIPT type=text/javascript>
+	$(function() {
+		var CO2_THRESHOLD = 800;
+		var TEMPERATURE_THRESHOLD = 25;
+		var HUMIDITY_THRESHOLD = 45;
+		var PM25_THRESHOLD = 35;
+		var PM25_HIGH_THRESHOLD = 400;
+		var CH4_THRESHOLD = 5;
+		var CH4_HIGH_THRESHOLD = 10;
+		var CO_THRESHOLD = 5;
+		var CO_HIGH_THRESHOLD = 10;
+		
+		$("#weight").html(request('co2'));//体重
+		$("#bmi").html(request('humidity'));//bmi
+		
+		
+		//二氧化碳
+		var co2 = request("co2");
+		//如果没传值，不显示div
+		if(co2 == '' || co2 == undefined || co2 == 'undefined'){
+			$('#eyht').hide();
+		}
+		//显示并计算
+		else{
+			$("#weight").html(request('co2'));
+			if(co2 >= CO2_THRESHOLD - 10){
+				$("#weightState").html("正常");
+				$(".weightState").attr('style', 'font-size: 14px;color:#fff;background-color:#48C964;border-radius:10px;padding:4px 4px 4px 4px;');
+				$(".weight").attr('style', 'font-size: 30px;color:#48C964;');
+			}
+			else if(co2 <= CO2_THRESHOLD){
+				$("#weightState").html("浓度低");
+				$(".weightState").attr('style', 'font-size: 14px;color:#fff;background-color:#DF5F32;border-radius:10px;padding:4px 4px 4px 4px;');
+				$(".weight").attr('style', 'font-size: 30px;color:#DF5F32;');
+			}else{
+				$("#weightState").html("浓度高");
+				$(".weightState").attr('style', 'font-size: 14px;color:#fff;background-color:#DF5F32;border-radius:10px;padding:4px 4px 4px 4px;');
+				$(".weight").attr('style', 'font-size: 30px;color:#DF5F32;');
+			}
+		}
+		
+		
+		//湿度
+		var humidity = request("humidity");
+		//如果没传值，不显示div
+		if(humidity == '' || humidity == undefined || humidity == 'undefined'){
+			$('#sd').hide();
+		}
+		//显示并计算
+		else{
+			$("#bmi").html(request('humidity'));
+			if(humidity <= HUMIDITY_THRESHOLD + 1 && humidity >= HUMIDITY_THRESHOLD - 1){
+				$("#bmiState").html("适宜");
+				$(".bmiState").attr('style', 'font-size: 14px;color:#fff;background-color:#48C964;border-radius:10px;padding:4px 4px 4px 4px;');
+				$(".bmi").attr('style', 'font-size: 30px;color:#48C964;');
+			}
+			else if(humidity >= HUMIDITY_THRESHOLD){
+				$("#bmiState").html("高");
+				$(".bmiState").attr('style', 'font-size: 14px;color:#fff;background-color:#DF5F32;border-radius:10px;padding:4px 4px 4px 4px;');
+				$(".bmi").attr('style', 'font-size: 30px;color:#DF5F32;');
+			}else{
+				$("#bmiState").html("低");
+				$(".bmiState").attr('style', 'font-size: 14px;color:#fff;background-color:#DF5F32;border-radius:10px;padding:4px 4px 4px 4px;');
+				$(".bmi").attr('style', 'font-size: 30px;color:#DF5F32;');
+			}
+		}		
+		
+		//温度
+		var bfState = request("temperature");
+		//如果没传值，不显示div
+		if(bfState == '' || bfState == undefined || bfState == 'undefined'){
+			$('#wd').hide();
+		}
+		//显示并计算
+		else{
+			$("#bf").html(request('temperature'));
+			if(bfState <= TEMPERATURE_THRESHOLD + 1 && bfState >= TEMPERATURE_THRESHOLD - 1){
+				$("#bfState").html("适宜");
+				$(".bfState").attr('style', 'font-size: 14px;color:#fff;background-color:#48C964;border-radius:10px;padding:4px 4px 4px 4px;');
+				$(".bf").attr('style', 'font-size: 30px;color:#48C964;');
+			}
+			else if(bfState > TEMPERATURE_THRESHOLD){
+				$("#bfState").html("高");
+				$(".bfState").attr('style', 'font-size: 14px;color:#fff;background-color:#DF5F32;border-radius:10px;padding:4px 4px 4px 4px;');
+				$(".bf").attr('style', 'font-size: 30px;color:#DF5F32;');
+			}else{
+				$("#bfState").html("低");
+				$(".bfState").attr('style', 'font-size: 14px;color:#fff;background-color:#DF5F32;border-radius:10px;padding:4px 4px 4px 4px;');
+				$(".bf").attr('style', 'font-size: 30px;color:#DF5F32;');
+			}
+		}
+		
+		//pm2.5
+		var pm25 = request("pm25");
+		//如果没传值，不显示div
+		if(pm25 == '' || pm25 == undefined || pm25 == 'undefined'){
+			$('#pm25').hide();
+			$('#mnbvcxz').hide();
+		}
+		//显示并计算
+		else{
+			$("#water").html(request('pm25'));
+			if(pm25 <= PM25_THRESHOLD){
+				$("#waterState").html("清新");
+				$(".waterState").attr('style', 'font-size: 14px;color:#fff;background-color:#48C964;border-radius:10px;padding:4px 4px 4px 4px;');
+				$(".water").attr('style', 'font-size: 30px;color:#48C964;');
+			}
+			else if(pm25 > PM25_THRESHOLD && pm25 <= PM25_HIGH_THRESHOLD){
+				$("#waterState").html("污浊");
+				$(".waterState").attr('style', 'font-size: 14px;color:#fff;background-color:#CFB143;border-radius:10px;padding:4px 4px 4px 4px;');
+				$(".water").attr('style', 'font-size: 30px;color:#CFB143;');
+			}else{
+				$("#waterState").html("污染");
+				$(".waterState").attr('style', 'font-size: 14px;color:#fff;background-color:#DF5F32;border-radius:10px;padding:4px 4px 4px 4px;');
+				$(".water").attr('style', 'font-size: 30px;color:#DF5F32;');
+			}
+		}
+	
+		//一氧化碳
+		var co = request("co");
+		//如果没传值，不显示div
+		if(co == '' || co == undefined || co == 'undefined'){
+			$('#yyht').hide();
+		}
+		//显示并计算
+		else{
+			$("#sfat").html(co);
+			if(co < CO_THRESHOLD){
+				$("#sfatState").html("正常");
+				$(".sfatState").attr('style', 'font-size: 14px;color:#fff;background-color:#48C964;border-radius:10px;padding:4px 4px 4px 4px;');
+				$(".sfat").attr('style', 'font-size: 30px;color:#48C964;');
+			}
+			else if(co >= CO_THRESHOLD && co < CO_HIGH_THRESHOLD){
+				$("#sfatState").html("轻微泄露");
+				$(".sfatState").attr('style', 'font-size: 14px;color:#fff;background-color:#CFB143;border-radius:10px;padding:4px 4px 4px 4px;');
+				$(".sfat").attr('style', 'font-size: 30px;color:#CFB143;');
+			}else if(co >= CO_HIGH_THRESHOLD){
+				$("#sfatState").html("泄露");
+				$(".sfatState").attr('style', 'font-size: 14px;color:#fff;background-color:#DF5F32;border-radius:10px;padding:4px 4px 4px 4px;');
+				$(".sfat").attr('style', 'font-size: 30px;color:#DF5F32;');
+			}
+		}
+
+		//甲烷
+		var ch4 = request("ch4");
+		//如果没传值，不显示div
+		if(ch4 == '' || ch4 == undefined || ch4 == 'undefined'){
+			$('#trq').hide();
+		}
+		//显示并计算
+		else{
+			$("#infat").html(request('ch4'));
+			if(ch4 < CH4_THRESHOLD){
+				$("#infatState").html("正常");
+				$(".infatState").attr('style', 'font-size: 14px;color:#fff;background-color:#48C964;border-radius:10px;padding:4px 4px 4px 4px;');
+				$(".infat").attr('style', 'font-size: 30px;color:#48C964;');
+			}
+			else if(ch4 >= CH4_THRESHOLD && ch4 < CH4_HIGH_THRESHOLD){
+				$("#infatState").html("轻微泄露");
+				$(".infatState").attr('style', 'font-size: 14px;color:#fff;background-color:#CFB143;border-radius:10px;padding:4px 4px 4px 4px;');
+				$(".infat").attr('style', 'font-size: 30px;color:#CFB143;');
+			}else{
+				$("#infatState").html("泄露");
+				$(".infatState").attr('style', 'font-size: 14px;color:#fff;background-color:#DF5F32;border-radius:10px;padding:4px 4px 4px 4px;');
+				$(".infat").attr('style', 'font-size: 30px;color:#DF5F32;');
+			}
+		}
+		
+		//时间
+		$("#recordDate").html(request("recordDate"));
+		$("#recordTime").html(request("recordTime"));
+		
+		//计算图片
+		if(pm25 < PM25_THRESHOLD){
+			$('#comment').html('空气质量优');
+		}
+		else if(pm25 >= PM25_THRESHOLD && pm25 < PM25_HIGH_THRESHOLD){
+			$('#comment').html('空气质量良');
+		}else{
+			$('#comment').html('空气质量差');
+		}
+		
+		function request(paras) {
+			var url = location.href;
+			var paraString = url.substring(url.indexOf("?") + 1, url.length).split(
+					"&");
+			var paraObj = {};
+			for (i = 0; j = paraString[i]; i++) {
+				paraObj[j.substring(0, j.indexOf("=")).toLowerCase()] = j
+						.substring(j.indexOf("=") + 1, j.length);
+			}
+			var returnValue = paraObj[paras.toLowerCase()];
+			//alert(returnValue);
+			if (typeof (returnValue) == "undefined") {
+				return "";
+			} else {
+				return returnValue;
+			}
+		}
+	});
+
+</SCRIPT>
+</html>

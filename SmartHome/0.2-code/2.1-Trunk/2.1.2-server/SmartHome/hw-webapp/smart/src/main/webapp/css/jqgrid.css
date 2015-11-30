@@ -1,0 +1,34 @@
+/* grid 表格 */
+.ui-jqgrid {}
+.ui-jqgrid .ui-jqgrid-view {}
+.ui-jqgrid .ui-jqgrid-view .ui-jqgrid-titlebar {background:url(../images/th.png) 0 0 repeat-x; height:21px; line-height:21px;border-bottom: solid 1px #61c2ee;}
+.ui-jqgrid .ui-jqgrid-view .ui-jqgrid-titlebar span.ui-jqgrid-title {
+	margin:0; 
+	color:#fff;
+	font-size: 12px;
+	line-height:21px;
+	font-weight: bold;
+} /* caption 字体 */
+
+.ui-jqgrid .ui-jqgrid-view .ui-jqgrid-hdiv {
+	/*background:url(../images/th.png) 0 0 repeat-x;*/
+	border: 1px solid #61c2ee;
+	background-color: #E7FBFA;
+	font-weight: bold;
+	color: #10917A;
+	line-height:21px;
+} /* 表头 */
+.ui-jqgrid .ui-jqgrid-view .ui-jqgrid-hdiv .ui-jqgrid-hbox .ui-jqgrid-htable tr {}
+.ui-jqgrid .ui-jqgrid-view .ui-jqgrid-hdiv .ui-jqgrid-hbox .ui-jqgrid-htable tr th.ui-th-column {font-size:12px; /* color:black; font-weight:normal; font-style:italic; background:url(../images/th.png) 0 0 repeat-x;*/}
+
+.ui-jqgrid .ui-jqgrid-view .ui-jqgrid-bdiv table.ui-jqgrid-btable {} /* table */
+.ui-jqgrid .ui-jqgrid-view .ui-jqgrid-bdiv table.ui-jqgrid-btable tr.jqgrow {/*height:30px;*/} /* tr */
+.ui-jqgrid .ui-jqgrid-view .ui-jqgrid-bdiv table.ui-jqgrid-btable tr.jqgrow td {/*color:red;*/}
+.ui-jqgrid .ui-jqgrid-view .ui-jqgrid-bdiv table.ui-jqgrid-btable tr.alt_tr_class {background: #E7FBFA;}  /* 隔行渐变 */
+.ui-jqgrid .ui-jqgrid-view .ui-jqgrid-bdiv table.ui-jqgrid-btable tr.ui-state-hover {/*background:#f00;*/} /* 鼠标hover样式 */
+.ui-jqgrid .ui-jqgrid-view .ui-jqgrid-bdiv table.ui-jqgrid-btable tr.ui-state-highlight {background:#FFF9CB;} /* 行选中 高亮  */
+.ui-jqgrid .ui-jqgrid-pager {} /* 底部页码条 */
+
+/* 从表表头中所含的主表名字的样式 */
+.ui-jqgrid .parNameInCapt, .ui-jqgrid .parNameInCapt a {font-weight:bold;font-size:14px;color:#FAD42E;}
+

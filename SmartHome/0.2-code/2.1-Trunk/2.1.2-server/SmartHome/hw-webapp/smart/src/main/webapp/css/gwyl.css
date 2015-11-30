@@ -1,0 +1,41 @@
+/*公文列表*/
+.gwyl{ padding:8px; padding-bottom:12px; width:96%; margin:0 auto; padding-left:0px;}
+.gwylmain{ padding:10px; line-height:22px;padding-bottom:12px;}
+.gwyltitle{
+	font-family:"微软雅黑","黑体","宋体";
+	clear:both;
+	text-align:center;
+	margin-bottom:6px;
+	padding-top: 10px;
+}
+
+.gwylpage{
+	background:url(../images/hrabg.jpg) left top repeat-x;
+	padding-top:10px;
+	text-align: right;
+	clear:both;
+}
+.gwylpage input[type="text"]{
+	width:30px;
+	border: 1px solid #8BDED2; 
+	height: 16px; 
+	margin-left:3px;
+	margin-right:3px;
+}
+  
+.gwylpage input[type="button"]{ 
+	background:url(../images/backbg.jpg) left top no-repeat;
+	width:47px;
+	height:23px;
+	float:right;
+	display:block;
+	color:#128D78;
+	text-align:center;
+	line-height:23px;
+	text-decoration:none;
+	margin-left:0px;
+	border:none;
+} 
+.gwylpagego a:hover{background:url(../images/backbgover.jpg) left top no-repeat; color:#FF0000;}
+.gwylpage a{ color:#565656;text-decoration:none;}
+.gwylpage a:hover{color:#FF0000;}

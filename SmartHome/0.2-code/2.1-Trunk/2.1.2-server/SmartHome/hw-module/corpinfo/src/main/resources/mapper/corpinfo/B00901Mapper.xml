@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hw.hwsafe.corpinfo.dao.IB00901Dao">
+
+	<!-- 查询所有周边环境图片 -->
+	<select id="retrieveAllB00901" resultType="com.hw.hwsafe.corpinfo.pojo.B00901PO">
+    SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009
+    FROM B00901 t
+	</select>
+	
+	<!-- 根据主键查询 -->
+	<select id="retrieveB00901ByID" parameterType="String" resultType="com.hw.hwsafe.corpinfo.pojo.B00901PO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009
+			 FROM B00901 WHERE MA001=#{MA001}
+	</select>
+	
+	
+
+<!-- 根据企业名称查询是否重复  -->
+<!-- 	<select id="retrieveB00901ByName" resultType="java.lang.Integer"> -->
+<!-- 		SELECT COUNT(1) FROM(SELECT MA004 -->
+<!-- 		FROM B00901 t WHERE MA004 =#{MA004}) -->
+		
+<!-- 	</select> -->
+	
+	<!-- 修改企业信息时查询企业名称查询是否重复  -->
+<!-- 	<select id="upretrieveB00901ByName"  resultType="java.lang.Integer"> -->
+<!-- 		SELECT COUNT(1)  FROM(SELECT MA004 -->
+<!-- 		FROM B00901 t WHERE MA004 =#{MA004} and MA001 !=#{MA001}) -->
+		
+<!-- 	</select> -->
+		<!-- 根据条件查询所有  -->
+	<select id="retrieveB00901ByPO" resultType="com.hw.hwsafe.corpinfo.pojo.B00901PO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009
+		FROM B00901 t 	
+		WHERE 1=1
+		<if test="MA001 != null">
+			<if test="MA001 != ''">
+			AND	MA001 = #{MA001}
+			</if>
+		</if> 
+		<if test="MA003 != null">
+			<if test="MA003 != ''">
+			AND	MA003  LIKE '%'||#{MA003}||'%' 
+			</if>
+		</if> 
+	</select>
+	
+	<!-- 插入危险源周边环境信息 -->
+	<insert id="insertB00901" parameterType="com.hw.hwsafe.corpinfo.pojo.B00901PO">
+      INSERT INTO B00901(MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009
+	   ) 
+      VALUES(
+         #{MA001,jdbcType=VARCHAR},#{MA002,jdbcType=VARCHAR},#{MA003,jdbcType=VARCHAR},#{MA004,jdbcType=INTEGER},#{MA005,jdbcType=VARCHAR},#{MA006,jdbcType=VARCHAR},
+         #{MA007,jdbcType=TIMESTAMP},#{MA008,jdbcType=VARCHAR},#{MA009,jdbcType=VARCHAR}
+       )
+	</insert>
+	<!-- 更新危险源周边环境信息 -->
+
+	<update id="updateB00901" parameterType="com.hw.hwsafe.corpinfo.pojo.B00901PO">
+		UPDATE B00901 
+		set	
+		 MA002=#{MA002,jdbcType=VARCHAR},MA003=#{MA003,jdbcType=VARCHAR},MA004=#{MA004,jdbcType=INTEGER},MA005=#{MA005,jdbcType=VARCHAR},MA006=#{MA006,jdbcType=VARCHAR},
+         MA007=#{MA007,jdbcType=TIMESTAMP},MA008=#{MA008,jdbcType=VARCHAR},MA009=#{MA009,jdbcType=VARCHAR}
+		WHERE MA001 = #{MA001}
+	</update>
+
+	<!-- 根据主键删除危险源周边环境信息-->
+	<delete id="deleteB00901ByID" parameterType="String">
+		DELETE FROM B00901 WHERE MA001 = #{MA001}
+	</delete>
+<!-- 根据条件查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		SELECT * FROM B00901 
+		<where>
+			<if test="po.MA004 != null and po.MA004 != ''">
+				MA004 like '%' || #{po.MA004} || '%'
+			</if>
+			<if test="po.MA005 != null and po.MA005 != ''">
+				AND MA005 like '%' || #{po.MA005} || '%'
+			</if>
+		</where>
+	</select>
+</mapper>

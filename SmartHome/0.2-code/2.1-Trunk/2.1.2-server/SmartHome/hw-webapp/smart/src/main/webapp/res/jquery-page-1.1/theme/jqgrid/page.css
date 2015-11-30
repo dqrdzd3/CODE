@@ -1,0 +1,65 @@
+/*CSS jqgridPageCss style pagination*/
+
+/* .jqgridPageCss { */
+/*     PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; MARGIN: 6px; PADDING-TOP: 3px; TEXT-ALIGN: center; font-size:12px; */
+/* } */
+/* .jqgridPageCss A { */
+/*jqgridPageCss BORDER: #eee 1px solid; PADDING-RIGHT: 5px;  PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; MARGIN: 2px;  COLOR: #03B495; PADDING-TOP: 2px;  TEXT-DECORATION: none */
+/* } */
+/* .jqgridPageCss A:hover { */
+/*     BORDER: #4BCDB9 1px solid;COLOR: #00A386; */
+/* } */
+/* .jqgridPageCss A:active { */
+/*     BORDER: #999 1px solid; COLOR: #666;  */
+/* } */
+/* .jqgridPageCss .current { */
+/*     BORDER: #00997E 1px solid; */
+/*     PADDING-RIGHT: 5px; */
+/*     PADDING-LEFT: 5px; */
+/*     FONT-WEIGHT: bold; */
+/*     PADDING-BOTTOM: 2px; */
+/*     MARGIN: 2px; */
+/*     COLOR: #fff; */
+/*     PADDING-TOP: 2px; */
+/*     BACKGROUND-COLOR: #4BCDB9; */
+/* } */
+/* .jqgridPageCss .disabled { */
+/*     BORDER: #eee 1px solid; PADDING-RIGHT: 5px;  PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; MARGIN: 2px;  COLOR: #ddd; PADDING-TOP: 2px;  */
+/* } */
+ul{ margin:0px; padding:0px; list-style:none;}
+li{margin:0px; padding:0px; list-style:none;}
+.jqgridPageCss{ background:url(images/tablebj.png) repeat-x; height:24px; border-bottom:solid 1px #4BCDB9;}
+.jqgridPageCss table{ font-size:12px; color:#999999;}
+.jqgridPageCss table td{}
+.jqgridPageCss table td a{ font-size:12px; color:#999999; text-decoration:none; }
+.jqgridPageCss table td a:hover{ font-size:12px; color:#999999; text-decoration:none;}
+.jqgridPageCss ul{ text-align:center;}
+.jqgridPageCss ul li{ list-style:none; float:left; display:block;}
+.shouye{background: url(images/shouye.png) left top no-repeat;width:20px;height:22px;border: none;display:block; margin-right:5px; padding-top:0; margin-top:0; }
+.shouye a{ display:block; text-decoration:none;width:20px;height:22px;}
+.shouye a:hover{ display:block; background: url(images/shouyeh.png) left top no-repeat; width:20px; height:22px; }
+.shangyiye{background: url(images/shangyiye.png) left top no-repeat;width:20px; height:22px;border: none;display:block; margin-right:5px; }
+.shangyiye a{ display:block; text-decoration:none;width:20px; height:22px;}
+.shangyiye a:hover{ display:block; background: url(images/shangyiyeh.png) left top no-repeat; width:20px; height:22px; }
+.xiayiye{background: url(images/xiayiye.png) left top no-repeat;width:20px; height:22px;border: none;display:block; margin-right:5px; }
+.xiayiye a{ display:block; text-decoration:none;width:20px; height:22px;}
+.xiayiye a:hover{ display:block; background: url(images/xiayiyeh.png) left top no-repeat; width:20px; height:22px; }
+.weiye{background: url(images/weiye.png) left top no-repeat;width:20px; height:22px;border: none;display:block; margin-right:5px; }
+.weiye a{ display:block; text-decoration:none;width:20px; height:22px;}
+.weiye a:hover{ display:block; background: url(images/weiyeh.png) left top no-repeat; width:20px; height:22px;; }
+.pad_t{ padding-top:2px;}
+.f{float:left; line-height:20px; font-size:14px; color:#999999;}
+.f12{float:left; line-height:20px; font-size:12px; color:#999999; padding-left:2px; padding-right:2px;}
+/**不可用图标*/
+.shouyedisabled{background: url(images/shouyedisabled.png) left top no-repeat;width:20px; height:22px;border: none;display:block; margin-right:5px;}
+.shouyedisabled a{background: url(images/shouyedisabled.png) left top no-repeat;width:20px; height:22px;border: none;display:block; margin-right:5px;}
+.shouyedisabled a:hover{background: url(images/shouyedisabled.png) left top no-repeat;width:20px; height:22px;border: none;display:block; margin-right:5px;}
+.shangyiyedisabled{background: url(images/shangyiyedisabled.png) left top no-repeat;width:20px; height:22px;border: none;display:block; margin-right:5px;}
+.shangyiyedisabled a{background: url(images/shangyiyedisabled.png) left top no-repeat;width:20px; height:22px;border: none;display:block; margin-right:5px;}
+.shangyiyedisabled a:hover{background: url(images/shangyiyedisabled.png) left top no-repeat;width:20px; height:22px;border: none;display:block; margin-right:5px;}
+.xiayiyedisabled{background: url(images/xiayiyedisabled.png) left top no-repeat;width:20px; height:22px;border: none;display:block; margin-right:5px;}
+.xiayiyedisabled a{background: url(images/xiayiyedisabled.png) left top no-repeat;width:20px; height:22px;border: none;display:block; margin-right:5px;}
+.xiayiyedisabled a:hover{background: url(images/xiayiyedisabled.png) left top no-repeat;width:20px; height:22px;border: none;display:block; margin-right:5px;}
+.weiyedisabled{background: url(images/weiyedisabled.png) left top no-repeat;width:20px; height:22px;border: none;display:block; margin-right:5px;}
+.weiyedisabled a{background: url(images/weiyedisabled.png) left top no-repeat;width:20px; height:22px;border: none;display:block; margin-right:5px;}
+.weiyedisabled a:hover{background: url(images/weiyedisabled.png) left top no-repeat;width:20px; height:22px;border: none;display:block; margin-right:5px;}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean class="com.hw.hwsafe.platform.util.ServiceBeanUtils" />
+
+	<!-- 数据库日期时间 -->
+	<bean id="dbDateService" class="com.hw.hwsafe.platform.service.impl.DBDateServiceImpl"></bean>
+	
+	<bean id="iBaseService" class="com.hw.hwsafe.platform.service.impl.BaseServiceImpl"></bean>
+	
+    <bean id="codevalueService" class="com.hw.hwsafe.platform.service.impl.CodeValueServiceImpl" />
+    
+	<bean id="dictService" class="com.hw.hwsafe.platform.service.impl.DictionaryServiceImpl"/>
+	
+	<bean id="codeSequenceService" class="com.hw.hwsafe.platform.service.impl.CodeSequenceServiceImpl"/>
+	
+	<bean id="operLogService" class="com.hw.hwsafe.platform.service.impl.OperLogServiceImpl"/>
+	
+	<bean id="exceptionLogService" class="com.hw.hwsafe.platform.service.impl.ExceptionLogServiceImpl"/>
+	
+	<bean id="sysLoginLogService" class="com.hw.hwsafe.platform.service.impl.SysLoginLogServiceImpl"/>
+	
+	<bean id="loginLogService" class="com.hw.hwsafe.platform.service.impl.LoginLogServiceImpl"/>
+	
+	<bean id="sysRecordService" class="com.hw.hwsafe.platform.service.impl.SysRecordServiceImpl"/>
+</beans>

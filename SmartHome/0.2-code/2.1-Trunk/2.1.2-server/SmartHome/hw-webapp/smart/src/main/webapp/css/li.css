@@ -1,0 +1,83 @@
+.liicon{ 
+	background: url(../images/roleicon.png) left no-repeat; 
+	padding-left:23px;
+}
+.lipurview{ 
+	background:url(../images/purviewicon.jpg) left no-repeat; 
+	padding-left:23px; 
+	margin-left:3px;
+}
+.lipurview a{ 
+	display:block;
+	color:#DDEFEC; 
+	text-decoration:none;
+}
+.lipurview a:hover{
+	color:#FFF6A8; 
+	text-decoration:underline;
+}
+.libusiview{ 
+	background:url(../images/ywxt.jpg) left no-repeat; 
+	padding-left:23px; 
+	margin-left:3px;
+}
+.libusiview a{ 
+	display:block;
+	color:#DDEFEC; 
+	text-decoration:none;
+}
+.libusiview a:hover{
+	color:#FFF6A8; 
+	text-decoration:underline;
+}
+
+
+.lihome{ background:url(../images/home.jpg) left no-repeat;}
+.liforward{ background:url(../images/forward.jpg) left no-repeat;}
+.liback1{ background:url(../images/back.jpg) left no-repeat;}
+.lirefresh{ background:url(../images/refresh.jpg) left no-repeat;}
+.licloseAll{background:url(../images/closeAll.jpg) left no-repeat;}
+.liquit{ background:url(../images/quit.jpg) left no-repeat;}
+
+.liadd{background:url(../images/add.png) left no-repeat;}
+.liedit{background:url(../images/edit.png) left no-repeat;}
+.liview{background:url(../images/view.png) left no-repeat;}
+.lidelete{background:url(../images/delete.png) left no-repeat;}
+.lisave{background:url(../images/save.png) left no-repeat;}
+.liback{background:url(../images/back.png) left no-repeat;}
+.lishenhe{background:url(../images/shenhe.png) left no-repeat;}
+.lishenbao{background:url(../images/shenbao.png) left no-repeat;}
+.lipermi{background:url(../images/group_gear.png) left no-repeat;}
+.lirole{background:url(../images/folder_user.png) left no-repeat;}
+.lisjll{background:url(../images/sjll.png) left no-repeat;}
+.liyysh{background:url(../images/yysh.png) left no-repeat;}
+.liksks{background:url(../images/ksks.png) left no-repeat;}
+.lijsks{background:url(../images/jsks.png) left no-repeat;}
+.liqxks{background:url(../images/qxks.png) left no-repeat;}
+.lijhrw{background:url(../images/jhrw.png) left no-repeat;}
+.liqxrw{background:url(../images/qxsw.png) left no-repeat;}
+.licjhs{background:url(../images/cjhs.png) left no-repeat;}
+.lircbp{background:url(../images/rcbp.png) left no-repeat;}
+.lixxts{background:url(../images/xxts.png) left no-repeat;}
+.lirybz{background:url(../images/rybz.png) left no-repeat;}
+.libm{background:url(../images/bm.png) left no-repeat;}
+.lisumbit{background:url(../images/sumbiticon.png) left no-repeat;}
+.lireturn{background:url(../images/return.png) left no-repeat;}
+.liok{background:url(../images/okicon.png) left no-repeat;}
+.liyl{background:url(../images/sjll.png) left no-repeat;}
+.liprint{background:url(../images/prin.png) left no-repeat;}
+.lizxxx{background:url(../images/zxxx.png) left no-repeat;}
+.liread{background:url(../images/read.png) left no-repeat;}
+.lisq{background:url(../images/kszzsq.png) left no-repeat;}
+.lixk{background:url(../images/xk.png) left no-repeat;}
+.likcxxzl{background:url(../images/kcxxzl.png) left no-repeat;}
+.lisj{background:url(../images/sj.png) left no-repeat;}
+.libz{background:url(../images/biaozhu.jpg) left no-repeat;}
+.lireport{background:url(../images/sb.png) left no-repeat;}
+.liplan{background:url(../images/shenhe.png) left no-repeat;}
+.libaxd{background:url(../images/baxd.png) left no-repeat;}
+.liyljh{background:url(../images/pxjh.png) left no-repeat;}
+.lisy{background:url(../images/yaps.png) left no-repeat;}
+.liba{background:url(../images/ba.png) left no-repeat;}
+.libagz{background:url(../images/bagz.png) left no-repeat;}
+.liewm{background:url(../images/add.png) left no-repeat;}

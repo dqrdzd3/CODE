@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.smart.dao.ID005Dao">
+
+	<!-- 获取分页信息 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008, MA009, MA010,MA011
+			from D005
+			<where>
+				1 = 1 AND MA011 = '00'
+				<if test="po.ma001 != null and po.ma001 != ''">
+					and MA001 = #{po.ma001}
+				</if>
+				<if test="po.ma002 != null and po.ma002 != ''">
+					and MA002 = #{po.ma002}
+				</if>
+				<if test="po.ma003 != null and po.ma003 != ''">
+					and MA003 = #{po.ma003}
+				</if>
+				<if test="po.ma004 != null and po.ma004 != ''">
+					and MA004 = #{po.ma004}
+				</if>
+				<if test="po.ma005 != null and po.ma005 != ''">
+					and MA005 = #{po.ma005}
+				</if>
+				<if test="po.ma006 != null and po.ma006 != ''">
+					and MA006 = #{po.ma006}
+				</if>
+				<if test="po.ma007 != null and po.ma007 != ''">
+					and upper(MA007) LIKE '%'||upper(#{po.ma007})||'%'
+				</if>
+				<if test="po.ma008 != null and po.ma008 != ''">
+					and MA008 = #{po.ma008}
+				</if>
+				<if test="po.ma009 != null and po.ma009 != ''">
+					and MA009 = #{po.ma009}
+				</if>
+				<if test="po.ma010 != null and po.ma010 != ''">
+					and MA010 = #{po.ma010}
+				</if>
+			</where>
+			ORDER BY MA009 DESC
+	</select>
+	
+	
+		<!-- 获取分页信息 -->
+	<select id="retrieveByPage1" parameterType="map" resultType="hashmap">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008, MA009, MA010,MA011
+			from D005
+			<where>
+				1 = 1 AND MA011 = '10'
+				<if test="po.ma001 != null and po.ma001 != ''">
+					and MA001 = #{po.ma001}
+				</if>
+				<if test="po.ma002 != null and po.ma002 != ''">
+					and MA002 = #{po.ma002}
+				</if>
+				<if test="po.ma003 != null and po.ma003 != ''">
+					and MA003 = #{po.ma003}
+				</if>
+				<if test="po.ma004 != null and po.ma004 != ''">
+					and MA004 = #{po.ma004}
+				</if>
+				<if test="po.ma005 != null and po.ma005 != ''">
+					and MA005 = #{po.ma005}
+				</if>
+				<if test="po.ma006 != null and po.ma006 != ''">
+					and MA006 = #{po.ma006}
+				</if>
+				<if test="po.ma007 != null and po.ma007 != ''">
+					and upper(MA007) LIKE '%'||upper(#{po.ma007})||'%'
+				</if>
+				<if test="po.ma008 != null and po.ma008 != ''">
+					and MA008 = #{po.ma008}
+				</if>
+				<if test="po.ma009 != null and po.ma009 != ''">
+					and MA009 = #{po.ma009}
+				</if>
+				<if test="po.ma010 != null and po.ma010 != ''">
+					and MA010 = #{po.ma010}
+				</if>
+			</where>
+			ORDER BY MA009 DESC
+	</select>
+	
+	
+
+	<!-- 通过id获取实例 -->
+	<select id="retrieveInstanceById" parameterType="String" resultType="com.hw.hwsafe.smart.pojo.D005PO">
+		select MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008, MA009, MA010
+			from D005
+			where MA001 = #{ma001}
+	</select>
+
+	<!-- 添加实例 -->
+	<insert id="insertInstance" parameterType="com.hw.hwsafe.smart.pojo.D005PO">
+		insert into D005(MA001, MA002, MA003, MA004, MA005, MA006, MA007, MA008, MA009, MA010,MA011)
+			values(
+				#{ma001,jdbcType=VARCHAR},#{ma002,jdbcType=VARCHAR},#{ma003,jdbcType=VARCHAR},
+				#{ma004,jdbcType=VARCHAR},#{ma005,jdbcType=CLOB},#{ma006,jdbcType=VARCHAR},
+				#{ma007,jdbcType=VARCHAR},#{ma008,jdbcType=VARCHAR},#{ma009,jdbcType=VARCHAR},
+				#{ma010,jdbcType=VARCHAR},#{ma011,jdbcType=VARCHAR}
+			)
+	</insert>
+
+	<!-- 修改实例 -->
+	<update id="updateInstance" parameterType="com.hw.hwsafe.smart.pojo.D005PO">
+		update D005
+			set
+				MA002 = #{ma002,jdbcType=VARCHAR}, MA003 = #{ma003,jdbcType=VARCHAR}, MA004 = #{ma004,jdbcType=VARCHAR}, 
+				MA005 = #{ma005,jdbcType=CLOB}, MA006 = #{ma006,jdbcType=VARCHAR}, MA007 = #{ma007,jdbcType=VARCHAR}, 
+				MA008 = #{ma008,jdbcType=VARCHAR}, MA009 = #{ma009,jdbcType=VARCHAR}, MA010 = #{ma010,jdbcType=VARCHAR}
+			where MA001 = #{ma001}
+	</update>
+
+	<!-- 通过id删除实例 -->
+	<delete id="deleteInstanceById" parameterType="String">
+		delete from D005 where MA001 = #{ma001}
+	</delete>
+	
+	
+	<!-- 通过id批量删除实例 -->
+	<delete id="delBatchD005" parameterType="map" >
+		DELETE FROM D005 WHERE MA001 IN
+		<foreach collection="idArray" item="id" open="(" separator="," close=")">#{id}</foreach>
+	</delete>
+	
+	<!-- 统计分析 -->
+	<!-- 按手机厂商分布进行统计 -->
+	<select id="groupByMA002" resultType="java.util.HashMap" parameterType="java.util.HashMap" >
+	  	select MA002 AS CD ,count(1) AS CV from d005 
+	  	<where>
+	  		1 = 1
+	  		<if test="ids != null and ids !=''"> 
+	  			AND MA011 = #{ids}
+	  		</if>
+	  	</where>
+	  	group by MA002
+	</select>
+	<!-- 按操作系统分布进行统计 -->
+	<select id="groupByMA003" resultType="java.util.HashMap" parameterType="java.util.HashMap" >
+	  	select substr(MA003,30,6) AS CD ,count(1) AS CV from d005 
+	    <where>
+	  		1 = 1
+	  		<if test="ids != null and ids !=''"> 
+	  			AND MA011 = #{ids}
+	  		</if>
+	  	</where>
+	  	group by MA003
+	</select>
+	<!-- 按手机型号分布进行统计 -->
+	<select id="groupByMA007" resultType="java.util.HashMap" parameterType="java.util.HashMap" >
+	  	select MA007 AS CD ,count(1) AS CV from d005 
+	  	<where>
+	  		1 = 1
+	  		<if test="ids != null and ids !=''"> 
+	  			AND MA011 = #{ids}
+	  		</if>
+	  	</where>
+	  	group by MA007
+	</select>
+
+</mapper>

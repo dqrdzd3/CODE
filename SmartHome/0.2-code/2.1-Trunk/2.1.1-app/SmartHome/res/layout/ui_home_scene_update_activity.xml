@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res/com.hw.smarthome"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <com.zf.view.TitleBarView
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_bar"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/scene_update_name_info"
+            android:textColor="@color/gray_font"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="15dp"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/sensorName"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:background="@drawable/login_register_phone_bg"
+                android:hint="@string/sensor_name"
+                android:inputType="text"
+                android:padding="5dp" />
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/deviceNameUpdateBtn"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="2"
+                android:paddingLeft="1dp"
+                android:text="@string/scene_device_button_update_name"
+                app:bb_text_gravity="center"
+                bootstrapbutton:bb_roundedCorners="false"
+                bootstrapbutton:bb_size="default" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/scene_update_scene_info"
+            android:textColor="@color/gray_font"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/sceneType"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/login_register_phone_bg"
+            android:padding="5dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="2.0dip"
+        android:layout_marginRight="2.0dip" >
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/scene_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/scene_device_button_del"
+            app:bb_text_gravity="center"
+            bootstrapbutton:bb_roundedCorners="true"
+            bootstrapbutton:bb_size="default"
+            bootstrapbutton:bb_type="danger" />
+    </LinearLayout>
+
+</RelativeLayout>

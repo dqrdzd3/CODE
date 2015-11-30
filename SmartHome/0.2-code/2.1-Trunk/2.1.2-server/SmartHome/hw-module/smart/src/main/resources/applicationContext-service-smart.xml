@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:p="http://www.springframework.org/schema/p"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:task="http://www.springframework.org/schema/task"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd 
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+			http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd"  
+    default-lazy-init="false">
+    <bean class="com.hw.hwsafe.platform.util.ServiceBeanUtils"></bean>
+	<bean id="a001Service" class="com.hw.hwsafe.smart.service.impl.A001ServiceImpl" />
+
+    <bean id="d002Service" class="com.hw.hwsafe.smart.service.impl.D002ServiceImpl" />
+    <bean id="d005Service" class="com.hw.hwsafe.smart.service.impl.D005ServiceImpl" />
+    <bean id="s001Service" class="com.hw.hwsafe.smart.service.impl.S001ServiceImpl" />
+    <bean id="s002Service" class="com.hw.hwsafe.smart.service.impl.S002ServiceImpl" />
+    <bean id="s004Service" class="com.hw.hwsafe.smart.service.impl.S004ServiceImpl" />
+    <bean id="s005Service" class="com.hw.hwsafe.smart.service.impl.S005ServiceImpl" />
+    <bean id="s006Service" class="com.hw.hwsafe.smart.service.impl.S006ServiceImpl" />
+    <bean id="rankingService" class="com.hw.hwsafe.smart.service.impl.RankingServiceImpl" />
+    <bean id="s007Service" class="com.hw.hwsafe.smart.service.impl.S007ServiceImpl" />
+    <bean id="u001Service" class="com.hw.hwsafe.smart.service.impl.U001ServiceImpl" />
+     <bean id="w001Service" class="com.hw.hwsafe.smart.service.impl.W001ServiceImpl" />
+    <bean id="controlDeviceService" class="com.hw.hwsafe.smart.service.impl.ControlDeviceServiceImpl" />
+    <bean id="sceneService" class="com.hw.hwsafe.smart.service.impl.SceneServiceImpl" />
+    
+    <bean id="weixinService" class="com.hw.hwsafe.smart.service.impl.WeixinServiceImpl" />
+    
+     <bean id="weatherService" class="com.hw.hwsafe.smart.service.impl.WeatherServiceImpl" />
+      <bean id="bigScreenService" class="com.hw.hwsafe.smart.service.impl.BigScreenServiceImpl" /> 
+      
+     <bean id="corpAttachmentService" class="com.hw.hwsafe.smart.service.impl.CorpAttachmentServiceImpl" />
+ 
+     <bean id="p2BService" class="com.hw.hwsafe.smart.service.impl.P2BServiceImpl" />
+    <bean id="businessService" class="com.hw.hwsafe.smart.service.impl.BusinessServiceImpl" />
+    <bean id="corpBusinessService" class="com.hw.hwsafe.smart.service.impl.CorpBusinessServiceImpl" />    
+    <bean id="corpCrmService" class="com.hw.hwsafe.smart.service.impl.CorpCrmServiceImpl" />   
+     <bean id="corpMaterialService" class="com.hw.hwsafe.smart.service.impl.CorpMaterialServiceImpl" />   
+     <bean id="corpOnlineService" class="com.hw.hwsafe.smart.service.impl.CorpOnlineServiceImpl" />    
+     <bean id="corpRankService" class="com.hw.hwsafe.smart.service.impl.CorpRankServiceImpl" />  
+     
+     <bean id="updateService" class="com.hw.hwsafe.smart.service.impl.UpdateServiceImpl" />   
+     <bean id="logService" class="com.hw.hwsafe.smart.service.impl.LogServiceImpl" /> 
+     <bean id="messageService" class="com.hw.hwsafe.smart.service.impl.MessageServiceImpl" />  
+     <bean id="deviceService" class="com.hw.hwsafe.smart.service.impl.DeviceServiceImpl" />  
+      <bean id="dataService" class="com.hw.hwsafe.smart.service.impl.DataServiceImpl" />   
+       <bean id="userService" class="com.hw.hwsafe.smart.service.impl.UserBaseServiceImpl" />         
+                  
+         
+	<task:scheduled-tasks>   
+        <task:scheduled ref="a001Service" method="sendAlarm" cron="10 * * * * ?"/>   
+	</task:scheduled-tasks>
+	
+		<!-- xfire默认bean -->
+	<bean id="addressingHandler" class="org.codehaus.xfire.addressing.AddressingInHandler" />
+
+	<!-- 配置一个bean，写webservice的实现类 -->
+	<bean id="DeviceAlarmServiceImpl"  class="com.hw.hwsafe.smart.service.impl.DeviceAlarmServiceImpl" scope="singleton"/>
+
+	<!-- 配置这个bean和xfire结合，发布成一个webservice -->
+ 	<bean id="saveAddDeviceAlarm"  class="org.codehaus.xfire.spring.ServiceBean" >
+		<property name="serviceBean" ref="DeviceAlarmServiceImpl"></property>
+		<property name="serviceClass" value="com.hw.hwsafe.smart.service.IDeviceAlarmService" />
+		<property name="name" value="saveAddDeviceAlarm"></property>
+		<property name="inHandlers">
+			<list>
+				<ref bean="addressingHandler" />
+			</list>
+		</property>
+	</bean>
+</beans>

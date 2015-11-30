@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hw.hwsafe.corpinfo.dao.IB009Dao">
+
+	
+	<!-- 根据主键查询 -->
+	<select id="retrieveB009ByID" parameterType="String" resultType="com.hw.hwsafe.corpinfo.pojo.B009PO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+    		MA017,MA018,MA019,MA020,MA021,MA022,MA023,MA024,MA025,MA026,MA027,MA028,MA029,MA030,MA031,MA032,MA033,MA034,MA035,
+    		MA036,MA037,MA038,MA039,MA040,MA041,MA042,MA043,MA044,MA045,MA046,MA047
+			 FROM B009 WHERE MA001=#{MA001}
+	</select>
+	
+	
+	<!-- 根据主键查询 -->
+	<select id="retrieveB009BywxyID" parameterType="String" resultType="com.hw.hwsafe.corpinfo.pojo.B009PO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+    		MA017,MA018,MA019,MA020,MA021,MA022,MA023,MA024,MA025,MA026,MA027,MA028,MA029,MA030,MA031,MA032,MA033,MA034,MA035,
+    		MA036,MA037,MA038,MA039,MA040,MA041,MA042,MA043,MA044,MA045,MA046,MA047
+			 FROM B009 WHERE MA003=#{MA003}
+	</select>
+
+<!-- 根据企业名称查询是否重复  -->
+<!-- 	<select id="retrieveB009ByName" resultType="java.lang.Integer"> -->
+<!-- 		SELECT COUNT(1) FROM(SELECT MA004 -->
+<!-- 		FROM B009 t WHERE MA004 =#{MA004}) -->
+		
+<!-- 	</select> -->
+	
+	<!-- 修改企业信息时查询企业名称查询是否重复  -->
+<!-- 	<select id="upretrieveB009ByName"  resultType="java.lang.Integer"> -->
+<!-- 		SELECT COUNT(1)  FROM(SELECT MA004 -->
+<!-- 		FROM B009 t WHERE MA004 =#{MA004} and MA001 !=#{MA001}) -->
+		
+<!-- 	</select> -->
+		<!-- 根据条件查询所有  -->
+	<select id="retrieveB009ByPO" resultType="com.hw.hwsafe.corpinfo.pojo.B009PO">
+		SELECT MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+    		MA017,MA018,MA019,MA020,MA021,MA022,MA023,MA024,MA025,MA026,MA027,MA028,MA029,MA030,MA031,MA032,MA033,MA034,MA035,
+    		MA036,MA037,MA038,MA039,MA040,MA041,MA042,MA043,MA044,MA045,MA046,MA047
+		FROM B009 t 	
+		WHERE 1=1
+		<if test="MA001 != null">
+			<if test="MA001 != ''">
+			AND	MA001 = #{MA001}
+			</if>
+		</if> 
+		<if test="MA004 != null">
+			<if test="MA004 != ''">
+			AND	MA004  LIKE '%'||#{MA004}||'%' 
+			</if>
+		</if> 
+	</select>
+	
+	<!-- 插入危险源周边环境信息 -->
+	<insert id="insertB009" parameterType="com.hw.hwsafe.corpinfo.pojo.B009PO">
+      INSERT INTO B009(MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009,MA010,MA011,MA012,MA013,MA014,MA015,MA016,
+    		MA017,MA018,MA019,MA020,MA021,MA022,MA023,MA024,MA025,MA026,MA027,MA028,MA029,MA030,MA031,MA032,MA033,MA034,MA035,
+    		MA036,MA037,MA038,MA039,MA040,MA041,MA042,MA043,MA044,MA045,MA046,MA047
+	   ) 
+      VALUES(
+         #{MA001,jdbcType=VARCHAR},#{MA002,jdbcType=VARCHAR},#{MA003,jdbcType=VARCHAR},#{MA004,jdbcType=VARCHAR},#{MA005,jdbcType=INTEGER},#{MA006,jdbcType=NUMERIC},
+         #{MA007,jdbcType=VARCHAR},#{MA008,jdbcType=INTEGER},#{MA009,jdbcType=NUMERIC},#{MA010,jdbcType=VARCHAR},#{MA011,jdbcType=INTEGER},#{MA012,jdbcType=NUMERIC},
+         #{MA013,jdbcType=VARCHAR},#{MA014,jdbcType=INTEGER},#{MA015,jdbcType=NUMERIC},#{MA016,jdbcType=VARCHAR},#{MA017,jdbcType=INTEGER},#{MA018,jdbcType=NUMERIC},
+         #{MA019,jdbcType=VARCHAR},#{MA020,jdbcType=INTEGER},#{MA021,jdbcType=NUMERIC},#{MA022,jdbcType=VARCHAR},#{MA023,jdbcType=INTEGER},#{MA024,jdbcType=VARCHAR},
+         #{MA025,jdbcType=VARCHAR},#{MA026,jdbcType=TIMESTAMP},#{MA027,jdbcType=VARCHAR},#{MA028,jdbcType=INTEGER},#{MA029,jdbcType=INTEGER},
+         #{MA030,jdbcType=INTEGER},#{MA031,jdbcType=INTEGER},#{MA032,jdbcType=INTEGER},#{MA033,jdbcType=INTEGER},#{MA034,jdbcType=INTEGER},
+         #{MA035,jdbcType=VARCHAR},#{MA036,jdbcType=VARCHAR},#{MA037,jdbcType=VARCHAR},#{MA038,jdbcType=INTEGER},#{MA039,jdbcType=VARCHAR},#{MA040,jdbcType=VARCHAR},
+         #{MA041,jdbcType=VARCHAR},#{MA042,jdbcType=TIMESTAMP},#{MA043,jdbcType=TIMESTAMP},#{MA044,jdbcType=TIMESTAMP},#{MA045,jdbcType=VARCHAR},#{MA046,jdbcType=INTEGER},#{MA047,jdbcType=INTEGER}
+       )
+	</insert>
+	<!-- 更新危险源周边环境信息 -->
+
+	<update id="updateB009" parameterType="com.hw.hwsafe.corpinfo.pojo.B009PO">
+		UPDATE B009 
+		set	
+		 MA002=#{MA002,jdbcType=VARCHAR},MA003=#{MA003,jdbcType=VARCHAR},MA004=#{MA004,jdbcType=VARCHAR},MA005=#{MA005,jdbcType=INTEGER},MA006=#{MA006,jdbcType=NUMERIC},
+         MA007=#{MA007,jdbcType=VARCHAR},MA008=#{MA008,jdbcType=INTEGER},MA009=#{MA009,jdbcType=NUMERIC},MA010=#{MA010,jdbcType=VARCHAR},MA011=#{MA011,jdbcType=INTEGER},MA012=#{MA012,jdbcType=NUMERIC},
+         MA013=#{MA013,jdbcType=VARCHAR},MA014=#{MA014,jdbcType=INTEGER},MA015=#{MA015,jdbcType=NUMERIC},MA016=#{MA016,jdbcType=VARCHAR},MA017=#{MA017,jdbcType=INTEGER},MA018=#{MA018,jdbcType=NUMERIC},
+         MA019=#{MA019,jdbcType=VARCHAR},MA020=#{MA020,jdbcType=INTEGER},MA021=#{MA021,jdbcType=NUMERIC},MA022=#{MA022,jdbcType=VARCHAR},MA023=#{MA023,jdbcType=INTEGER},MA024=#{MA024,jdbcType=VARCHAR},
+         MA025=#{MA025,jdbcType=VARCHAR},MA026=#{MA026,jdbcType=TIMESTAMP},MA027=#{MA027,jdbcType=VARCHAR},MA028=#{MA028,jdbcType=INTEGER},MA029=#{MA029,jdbcType=INTEGER},
+         MA030=#{MA030,jdbcType=INTEGER},MA031=#{MA031,jdbcType=INTEGER},MA032=#{MA032,jdbcType=INTEGER},MA033=#{MA033,jdbcType=INTEGER},MA034=#{MA034,jdbcType=INTEGER},
+         MA035=#{MA035,jdbcType=VARCHAR},MA036=#{MA036,jdbcType=VARCHAR},MA037=#{MA037,jdbcType=VARCHAR},MA038=#{MA038,jdbcType=INTEGER},MA039=#{MA039,jdbcType=VARCHAR},MA040=#{MA040,jdbcType=VARCHAR},
+         MA041=#{MA041,jdbcType=VARCHAR},MA042=#{MA042,jdbcType=TIMESTAMP},MA043=#{MA043,jdbcType=TIMESTAMP},MA044=#{MA044,jdbcType=TIMESTAMP},MA045=#{MA045,jdbcType=VARCHAR},MA046=#{MA046,jdbcType=INTEGER},MA047=#{MA047,jdbcType=INTEGER}
+		WHERE MA001 = #{MA001}
+	</update>
+
+	<!-- 根据主键删除危险源周边环境信息-->
+	<delete id="deleteB009ByID" parameterType="String">
+		DELETE FROM B009 WHERE MA001 = #{MA001}
+	</delete>
+<!-- 根据条件查询 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		SELECT * FROM B009 
+		<where>
+			<if test="po.MA004 != null and po.MA004 != ''">
+				MA004 like '%' || #{po.MA004} || '%'
+			</if>
+			<if test="po.MA005 != null and po.MA005 != ''">
+				AND MA005 like '%' || #{po.MA005} || '%'
+			</if>
+			<if test="ORGAN_UUID != null and ORGAN_UUID != ''">
+				AND MA002 =#{ORGAN_UUID}
+			</if>
+		</where>
+	</select>
+</mapper>

@@ -1,0 +1,8 @@
+﻿var sitemap = 
+
+(function() {
+    var _ = function() { var r={},a=arguments; for(var i=0; i<a.length; i+=2) r[a[i]]=a[i+1]; return r; }
+    var _creator = function() { return _(b,[_(c,d,e,f,g,h,i,[_(c,j,e,f,g,k,i,[_(c,l,e,f,g,m,i,[_(c,n,e,f,g,o),_(c,p,e,f,g,q)])]),_(c,r,e,f,g,s,i,[_(c,t,e,f,g,u,i,[_(c,v,e,f,g,w),_(c,x,e,f,g,y)])]),_(c,z,e,f,g,A,i,[_(c,B,e,f,g,C),_(c,D,e,f,g,E)]),_(c,F,e,f,g,G,i,[_(c,H,e,f,g,I)]),_(c,J,e,f,g,K,i,[_(c,L,e,f,g,M),_(c,N,e,f,g,O)]),_(c,P,e,f,g,Q,i,[_(c,P,e,f,g,R,i,[_(c,S,e,f,g,T)])]),_(c,U,e,f,g,V,i,[_(c,W,e,f,g,X,i,[_(c,n,e,f,g,Y),_(c,Z,e,f,g,ba)])]),_(c,bb,e,f,g,bc,i,[_(c,bd,e,f,g,be),_(c,bf,e,f,g,bg,i,[_(c,n,e,f,g,bh),_(c,p,e,f,g,bi),_(c,bj,e,f,g,bk)])])])]);}; 
+var b="rootNodes",c="pageName",d="Home",e="type",f="Wireframe",g="url",h="Home.html",i="children",j="设备信息（用户登录只显示自己的）",k="设备信息（用户登录只显示自己的）.html",l="设备管理",m="设备管理.html",n="新增",o="新增.html",p="编辑",q="编辑.html",r="实时数据",s="实时数据.html",t="实时传感器数据查询",u="实时传感器数据查询.html",v="可燃气体实时数据",w="可燃气体实时数据.html",x="空气质量",y="空气质量.html",z="历史数据分析（用户登录只显示自己过去7天的历史记录）",A="历史数据分析（用户登录只显示自己过去7天的历史记录）.html",B="历史传感器数据分析",C="历史传感器数据分析.html",D="历史报警数据分析",E="历史报警数据分析.html",F="报警（用户登录只显示自己的）",G="报警（用户登录只显示自己的）.html",H="报警信息管理",I="报警信息管理.html",J="消息推送（管理员only）",K="消息推送（管理员only）.html",L="发送短信",M="发送短信.html",N="短信管理",O="短信管理.html",P="用户反馈",Q="用户反馈.html",R="用户反馈_1.html",S="回复",T="回复.html",U="讨论区",V="讨论区.html",W="讨论区管理",X="讨论区管理.html",Y="新增_1.html",Z="主题",ba="主题.html",bb="帮助中心（原“常见问题管理”）",bc="帮助中心（原“常见问题管理”）.html",bd="说明书管理静态页面",be="说明书管理静态页面.html",bf="常见问题以及解决",bg="常见问题以及解决.html",bh="新增_2.html",bi="编辑_1.html",bj="浏览",bk="浏览.html";
+return _creator();
+})();

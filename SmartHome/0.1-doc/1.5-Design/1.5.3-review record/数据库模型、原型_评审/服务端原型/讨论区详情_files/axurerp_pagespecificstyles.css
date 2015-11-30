@@ -1,0 +1,162 @@
+﻿body {
+    margin: 0px;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../讨论区详情_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:6px;
+    top:6px;
+    width:964px;
+    height:824px;
+}
+
+#u0_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:970px;
+    height:830px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:404px;
+    width:960px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u2_normal {
+    background-image: url('../讨论区详情_files/u2_normal.png');
+}
+
+.u2_container {
+    position:absolute;
+    left:12px;
+    top:6px;
+    width:680px;
+    height:480px;
+}
+
+#u2_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:680px;
+    height:480px;
+}
+
+.u3 {
+    position:absolute;
+    left:2px;
+    top:232px;
+    width:676px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u4_normal {
+    background-image: url('../讨论区详情_files/u4_normal.png');
+}
+
+.u4_container {
+    position:absolute;
+    left:12px;
+    top:476px;
+    width:718px;
+    height:342px;
+}
+
+#u4_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:718px;
+    height:342px;
+}
+
+.u5 {
+    position:absolute;
+    left:2px;
+    top:163px;
+    width:714px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u6 {
+    position:absolute;
+    left:572px;
+    top:486px;
+    width:75px;
+    height:25px;
+    ;
+    ;
+    text-align: center;;
+    font-family:'Arial';
+    font-size: 13px;
+    color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+.u7 {
+    position:absolute;
+    left:647px;
+    top:486px;
+    width:77px;
+    height:25px;
+    ;
+    ;
+    text-align: center;;
+    font-family:'Arial';
+    font-size: 13px;
+    color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+

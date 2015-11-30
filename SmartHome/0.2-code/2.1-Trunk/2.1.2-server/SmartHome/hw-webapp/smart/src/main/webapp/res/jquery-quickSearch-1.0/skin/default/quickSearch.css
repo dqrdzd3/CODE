@@ -1,0 +1,84 @@
+.tableword{
+    border-collapse:collapse;
+    border: solid 1px #5BDECA;
+    font-size:12px;
+    color:#565656;
+    line-height: 18px; table-layout:fixed; 
+}
+.tableword td{
+    border-right: 1px solid #5BDECA;
+    border-bottom: 1px solid #4BCDB9;
+    text-align:center;
+    height:20px;
+    overflow:hidden;   text-overflow:ellipsis; white-space:nowrap;
+}
+.tableword th{
+    border:#5BDECA solid 1px;
+    font-size:12px; line-height:20px;
+    background-color: #ECFFFF;
+    background: url(thbg.jpg) left top repeat-x;
+    text-align:center; color:#108772; font-weight:bold;
+    height:22px;overflow:hidden;  word-break:break-all; text-overflow:ellipsis; white-space:nowrap;
+}
+
+.all {
+    z-index: 100000;
+    width: 557px;
+    height: 240px;
+    position: absolute;
+    left: 20px;
+    top: 200px;
+    background-color: #F5FFFF;
+    border: #69DCCC solid 1px;
+    padding: 2px;
+}
+
+.tablehead{
+    height:24px; 
+    width: 557px;
+}
+.tablecontent{
+    width: 557px;
+    height: 183px;
+    overflow-y: scroll;
+}
+/*CSS pageDivCss style pagination*/
+
+.pageDivCss {
+    PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; MARGIN: 6px; PADDING-TOP: 3px; TEXT-ALIGN: center; font-size:12px;
+}
+.pageDivCss A {
+    BORDER: #eee 1px solid; PADDING-RIGHT: 5px;  PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; MARGIN: 2px;  COLOR: #03B495; PADDING-TOP: 2px;  TEXT-DECORATION: none
+}
+.pageDivCss A:hover {
+    BORDER: #4BCDB9 1px solid;COLOR: #00A386;
+}
+.pageDivCss A:active {
+    BORDER: #999 1px solid; COLOR: #666; 
+}
+.pageDivCss .current {
+    BORDER: #00997E 1px solid;
+    PADDING-RIGHT: 5px;
+    PADDING-LEFT: 5px;
+    FONT-WEIGHT: bold;
+    PADDING-BOTTOM: 2px;
+    MARGIN: 2px;
+    COLOR: #fff;
+    PADDING-TOP: 2px;
+    BACKGROUND-COLOR: #4BCDB9;
+}
+.pageDivCss .disabled {
+    BORDER: #eee 1px solid; PADDING-RIGHT: 5px;  PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; MARGIN: 2px;  COLOR: #ddd; PADDING-TOP: 2px; 
+}
+/**
+ *  隔行变色
+ */
+.evencolor{ background-color:#ECFFFF;}
+/**
+ *  点击行颜色
+ */
+.clickcolor{ background-color:blue;}
+/**
+ *  获取焦点行颜色 
+ */
+.focuscolor{ background-color:#FFFFD8;}

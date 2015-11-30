@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC    
+
+      "-//OpenSymphony Group//XWork Validator 1.0//EN"    
+ 
+       "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">  
+       
+<validators>  
+
+   <field name="tregulationPO.ma004">  
+   
+   <field-validator type="requiredstring">  
+           <message>兄弟不能为空啊：</message>  
+   </field-validator>
+   
+    <field-validator type="email">  
+           <message>邮箱有没有：</message>  
+   </field-validator>
+    	
+   </field>  
+</validators>
+       

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- Include webWork default (from the Struts JAR). -->
+	<include file="struts-default.xml" />
+
+	<!-- resources -->
+	<constant name="struts.custom.i18n.resources" value="application_message" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.ui.templateDir" value="template" />
+	<constant name="struts.ui.templateSuffix" value="ftl" />
+	<constant name="struts.multipart.maxSize" value="20701096" />
+	<constant name="struts.multipart.saveDir" value="/upload" />
+	<constant name="struts.objectFactory"
+		value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+		
+	<!-- 不过滤的前缀 -->
+	<constant name="struts.action.excludePattern" value="/res/.*,/css/.*,/images/.*,/js/.*,/services/.*,/apksplace/*" />
+
+	<!-- Configuration for the default package. -->
+	<package name="default" extends="tiles-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+			<result-type name="json" class="org.apache.struts2.json.JSONResult" />
+		</result-types>
+		<global-results>
+			<result name="jsonPager" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="root">pagerData</param>
+			</result>
+			<result name="jsonMsg" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="root">message</param>
+			</result>
+			<result name="jsonPO" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="root">jsonPO</param>
+			</result>
+			<result name="jsondata" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="root">callbackDataPO</param>
+			</result>
+			<result name="jsonstr" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="root">jstr</param>
+			</result>
+			<result name="jsonPerm" type="json">
+				<param name="root">permButtonStr</param>
+			</result>
+
+			<result name="exception">/WEB-INF/jsp/exception/exception.jsp</result>
+
+		</global-results>
+	</package>
+
+	<package name="interceptor" extends="default">
+		<interceptors>
+			<!-- 定义异常控制拦截器 -->
+			<interceptor name="exceptionInterceptor"
+				class="com.hw.hwsafe.platform.exception.interceptor.ExceptionInterceptor" />
+			<!-- 定义一个包含异常控制的拦截器栈 -->
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="exceptionInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="mydefault" />
+	</package>
+
+	<!-- ========== 框架布局 ========== -->
+	<package name="frame" namespace="/frame" extends="struts-default">
+		<action name="*">
+			<result>/WEB-INF/jsp/frame/{1}.jsp</result>
+		</action>
+		<action name="main_right" class="com.hw.hwsafe.core.action.MainRightAction">
+			<result name="success">/WEB-INF/jsp/frame/main_right.jsp</result>
+			<result name="gaoxin">/WEB-INF/jsp/frame/main_right_gaoxin.jsp</result>
+		</action>
+		<action name="main_left" class="com.hw.hwsafe.core.action.FrameAction"
+			method="mainLeft">
+			<result>/WEB-INF/jsp/frame/main_left.jsp</result>
+		</action>
+		<action name="header" class="com.hw.hwsafe.core.action.FrameAction"
+			method="getModulesID">
+			<result>/WEB-INF/jsp/frame/header.jsp</result>
+		</action>
+		<action name="main_righttop_btns" class="com.hw.hwsafe.core.action.FrameAction"
+			method="mainRightTopBtns">
+			<result>/WEB-INF/jsp/frame/main_righttop_btns_1.jsp</result>
+			<result name="tabs">/WEB-INF/jsp/frame/main_righttop_btns_2.jsp
+			</result>
+		</action>
+		<action name="main_right_home" class="com.hw.hwsafe.core.action.FrameAction"
+			method="mainRightHome">
+			<!-- <result>/WEB-INF/jsp/frame/_home_2.jsp</result> -->
+			<!-- <result name="fourIcon">/WEB-INF/jsp/frame/main_right_home_1.jsp</result> -->
+			<result name="ent">/WEB-INF/jsp/frame/main_right_home_ent.jsp
+			</result>
+			<result name="gov">/WEB-INF/jsp/frame/main_right_home_gov.jsp
+			</result>
+			<result name="sys">/WEB-INF/jsp/frame/main_right_home_sys.jsp
+			</result>
+		</action>
+	</package>
+
+	<!-- include -->
+	<!-- platform -->
+	<include file="struts-platform.xml" />
+	<include file="struts-attachment.xml" />
+	<include file="struts-gov.xml" />
+	<include file="struts-javamail.xml" />
+	<include file="struts-permission.xml" />
+	<include file="struts-pushlet.xml" />
+	<include file="struts-remind.xml" />
+	<include file="struts-sms.xml" />
+	<!-- module -->
+	<include file="struts-corpinfo.xml" />
+	<include file="struts-register.xml" />
+	<include file="struts-knowledge.xml" />
+	<include file="struts-smart.xml" />
+</struts>

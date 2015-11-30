@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="knowledge" namespace="/knowledge" extends="interceptor">
+	
+			<!-- 健康知识库 -->
+		<action name="k001" class="com.hw.hwsafe.knowledge.action.K001Action" method="doIndex">
+			<result name="success">/WEB-INF/jsp/knowledge/k001/K001_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/knowledge/k001/K001_add.jsp</result>
+			<result name="edit">/WEB-INF/jsp/knowledge/k001/K001_edit.jsp</result>
+			<result name="show">/WEB-INF/jsp/knowledge/k001/K001_view.jsp</result>
+		</action>
+	
+		<!-- 以下内容暂时不用 -->
+		<!-- 危化品知识库 -->
+		<action name="whp" class="com.hw.hwsafe.knowledge.action.TmsdsAction" method="doList">
+			<result name="index">/WEB-INF/jsp/knowledge/tmsds/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/knowledge/tmsds/tmsds_list.jsp</result>
+
+			<result name="add">/WEB-INF/jsp/knowledge/tmsds/tmsds_add.jsp</result>
+			<result name="query">/WEB-INF/jsp/knowledge/tmsds/tmsds_list.jsp</result>
+			<result name="edit">/WEB-INF/jsp/knowledge/tmsds/tmsds_modify.jsp</result>
+			<result name="view">/WEB-INF/jsp/knowledge/tmsds/tmsds_view.jsp</result>
+
+			<result name="delsuccess" type="redirectAction">whp</result>
+			<result name="addsuccess" type="redirectAction">whp</result>
+			<result name="editsuccess" type="redirectAction">whp</result>
+		</action>
+
+		<!-- 事故案例知识库 -->
+		<action name="accident"
+			class="com.hw.hwsafe.knowledge.action.TaccidentcaseAction" method="doList">
+			<result name="index">/WEB-INF/jsp/knowledge/taccidentcase/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/knowledge/taccidentcase/taccidentcase_list.jsp</result>
+
+			<result name="add">/WEB-INF/jsp/knowledge/taccidentcase/taccidentcase_add.jsp</result>
+			<result name="query">/WEB-INF/jsp/knowledge/taccidentcase/taccidentcase_list.jsp</result>
+			<result name="edit">/WEB-INF/jsp/knowledge/taccidentcase/taccidentcase_modify.jsp</result>
+			<result name="view">/WEB-INF/jsp/knowledge/taccidentcase/taccidentcase_view.jsp</result>
+
+			<result name="delsuccess" type="redirectAction">accident</result>
+			<result name="addsuccess" type="redirectAction">accident</result>
+			<result name="editsuccess" type="redirectAction">accident</result>
+		</action>
+
+		<!-- 预案库知识库 -->
+		<action name="tcorpamb" class="com.hw.hwsafe.knowledge.action.TcorpambAction"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/knowledge/tcorpamb/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/knowledge/tcorpamb/tcorpamb_list.jsp</result>
+
+			<result name="add">/WEB-INF/jsp/knowledge/tcorpamb/tcorpamb_add.jsp</result>
+			<result name="query">/WEB-INF/jsp/knowledge/tcorpamb/tcorpamb_list.jsp</result>
+			<result name="edit">/WEB-INF/jsp/knowledge/tcorpamb/tcorpamb_modify.jsp</result>
+            <result name="view">/WEB-INF/jsp/knowledge/tcorpamb/tcorpamb_view.jsp</result>
+			<result name="delsuccess" type="redirectAction">tcorpamb</result>
+			<result name="addsuccess" type="redirectAction">tcorpamb</result>
+			<result name="editsuccess" type="redirectAction">tcorpamb</result>
+		</action>
+
+		<!-- 企业级预案库知识库 -->
+		<action name="k007" class="com.hw.hwsafe.knowledge.action.K007Action"
+			method="doList">
+			<!-- 上传拦截器 -->
+			<result name="index">/WEB-INF/jsp/knowledge/k007/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/knowledge/k007/k007_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/knowledge/k007/k007_add.jsp</result>
+			<result name="view">/WEB-INF/jsp/knowledge/k007/k007_view.jsp</result>
+		</action>
+
+
+		<!-- 规章制度 -->
+		<action name="tregulation" class="com.hw.hwsafe.knowledge.action.TregulationAction"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/knowledge/tregulation/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/knowledge/tregulation/tregulation_list.jsp</result>
+
+			<result name="add">/WEB-INF/jsp/knowledge/tregulation/tregulation_add.jsp</result>
+			<result name="view">/WEB-INF/jsp/knowledge/tregulation/tregulation_view.jsp</result>
+		</action>
+
+		<action name="tregulationadd" class="com.hw.hwsafe.knowledge.action.TregulationAction"
+			method="doSaveAdd">
+			<result name="index">/WEB-INF/jsp/knowledge/tregulation/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/knowledge/tregulation/tregulation_list.jsp</result>
+			<result name="input">/WEB-INF/jsp/knowledge/tregulation/tregulation_add.jsp</result>
+
+			<result name="add">/WEB-INF/jsp/knowledge/tregulation/tregulation_add.jsp</result>
+			<result name="query">/WEB-INF/jsp/knowledge/tregulation/tregulation_list.jsp</result>
+			<result name="edit">/WEB-INF/jsp/knowledge/tregulation/tregulation_modify.jsp</result>
+
+			<result name="delsuccess" type="redirectAction">tregulation</result>
+			<result name="addsuccess" type="redirectAction">tregulation</result>
+			<result name="editsuccess" type="redirectAction">tregulation</result>
+		</action>
+
+		<action name="tregulationedit" class="com.hw.hwsafe.knowledge.action.TregulationAction"
+			method="doSaveEdit">
+			<result name="index">/WEB-INF/jsp/knowledge/tregulation/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/knowledge/tregulation/tregulation_list.jsp</result>
+			<result name="input">/WEB-INF/jsp/knowledge/tregulation/tregulation_add.jsp</result>
+
+			<result name="add">/WEB-INF/jsp/knowledge/tregulation/tregulation_add.jsp</result>
+			<result name="query">/WEB-INF/jsp/knowledge/tregulation/tregulation_list.jsp</result>
+			<result name="edit">/WEB-INF/jsp/knowledge/tregulation/tregulation_modify.jsp</result>
+
+			<result name="delsuccess" type="redirectAction">tregulation</result>
+			<result name="addsuccess" type="redirectAction">tregulation</result>
+			<result name="editsuccess" type="redirectAction">tregulation</result>
+		</action>
+
+		<!-- 职业病库 -->
+		<action name="k006" class="com.hw.hwsafe.knowledge.action.K006Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/knowledge/k006/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/knowledge/k006/k006_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/knowledge/k006/k006_add.jsp</result>
+			<result name="view">/WEB-INF/jsp/knowledge/k006/k006_view.jsp</result>
+		</action>
+		
+		<!-- 重新做法律法规库 -->
+		<action name="k003" class="com.hw.hwsafe.knowledge.action.K003Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/knowledge/k003/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/knowledge/k003/k003_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/knowledge/k003/k003_add.jsp</result>
+			<result name="view">/WEB-INF/jsp/knowledge/k003/k003_view.jsp</result>
+		</action>
+		
+		<!-- 重新做标准库 -->
+		<action name="k004" class="com.hw.hwsafe.knowledge.action.K004Action"
+			method="doList">
+			<result name="index">/WEB-INF/jsp/knowledge/k004/index.jsp</result>
+			<result name="success">/WEB-INF/jsp/knowledge/k004/k004_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/knowledge/k004/k004_add.jsp</result>
+			<result name="view">/WEB-INF/jsp/knowledge/k004/k004_view.jsp</result>
+		</action>
+		
+				<!-- 重新做标准库 -->
+		<action name="k008" class="com.hw.hwsafe.knowledge.action.K008Action">
+			<result>/WEB-INF/jsp/knowledge/k008/k008_list.jsp</result>
+			<result name="add">/WEB-INF/jsp/knowledge/k008/k008_add.jsp</result>
+			<result name="edit">/WEB-INF/jsp/knowledge/k008/k008_edit.jsp</result>
+			<result name="show">/WEB-INF/jsp/knowledge/k008/k008_show.jsp</result>
+		</action>
+		
+
+	</package>
+</struts>

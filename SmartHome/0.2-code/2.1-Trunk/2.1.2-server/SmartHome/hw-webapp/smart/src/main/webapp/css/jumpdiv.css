@@ -1,0 +1,5 @@
+/* 添加修改表单 窗口样式 */
+.jumpdiv-dialog {width:760px;z-Index:-99999;}
+.jumpdiv-dialog .ui-dialog-titlebar {background:url(../images/top_bj1.jpg) 0 0 repeat-x;font-size:14px; color:#E7F7F6;}
+.jumpdiv-dialog .ui-dialog-titlebar span.ui-dialog-title{ margin:0;padding-right:60px;height:24px; }
+.jumpdiv-dialog .ui-dialog-content {}

@@ -1,0 +1,846 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport"
+	content="width=device-width, minimum-scale=1, maximum-scale=1">
+<title>空气电台</title>
+<SCRIPT type=text/javascript src="jquery-1.9.1.js"></SCRIPT>
+
+<STYLE type=text/css>
+BODY {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px;
+	BACKGROUND-COLOR: #d1e7e5
+}
+
+DIV {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+DL {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+DT {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+DD {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+UL {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+OL {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+LI {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+H1 {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+H2 {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+H3 {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+H4 {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+H5 {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+H6 {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+PRE {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+CODE {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+FORM {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+FIELDSET {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+LEGEND {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+INPUT {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+TEXTAREA {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+P {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+BLOCKQUOTE {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+TH {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+TD {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	FONT-FAMILY: "微软雅黑";
+	PADDING-TOP: 0px
+}
+
+BODY {
+	MIN-WIDTH: 400px
+}
+
+HTML {
+	MIN-WIDTH: 400px
+}
+
+.tc {
+	TEXT-ALIGN: center
+}
+
+P {
+	FONT-SIZE: 12px
+}
+
+.content {
+	MARGIN: 0px auto;
+	WIDTH: 400px;
+	OVERFLOW: hidden
+}
+
+A {
+	BORDER-BOTTOM: medium none;
+	BORDER-LEFT: medium none;
+	OUTLINE-STYLE: none;
+	OUTLINE-COLOR: invert;
+	OUTLINE-WIDTH: medium;
+	BORDER-TOP: medium none;
+	BORDER-RIGHT: medium none;
+	TEXT-DECORATION: none;
+	COLOR: #808080;
+}
+
+.blank10 {
+	HEIGHT: 10px
+}
+
+.blank20 {
+	HEIGHT: 20px
+}
+
+.title {
+	MARGIN-TOP: 20px;
+	COLOR: #717171;
+	FONT-SIZE: 22px
+}
+
+.value {
+	WHITE-SPACE: nowrap;
+	COLOR: #71d939;
+	FONT-SIZE: 30px
+}
+
+.bfState {
+	PADDING-BOTTOM: 4px;
+	BACKGROUND-COLOR: #71d939;
+	PADDING-LEFT: 4px;
+	PADDING-RIGHT: 4px;
+	COLOR: #fff;
+	FONT-SIZE: 14px;
+	PADDING-TOP: 4px;
+	border-radius: 10px
+}
+
+.waterState {
+	PADDING-BOTTOM: 4px;
+	BACKGROUND-COLOR: #71d939;
+	PADDING-LEFT: 4px;
+	PADDING-RIGHT: 4px;
+	COLOR: #fff;
+	FONT-SIZE: 14px;
+	PADDING-TOP: 4px;
+	border-radius: 10px
+}
+
+.muscleState {
+	PADDING-BOTTOM: 4px;
+	BACKGROUND-COLOR: #71d939;
+	PADDING-LEFT: 4px;
+	PADDING-RIGHT: 4px;
+	COLOR: #fff;
+	FONT-SIZE: 14px;
+	PADDING-TOP: 4px;
+	border-radius: 10px
+}
+
+.boneState {
+	PADDING-BOTTOM: 4px;
+	BACKGROUND-COLOR: #71d939;
+	PADDING-LEFT: 4px;
+	PADDING-RIGHT: 4px;
+	COLOR: #fff;
+	FONT-SIZE: 14px;
+	PADDING-TOP: 4px;
+	border-radius: 10px
+}
+
+.sfatState {
+	PADDING-BOTTOM: 4px;
+	BACKGROUND-COLOR: #71d939;
+	PADDING-LEFT: 4px;
+	PADDING-RIGHT: 4px;
+	COLOR: #fff;
+	FONT-SIZE: 14px;
+	PADDING-TOP: 4px;
+	border-radius: 10px
+}
+
+.infatState {
+	PADDING-BOTTOM: 4px;
+	BACKGROUND-COLOR: #71d939;
+	PADDING-LEFT: 4px;
+	PADDING-RIGHT: 4px;
+	COLOR: #fff;
+	FONT-SIZE: 14px;
+	PADDING-TOP: 4px;
+	border-radius: 10px
+}
+
+.bmrState {
+	PADDING-BOTTOM: 4px;
+	BACKGROUND-COLOR: #71d939;
+	PADDING-LEFT: 4px;
+	PADDING-RIGHT: 4px;
+	COLOR: #fff;
+	FONT-SIZE: 14px;
+	PADDING-TOP: 4px;
+	border-radius: 10px
+}
+
+.bodyAgeState {
+	PADDING-BOTTOM: 4px;
+	BACKGROUND-COLOR: #71d939;
+	PADDING-LEFT: 4px;
+	PADDING-RIGHT: 4px;
+	COLOR: #fff;
+	FONT-SIZE: 14px;
+	PADDING-TOP: 4px;
+	border-radius: 10px
+}
+
+.value {
+	WHITE-SPACE: nowrap;
+	COLOR: #71d939;
+	FONT-SIZE: 30px
+}
+
+.bf {
+	WHITE-SPACE: nowrap;
+	COLOR: #71d939;
+	FONT-SIZE: 30px
+}
+
+.water {
+	WHITE-SPACE: nowrap;
+	COLOR: #71d939;
+	FONT-SIZE: 30px
+}
+
+.muscle {
+	WHITE-SPACE: nowrap;
+	COLOR: #71d939;
+	FONT-SIZE: 30px
+}
+
+.bone {
+	WHITE-SPACE: nowrap;
+	COLOR: #71d939;
+	FONT-SIZE: 30px
+}
+
+.sfat {
+	WHITE-SPACE: nowrap;
+	COLOR: #71d939;
+	FONT-SIZE: 30px
+}
+
+.infat {
+	WHITE-SPACE: nowrap;
+	COLOR: #71d939;
+	FONT-SIZE: 30px
+}
+
+.bmr {
+	WHITE-SPACE: nowrap;
+	COLOR: #71d939;
+	FONT-SIZE: 30px
+}
+
+.bodyAge {
+	WHITE-SPACE: nowrap;
+	COLOR: #71d939;
+	FONT-SIZE: 30px
+}
+
+.unit {
+	COLOR: #807f7f;
+	FONT-SIZE: 16px
+}
+</STYLE>
+</head>
+<body>
+	<DIV class="blank10"></DIV>
+	<DIV style="color: #707070" class="content">
+		<!--  -->
+		<DIV style="MARGIN: 0px auto; WIDTH: 400px">
+			<SPAN style="FONT-SIZE: 14px">数据来自<FONT style="COLOR: #88c539">空气电台</FONT>
+			</SPAN><SPAN style="FLOAT: right; COLOR: #959595"><IMG
+				style="WIDTH: 12px" alt="" src="clock.png"> <SPAN
+				id='recordDate'>7-25</SPAN>&nbsp; <SPAN id='recordTime'>13:40</SPAN> </SPAN>
+		</DIV>
+		<!-- co2 -->
+		<DIV
+			style="BORDER-BOTTOM: #dadadb 1px solid; HEIGHT: 340px; BORDER-TOP: #dadadb 1px solid; background-color: #ffffff">
+		
+			
+			<DIV style="MARGIN: 0px auto; WIDTH: 400px" id="mnbvcxz">
+				<DIV
+					style="TEXT-ALIGN: center; MARGIN-TOP: 20px; WIDTH: 400px; FLOAT: left">
+					<SPAN
+						style="PADDING-BOTTOM: 8px; BACKGROUND-COLOR: #71d939; MARGIN-TOP: 20px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; LETTER-SPACING: 2px; COLOR: #fff; FONT-SIZE: 24px; PADDING-TOP: 8px; border-radius: 10px"
+						id=current>
+						当前值
+						
+						
+						</SPAN><br />
+					
+				</DIV>
+				<DIV
+					style="TEXT-ALIGN: center; MARGIN-TOP: 20px; WIDTH: 400px; FLOAT: left">
+					<SPAN
+						style="PADDING-BOTTOM: 8px; BACKGROUND-COLOR: #71d939; MARGIN-TOP: 20px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; LETTER-SPACING: 2px; COLOR: #f00; FONT-SIZE: 18px; PADDING-TOP: 8px; border-radius: 10px"
+						id=highs>
+						最高值：
+						
+						
+						</SPAN><br />
+					
+				</DIV>
+				<DIV
+					style="TEXT-ALIGN: center; MARGIN-TOP: 20px; WIDTH: 400px; FLOAT: left">
+					<SPAN
+						style="PADDING-BOTTOM: 8px; BACKGROUND-COLOR: #71d939; MARGIN-TOP: 20px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; LETTER-SPACING: 2px; COLOR: #f00; FONT-SIZE: 18px; PADDING-TOP: 8px; border-radius: 10px"
+						id=avgs>
+						平均值：
+						
+						
+						</SPAN><br />
+					
+				</DIV>
+				<DIV
+					style="TEXT-ALIGN: center; MARGIN-TOP: 20px; WIDTH: 400px; FLOAT: left">
+					<SPAN
+						style="PADDING-BOTTOM: 8px; BACKGROUND-COLOR: #71d939; MARGIN-TOP: 20px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; LETTER-SPACING: 2px; COLOR: #000; FONT-SIZE: 18px; PADDING-TOP: 8px; border-radius: 10px"
+						id=mention>
+						建议
+						
+						
+						</SPAN><br />
+					
+				</DIV>
+			</DIV>
+
+		</DIV>
+
+
+		<div id="main" style="background-color: #ffffff"></div>
+		<!-- bottom -->
+		<div class="content" style="width: 320px;">
+			<div class="yjk">
+				<p
+					style="color: #94cd26; font-size: 20px; margin-bottom: 10px; line-height: 50px; text-align: center; white-space: nowrap;">免费下载APP，提升人生新境界！</p>
+				<p style="margin-bottom: 10px;" class="tc">
+					<a href="http://121.40.94.44/smart/apksplace/SmartHome.apk"
+						class="tc"> <img src="app_icon.png" width="193" alt=""
+						style="border: none">
+					</a>
+				</p>
+				<p
+					style="color: #000000; font-size: 14px; margin-bottom: 10px; clear: both; text-align: center;">
+					<a href="http://m.hanwei.cn/">汉威电子</a> <a
+						href="http://stockpage.10jqka.com.cn/300007/"><br>股票代码[300007]</a>
+					<a href="http://weibo.com/u/5239083669"><br>微博账号[5239083669]</a>
+				</p>
+			</div>
+		</div>
+		<div class="blank10"></div>
+
+</body>
+
+<script src="echarts-plain.js"></script>
+<!--  历史数据分享 -->
+
+<script type="text/javascript">
+function strtoarr(value){
+      return value.replace('[','').replace(']','').split(',');
+}
+var CO_50 = 50;
+var CO_50_CONTENT = "成年人置身其中所允许的最大含量";
+var CO_200 = 200;
+var CO_200_CONTENT = "2-3小时后会有有轻微的头痛、头晕、恶心";
+var CO_400 = 400;
+var CO_400_CONTENT = "2小时内前额痛,3h 后将有生命危";
+var CO_800 = 800;
+var CO_800_CONTENT = "45分钟内头痛、恶心,2-3小时内死亡";
+var CO_1600 = 1600;
+var CO_1600_CONTENT = "20分钟内头痛、恶心,1小时内死亡";
+
+var C0_CONTENT_STATUS_N = "正常";
+var C0_CONTENT_STATUS_D = "危险";
+var C0_CONTENT_STATUS_DD = "非常危险";
+
+/** 0.06～0.07mg/m3 (0.05～0.06ppm)时，儿童发生气喘病 */
+var CH2O_NORMAL_CONTENT = "保持的不错，注意通风";
+var CH2O_NORMAL_VALUE = 0.06;
+var CH2O_MIDDLE_CONTENT = "儿童发生轻微气喘";
+var CH2O_MIDDLE_VALUE = 0.07;
+var CH2O_MIDDLE_UP_CONTENT = "可刺激眼睛，引起流泪";
+/** 当甲醛浓度在 0.12～1.2mg/m3时即 (0.1～1ppm) */
+var CH2O_HIGH_VALUE = 0.5;
+var CH2O_HIGH_CONTENT = "可引起咽喉不适或疼痛";
+var CH2O_DEAD_VALUE = 0.6;
+var CH2O_HIGH_UP_CONTENT = "能致支气管哮喘，基因突变，胎儿畸形";
+
+var CH2O_CONTENT_STATUS_N = "警告";
+var CH2O_CONTENT_STATUS_D = "危险";
+var CH2O_CONTENT_STATUS_DD = "非常危险";
+
+var CH2O_1600 = 1600;
+var CH2O_1600_CONTENT = "20分钟内头痛、恶心,1小时内死亡";
+
+var ALCOHOL_20 = 20;
+var ALCOHOL_80 = 80;
+
+var ALCOHOL_CONTENT_STATUS_N = "正常";
+var ALCOHOL_CONTENT_STATUS_D = "饮酒";
+var ALCOHOL_CONTENT_STATUS_DD = "醉酒";
+/*
+ * 只要大于0.090mg/L，即20mg/100ml，告诉他饮酒 大于0.363mg/L,即80mg/100ml，告诉他醉酒
+ */
+var ALCOHOL_CONTENT = "不算酒驾";
+var ALCOHOL_CONTENT_20 = "酒后驾驶";
+var ALCOHOL_CONTENT_80 = "醉酒驾驶";
+
+
+    document.getElementById('recordDate').innerHTML = request("recordDate");
+    document.getElementById('recordTime').innerHTML = request("recordTime");
+
+       
+
+		var units = request("unit");     //单位
+		var equip = request("equip");    //名称
+/* 		var means = request("means");    //含义
+		var status = request("status");   //状态 */
+		var maxValue = request("maxValue");   //最大值
+		var curValue = request("curValue");    //当前值
+		var avgValue = request("avgValue");    //平均值
+		var dataInM = strtoarr(request("minute"));       //分钟
+		var dataInH = strtoarr(request("hour"));    //小时
+		
+		units = units.replace('_','/');
+		var names ;
+		if(equip == '2'){
+			names ='甲醛';
+		}
+		if(equip == '3'){
+			names ='酒精';
+		}
+		if(equip == '4'){
+			names ='一氧化碳';
+		}
+		
+		document.getElementById('current').innerHTML = '当前值：'+ curValue + '  ' + chkStatus(equip);
+		document.getElementById('highs').innerHTML = '最高值：'+ maxValue;
+		document.getElementById('avgs').innerHTML = '平均值：'+ avgValue;
+		document.getElementById('mention').innerHTML = chkMeas(equip);
+		
+		
+		var str="";
+		for(var j=0;j<names.length;j++){
+    		str += "<div id='main"+j+"' style='height:360px'></div><br />";
+    		document.getElementById('main').innerHTML = str;
+    		
+		}
+
+  
+	
+    	for(var ii=0;ii<2;ii++){
+    		var tempdata ;
+    		var tempTitle;
+    		if(ii == 0 && dataInM==null) continue;
+    		if(ii == 0 && dataInM!=null){
+    			tempTitle ='过去一分钟变化';
+    			tempdata = dataInM;
+    		} 
+    		if(ii == 1 && dataInH==null) continue;
+    		if(ii == 1 && dataInH!=null)
+    			{
+    			tempTitle ='过去一小时变化';
+    			tempdata = dataInH;}
+    		
+        	var titiles = names+'  '+ units;
+        	
+        	var dates = '';
+        	//建立横坐标值
+        	var temp = 0;
+        	dates = "[";
+        	for(var k=0;k<tempdata.length;k++){
+        		
+        		if(k+1 == tempdata.length)
+        			dates += temp;
+        		else	
+        			dates += temp + ",";
+        		
+        		temp = temp +1;
+        		
+        	}
+        	dates +="]";
+        	dates = strtoarr(dates);
+        
+         
+        	
+            // 基于准备好的dom，初始化echarts图表
+            var myChart = echarts.init(document.getElementById('main'+ii));
+				
+				    option0 = {
+				        title : {
+				        	 text: tempTitle
+				        },
+				        tooltip : {
+				            trigger: 'axis'
+				        },
+				        legend: {
+				        	  data:[titiles]
+				        },
+				        
+				        calculable : true,
+				        xAxis : [
+				            {
+				                type : 'category',
+				                boundaryGap : false,
+				                data : dates
+				            }
+				        ],
+				        yAxis : [
+				            {
+				                type : 'value',
+				                axisLabel : {
+				                    formatter: '{value} '
+				                }
+				            }
+				        ],
+				        series : [
+			                        {
+			                            name:titiles,
+			                            type:'line',
+			                            data:tempdata
+			                           
+			                        }
+			                    ]
+				    };
+				
+				    // 为echarts对象加载数据
+				    myChart.setOption(option0);
+				   $(window).resize (myChart.resize);
+   
+    	}
+   // window.onresize = myChart.resize;
+    /* 判断状态 */
+   
+	
+    function chkStatus(mtype){
+		
+    	if(mtype=='2'){//甲醛
+    		
+    		if(curValue < CH2O_NORMAL_VALUE) 
+    			return CH2O_CONTENT_STATUS_N;
+    		if(curValue >= CH2O_NORMAL_VALUE
+					&& curValue <= CH2O_MIDDLE_VALUE) 
+    			return CH2O_CONTENT_STATUS_D;
+    		if(curValue > CH2O_MIDDLE_VALUE
+					&& curValue <= CH2O_HIGH_VALUE) 
+    			return CH2O_CONTENT_STATUS_D;
+    		if(curValue > CH2O_HIGH_VALUE
+					&& curValue <= CH2O_DEAD_VALUE) 
+    			return CH2O_CONTENT_STATUS_DD;
+    		if(curValue >= CH2O_DEAD_VALUE) 
+    			return CH2O_CONTENT_STATUS_DD;
+    	}
+    	
+    	if(mtype=='3'){//酒精
+    		if (curValue <= ALCOHOL_20) {
+				return ALCOHOL_CONTENT_STATUS_N;
+				
+			} else if (curValue > ALCOHOL_20
+					&& curValue < ALCOHOL_80) {
+				return ALCOHOL_CONTENT_STATUS_D;
+				
+			} else if (curValue >= ALCOHOL_80) {
+				return ALCOHOL_CONTENT_STATUS_DD;
+			
+			}
+    	}
+    	if(mtype=='4'){//一氧化碳
+    		if (curValue <= CO_50) {
+				return  C0_CONTENT_STATUS_N;
+				
+			} else if (curValue > CO_50
+					&& curValue <= CO_200) {
+				return C0_CONTENT_STATUS_D;
+			
+			} else if (curValue > CO_200
+					&& curValue <= CO_400) {
+				return C0_CONTENT_STATUS_D;
+			
+			} else if (curValue > CO_400
+					&& curValue <= CO_800) {
+				return C0_CONTENT_STATUS_DD;
+			
+			} else if (curValue > CO_800
+					&& curValue <= CO_1600) {
+				return C0_CONTENT_STATUS_DD;
+				
+			} else if (curValue >= CO_1600) {
+				return C0_CONTENT_STATUS_DD;
+			
+			}
+    	}
+    	return '不详';
+    }
+    function chkMeas(mtype){
+   
+    	if(mtype=='2'){//甲醛
+    		if(curValue < CH2O_NORMAL_VALUE) return CH2O_NORMAL_CONTENT;
+    		if(curValue >= CH2O_NORMAL_VALUE
+					&& curValue <= CH2O_MIDDLE_VALUE) return CH2O_MIDDLE_CONTENT;
+    		if(curValue > CH2O_MIDDLE_VALUE
+					&& curValue <= CH2O_HIGH_VALUE) return CH2O_MIDDLE_UP_CONTENT;
+    		if(curValue > CH2O_HIGH_VALUE
+					&& curValue <= CH2O_DEAD_VALUE) return CH2O_HIGH_CONTENT;
+    		if(curValue >= CH2O_DEAD_VALUE) return CH2O_HIGH_UP_CONTENT;
+    	}
+    	if(mtype=='3'){//酒精
+    		if (curValue <= ALCOHOL_20) {
+				return ALCOHOL_CONTENT;
+				
+			} else if (curValue > ALCOHOL_20
+					&& curValue < ALCOHOL_80) {
+				return ALCOHOL_CONTENT_20;
+				
+			} else if (curValue >= ALCOHOL_80) {
+				return ALCOHOL_CONTENT_80;
+			
+			}
+    	}
+    	if(mtype=='4'){//一氧化碳
+    		if (curValue <= CO_50) {
+				return  CO_50_CONTENT;
+				
+			} else if (curValue > CO_50
+					&& curValue <= CO_200) {
+				return CO_200_CONTENT;
+			
+			} else if (curValue > CO_200
+					&& curValue <= CO_400) {
+				return CO_200_CONTENT;
+			
+			} else if (curValue > CO_400
+					&& curValue <= CO_800) {
+				return CO_400_CONTENT;
+			
+			} else if (curValue > CO_800
+					&& curValue <= CO_1600) {
+				return CO_800_CONTENT;
+				
+			} else if (curValue >= CO_1600) {
+				return CO_1600_CONTENT;
+			
+			}
+    	}
+    	return '不详';
+    }
+    /* 判断是否为空 */
+	function chkIsNull(exp){
+		if (typeof(exp) != "undefined") 
+		{
+			return false;
+		}
+		return true;
+	}
+    function request(paras) {
+		var url = location.href;
+		var paraString = url.substring(url.indexOf("?") + 1, url.length).split(
+				"&");
+		var paraObj = {};
+		for (i = 0; j = paraString[i]; i++) {
+			paraObj[j.substring(0, j.indexOf("=")).toLowerCase()] = j
+					.substring(j.indexOf("=") + 1, j.length);
+		}
+		var returnValue = paraObj[paras.toLowerCase()];
+		//alert(returnValue);
+		if (typeof (returnValue) == "undefined") {
+			return "";
+		} else {
+			return returnValue;
+		}
+	}
+</script>
+</html>

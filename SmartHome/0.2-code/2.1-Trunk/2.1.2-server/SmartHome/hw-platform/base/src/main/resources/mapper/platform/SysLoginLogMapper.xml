@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.platform.dao.ISysLoginLogDao">
+
+	<!-- 获取分页信息 -->
+	<select id="retrieveByPage" parameterType="map" resultType="hashmap">
+		select ID, TYPE, RECORDING_TIME, USER_ID, USER_NAME, IP, GOV_ID, CORP_ID, REMARKS
+			from SYS_LOGIN_LOG
+			<where>
+				1 = 1
+				<if test="po.id != null and po.id != ''">
+					and ID = #{id}
+				</if>
+				<if test="po.type != null and po.type != ''">
+					and TYPE = #{type}
+				</if>
+				<if test="po.recordingTime != null and po.recordingTime != ''">
+					and RECORDING_TIME = #{recordingTime}
+				</if>
+				<if test="po.userId != null and po.userId != ''">
+					and USER_ID = #{userId}
+				</if>
+				<if test="po.userName != null and po.userName != ''">
+					and USER_NAME = #{userName}
+				</if>
+				<if test="po.ip != null and po.ip != ''">
+					and IP = #{ip}
+				</if>
+				<if test="po.govId != null and po.govId != ''">
+					and GOV_ID = #{govId}
+				</if>
+				<if test="po.corpId != null and po.corpId != ''">
+					and CORP_ID = #{corpId}
+				</if>
+				<if test="po.remarks != null and po.remarks != ''">
+					and REMARKS = #{remarks}
+				</if>
+			</where>
+	</select>
+
+	<!-- 通过id获取实例 -->
+	<select id="retrieveInstanceById" parameterType="String" resultType="com.hw.hwsafe.platform.pojo.SysLoginLogPO">
+		select ID, TYPE, RECORDING_TIME, USER_ID, USER_NAME, IP, GOV_ID, CORP_ID, REMARKS
+			from SYS_LOGIN_LOG
+			where ID = #{id}
+	</select>
+
+	<!-- 添加实例 -->
+	<insert id="insertInstance" parameterType="com.hw.hwsafe.platform.pojo.SysLoginLogPO">
+		insert into SYS_LOGIN_LOG(ID, TYPE, RECORDING_TIME, USER_ID, USER_NAME, IP, GOV_ID, CORP_ID, REMARKS)
+			values(
+				#{id,jdbcType=VARCHAR},#{type,jdbcType=NUMERIC},#{recordingTime,jdbcType=TIMESTAMP},
+				#{userId,jdbcType=VARCHAR},#{userName,jdbcType=VARCHAR},#{ip,jdbcType=VARCHAR},
+				#{govId,jdbcType=VARCHAR},#{corpId,jdbcType=VARCHAR},#{remarks,jdbcType=VARCHAR}
+			)
+	</insert>
+
+	<!-- 修改实例 -->
+	<update id="updateInstance" parameterType="com.hw.hwsafe.platform.pojo.SysLoginLogPO">
+		update SYS_LOGIN_LOG
+			set
+				TYPE = #{type,jdbcType=NUMERIC}, RECORDING_TIME = #{recordingTime,jdbcType=TIMESTAMP}, USER_ID = #{userId,jdbcType=VARCHAR}, 
+				USER_NAME = #{userName,jdbcType=VARCHAR}, IP = #{ip,jdbcType=VARCHAR}, GOV_ID = #{govId,jdbcType=VARCHAR}, 
+				CORP_ID = #{corpId,jdbcType=VARCHAR}, REMARKS = #{remarks,jdbcType=VARCHAR}
+			where ID = #{id}
+	</update>
+
+	<!-- 通过id删除实例 -->
+	<delete id="deleteInstanceById" parameterType="String">
+		delete from SYS_LOGIN_LOG where ID = #{id}
+	</delete>
+
+	<!-- 通过企业标识获取获取政府标识 -->
+	<select id="retrieveGovIdByCorpId" resultType="String" parameterType="String">
+		SELECT C2.MA001 FROM C001 C1, C002 C2 WHERE C1.MA004 = C2.MA001 AND C1.MA001 = #{value}
+	</select>
+
+</mapper>

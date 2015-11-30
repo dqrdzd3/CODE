@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="developer_name">
+        <item>曾凡      橡木鲸鲤</item>
+        <item>闫威      程序猿</item>
+        <item>李静      程序猿</item>
+        <item>苌帅      QA</item>
+        <item>李留品  测试猿</item>
+        <item>赵帅      艺术总监</item>
+    </string-array>
+    <string-array name="developer_email">
+        <item>zengfan@hanwei.cn</item>
+        <item>yanwei@hanwei.cn</item>
+        <item>lijing@hanwei.cn</item>
+        <item>changshuai@hanwei.cn</item>
+        <item>lilp@hanwei.cn</item>
+        <item>zhaoshuai@hanwei.cn</item>
+    </string-array>
+     <string-array name="right_menu">
+        <item>添加向导</item>
+        <item>设备管理</item>
+        <!-- <item>添加场景</item> -->
+    </string-array>
+</resources>

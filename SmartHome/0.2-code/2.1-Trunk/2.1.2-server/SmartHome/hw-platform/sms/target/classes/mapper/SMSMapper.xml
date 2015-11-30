@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.hwsafe.sms.czd.dao.ISMSDao">
+	
+	<!-- 发送内部短信，发送方保存 -->
+	<insert id="insertInnerSendMessage" parameterType="com.hw.hwsafe.sms.czd.po.MessagePO">
+		INSERT INTO M114 (MA001,MA002,MA003,MA004,MA005,MA006) 
+			VALUES (
+				#{id,jdbcType=VARCHAR},#{sendPeople,jdbcType=VARCHAR},#{sendTime,jdbcType=TIMESTAMP},
+				#{content,jdbcType=VARCHAR},#{corpId,jdbcType=VARCHAR},#{sendDeleteFlag,jdbcType=VARCHAR}
+            )
+	</insert>
+	
+	<!-- 发送内部短信，接收方保存 -->
+	<insert id="insertInnerRecieveMessage" parameterType="com.hw.hwsafe.sms.czd.po.MessagePO">
+		INSERT INTO M11401 (MA001,MA002,MA003,MA004,MA005,MA006) 
+			VALUES (
+				#{id,jdbcType=VARCHAR},#{sendPeople,jdbcType=VARCHAR},#{recievePeople,jdbcType=VARCHAR},
+				#{sendTime,jdbcType=TIMESTAMP},#{receiveReadFlag,jdbcType=VARCHAR},#{receiveDeleteFlag,jdbcType=VARCHAR}
+            )
+	</insert>
+	
+	<!-- 查询发送方消息信息 -->
+	<select id="getMessageInfoSend" parameterType="String" resultType="com.hw.hwsafe.sms.czd.po.MessagePO">
+		SELECT T.MA001 id,T.MA004 content,T.MA006 sendDeleteFlag,T.MA003 sendTime FROM M114 T WHERE MA001 = '${value}'
+	</select>
+	
+	<!-- 查询接收方消息信息 -->
+	<select id="getMessageInfoReceive" parameterType="String" resultType="com.hw.hwsafe.sms.czd.po.MessagePO">
+		SELECT T.MA001 id,T.MA004 content,T.MA006 sendDeleteFlag,T.MA003 sendTime,M.MA005 receiveReadFlag,M.MA006 receiveDeleteFlag
+			FROM M114 T , M11401 M WHERE T.MA001 = M.MA002 AND M.MA001 = '${value}'
+	</select>
+	
+	<!-- 分页查询列表 收件箱 -->
+	<select id="getInnerMessageByPageReceive" parameterType="com.hw.hwsafe.sms.czd.po.MessagePO" resultType="com.hw.hwsafe.sms.czd.po.MessagePO">
+		SELECT * FROM (SELECT M.MA001 id,T.MA004 content,T.MA006 sendDeleteFlag,T.MA003 sendTime,M.MA005 receiveReadFlag,M.MA006 receiveDeleteFlag
+			FROM M114 T , M11401 M WHERE T.MA001 = M.MA002 AND M.MA006 = '0' AND M.MA003 = #{recievePeople}) T 
+			WHERE ROWNUM <![CDATA[>=]]> #{beginNum} AND ROWNUM <![CDATA[<=]]> #{endNum} 
+	</select>
+	
+	<!-- 分页查询列表 发件箱 -->
+	<select id="getInnerMessageByPageSend" parameterType="com.hw.hwsafe.sms.czd.po.MessagePO" resultType="com.hw.hwsafe.sms.czd.po.MessagePO">
+		SELECT * FROM (SELECT T.MA001 id,T.MA004 content,T.MA006 sendDeleteFlag,T.MA003 sendTime FROM M114 T WHERE T.MA006 = '0' AND t.MA002 = #{sendPeople}) T 
+			WHERE ROWNUM <![CDATA[>=]]> #{beginNum} AND ROWNUM <![CDATA[<=]]> #{endNum} 
+	</select>
+	
+	<!-- 删除发件箱的信息 -->
+	<update id="deleteInnerMessageSend">
+		update M114 set MA006 = '1' where MA001 = '${value}'
+	</update>
+	
+	<update id="deleteInnerMessageReceive">
+		update M11401 set MA006 = '1' where MA001 = '${value}'
+	</update>
+	
+	<update id="updateReadTag">
+		update M11401 set MA005 = '1' where MA001 = '${value}'
+	</update>
+	
+	<!-- *************外部信息*************** -->
+	
+	<!-- 保存外部短信发送记录  发送 -->
+	<insert id="insertOuterMessageSend" parameterType="com.hw.hwsafe.sms.czd.po.MessagePO">
+		INSERT INTO M113 (MA001,MA002,MA003,MA004,MA005,MA006,MA007,MA008,MA009) 
+			VALUES (
+				#{id,jdbcType=VARCHAR},#{ip,jdbcType=VARCHAR},#{gateway,jdbcType=VARCHAR},
+				#{port,jdbcType=VARCHAR},#{manufacturer,jdbcType=VARCHAR},#{pin,jdbcType=VARCHAR},
+				#{content,jdbcType=VARCHAR},#{sendTime,jdbcType=TIMESTAMP},#{corpId,jdbcType=VARCHAR}
+            )
+	</insert>
+	
+	<!-- 保存外部短信发送记录  接收 -->
+	<insert id="insertOuterMessageReceive" parameterType="com.hw.hwsafe.sms.czd.po.MessagePO">
+		INSERT INTO M11301 (MA001,MA002,MA003,MA004,MA005) 
+			VALUES (
+				#{id,jdbcType=VARCHAR},#{sendPeople,jdbcType=VARCHAR},
+				#{telphone,jdbcType=VARCHAR},#{sendTime,jdbcType=TIMESTAMP},#{ip,jdbcType=VARCHAR}
+            )
+	</insert>
+	
+	<select id="getOuterMessageByPage" parameterType="com.hw.hwsafe.sms.czd.po.MessagePO" resultType="com.hw.hwsafe.sms.czd.po.MessagePO">
+		SELECT * FROM (SELECT T.MA001 id,T.MA002 ip,T.MA003 gateway,T.MA004 port,T.MA005 manufacturer,T.MA006 pin,
+			T.MA007 content,T.MA008 sendTime,M113FUNC(t.ma001) receive FROM M113 T WHERE T.MA009 = #{corpId}) 
+			WHERE ROWNUM <![CDATA[>=]]> #{beginNum} AND ROWNUM <![CDATA[<=]]> #{endNum} 
+	</select>
+	
+	<insert id="insertHighQueue" parameterType="com.hw.hwsafe.sms.czd.po.QueuePO" >
+		insert into M111 (MA001,MA002,MA003,MA004) values (id,telphone,content,sort)
+	</insert>
+	
+	<insert id="insertLowQueue" parameterType="com.hw.hwsafe.sms.czd.po.QueuePO" >
+		insert into M112 (MA001,MA002,MA003,MA004) values (id,telphone,content,sort)
+	</insert>
+	
+	<insert id="getHighQueue">
+		select MA001 id,MA002 telphone,MA003 content,MA004 sort from m111 order by sort asc
+	</insert>
+	
+	<insert id="getLowQueue">
+		select MA001 id,MA002 telphone,MA003 content,MA004 sort from m112 order by sort asc
+	</insert>
+</mapper>

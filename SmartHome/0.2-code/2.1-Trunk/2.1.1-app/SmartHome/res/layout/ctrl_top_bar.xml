@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/ctrl_title_bg"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dip" >
+
+    <Button
+        android:id="@+id/barBtnLeft"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:background="@drawable/ctrl_titlebar_menu_selector_left"
+        android:gravity="center"
+        android:singleLine="true" />
+
+    <Button
+        android:id="@+id/barBtnRight"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:background="@drawable/titlebar_menu_selector"
+        android:gravity="center"
+        android:singleLine="true"
+        android:visibility="invisible" />
+
+    <RadioGroup
+        android:id="@+id/rbtn_two"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_toLeftOf="@+id/barBtnRight"
+        android:layout_toRightOf="@id/barBtnLeft"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="invisible" >
+
+        <RadioButton
+            android:id="@+id/rbtn_one_child"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/selector_rbtn_menu_left"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:text="@string/ctrl_title_manual"
+            android:textColor="@color/ctrl_title_rbtn_txt"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/rbtn_two_child"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/selector_rbtn_menu_right"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingRight="10dp"
+            android:singleLine="true"
+            android:text="@string/ctrl_title_auto"
+            android:textColor="@color/ctrl_title_rbtn_txt"
+            android:textSize="12sp" />
+    </RadioGroup>
+
+</RelativeLayout>
